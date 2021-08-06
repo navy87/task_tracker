@@ -1,12 +1,12 @@
 import "../../styles/sidebar/sidebar.css";
-import SearchBar from "./SearchBar";
-import SearchResult from "./SearchResult";
+import Filter from "./filter/Filter";
+import SearchBar from "./search/SearchBar";
 
 const SideBar = () => {
     return (
         <div id="sidebar">
             <SearchBar />
-            <SearchResult />
+            <Filter />
         </div>
     );
 };

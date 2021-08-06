@@ -51,9 +51,28 @@
   display: flex;
   margin-top: 0.5rem;
   gap: 2rem;
-  font-size: 0.9rem;
+  font-size: 0.8rem;
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
+}
+
+#sidebar .filter {
+  background-color: #dddddd;
+  padding: 0.5rem;
+}
+
+#sidebar .filter h2 {
+  font-weight: 500;
+  font-size: 1.1rem;
+  border-bottom: 2px solid #808080;
+}
+
+#sidebar .filter .filters_grid {
+  padding: 0.5rem;
+}
+
+#sidebar .filter .filters_grid .label {
+  font-weight: 300;
 }
 /*# sourceMappingURL=sidebar.css.map */
