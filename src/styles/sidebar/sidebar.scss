@@ -3,10 +3,10 @@
     min-width: 360px;
     height: 100vh;
     background-color: #eee;
+    padding: 0.5rem;
 
     #searchbar {
         display: flex;
-        padding: 0.5rem;
 
         .searchbox {
             display: flex;
@@ -34,5 +34,13 @@
             padding: 5px;
             margin: auto 0;
         }
+    }
+
+    .search_result {
+        display: flex;
+        margin-top: 0.5rem;
+        gap: 2rem;
+        font-size: 0.9rem;
+        justify-content: center;
     }
 }

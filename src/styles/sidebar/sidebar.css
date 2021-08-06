@@ -3,13 +3,13 @@
   min-width: 360px;
   height: 100vh;
   background-color: #eee;
+  padding: 0.5rem;
 }
 
 #sidebar #searchbar {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  padding: 0.5rem;
 }
 
 #sidebar #searchbar .searchbox {
@@ -43,5 +43,17 @@
   cursor: pointer;
   padding: 5px;
   margin: auto 0;
+}
+
+#sidebar .search_result {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  margin-top: 0.5rem;
+  gap: 2rem;
+  font-size: 0.9rem;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
 }
 /*# sourceMappingURL=sidebar.css.map */
