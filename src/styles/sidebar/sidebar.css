@@ -1,3 +1,31 @@
+.custom_checkbox_label {
+  display: -webkit-inline-box;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  gap: 2px;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  cursor: pointer;
+  padding: 0.25rem 0.75rem;
+  background-color: white;
+  color: black;
+  margin: 0 0.1rem;
+  border-radius: 0.25rem;
+  background-color: lightgray;
+}
+
+.custom_checkbox_label.checked {
+  background-color: white;
+}
+
+.custom_checkbox_label input[type="checkbox"] {
+  display: none;
+}
+
 #sidebar {
   width: 20%;
   min-width: 360px;
@@ -86,6 +114,18 @@
   background-color: #ddd;
   padding: 0.5rem;
   border-radius: 0.25rem;
+  -webkit-transition: -webkit-transform 1s;
+  transition: -webkit-transform 1s;
+  transition: transform 1s;
+  transition: transform 1s, -webkit-transform 1s;
+}
+
+#sidebar .filter.hide {
+  height: 0;
+  -webkit-transform: scaleY(0);
+          transform: scaleY(0);
+  padding: 0;
+  overflow: hidden;
 }
 
 #sidebar .filter h2 {
@@ -100,5 +140,7 @@
 
 #sidebar .task_list {
   padding: 0 0.25rem;
+  -webkit-transition: all 1s;
+  transition: all 1s;
 }
 /*# sourceMappingURL=sidebar.css.map */

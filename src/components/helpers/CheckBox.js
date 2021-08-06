@@ -2,6 +2,11 @@ import React, { useState } from "react";
 import styled from "styled-components";
 
 let LabelStyled = styled.label`
+    display: inline-flex;
+    gap: 2px;
+    justify-content: center;
+    align-items: center;
+
     cursor: pointer;
     padding: 0.25rem 0.75rem;
     background-color: white;
@@ -14,7 +19,7 @@ const InputStyled = styled.input`
     display: none;
 `;
 
-const CheckBox = ({ text, id, name, value }) => {
+const CheckBox = ({ render, id, name, value }) => {
     const [checked, setChecked] = useState(value);
 
     LabelStyled = styled(LabelStyled)`
@@ -22,8 +27,8 @@ const CheckBox = ({ text, id, name, value }) => {
     `;
 
     return (
-        <LabelStyled for={id}>
-            {text}
+        <LabelStyled htmlFor={id}>
+            {render}
             <InputStyled
                 id={id}
                 type="checkbox"
