@@ -1,0 +1,38 @@
+#sidebar {
+    width: 20%;
+    min-width: 360px;
+    height: 100vh;
+    background-color: #eee;
+
+    #searchbar {
+        display: flex;
+        padding: 0.5rem;
+
+        .searchbox {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: white;
+            width: 90%;
+            padding: 0.5rem;
+            border-radius: 2rem;
+
+            input {
+                width: 90%;
+                border: none;
+                outline: none;
+            }
+
+            .search_btn {
+                cursor: pointer;
+                color: gray;
+            }
+        }
+
+        .filter_btn {
+            cursor: pointer;
+            padding: 5px;
+            margin: auto 0;
+        }
+    }
+}
