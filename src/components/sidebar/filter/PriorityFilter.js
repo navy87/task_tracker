@@ -16,7 +16,6 @@ const PriorityFilter = () => {
                     </>
                 }
                 id="low_priority"
-                name="priority"
                 value="low"
             />
             <PriorityCheckbox
@@ -26,7 +25,6 @@ const PriorityFilter = () => {
                     </>
                 }
                 id="mid_priority"
-                name="priority"
                 value="mid"
             />
             <PriorityCheckbox
@@ -36,7 +34,6 @@ const PriorityFilter = () => {
                     </>
                 }
                 id="high_priority"
-                name="priority"
                 value="high"
             />
         </div>

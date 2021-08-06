@@ -1,24 +1,23 @@
 import React, { useContext, useEffect, useState } from "react";
 import { FilterContext } from "../../../contexts/SidebarContext";
 
-const PriorityCheckbox = ({ render, id, value }) => {
+const StatusCheckbox = ({ render, id, value }) => {
     const [checked, setChecked] = useState(true);
-    const { setFilteredPriorities } = useContext(FilterContext);
+    const { setFilteredStatuses } = useContext(FilterContext);
 
     useEffect(() => {
         const filterData = () => {
-            setFilteredPriorities((oldPriorities) => {
+            setFilteredStatuses((oldStatuses) => {
                 if (!checked) {
-                    oldPriorities.delete(value);
+                    oldStatuses.delete(value);
                 } else {
-                    oldPriorities.add(value);
+                    oldStatuses.add(value);
                 }
-                // const newPriorities = ;
-                return new Set([...oldPriorities]);
+                return new Set([...oldStatuses]);
             });
         };
         filterData();
-    }, [checked, setFilteredPriorities, value]);
+    }, [checked, setFilteredStatuses, value]);
 
     return (
         <label
@@ -29,7 +28,6 @@ const PriorityCheckbox = ({ render, id, value }) => {
             <input
                 id={id}
                 type="checkbox"
-                name="priority"
                 value={value}
                 checked={checked}
                 onChange={() => setChecked((prevChecked) => !prevChecked)}
@@ -38,4 +36,4 @@ const PriorityCheckbox = ({ render, id, value }) => {
     );
 };
 
-export default PriorityCheckbox;
+export default StatusCheckbox;

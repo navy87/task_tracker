@@ -4,8 +4,7 @@ import TaskItem from "./TaskItem";
 
 const TaskList = () => {
     const { tasks } = useContext(DataContext);
-    const { filteredPriorities } = useContext(FilterContext);
-    
+    const { filteredPriorities, filteredStatuses } = useContext(FilterContext);
 
     useEffect(() => {
         console.log("TaskList: " + JSON.stringify(filteredPriorities));
@@ -15,6 +14,9 @@ const TaskList = () => {
         <div className="task_list">
             {tasks
                 .filter((task) => filteredPriorities.has(task.priority))
+                .filter((task) =>
+                    filteredStatuses.has(task.status.toLowerCase())
+                )
                 .map((task) => {
                     return (
                         <TaskItem
