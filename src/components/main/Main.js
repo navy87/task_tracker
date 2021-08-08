@@ -1,6 +1,6 @@
 import React from "react";
 import "../../styles/main/main.css";
-import TaskInfo from "./TaskInfo";
+import TaskInfo from "./taskinfo/TaskInfo";
 
 const Main = () => {
     return (
