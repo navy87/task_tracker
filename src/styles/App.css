@@ -1,0 +1,56 @@
+#page {
+    margin-left: 24rem;
+    height: 100vh;
+    padding: 0.5rem;
+}
+
+#sidebar {
+    position: fixed;
+    width: 23rem;
+    height: 100vh;
+    box-shadow: 5px 5px 5px #bbb;
+}
+
+.no-border {
+    border: none !important;
+    outline: none !important;
+}
+
+.btn {
+    cursor: pointer;
+    padding: 5px 10px;
+    border: none;
+    outline: none;
+    border-radius: 5px;
+    transition: all 0.05s;
+    font-weight: 300;
+
+    display: inline-flex;
+    align-items: center;
+}
+
+.btn:active {
+    transform: scale(0.95);
+}
+
+.btn.btn-submit {
+    background-color: green;
+    border-color: green;
+    color: white;
+}
+
+.btn.btn-info {
+    background-color: white;
+    border-color: white;
+    color: black;
+}
+
+.btn.btn-danger {
+    background-color: #ddd;
+    color: #333;
+}
+
+/* .btn.btn-danger:hover {
+    background-color: darkred;
+    color: white;
+} */

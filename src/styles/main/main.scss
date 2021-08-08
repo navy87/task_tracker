@@ -1,0 +1,61 @@
+#main {
+    padding: 0.5rem;
+
+    .task_info_container {
+        background-color: #d3d3d3;
+        padding: 0.5rem;
+        border-radius: 5px;
+
+        .title {
+            font-size: 1.4rem;
+            font-weight: 300;
+            border-bottom: 1px solid black;
+        }
+
+        .info_container {
+            display: flex;
+            margin: 0.5rem 0;
+            font-size: 0.9rem;
+            align-items: center;
+
+            .info-label {
+                width: 8rem;
+                font-weight: 300;
+            }
+
+            input[type="text"],
+            textarea,
+            input[type="date"] {
+                border: none;
+                outline: none;
+                padding: 0.25rem;
+                border-radius: 5px;
+            }
+
+            input[type="text"],
+            textarea {
+                width: 460px;
+                resize: vertical;
+            }
+
+            textarea {
+                height: 4rem;
+            }
+        }
+
+        .button_group {
+            padding-left: 8rem;
+            .btn {
+                display: inline-flex;
+                align-items: center;
+                margin: 0.25rem;
+
+                .btn_icon {
+                    width: 1.2rem;
+                    height: 1.2rem;
+                    margin-right: 5px;
+                }
+            }
+        }
+    }
+}

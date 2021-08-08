@@ -27,9 +27,6 @@
 }
 
 #sidebar {
-  width: 20%;
-  min-width: 360px;
-  height: 100vh;
   background-color: #eee;
   padding: 0.5rem;
   overflow-y: scroll;
