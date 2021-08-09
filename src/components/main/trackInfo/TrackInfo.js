@@ -1,4 +1,5 @@
 import React from "react";
+import { MdAddCircleOutline } from "react-icons/md";
 import InfoContainer from "../InfoContainer";
 import TrackList from "./TrackList";
 
@@ -42,7 +43,7 @@ const TrackInfo = () => {
                     className="btn btn-submit"
                     onClick={(e) => e.preventDefault()}
                 >
-                    Accept
+                    <MdAddCircleOutline className="btn_icon" /> Accept
                 </button>
             </form>
             <div className="track_list_container">

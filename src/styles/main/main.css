@@ -35,7 +35,7 @@
 #main .container .info_container textarea,
 #main .container .info_container input[type="date"] {
   font-family: "Roboto", sans-serif;
-  border: none;
+  border: 2px solid white;
   outline: none;
   padding: 0.4rem;
   border-radius: 5px;
@@ -51,6 +51,12 @@
   height: 4rem;
 }
 
+#main .container .info_container input[type="text"]:focus,
+#main .container .info_container textarea:focus,
+#main .container .info_container input[type="date"]:focus {
+  border-color: green;
+}
+
 #main .container .button_group {
   padding-left: 8rem;
 }
@@ -63,12 +69,6 @@
       -ms-flex-align: center;
           align-items: center;
   margin: 0.25rem;
-}
-
-#main .container .button_group .btn .btn_icon {
-  width: 1.2rem;
-  height: 1.2rem;
-  margin-right: 5px;
 }
 
 #main .container .track_list_container {

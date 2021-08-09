@@ -49,7 +49,7 @@ const TaskInfo = () => {
                     info_render={
                         <div>
                             <button
-                                className="btn btn-submit no-border"
+                                className="btn btn-submit"
                                 onClick={(e) => e.preventDefault()}
                             >
                                 Assign more
