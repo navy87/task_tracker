@@ -3,7 +3,8 @@ import Filter from "./filter/Filter";
 import SearchBar from "./search/SearchBar";
 import TaskList from "./tasklist/TaskList";
 import { DataContext, FilterContext } from "../../contexts/SidebarContext";
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import axios from "axios";
 
 const SideBar = () => {
     const [filterVisible, setFilterVisible] = useState(false);
@@ -143,6 +144,25 @@ const SideBar = () => {
         },
     ]);
 
+    useEffect(() => {
+        console.log("Hello There");
+        // fetch("http://localhost:4200/api/task")
+        //     .then((res) => {
+        //         console.log("Fetched Res: " + JSON.stringify(res));
+        //         return res.json();
+        //     })
+        //     .then((data) => {
+        //         console.log("Fetched Data: ");
+        //         console.log(data);
+        //         return setTasks(data);
+        //     })
+        //     .catch((err) => console.error(err));
+        axios.get("http://localhost:4200/api/task").then((res) => {
+            const data = res.data;
+            console.log(data);
+            setTasks(data);
+        });
+    }, []);
     return (
         <FilterContext.Provider
             value={{

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import RadioButton from "../../helpers/RadioButton";
 import {
     FcHighPriority,
@@ -7,6 +7,8 @@ import {
 } from "react-icons/fc";
 
 const PriorityInfo = () => {
+    const [checked, setChecked] = useState("high");
+
     return (
         <div>
             <RadioButton
@@ -17,7 +19,9 @@ const PriorityInfo = () => {
                         <FcHighPriority /> High
                     </>
                 }
+                checked={checked === "high"}
                 value="high"
+                setChecked={setChecked}
             />
             <RadioButton
                 id="mid_priority_info"
@@ -27,7 +31,9 @@ const PriorityInfo = () => {
                         <FcMediumPriority /> Medium
                     </>
                 }
+                checked={checked === "mid"}
                 value="mid"
+                setChecked={setChecked}
             />
             <RadioButton
                 id="low_priority_info"
@@ -37,7 +43,9 @@ const PriorityInfo = () => {
                         <FcLowPriority /> Low
                     </>
                 }
+                checked={checked === "low"}
                 value="low"
+                setChecked={setChecked}
             />
         </div>
     );

@@ -140,4 +140,101 @@
   -webkit-transition: all 1s;
   transition: all 1s;
 }
+
+#sidebar .task_list .task_item {
+  cursor: pointer;
+  margin: 1rem 0;
+  padding-bottom: 0.5rem;
+  border-bottom: 1px solid #aaa;
+}
+
+#sidebar .task_list .task_item .task_head {
+  font-family: "Montserrat", sans-serif;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  gap: 0.25rem;
+}
+
+#sidebar .task_list .task_item .task_head h3 {
+  font-size: 1rem;
+  font-weight: 500;
+}
+
+#sidebar .task_list .task_item .task_head .status {
+  border: 1px solid;
+  padding: 2px 5px;
+  border-radius: 1rem;
+  font-size: 0.5rem;
+  font-weight: normal;
+}
+
+#sidebar .task_list .task_item .task_head .status.active {
+  border-color: blue;
+  color: blue;
+}
+
+#sidebar .task_list .task_item .task_head .status.done {
+  border-color: green;
+  color: green;
+}
+
+#sidebar .task_list .task_item .task_head .status.cancelled {
+  border-color: gray;
+  color: gray;
+}
+
+#sidebar .task_list .task_item .task_description {
+  font-family: "Montserrat", sans-serif;
+  font-size: 0.75rem;
+  font-weight: 400;
+  padding: 5px 0;
+  text-align: justify;
+}
+
+#sidebar .task_list .task_item .task_details {
+  margin: 0.25rem 0;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  font-size: 0.8rem;
+}
+
+#sidebar .task_list .task_item .task_details .icon {
+  width: 1.2rem;
+  height: 1.2rem;
+}
+
+#sidebar .task_list .task_item .task_details div {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  gap: 0.25rem;
+}
+
+#sidebar .task_list .task_item .task_details .priority {
+  font-weight: bold;
+}
+
+#sidebar .task_list .task_item .task_details .assignees {
+  font-weight: 300;
+}
+
+#sidebar .task_list .task_item .task_details .assignees .warning {
+  color: gray;
+  font-style: italic;
+  font-weight: 400;
+}
 /*# sourceMappingURL=sidebar.css.map */

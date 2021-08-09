@@ -10,7 +10,9 @@ const SearchResult = () => {
 
     useEffect(() => {
         const filteredTasks = tasks
-            .filter((task) => filteredPriorities.has(task.priority))
+            .filter((task) =>
+                filteredPriorities.has(task.priority.toLowerCase())
+            )
             .filter((task) => filteredStatuses.has(task.status.toLowerCase()));
         setAllTasks(filteredTasks.length);
         setActiveTasks(

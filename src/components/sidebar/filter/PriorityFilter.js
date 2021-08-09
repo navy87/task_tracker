@@ -24,8 +24,8 @@ const PriorityFilter = () => {
                         <FcMediumPriority /> Medium
                     </>
                 }
-                id="mid_priority"
-                value="mid"
+                id="medium_priority"
+                value="medium"
             />
             <PriorityCheckbox
                 render={

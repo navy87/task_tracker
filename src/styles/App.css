@@ -1,3 +1,24 @@
+.radio_label,
+.checkbox_label {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 5px;
+
+    cursor: pointer;
+    padding: 5px 10px;
+    color: black;
+    margin: 0 0.1rem;
+    border-radius: 0.25rem;
+    font-size: 0.8rem;
+    font-weight: bold;
+    background-color: lightgray;
+}
+
+.radio_label.checked {
+    background-color: white;
+}
+
 #page {
     margin-left: 24rem;
     height: 100vh;
