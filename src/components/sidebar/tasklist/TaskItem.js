@@ -93,17 +93,16 @@ const TaskItem = ({
         border: 1px solid;
         padding: 2px 5px;
         border-radius: 1rem;
-        border-color: ${status == "Done"
+        border-color: ${status.toLowerCase() === "done"
             ? "green"
-            : status == "Cancelled"
+            : status.toLowerCase() === "cancelled"
             ? "gray"
             : "blue"};
-        color: ${status == "Done"
+        color: ${status.toLowerCase() === "done"
             ? "green"
-            : status == "Cancelled"
+            : status.toLowerCase() === "cancelled"
             ? "gray"
             : "blue"};
-        /* color: ${status == "Active" ? "green" : "red"}; */
         font-size: 0.5rem;
         font-weight: normal;
     `;
