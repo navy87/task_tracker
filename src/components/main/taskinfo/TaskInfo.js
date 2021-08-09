@@ -2,13 +2,13 @@ import React from "react";
 
 import { AiOutlineUserAdd } from "react-icons/ai";
 import { MdDeleteForever, MdSave, MdAlarm } from "react-icons/md";
-import InfoContainer from "./InfoContainer";
+import InfoContainer from "../InfoContainer";
 import PriorityInfo from "./PriorityInfo";
 import StatusInfo from "./StatusInfo";
 
 const TaskInfo = () => {
     return (
-        <div className="task_info_container">
+        <div className="container">
             <h2 className="title">Task Info</h2>
             <form action="#" method="post">
                 <div className="id_info_container">

@@ -43,12 +43,6 @@ const TitleStyled = styled.div`
     }
 
     .status {
-        border: 1px solid green;
-        padding: 2px 5px;
-        border-radius: 1rem;
-        color: green;
-        font-size: 0.5rem;
-        font-weight: 600;
     }
 `;
 
@@ -95,11 +89,29 @@ const TaskItem = ({
     persons,
     status,
 }) => {
+    const StatusStyled = styled.span`
+        border: 1px solid;
+        padding: 2px 5px;
+        border-radius: 1rem;
+        border-color: ${status == "Done"
+            ? "green"
+            : status == "Cancelled"
+            ? "gray"
+            : "blue"};
+        color: ${status == "Done"
+            ? "green"
+            : status == "Cancelled"
+            ? "gray"
+            : "blue"};
+        /* color: ${status == "Active" ? "green" : "red"}; */
+        font-size: 0.5rem;
+        font-weight: normal;
+    `;
     return (
         <TaskItemStyled onClick={() => alert("Hello")}>
             <TitleStyled>
                 <h3>{name}</h3>
-                <span className="status">{status}</span>
+                <StatusStyled className="status">{status}</StatusStyled>
             </TitleStyled>
             <DescriptionStyled>{description}</DescriptionStyled>
             <DetailsStyled>
