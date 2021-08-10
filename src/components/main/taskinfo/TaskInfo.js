@@ -18,6 +18,8 @@ const TaskInfo = () => {
         }
     }, [selectedTask, setSelectedTaskCopy]);
 
+    console.log("Rendered");
+
     return selectedTaskCopy ? (
         <div className="container">
             <h2 className="title">Task Info</h2>
@@ -49,7 +51,10 @@ const TaskInfo = () => {
                             placeholder="Issue"
                             value={selectedTaskCopy.issue}
                             onChange={(e) => {
-                                selectedTaskCopy.issue = e.target.value;
+                                setSelectedTaskCopy({
+                                    ...selectedTaskCopy,
+                                    issue: e.target.value,
+                                });
                             }}
                         />
                     }
@@ -63,9 +68,12 @@ const TaskInfo = () => {
                             name="description"
                             placeholder="Description"
                             value={selectedTaskCopy.description}
-                            onChange={(e) =>
-                                (selectedTaskCopy.description = e.target.value)
-                            }
+                            onChange={(e) => {
+                                setSelectedTaskCopy({
+                                    ...selectedTaskCopy,
+                                    description: e.target.value,
+                                });
+                            }}
                         ></textarea>
                     }
                 />
@@ -102,9 +110,12 @@ const TaskInfo = () => {
                             type="date"
                             name="due_date"
                             value={selectedTaskCopy.dueDate}
-                            onChange={(e) =>
-                                (selectedTaskCopy.dueDate = e.target.value)
-                            }
+                            onChange={(e) => {
+                                setSelectedTaskCopy({
+                                    ...selectedTaskCopy,
+                                    dueDate: e.target.value,
+                                });
+                            }}
                         />
                     }
                 />
