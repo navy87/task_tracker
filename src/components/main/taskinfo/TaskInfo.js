@@ -4,6 +4,7 @@ import { AiOutlineUserAdd } from "react-icons/ai";
 import { MdDeleteForever, MdSave, MdAlarm } from "react-icons/md";
 import { GlobalContext } from "../../../contexts/GlobalContext";
 import InfoContainer from "../InfoContainer";
+import AssigneeButton from "./AssigneeButton";
 import PriorityInfo from "./PriorityInfo";
 import StatusInfo from "./StatusInfo";
 
@@ -71,7 +72,7 @@ const TaskInfo = () => {
                 <InfoContainer
                     label="Assigned To"
                     info_render={
-                        <div>
+                        <div className="assignees_container">
                             <button
                                 className="btn btn-submit"
                                 onClick={(e) => e.preventDefault()}
@@ -79,6 +80,12 @@ const TaskInfo = () => {
                                 Assign more
                                 <AiOutlineUserAdd />
                             </button>
+                            {selectedTaskCopy.assignees.map((assignee) => (
+                                <AssigneeButton
+                                    key={assignee.id}
+                                    taskPerson={assignee}
+                                />
+                            ))}
                         </div>
                     }
                 />

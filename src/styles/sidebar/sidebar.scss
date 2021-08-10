@@ -119,15 +119,16 @@
             padding: 0.5rem;
             border-bottom: 1px solid #aaa;
 
-            &:active {
-                border-radius: 10px;
-                background-color: lightgray;
-            }
-
             &.selected {
                 border-radius: 10px;
                 box-shadow: 2px 2px 2px #ccc;
                 background-color: rgba(211, 211, 211, 0.5);
+            }
+
+            &:active {
+                border-radius: 10px;
+                background-color: lightgray;
+                box-shadow: none;
             }
 
             .task_head {

@@ -54,6 +54,43 @@
             input[type="date"]:focus {
                 border-color: green;
             }
+
+            .assignees_container {
+                display: flex;
+                // background-color: red;
+
+                .assignee_btn {
+                    display: inline-flex;
+                    align-items: center;
+                    padding: 5px 10px;
+                    border-radius: 5px;
+                    background-color: #eee;
+                    margin-left: 5px;
+                    cursor: pointer;
+
+                    &.leader {
+                        border-color: gold;
+                        // background-color: gold;
+                    }
+
+                    .assignee_name {
+                        font-size: unset;
+                    }
+
+                    .remove_icon {
+                        width: 1rem;
+                        height: 1rem;
+                        margin-left: 3px;
+                        color: darkred;
+                    }
+
+                    &:hover {
+                        .remove_icon {
+                            color: red;
+                        }
+                    }
+                }
+            }
         }
 
         .button_group {

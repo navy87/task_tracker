@@ -1,8 +1,16 @@
 * {
+    box-sizing: content-box;
     margin: 0;
     padding: 0;
-    box-sizing: content-box;
+    border: 0;
+    font-size: 100%;
+    font: inherit;
+    vertical-align: baseline;
     font-family: "Roboto", sans-serif;
+}
+
+body {
+    line-height: 1;
 }
 
 ::-webkit-scrollbar {

@@ -143,24 +143,18 @@ const SideBar = () => {
             ],
         },
     ]);
+    const [people, setPeople] = useState([]);
 
     useEffect(() => {
-        console.log("Hello There");
-        // fetch("http://localhost:4200/api/task")
-        //     .then((res) => {
-        //         console.log("Fetched Res: " + JSON.stringify(res));
-        //         return res.json();
-        //     })
-        //     .then((data) => {
-        //         console.log("Fetched Data: ");
-        //         console.log(data);
-        //         return setTasks(data);
-        //     })
-        //     .catch((err) => console.error(err));
         axios.get("http://localhost:4200/api/task").then((res) => {
             const data = res.data;
             console.log(data);
             setTasks(data);
+        });
+
+        axios.get("http://localhost:4200/api/person").then((res) => {
+            const data = res.data;
+            setPeople(data);
         });
     }, []);
     return (
@@ -176,7 +170,9 @@ const SideBar = () => {
                 setFilteredStatuses,
             }}
         >
-            <DataContext.Provider value={{ tasks, setTasks }}>
+            <DataContext.Provider
+                value={{ tasks, setTasks, people, setPeople }}
+            >
                 <div id="sidebar">
                     <SearchBar />
                     <Filter />
