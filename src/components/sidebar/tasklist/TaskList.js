@@ -6,10 +6,6 @@ const TaskList = () => {
     const { tasks } = useContext(DataContext);
     const { filteredPriorities, filteredStatuses } = useContext(FilterContext);
 
-    // useEffect(() => {
-    //     console.log("TaskList: " + JSON.stringify(filteredPriorities));
-    // }, [filteredPriorities]);
-
     return (
         <div className="task_list">
             {tasks
@@ -22,12 +18,13 @@ const TaskList = () => {
                 .map((task, index) => (
                     <TaskItem
                         key={index}
-                        name={task.issue}
-                        description={task.description}
-                        dueDate={task.dueDate}
-                        persons={task.assignees}
-                        priority={task.priority.toLowerCase()}
-                        status={task.status}
+                        task={task}
+                        // name={task.issue}
+                        // description={task.description}
+                        // dueDate={task.dueDate}
+                        // persons={task.assignees}
+                        // priority={task.priority.toLowerCase()}
+                        // status={task.status}
                     />
                 ))}
         </div>

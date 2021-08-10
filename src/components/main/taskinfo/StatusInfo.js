@@ -1,8 +1,27 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import RadioButton from "../../helpers/RadioButton";
 import { MdBubbleChart, MdCancel, MdCheckCircle } from "react-icons/md";
-const StatusInfo = () => {
-    const [checked, setChecked] = useState("high");
+import { DeepCopy } from "../../helpers/Helper";
+const StatusInfo = ({ task }) => {
+    const [selectedTask, setSelectedTask] = useState(DeepCopy(task));
+    const [checked, setChecked] = useState(selectedTask.status);
+
+    // useEffect(() => {
+    //     task.status = checked.toUpperCase();
+    // }, [task, checked]);
+
+    useEffect(() => {
+        setSelectedTask(task);
+        setChecked(task.status);
+    }, [task, setSelectedTask]);
+
+    useEffect(() => {
+        setSelectedTask((currentTask) => ({
+            ...currentTask,
+            status: checked.toUpperCase(),
+        }));
+    }, [setSelectedTask, checked]);
+
     return (
         <div>
             <RadioButton
@@ -18,7 +37,7 @@ const StatusInfo = () => {
                 setChecked={setChecked}
             />
             <RadioButton
-                id="finished_status_info"
+                id="done_status_info"
                 name="status"
                 render={
                     <>
@@ -30,7 +49,7 @@ const StatusInfo = () => {
                 setChecked={setChecked}
             />
             <RadioButton
-                id="mid_status_info"
+                id="cancelled_status_info"
                 name="status"
                 render={
                     <>

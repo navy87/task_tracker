@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useContext } from "react";
 import {
     FcLowPriority,
     FcMediumPriority,
@@ -8,6 +8,7 @@ import {
 import { BsCalendar } from "react-icons/bs";
 import { IoIosPeople } from "react-icons/io";
 import { Capitalize } from "../../helpers/Helper";
+import { GlobalContext } from "../../../contexts/GlobalContext";
 
 const priorityMap = {
     low: {
@@ -24,33 +25,34 @@ const priorityMap = {
     },
 };
 
-const TaskItem = ({
-    name,
-    description,
-    priority,
-    dueDate,
-    persons,
-    status,
-}) => {
-    // console.log("Assignees: ");
-    // console.log(persons);
+const TaskItem = ({ task }) => {
+    const { setSelectedTask, selectedTask } = useContext(GlobalContext);
+
+    const { issue, description, dueDate, assignees, status } = task;
+    const priority = task.priority.toLowerCase();
+
     let displayedName = "";
-    if (persons && persons.length > 0) {
-        const leaders = persons.filter(
+    if (assignees && assignees.length > 0) {
+        const leaders = assignees.filter(
             (taskPerson) => taskPerson.person.leader
         );
         if (leaders > 0) {
             displayedName = leaders[0];
-        } else if (persons) {
-            displayedName = persons[0];
+        } else if (assignees) {
+            displayedName = assignees[0];
         }
         displayedName = displayedName.person.name;
     }
 
     return (
-        <div className="task_item" onClick={() => alert("Hello")}>
+        <div
+            className={`task_item ${
+                selectedTask && selectedTask.id === task.id && "selected"
+            }`}
+            onClick={() => setSelectedTask(task)}
+        >
             <div className="task_head">
-                <h3>{name}</h3>
+                <h3>{issue}</h3>
                 <span className={`status ${status.toLowerCase()}`}>
                     {Capitalize(status)}
                 </span>

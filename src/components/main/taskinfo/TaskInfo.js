@@ -1,24 +1,40 @@
-import React from "react";
+import React, { useContext, useEffect, useState } from "react";
 
 import { AiOutlineUserAdd } from "react-icons/ai";
 import { MdDeleteForever, MdSave, MdAlarm } from "react-icons/md";
+import { GlobalContext } from "../../../contexts/GlobalContext";
 import InfoContainer from "../InfoContainer";
 import PriorityInfo from "./PriorityInfo";
 import StatusInfo from "./StatusInfo";
 
 const TaskInfo = () => {
-    return (
+    const { selectedTask } = useContext(GlobalContext);
+    const [selectedTaskCopy, setSelectedTaskCopy] = useState(undefined);
+
+    useEffect(() => {
+        if (selectedTask) {
+            setSelectedTaskCopy(JSON.parse(JSON.stringify(selectedTask)));
+        }
+    }, [selectedTask, setSelectedTaskCopy]);
+
+    return selectedTaskCopy ? (
         <div className="container">
             <h2 className="title">Task Info</h2>
             <form action="#" method="post">
                 <div className="id_info_container">
                     <InfoContainer
                         label="ID"
-                        info_render={<div className="info">1250</div>}
+                        info_render={
+                            <div className="info">{selectedTaskCopy.id}</div>
+                        }
                     />
                     <InfoContainer
                         label="Creation Date"
-                        info_render={<div className="info">Aug. 1, 2021</div>}
+                        info_render={
+                            <div className="info">
+                                {selectedTaskCopy.addedDate}
+                            </div>
+                        }
                     />
                 </div>
                 <InfoContainer
@@ -30,6 +46,10 @@ const TaskInfo = () => {
                             type="text"
                             name="name"
                             placeholder="Issue"
+                            value={selectedTaskCopy.issue}
+                            onChange={(e) => {
+                                selectedTaskCopy.issue = e.target.value;
+                            }}
                         />
                     }
                 />
@@ -41,6 +61,10 @@ const TaskInfo = () => {
                             id="info_description"
                             name="description"
                             placeholder="Description"
+                            value={selectedTaskCopy.description}
+                            onChange={(e) =>
+                                (selectedTaskCopy.description = e.target.value)
+                            }
                         ></textarea>
                     }
                 />
@@ -60,16 +84,27 @@ const TaskInfo = () => {
                 />
                 <InfoContainer
                     label="Priority"
-                    info_render={<PriorityInfo />}
+                    info_render={<PriorityInfo task={selectedTaskCopy} />}
                 />
                 <InfoContainer
                     label="Due Date"
                     htmlFor="info_due_date"
                     info_render={
-                        <input id="info_due_date" type="date" name="due_date" />
+                        <input
+                            id="info_due_date"
+                            type="date"
+                            name="due_date"
+                            value={selectedTaskCopy.dueDate}
+                            onChange={(e) =>
+                                (selectedTaskCopy.dueDate = e.target.value)
+                            }
+                        />
                     }
                 />
-                <InfoContainer label="Status" info_render={<StatusInfo />} />
+                <InfoContainer
+                    label="Status"
+                    info_render={<StatusInfo task={selectedTaskCopy} />}
+                />
                 <div className="button_group">
                     <button type="submit" className="btn btn-submit">
                         <MdSave className="btn_icon" color="white" />
@@ -92,6 +127,8 @@ const TaskInfo = () => {
                 </div>
             </form>
         </div>
+    ) : (
+        <div>No Item Selected</div>
     );
 };
 

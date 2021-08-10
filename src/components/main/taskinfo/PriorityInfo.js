@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import RadioButton from "../../helpers/RadioButton";
 import {
     FcHighPriority,
@@ -6,8 +6,23 @@ import {
     FcMediumPriority,
 } from "react-icons/fc";
 
-const PriorityInfo = () => {
-    const [checked, setChecked] = useState("high");
+import { DeepCopy } from "../../helpers/Helper";
+const PriorityInfo = ({ task }) => {
+    const [selectedTask, setSelectedTask] = useState(DeepCopy(task));
+    const [checked, setChecked] = useState(selectedTask.priority);
+
+
+    useEffect(() => {
+        setSelectedTask(task);
+        setChecked(task.priority);
+    }, [task, setSelectedTask]);
+
+    useEffect(() => {
+        setSelectedTask((currentTask) => ({
+            ...currentTask,
+            priority: checked.toUpperCase(),
+        }));
+    }, [setSelectedTask, checked]);
 
     return (
         <div>
@@ -19,20 +34,20 @@ const PriorityInfo = () => {
                         <FcHighPriority /> High
                     </>
                 }
-                checked={checked === "high"}
+                checked={checked.toLowerCase() === "high"}
                 value="high"
                 setChecked={setChecked}
             />
             <RadioButton
-                id="mid_priority_info"
+                id="medium_priority_info"
                 name="priority"
                 render={
                     <>
                         <FcMediumPriority /> Medium
                     </>
                 }
-                checked={checked === "mid"}
-                value="mid"
+                checked={checked.toLowerCase() === "medium"}
+                value="medium"
                 setChecked={setChecked}
             />
             <RadioButton
@@ -43,7 +58,7 @@ const PriorityInfo = () => {
                         <FcLowPriority /> Low
                     </>
                 }
-                checked={checked === "low"}
+                checked={checked.toLowerCase() === "low"}
                 value="low"
                 setChecked={setChecked}
             />

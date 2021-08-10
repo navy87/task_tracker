@@ -143,9 +143,21 @@
 
 #sidebar .task_list .task_item {
   cursor: pointer;
-  margin: 1rem 0;
-  padding-bottom: 0.5rem;
+  margin: 0.5rem 0;
+  padding: 0.5rem;
   border-bottom: 1px solid #aaa;
+}
+
+#sidebar .task_list .task_item:active {
+  border-radius: 10px;
+  background-color: lightgray;
+}
+
+#sidebar .task_list .task_item.selected {
+  border-radius: 10px;
+  -webkit-box-shadow: 2px 2px 2px #ccc;
+          box-shadow: 2px 2px 2px #ccc;
+  background-color: rgba(211, 211, 211, 0.5);
 }
 
 #sidebar .task_list .task_item .task_head {
