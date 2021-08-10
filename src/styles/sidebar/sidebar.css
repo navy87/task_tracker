@@ -27,6 +27,7 @@
 }
 
 #sidebar {
+  position: relative;
   background-color: #eee;
   padding: 0.5rem;
   overflow-y: scroll;
@@ -149,14 +150,12 @@
 }
 
 #sidebar .task_list .task_item.selected {
-  border-radius: 10px;
   -webkit-box-shadow: 2px 2px 2px #ccc;
           box-shadow: 2px 2px 2px #ccc;
   background-color: rgba(211, 211, 211, 0.5);
 }
 
 #sidebar .task_list .task_item:active {
-  border-radius: 10px;
   background-color: lightgray;
   -webkit-box-shadow: none;
           box-shadow: none;

@@ -1,10 +1,13 @@
-import React from "react";
+import React, { useContext } from "react";
 import { MdAddCircleOutline } from "react-icons/md";
+import { GlobalContext } from "../../../contexts/GlobalContext";
 import InfoContainer from "../InfoContainer";
 import TrackList from "./TrackList";
 
 const TrackInfo = () => {
-    return (
+    const { selectedTask } = useContext(GlobalContext);
+
+    return selectedTask ? (
         <div className="container">
             <h2 className="title">Tracks Info</h2>
             <form action="/" method="post">
@@ -51,6 +54,8 @@ const TrackInfo = () => {
                 <TrackList />
             </div>
         </div>
+    ) : (
+        <div>No Task Selected</div>
     );
 };
 

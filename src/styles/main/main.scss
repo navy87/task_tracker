@@ -114,15 +114,20 @@
 
             .tracks_list {
                 // padding: 0.5rem;
-                max-height: 240px;
+                min-height: 10rem;
+                max-height: 30rem;
                 overflow-y: scroll;
 
                 .track_item {
                     margin: 0.5rem;
                     margin-top: 5px;
-                    padding-bottom: 0.5rem;
+                    padding: 0.5rem;
                     border-bottom: 1px solid #888;
-                    max-width: 640px;
+                    width: 40rem;
+
+                    &:hover {
+                        background-color: #ccc;
+                    }
 
                     .date {
                         font-weight: 300;
