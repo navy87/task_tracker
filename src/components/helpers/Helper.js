@@ -10,3 +10,9 @@ export const DeepCopy = (object) => {
     }
     return object;
 };
+
+export const GetToday = () => {
+    const date = new Date();
+    const dateString = date.toISOString().substr(0, 10);
+    return dateString;
+};

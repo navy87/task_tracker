@@ -1,4 +1,4 @@
-import axios from "axios";
+// import axios from "axios";
 import { useState, useEffect } from "react";
 import Main from "./components/main/Main";
 import SideBar from "./components/sidebar/SideBar";
@@ -17,34 +17,39 @@ function App() {
     const [tracks, setTracks] = useState([]);
     const [people, setPeople] = useState([]);
 
-    useEffect(() => {
-        axios.get("http://localhost:4200/api/task").then((res) => {
-            const data = res.data;
-            console.log(data);
-            setTasks(data);
-        });
+    const [refreshData, setRefreshData] = useState(false);
 
-        axios.get("http://localhost:4200/api/person").then((res) => {
-            const data = res.data;
-            setPeople(data);
-        });
-    }, []);
+    const refresh = () => {
+        console.log("Refreshing Data");
+        setRefreshData((oldRefresh) => !oldRefresh);
+    };
 
     useEffect(() => {
+        console.log("Fetching Tasks and People");
+        fetch("http://localhost:4200/api/task")
+            .then((res) => res.json())
+            .then((data) => setTasks(data));
+
+        fetch("http://localhost:4200/api/person")
+            .then((res) => res.json())
+            .then((data) => setPeople(data));
+    }, [refreshData, setTasks, setPeople]);
+
+    useEffect(() => {
+        console.log("Fetching Tracks");
         if (selectedTask) {
-            axios
-                .get(`http://localhost:4200/api/task/${selectedTask.id}/tracks`)
-                .then((res) => {
-                    const data = res.data;
-                    setTracks(data);
-                });
+            fetch(`http://localhost:4200/api/task/${selectedTask.id}/tracks`)
+                .then((res) => res.json())
+                .then((data) => setTracks(data));
         } else {
             setTracks(null);
         }
-    }, [selectedTask]);
+    }, [refreshData, selectedTask]);
 
     return (
-        <GlobalContext.Provider value={{ selectedTask, setSelectedTask }}>
+        <GlobalContext.Provider
+            value={{ selectedTask, setSelectedTask, refresh }}
+        >
             <FilterContext.Provider
                 value={{
                     filterVisible,

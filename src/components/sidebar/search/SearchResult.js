@@ -5,8 +5,8 @@ const SearchResult = () => {
     const { filteredPriorities, filteredStatuses } = useContext(FilterContext);
     const { tasks } = useContext(DataContext);
 
-    const [allTasks, setAllTasks] = useState(tasks.length);
-    const [activeTasks, setActiveTasks] = useState(tasks.length);
+    const [allTasks, setAllTasks] = useState(0);
+    const [activeTasks, setActiveTasks] = useState(0);
 
     useEffect(() => {
         const filteredTasks = tasks

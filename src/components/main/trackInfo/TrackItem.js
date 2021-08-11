@@ -24,7 +24,7 @@ const TrackItem = ({ track }) => {
         <div className="track_item">
             <p className="date">{track.date}</p>
             <div className="track_head">
-                <h5 className="head">{track.name}</h5>
+                <h5 className="head">{track.title}</h5>
                 <MdRemoveCircleOutline
                     className="icon"
                     onClick={() => alert("Deleted")}

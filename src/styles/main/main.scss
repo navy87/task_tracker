@@ -7,6 +7,12 @@
         border-radius: 5px;
         margin-bottom: 1rem;
 
+        .form_list_container {
+            // background-color: blue;
+            display: flex;
+            align-items: flex-start;
+        }
+
         .title {
             font-size: 1.4rem;
             font-weight: 300;
@@ -103,9 +109,9 @@
         }
 
         .track_list_container {
-            padding: 1rem;
+            padding: 0 1rem;
             margin-top: 1rem;
-            width: fit-content;
+            flex-grow: 1;
 
             & > h4 {
                 font-weight: 300;
@@ -113,20 +119,18 @@
             }
 
             .tracks_list {
-                // padding: 0.5rem;
                 min-height: 10rem;
                 max-height: 30rem;
                 overflow-y: scroll;
+                background-color: #cccccc;
+                flex-grow: 1;
 
                 .track_item {
-                    margin: 0.5rem;
-                    margin-top: 5px;
                     padding: 0.5rem;
                     border-bottom: 1px solid #888;
-                    width: 40rem;
 
                     &:hover {
-                        background-color: #ccc;
+                        background-color: #bbb;
                     }
 
                     .date {
