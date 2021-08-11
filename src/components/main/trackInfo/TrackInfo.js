@@ -5,7 +5,8 @@ import TrackList from "./TrackList";
 import SortOrder from "./SortOrder";
 
 const TrackInfo = () => {
-    const { selectedTask, sortOrder, setSortOrder } = useContext(GlobalContext);
+    const { selectedTask, trackSortOrder, setTrackSortOrder } =
+        useContext(GlobalContext);
 
     return selectedTask ? (
         <div className="container">
@@ -17,8 +18,8 @@ const TrackInfo = () => {
                         <h4>List of all Tracks</h4>
 
                         <SortOrder
-                            selected={sortOrder}
-                            setSortOrder={setSortOrder}
+                            selected={trackSortOrder}
+                            setTrackSortOrder={setTrackSortOrder}
                         />
                     </div>
                     <TrackList />

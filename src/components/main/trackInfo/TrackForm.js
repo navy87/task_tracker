@@ -22,8 +22,6 @@ const TrackForm = () => {
 
     const handleFormSubmit = (e) => {
         e.preventDefault();
-        console.log("Track Submitted");
-        console.log(track);
 
         const requestOptions = {
             method: "POST",

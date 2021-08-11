@@ -5,7 +5,7 @@ import TrackItem from "./TrackItem";
 
 const TrackList = () => {
     const { tracks } = useContext(DataContext);
-    const { sortOrder } = useContext(GlobalContext);
+    const { trackSortOrder } = useContext(GlobalContext);
 
     return (
         <div className="tracks_list">
@@ -22,7 +22,8 @@ const TrackList = () => {
                             descendingValue = addedTimeAscending;
                         }
                         return (
-                            descendingValue * (sortOrder === "desc" ? 1 : -1)
+                            descendingValue *
+                            (trackSortOrder === "desc" ? 1 : -1)
                         );
                     })
                     .map((track) => <TrackItem track={track} key={track.id} />)}

@@ -95,6 +95,30 @@
   margin: auto 0;
 }
 
+#sidebar .sort_setting {
+  margin-top: 0.5rem;
+  font-size: 0.8rem;
+  font-weight: 300;
+}
+
+#sidebar .sort_setting .sort_type {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  margin-bottom: 0.5rem;
+}
+
+#sidebar .sort_setting .sort_type .option_container {
+  margin-left: 0.5rem;
+}
+
+#sidebar .sort_setting .sort_type .option_container > * {
+  margin-right: 0.25rem;
+}
+
 #sidebar .search_result {
   display: -webkit-box;
   display: -ms-flexbox;

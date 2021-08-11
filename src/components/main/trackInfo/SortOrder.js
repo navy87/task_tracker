@@ -2,13 +2,13 @@ import React from "react";
 import { HiSortAscending, HiSortDescending } from "react-icons/hi";
 import RadioButton from "../../helpers/RadioButton";
 
-const SortOrder = ({ selected, setSortOrder }) => {
+const SortOrder = ({ selected, setTrackSortOrder }) => {
     // const [checked, setChecked] = useState(selected);
     return (
         <div>
             <RadioButton
-                name="sort_order"
-                id="id_sort_order_asc"
+                name="track_sort_order"
+                id="id_track_sort_order_asc"
                 value="asc"
                 checked={selected.toLowerCase() === "asc"}
                 render={
@@ -17,12 +17,12 @@ const SortOrder = ({ selected, setSortOrder }) => {
                         Oldest First
                     </>
                 }
-                setChecked={setSortOrder}
+                setChecked={setTrackSortOrder}
             />
 
             <RadioButton
-                name="sort_order"
-                id="id_sort_order_desc"
+                name="track_sort_order"
+                id="id_track_sort_order_desc"
                 value="desc"
                 checked={selected.toLowerCase() === "desc"}
                 render={
@@ -31,7 +31,7 @@ const SortOrder = ({ selected, setSortOrder }) => {
                         Latest First
                     </>
                 }
-                setChecked={setSortOrder}
+                setChecked={setTrackSortOrder}
             />
         </div>
     );

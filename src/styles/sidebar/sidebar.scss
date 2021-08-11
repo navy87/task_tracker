@@ -77,6 +77,25 @@
         }
     }
 
+    .sort_setting {
+        margin-top: 0.5rem;
+        font-size: 0.8rem;
+        font-weight: 300;
+
+        .sort_type {
+            display: flex;
+            align-items: center;
+            margin-bottom: 0.5rem;
+
+            .option_container {
+                margin-left: 0.5rem;
+                & > * {
+                    margin-right: 0.25rem;
+                }
+            }
+        }
+    }
+
     .search_result {
         display: flex;
         margin: 0.5rem auto;

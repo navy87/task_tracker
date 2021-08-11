@@ -8,7 +8,11 @@ import "./styles/App.css";
 
 function App() {
     const [selectedTask, setSelectedTask] = useState();
-    const [sortOrder, setSortOrder] = useState("desc");
+    const [trackSortOrder, setTrackSortOrder] = useState("desc");
+    const [taskSortOrder, setTaskSortOrder] = useState({
+        by: "dueDate",
+        order: "asc",
+    });
 
     const [filterVisible, setFilterVisible] = useState(false);
     const [filteredPersons, setFilteredPersons] = useState(new Set());
@@ -53,8 +57,10 @@ function App() {
                 selectedTask,
                 setSelectedTask,
                 refresh,
-                sortOrder,
-                setSortOrder,
+                trackSortOrder,
+                setTrackSortOrder,
+                taskSortOrder,
+                setTaskSortOrder,
             }}
         >
             <FilterContext.Provider
