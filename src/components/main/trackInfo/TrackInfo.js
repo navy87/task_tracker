@@ -2,9 +2,10 @@ import React, { useContext } from "react";
 import { GlobalContext } from "../../../contexts/GlobalContext";
 import TrackForm from "./TrackForm";
 import TrackList from "./TrackList";
+import SortOrder from "./SortOrder";
 
 const TrackInfo = () => {
-    const { selectedTask } = useContext(GlobalContext);
+    const { selectedTask, sortOrder, setSortOrder } = useContext(GlobalContext);
 
     return selectedTask ? (
         <div className="container">
@@ -12,7 +13,14 @@ const TrackInfo = () => {
             <div className="form_list_container">
                 <TrackForm />
                 <div className="track_list_container">
-                    <h4>List of all Tracks</h4>
+                    <div className="head">
+                        <h4>List of all Tracks</h4>
+
+                        <SortOrder
+                            selected={sortOrder}
+                            setSortOrder={setSortOrder}
+                        />
+                    </div>
                     <TrackList />
                 </div>
             </div>

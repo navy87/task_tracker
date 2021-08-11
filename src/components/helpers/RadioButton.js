@@ -2,11 +2,12 @@ import React from "react";
 
 const RadioButton = ({ render, id, name, value, checked, setChecked }) => {
     const changed = (e) => {
+        // console.log(value + ": " + e.target.checked);
         if (e.target.checked) {
             setChecked(value);
         }
         // setChecked(e.target.checked);
-        // console.log(value + ": " + e.target.checked);
+        console.log(value + ": " + e.target.checked);
     };
 
     return (

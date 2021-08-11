@@ -134,7 +134,11 @@
           flex-grow: 1;
 }
 
-#main .container .track_list_container > h4 {
+#main .container .track_list_container .head {
+  margin-bottom: 0.5rem;
+}
+
+#main .container .track_list_container .head h4 {
   font-weight: 300;
   padding-bottom: 0.25rem;
 }
@@ -143,7 +147,7 @@
   min-height: 10rem;
   max-height: 30rem;
   overflow-y: scroll;
-  background-color: #cccccc;
+  background-color: #ccc;
   -webkit-box-flex: 1;
       -ms-flex-positive: 1;
           flex-grow: 1;

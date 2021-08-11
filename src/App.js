@@ -8,6 +8,7 @@ import "./styles/App.css";
 
 function App() {
     const [selectedTask, setSelectedTask] = useState();
+    const [sortOrder, setSortOrder] = useState("desc");
 
     const [filterVisible, setFilterVisible] = useState(false);
     const [filteredPersons, setFilteredPersons] = useState(new Set());
@@ -20,12 +21,10 @@ function App() {
     const [refreshData, setRefreshData] = useState(false);
 
     const refresh = () => {
-        console.log("Refreshing Data");
         setRefreshData((oldRefresh) => !oldRefresh);
     };
 
     useEffect(() => {
-        console.log("Fetching Tasks and People");
         fetch("http://localhost:4200/api/task")
             .then((res) => res.json())
             .then((data) => setTasks(data));
@@ -36,7 +35,6 @@ function App() {
     }, [refreshData, setTasks, setPeople]);
 
     useEffect(() => {
-        console.log("Fetching Tracks");
         if (selectedTask) {
             fetch(`http://localhost:4200/api/task/${selectedTask.id}/tracks`)
                 .then((res) => res.json())
@@ -48,7 +46,13 @@ function App() {
 
     return (
         <GlobalContext.Provider
-            value={{ selectedTask, setSelectedTask, refresh }}
+            value={{
+                selectedTask,
+                setSelectedTask,
+                refresh,
+                sortOrder,
+                setSortOrder,
+            }}
         >
             <FilterContext.Provider
                 value={{

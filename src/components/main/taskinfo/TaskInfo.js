@@ -18,8 +18,6 @@ const TaskInfo = () => {
         }
     }, [selectedTask, setSelectedTaskCopy]);
 
-    console.log("Rendered");
-
     return selectedTaskCopy ? (
         <div className="container">
             <h2 className="title">Task Info</h2>

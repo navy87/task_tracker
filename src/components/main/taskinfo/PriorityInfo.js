@@ -11,7 +11,6 @@ const PriorityInfo = ({ task }) => {
     const [selectedTask, setSelectedTask] = useState(DeepCopy(task));
     const [checked, setChecked] = useState(selectedTask.priority);
 
-
     useEffect(() => {
         setSelectedTask(task);
         setChecked(task.priority);

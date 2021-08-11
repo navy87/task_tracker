@@ -113,16 +113,21 @@
             margin-top: 1rem;
             flex-grow: 1;
 
-            & > h4 {
-                font-weight: 300;
-                padding-bottom: 0.25rem;
+            .head {
+                // display: flex;
+                // align-items: center;
+                margin-bottom: 0.5rem;
+                h4 {
+                    font-weight: 300;
+                    padding-bottom: 0.25rem;
+                }
             }
 
             .tracks_list {
                 min-height: 10rem;
                 max-height: 30rem;
                 overflow-y: scroll;
-                background-color: #cccccc;
+                background-color: #ccc;
                 flex-grow: 1;
 
                 .track_item {

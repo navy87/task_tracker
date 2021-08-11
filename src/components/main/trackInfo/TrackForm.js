@@ -7,18 +7,13 @@ import { GlobalContext } from "../../../contexts/GlobalContext";
 const TrackForm = () => {
     const { selectedTask, refresh } = useContext(GlobalContext);
 
-    // const emptyTrack = {
-    //     date: GetToday(),
-    //     description: "",
-    //     id: 0,
-    //     title: "",
-    // };
     const [emptyTrack] = useState({
         date: GetToday(),
         description: "",
         id: 0,
         title: "",
     });
+
     const [track, setTrack] = useState(DeepCopy(emptyTrack));
 
     useEffect(() => {
@@ -29,8 +24,6 @@ const TrackForm = () => {
         e.preventDefault();
         console.log("Track Submitted");
         console.log(track);
-
-        // track.date = GetToday();
 
         const requestOptions = {
             method: "POST",
