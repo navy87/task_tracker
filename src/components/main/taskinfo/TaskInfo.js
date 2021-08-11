@@ -46,6 +46,7 @@ const TaskInfo = () => {
                             id="info_name"
                             type="text"
                             name="name"
+                            autoComplete="false"
                             placeholder="Issue"
                             value={selectedTaskCopy.issue}
                             onChange={(e) => {

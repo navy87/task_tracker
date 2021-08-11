@@ -145,7 +145,7 @@
 
 #main .container .track_list_container .tracks_list {
   min-height: 10rem;
-  max-height: 30rem;
+  max-height: 15rem;
   overflow-y: scroll;
   background-color: #ccc;
   -webkit-box-flex: 1;

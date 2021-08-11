@@ -33,11 +33,14 @@ const TrackForm = () => {
 
         const url = `http://localhost:4200/api/task/${selectedTask.id}/tracks/`;
         fetch(url, requestOptions)
-            .then((res) => res.json())
-            .then((data) => console.log(data));
+            .then((res) => {
+                res.json();
+                refresh();
+            })
+            .then((data) => console.log(data))
+            .catch((err) => console.error(err));
 
         setTrack(DeepCopy(emptyTrack));
-        refresh();
     };
 
     return (
@@ -66,6 +69,7 @@ const TrackForm = () => {
                         id="track_title"
                         type="text"
                         name="title"
+                        autoComplete="false"
                         placeholder="Title"
                         required
                         value={track.title}

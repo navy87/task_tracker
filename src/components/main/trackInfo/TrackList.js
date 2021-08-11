@@ -15,32 +15,17 @@ const TrackList = () => {
                         let descendingValue =
                             new Date(track2.date) - new Date(track1.date);
 
-                        if (descendingValue == 0) {
+                        if (descendingValue === 0) {
                             const addedTimeAscending =
                                 new Date(track2.addedTime) -
                                 new Date(track1.addedTime);
                             descendingValue = addedTimeAscending;
                         }
-                        return descendingValue * (sortOrder === "desc" ? 1 : -1);
-                        // if (sortOrder === "asc") {
-                        //     return (
-                        //         new Date(track2.date) - new Date(track1.date)
-                        //     );
-                        // } else {
-                        //     return (
-                        //         new Date(track1.date) - new Date(track2.date)
-                        //     );
-                        // }
-                        // return ascendingValue;
+                        return (
+                            descendingValue * (sortOrder === "desc" ? 1 : -1)
+                        );
                     })
                     .map((track) => <TrackItem track={track} key={track.id} />)}
-            {/* <TrackItem />
-            <TrackItem />
-            <TrackItem />
-            <TrackItem />
-            <TrackItem />
-            <TrackItem />
-            <TrackItem /> */}
         </div>
     );
 };

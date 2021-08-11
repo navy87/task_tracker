@@ -1,25 +1,26 @@
-import React from "react";
+import React, { useContext } from "react";
 import { MdRemoveCircleOutline } from "react-icons/md";
+import { GlobalContext } from "../../../contexts/GlobalContext";
 
 const TrackItem = ({ track }) => {
-    // const track = {
-    //     id: 2,
-    //     name: "Task Created",
-    //     description: "Task has been created",
-    //     date: "2021-08-10",
-    //     task: {
-    //         id: 2,
-    //         issue: "Ilham Passport Appointment",
-    //         description: "This is Ilham's Passport Appointment.",
-    //         addedDate: "2021-08-10T17:13:22.923949",
-    //         dueDate: "2021-08-31",
-    //         status: "CANCELLED",
-    //         priority: "LOW",
-    //         assignees: [
-    //             { id: 2, person: { id: 3, name: "Ilham Fati" }, leader: true },
-    //         ],
-    //     },
-    // };
+    const { refresh } = useContext(GlobalContext);
+    const handleDelete = (e) => {
+        e.preventDefault();
+
+        const requestOptions = {
+            method: "DELETE",
+        };
+
+        const url = `http://localhost:4200/api/track/${track.id}`;
+        fetch(url, requestOptions)
+            .then((res) => {
+                res.text();
+                refresh();
+            })
+            .then((data) => console.log(data))
+            .catch((err) => console.error(err));
+    };
+
     return (
         <div className="track_item">
             <p className="date">{track.date}</p>
@@ -27,7 +28,7 @@ const TrackItem = ({ track }) => {
                 <h5 className="head">{track.title}</h5>
                 <MdRemoveCircleOutline
                     className="icon"
-                    onClick={() => alert("Deleted")}
+                    onClick={handleDelete}
                 />
             </div>
             <p className="description">{track.description}</p>

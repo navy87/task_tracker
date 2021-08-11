@@ -27,18 +27,21 @@ function App() {
     useEffect(() => {
         fetch("http://localhost:4200/api/task")
             .then((res) => res.json())
-            .then((data) => setTasks(data));
+            .then((data) => setTasks(data))
+            .catch((err) => console.error(err));
 
         fetch("http://localhost:4200/api/person")
             .then((res) => res.json())
-            .then((data) => setPeople(data));
+            .then((data) => setPeople(data))
+            .catch((err) => console.error(err));
     }, [refreshData, setTasks, setPeople]);
 
     useEffect(() => {
         if (selectedTask) {
             fetch(`http://localhost:4200/api/task/${selectedTask.id}/tracks`)
                 .then((res) => res.json())
-                .then((data) => setTracks(data));
+                .then((data) => setTracks(data))
+                .catch((err) => console.error(err));
         } else {
             setTracks(null);
         }
