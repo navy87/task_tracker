@@ -96,6 +96,8 @@ const TaskInfo = () => {
                                     <AssigneeButton
                                         key={index}
                                         taskPerson={assignee}
+                                        selectedTask={selectedTaskCopy}
+                                        setSelectedTask={setSelectedTaskCopy}
                                     />
                                 )
                             )}

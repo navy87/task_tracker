@@ -19,9 +19,7 @@ const SelectAssignees = ({ people, selectedTask, setSelectedTask }) => {
                     person: selectedPerson,
                 },
             ];
-            console.log(selectedTask);
             setSelectedTask({ ...selectedTask, assignees });
-            console.log(selectedTask);
             e.target.value = "assign_person";
         }
     };
