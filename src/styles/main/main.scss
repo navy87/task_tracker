@@ -2,7 +2,7 @@
     padding: 0.5rem;
 
     .container {
-        background-color: #d3d3d3;
+        background-color: #eee;
         padding: 0.5rem;
         border-radius: 5px;
         margin-bottom: 1rem;
@@ -127,7 +127,8 @@
                 min-height: 10rem;
                 max-height: 15rem;
                 overflow-y: scroll;
-                background-color: #ccc;
+                // background-color: #eee;
+                border: 1px solid #888;
                 flex-grow: 1;
 
                 .track_item {
@@ -135,7 +136,7 @@
                     border-bottom: 1px solid #888;
 
                     &:hover {
-                        background-color: #bbb;
+                        background-color: #ddd;
                     }
 
                     .date {

@@ -1,20 +1,25 @@
 import React, { useContext, useEffect, useState } from "react";
 
-import { AiOutlineUserAdd } from "react-icons/ai";
 import { MdDeleteForever, MdSave, MdAlarm } from "react-icons/md";
 import { GlobalContext } from "../../../contexts/GlobalContext";
+import { DataContext } from "../../../contexts/SidebarContext";
+import { DeepCopy } from "../../helpers/Helper";
 import InfoContainer from "../InfoContainer";
 import AssigneeButton from "./AssigneeButton";
 import PriorityInfo from "./PriorityInfo";
+import SelectAssignees from "./SelectAssignees";
 import StatusInfo from "./StatusInfo";
 
 const TaskInfo = () => {
     const { selectedTask } = useContext(GlobalContext);
     const [selectedTaskCopy, setSelectedTaskCopy] = useState(undefined);
+    const { people } = useContext(DataContext);
+
+    // const [selectedPeople, setSelectedPeople] = useState();
 
     useEffect(() => {
         if (selectedTask) {
-            setSelectedTaskCopy(JSON.parse(JSON.stringify(selectedTask)));
+            setSelectedTaskCopy(DeepCopy(selectedTask));
         }
     }, [selectedTask, setSelectedTaskCopy]);
 
@@ -80,25 +85,31 @@ const TaskInfo = () => {
                     label="Assigned To"
                     info_render={
                         <div className="assignees_container">
-                            <button
-                                className="btn btn-submit"
-                                onClick={(e) => e.preventDefault()}
-                            >
-                                Assign more
-                                <AiOutlineUserAdd />
-                            </button>
-                            {selectedTaskCopy.assignees.map((assignee) => (
-                                <AssigneeButton
-                                    key={assignee.id}
-                                    taskPerson={assignee}
-                                />
-                            ))}
+                            <SelectAssignees
+                                people={people}
+                                selectedTask={selectedTaskCopy}
+                                setSelectedTask={setSelectedTaskCopy}
+                            />
+
+                            {selectedTaskCopy.assignees.map(
+                                (assignee, index) => (
+                                    <AssigneeButton
+                                        key={index}
+                                        taskPerson={assignee}
+                                    />
+                                )
+                            )}
                         </div>
                     }
                 />
                 <InfoContainer
                     label="Priority"
-                    info_render={<PriorityInfo task={selectedTaskCopy} />}
+                    info_render={
+                        <PriorityInfo
+                            selectedTask={selectedTaskCopy}
+                            setSelectedTask={setSelectedTaskCopy}
+                        />
+                    }
                 />
                 <InfoContainer
                     label="Due Date"
@@ -120,7 +131,12 @@ const TaskInfo = () => {
                 />
                 <InfoContainer
                     label="Status"
-                    info_render={<StatusInfo task={selectedTaskCopy} />}
+                    info_render={
+                        <StatusInfo
+                            selectedTask={selectedTaskCopy}
+                            setSelectedTask={setSelectedTaskCopy}
+                        />
+                    }
                 />
                 <div className="button_group">
                     <button type="submit" className="btn btn-submit">

@@ -29,7 +29,7 @@
     position: fixed;
     width: 23rem;
     height: 100vh;
-    box-shadow: 5px 5px 5px #bbb;
+    box-shadow: 3px 3px 3px #bbb;
 }
 
 .no-border {

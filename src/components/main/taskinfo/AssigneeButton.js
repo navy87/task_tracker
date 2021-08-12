@@ -3,8 +3,8 @@ import { AiOutlineUserDelete } from "react-icons/ai";
 
 const AssigneeButton = ({ taskPerson }) => {
     const clicked = (e) => {
-        e.preventDefault();
-        alert("Button Clicked");
+        // e.preventDefault();
+        // alert("Button Clicked");
     };
 
     const removeClicked = (e) => {
@@ -13,7 +13,7 @@ const AssigneeButton = ({ taskPerson }) => {
     };
 
     return (
-        <button className={`btn assignee_btn ${taskPerson.leader && "leader"}`}>
+        <div className={`btn assignee_btn ${taskPerson.leader && "leader"}`}>
             <span onClick={clicked} className="assignee_name">
                 {taskPerson.person.name}
             </span>
@@ -21,7 +21,7 @@ const AssigneeButton = ({ taskPerson }) => {
                 className="remove_icon"
                 onClick={removeClicked}
             />
-        </button>
+        </div>
     );
 };
 

@@ -17,6 +17,10 @@ export const GetToday = () => {
     return dateString;
 };
 
+export const mapTaskPersonToPerson = (taskPeople) => {
+    return taskPeople.map(taskPerson => taskPerson.person);
+}
+
 export const compareTask = (task1, task2, taskSortOrder) => {
     let titleAscendingOrder = task1.issue.localeCompare(task2.issue);
     let deadlineAscendingOrder =

@@ -1,19 +1,12 @@
 import React, { useEffect, useState } from "react";
 import RadioButton from "../../helpers/RadioButton";
 import { MdBubbleChart, MdCancel, MdCheckCircle } from "react-icons/md";
-import { DeepCopy } from "../../helpers/Helper";
-const StatusInfo = ({ task }) => {
-    const [selectedTask, setSelectedTask] = useState(DeepCopy(task));
+const StatusInfo = ({ selectedTask, setSelectedTask }) => {
     const [checked, setChecked] = useState(selectedTask.status);
 
-    // useEffect(() => {
-    //     task.status = checked.toUpperCase();
-    // }, [task, checked]);
-
     useEffect(() => {
-        setSelectedTask(task);
-        setChecked(task.status);
-    }, [task, setSelectedTask]);
+        setChecked(selectedTask.status);
+    }, [selectedTask, setSelectedTask]);
 
     useEffect(() => {
         setSelectedTask((currentTask) => ({

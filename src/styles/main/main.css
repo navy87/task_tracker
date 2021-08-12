@@ -3,7 +3,7 @@
 }
 
 #main .container {
-  background-color: #d3d3d3;
+  background-color: #eee;
   padding: 0.5rem;
   border-radius: 5px;
   margin-bottom: 1rem;
@@ -147,7 +147,7 @@
   min-height: 10rem;
   max-height: 15rem;
   overflow-y: scroll;
-  background-color: #ccc;
+  border: 1px solid #888;
   -webkit-box-flex: 1;
       -ms-flex-positive: 1;
           flex-grow: 1;
@@ -159,7 +159,7 @@
 }
 
 #main .container .track_list_container .tracks_list .track_item:hover {
-  background-color: #bbb;
+  background-color: #ddd;
 }
 
 #main .container .track_list_container .tracks_list .track_item .date {

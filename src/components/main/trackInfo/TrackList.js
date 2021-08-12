@@ -26,7 +26,9 @@ const TrackList = () => {
                             (trackSortOrder === "desc" ? 1 : -1)
                         );
                     })
-                    .map((track) => <TrackItem track={track} key={track.id} />)}
+                    .map((track, index) => (
+                        <TrackItem track={track} key={index} />
+                    ))}
         </div>
     );
 };

@@ -6,15 +6,14 @@ import {
     FcMediumPriority,
 } from "react-icons/fc";
 
-import { DeepCopy } from "../../helpers/Helper";
-const PriorityInfo = ({ task }) => {
-    const [selectedTask, setSelectedTask] = useState(DeepCopy(task));
+const PriorityInfo = ({ selectedTask, setSelectedTask }) => {
+    // const [selectedTask, setSelectedTask] = useState(task);
     const [checked, setChecked] = useState(selectedTask.priority);
 
     useEffect(() => {
-        setSelectedTask(task);
-        setChecked(task.priority);
-    }, [task, setSelectedTask]);
+        // setSelectedTask(task);
+        setChecked(selectedTask.priority);
+    }, [selectedTask, setSelectedTask]);
 
     useEffect(() => {
         setSelectedTask((currentTask) => ({
