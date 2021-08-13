@@ -6,7 +6,8 @@ import { compareTask } from "../../helpers/Helper";
 
 const TaskList = () => {
     const { tasks } = useContext(DataContext);
-    const { filteredPriorities, filteredStatuses } = useContext(FilterContext);
+    const { filteredPriorities, filteredStatuses, filteredKeywords } =
+        useContext(FilterContext);
     const { taskSortOrder } = useContext(GlobalContext);
 
     return (
@@ -17,6 +18,11 @@ const TaskList = () => {
                 )
                 .filter((task) =>
                     filteredStatuses.has(task.status.toLowerCase())
+                )
+                .filter((task) =>
+                    (task.issue + " " + task.description)
+                        .toLowerCase()
+                        .includes(filteredKeywords.toLowerCase())
                 )
                 .sort((task1, task2) =>
                     compareTask(task1, task2, taskSortOrder)

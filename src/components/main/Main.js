@@ -15,7 +15,7 @@ const Main = () => {
                     <TrackInfo />
                 </>
             ) : (
-                "Hello"
+                <></>
             )}
         </div>
     );

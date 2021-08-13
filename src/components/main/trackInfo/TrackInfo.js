@@ -27,7 +27,7 @@ const TrackInfo = () => {
             </div>
         </div>
     ) : (
-        <div>No Task Selected</div>
+        <></>
     );
 };
 

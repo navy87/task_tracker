@@ -248,7 +248,7 @@ const TaskInfo = () => {
             </form>
         </div>
     ) : (
-        <div>No Item Selected</div>
+        <></>
     );
 };
 
