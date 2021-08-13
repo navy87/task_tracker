@@ -34,7 +34,6 @@ const TaskItem = ({ task }) => {
     let displayedName = "";
     if (assignees && assignees.length > 0) {
         const leaders = assignees.filter((taskPerson) => taskPerson.leader);
-        console.log(leaders);
         if (leaders.length > 0) {
             displayedName = leaders[0];
         } else {

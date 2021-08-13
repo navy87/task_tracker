@@ -3,7 +3,7 @@ import { MdAddCircleOutline } from "react-icons/md";
 import InfoContainer from "../InfoContainer";
 import { DeepCopy, GetToday } from "../../helpers/Helper";
 import { GlobalContext } from "../../../contexts/GlobalContext";
-
+import toast from "react-hot-toast";
 const TrackForm = () => {
     const { selectedTask, refresh } = useContext(GlobalContext);
 
@@ -34,9 +34,18 @@ const TrackForm = () => {
             .then((res) => {
                 res.json();
                 refresh();
+                toast.success("Track has been added!", {
+                    position: "top-center",
+                    autoClose: 4000,
+                });
             })
             .then((data) => console.log(data))
-            .catch((err) => console.error(err));
+            .catch((err) =>
+                toast.error("There was an error.", {
+                    position: "top-center",
+                    autoClose: 4000,
+                })
+            );
 
         setTrack(DeepCopy(emptyTrack));
     };

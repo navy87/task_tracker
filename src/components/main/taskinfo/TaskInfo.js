@@ -10,6 +10,8 @@ import PriorityInfo from "./PriorityInfo";
 import SelectAssignees from "./SelectAssignees";
 import StatusInfo from "./StatusInfo";
 
+import toast from "react-hot-toast";
+
 const TaskInfo = () => {
     const { selectedTask, refresh } = useContext(GlobalContext);
     const [selectedTaskCopy, setSelectedTaskCopy] = useState(undefined);
@@ -38,9 +40,28 @@ const TaskInfo = () => {
             .then((res) => {
                 res.json();
                 refresh();
+                toast.success("Task has been saved!", {
+                    position: "top-center",
+                    autoClose: 5000,
+                });
+                // toast("This has been added!");
             })
             .then((data) => console.log(data))
-            .catch((err) => console.error(err));
+            .catch((err) =>
+                toast.error("There was an error.", {
+                    position: "top-center",
+                    autoClose: 5000,
+                })
+            );
+    };
+
+    const handleRemindAssignees = (e) => {
+        e.preventDefault();
+        toast.error("Not Working");
+    };
+
+    const handleTaskDelete = (e) => {
+        e.preventDefault();
     };
 
     return selectedTaskCopy ? (
@@ -80,7 +101,7 @@ const TaskInfo = () => {
                             id="info_name"
                             type="text"
                             name="name"
-                            autoComplete="false"
+                            autoComplete="off"
                             placeholder="Issue"
                             value={selectedTaskCopy.issue}
                             onChange={(e) => {
@@ -177,20 +198,17 @@ const TaskInfo = () => {
                     {selectedTaskCopy.id === 0 || (
                         <>
                             <button
-                                onClick={(e) => e.preventDefault()}
+                                onClick={handleRemindAssignees}
                                 className="btn btn-info"
                             >
                                 <MdAlarm className="btn_icon" color="black" />
                                 Remind Assignees
                             </button>
                             <button
-                                onClick={(e) => e.preventDefault()}
+                                onClick={handleTaskDelete}
                                 className="btn btn-danger"
                             >
-                                <MdDeleteForever
-                                    className="btn_icon"
-                                    color="darkred"
-                                />
+                                <MdDeleteForever className="btn_icon" />
                                 Delete Task
                             </button>
                         </>

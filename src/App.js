@@ -5,6 +5,8 @@ import SideBar from "./components/sidebar/SideBar";
 import { GlobalContext } from "./contexts/GlobalContext";
 import { DataContext, FilterContext } from "./contexts/SidebarContext";
 import "./styles/App.css";
+// import { ToastContainer } from "react-toastify";
+import { Toaster } from "react-hot-toast";
 
 function App() {
     const [selectedTask, setSelectedTask] = useState();
@@ -88,6 +90,7 @@ function App() {
                     <div className="App">
                         <SideBar />
                         <div id="page">
+                            <Toaster />
                             <div className="content">
                                 <Main />
                             </div>
