@@ -34,6 +34,14 @@ const SortBySelect = ({ selected, setTaskSortOrder }) => {
                 render={<>Added Date</>}
                 setChecked={setChecked}
             />
+            <RadioButton
+                name="task_sort_by"
+                id="id_task_sort_by_priority"
+                value="priority"
+                checked={checked.toLowerCase() === "priority"}
+                render={<>Priority</>}
+                setChecked={setChecked}
+            />
         </div>
     );
 };

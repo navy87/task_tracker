@@ -15,8 +15,6 @@ const TaskInfo = () => {
     const [selectedTaskCopy, setSelectedTaskCopy] = useState(undefined);
     const { people } = useContext(DataContext);
 
-    // const [selectedPeople, setSelectedPeople] = useState();
-
     useEffect(() => {
         if (selectedTask) {
             setSelectedTaskCopy(DeepCopy(selectedTask));
@@ -35,10 +33,7 @@ const TaskInfo = () => {
         const url = selectedTaskCopy.id
             ? `http://localhost:4200/api/task/${selectedTask.id}`
             : `http://localhost:4200/api/task/`;
-        // console.log(requestOptions);
-        // console.log(url);
-        // console.log(selectedTaskCopy);
-        // console.log(url);
+
         fetch(url, requestOptions)
             .then((res) => {
                 res.json();

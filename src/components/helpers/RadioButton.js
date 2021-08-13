@@ -7,7 +7,7 @@ const RadioButton = ({ render, id, name, value, checked, setChecked }) => {
             setChecked(value);
         }
         // setChecked(e.target.checked);
-        console.log(value + ": " + e.target.checked);
+        // console.log(value + ": " + e.target.checked);
     };
 
     return (

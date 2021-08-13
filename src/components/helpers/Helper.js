@@ -18,8 +18,8 @@ export const GetToday = () => {
 };
 
 export const mapTaskPersonToPerson = (taskPeople) => {
-    return taskPeople.map(taskPerson => taskPerson.person);
-}
+    return taskPeople.map((taskPerson) => taskPerson.person);
+};
 
 export const compareTask = (task1, task2, taskSortOrder) => {
     let titleAscendingOrder = task1.issue.localeCompare(task2.issue);
@@ -27,29 +27,41 @@ export const compareTask = (task1, task2, taskSortOrder) => {
         new Date(task1.dueDate) - new Date(task2.dueDate);
     let addedDateAscendingOrder =
         new Date(task1.addedDate) - new Date(task2.addedDate);
+
+    const priorityIndex = { high: 2, medium: 1, low: 0 };
+    let priorityAscendingOrder =
+        priorityIndex[task1.priority.toLowerCase()] -
+        priorityIndex[task2.priority.toLowerCase()];
     // let descendingValue =
     //                         new Date(track2.date) - new Date(track1.date);
-
+    const descFactor = taskSortOrder.order.toLowerCase() === "desc" ? -1 : 1;
     if (taskSortOrder.by.toLowerCase() === "title") {
         return (
             (titleAscendingOrder ||
                 deadlineAscendingOrder ||
-                addedDateAscendingOrder) *
-            (taskSortOrder.order.toLowerCase() === "desc" ? -1 : 1)
+                addedDateAscendingOrder ||
+                priorityAscendingOrder) * descFactor
         );
     } else if (taskSortOrder.by.toLowerCase() === "dueDate".toLowerCase()) {
         return (
             (deadlineAscendingOrder ||
                 titleAscendingOrder ||
-                addedDateAscendingOrder) *
-            (taskSortOrder.order.toLowerCase() === "desc" ? -1 : 1)
+                addedDateAscendingOrder ||
+                priorityAscendingOrder) * descFactor
+        );
+    } else if (taskSortOrder.by.toLowerCase() === "priority") {
+        return (
+            (priorityAscendingOrder ||
+                titleAscendingOrder ||
+                deadlineAscendingOrder ||
+                addedDateAscendingOrder) * descFactor
         );
     } else {
         return (
             (addedDateAscendingOrder ||
                 titleAscendingOrder ||
-                deadlineAscendingOrder) *
-            (taskSortOrder.order.toLowerCase() === "desc" ? -1 : 1)
+                deadlineAscendingOrder ||
+                priorityAscendingOrder) * descFactor
         );
     }
 };
