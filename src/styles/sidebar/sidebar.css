@@ -160,32 +160,47 @@
   padding: 0.25rem;
 }
 
-#sidebar .task_list {
+#sidebar .task_list_container .buttons .md_btn {
+  cursor: pointer;
+  font-size: 0.8rem;
+  border-radius: 5px;
+  color: #666;
+  border: 1.8px solid;
+  padding: 5px 10px;
+  margin-right: 5px;
+}
+
+#sidebar .task_list_container .buttons .md_btn:active {
+  -webkit-transform: scale(0.98);
+          transform: scale(0.98);
+}
+
+#sidebar .task_list_container .task_list {
   padding: 0 0.25rem;
   -webkit-transition: all 1s;
   transition: all 1s;
 }
 
-#sidebar .task_list .task_item {
+#sidebar .task_list_container .task_list .task_item {
   cursor: pointer;
   margin: 0.5rem 0;
   padding: 0.5rem;
   border-bottom: 1px solid #aaa;
 }
 
-#sidebar .task_list .task_item.selected {
+#sidebar .task_list_container .task_list .task_item.selected {
   -webkit-box-shadow: 2px 2px 2px #ccc;
           box-shadow: 2px 2px 2px #ccc;
   background-color: rgba(211, 211, 211, 0.5);
 }
 
-#sidebar .task_list .task_item:active {
+#sidebar .task_list_container .task_list .task_item:active {
   background-color: lightgray;
   -webkit-box-shadow: none;
           box-shadow: none;
 }
 
-#sidebar .task_list .task_item .task_head {
+#sidebar .task_list_container .task_list .task_item .task_head {
   font-family: "Montserrat", sans-serif;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -196,12 +211,12 @@
   gap: 0.25rem;
 }
 
-#sidebar .task_list .task_item .task_head h3 {
+#sidebar .task_list_container .task_list .task_item .task_head h3 {
   font-size: 1rem;
   font-weight: 500;
 }
 
-#sidebar .task_list .task_item .task_head .status {
+#sidebar .task_list_container .task_list .task_item .task_head .status {
   border: 1px solid;
   padding: 2px 5px;
   border-radius: 1rem;
@@ -209,22 +224,22 @@
   font-weight: normal;
 }
 
-#sidebar .task_list .task_item .task_head .status.active {
+#sidebar .task_list_container .task_list .task_item .task_head .status.active {
   border-color: blue;
   color: blue;
 }
 
-#sidebar .task_list .task_item .task_head .status.done {
+#sidebar .task_list_container .task_list .task_item .task_head .status.done {
   border-color: green;
   color: green;
 }
 
-#sidebar .task_list .task_item .task_head .status.cancelled {
+#sidebar .task_list_container .task_list .task_item .task_head .status.cancelled {
   border-color: gray;
   color: gray;
 }
 
-#sidebar .task_list .task_item .task_description {
+#sidebar .task_list_container .task_list .task_item .task_description {
   font-family: "Montserrat", sans-serif;
   font-size: 0.75rem;
   font-weight: 400;
@@ -232,7 +247,7 @@
   text-align: justify;
 }
 
-#sidebar .task_list .task_item .task_details {
+#sidebar .task_list_container .task_list .task_item .task_details {
   margin: 0.25rem 0;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -246,12 +261,12 @@
   font-size: 0.8rem;
 }
 
-#sidebar .task_list .task_item .task_details .icon {
+#sidebar .task_list_container .task_list .task_item .task_details .icon {
   width: 1.2rem;
   height: 1.2rem;
 }
 
-#sidebar .task_list .task_item .task_details div {
+#sidebar .task_list_container .task_list .task_item .task_details div {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -261,15 +276,15 @@
   gap: 0.25rem;
 }
 
-#sidebar .task_list .task_item .task_details .priority {
+#sidebar .task_list_container .task_list .task_item .task_details .priority {
   font-weight: bold;
 }
 
-#sidebar .task_list .task_item .task_details .assignees {
+#sidebar .task_list_container .task_list .task_item .task_details .assignees {
   font-weight: 500;
 }
 
-#sidebar .task_list .task_item .task_details .assignees .warning {
+#sidebar .task_list_container .task_list .task_item .task_details .assignees .warning {
   color: gray;
   font-style: italic;
   font-weight: 400;

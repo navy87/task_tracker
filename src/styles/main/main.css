@@ -22,6 +22,21 @@
   font-size: 1.4rem;
   font-weight: 300;
   border-bottom: 1px solid black;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: start;
+      -ms-flex-align: start;
+          align-items: flex-start;
+}
+
+#main .container .title .new {
+  color: red;
+  border-radius: 10px;
+  border: 1px solid;
+  padding: 1px 3px;
+  font-size: 0.9rem;
+  margin-left: 3px;
 }
 
 #main .container .id_info_container {
@@ -40,6 +55,10 @@
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
+}
+
+#main .container .info_container .info.new {
+  color: red;
 }
 
 #main .container .info_container .info-label {
@@ -79,6 +98,12 @@
   display: flex;
 }
 
+#main .container .info_container .assignees_container .select_assignees {
+  padding: 5px 10px;
+  border: 1px solid transparent;
+  outline: none;
+}
+
 #main .container .info_container .assignees_container .assignee_btn {
   display: -webkit-inline-box;
   display: -ms-inline-flexbox;
@@ -88,28 +113,47 @@
           align-items: center;
   padding: 5px 10px;
   border-radius: 5px;
+  border: 1.5px solid #ddd;
+  -webkit-box-shadow: 1px 1px 1px #ccc;
+          box-shadow: 1px 1px 1px #ccc;
   background-color: #eee;
   margin-left: 5px;
   cursor: pointer;
+  align-items: center;
 }
 
 #main .container .info_container .assignees_container .assignee_btn.leader {
   border-color: gold;
+  -webkit-box-shadow: 1px 1px 1px goldenrod;
+          box-shadow: 1px 1px 1px goldenrod;
 }
 
 #main .container .info_container .assignees_container .assignee_btn .assignee_name {
   font-size: unset;
 }
 
-#main .container .info_container .assignees_container .assignee_btn .remove_icon {
+#main .container .info_container .assignees_container .assignee_btn .icon {
+  width: 1rem;
+  height: 1rem;
+}
+
+#main .container .info_container .assignees_container .assignee_btn .icon.remove_icon {
   width: 1rem;
   height: 1rem;
   margin-left: 3px;
   color: darkred;
 }
 
-#main .container .info_container .assignees_container .assignee_btn:hover .remove_icon {
+#main .container .info_container .assignees_container .assignee_btn .icon.remove_icon:hover {
   color: red;
+}
+
+#main .container .info_container .assignees_container .assignee_btn .icon.star {
+  color: goldenrod;
+}
+
+#main .container .info_container .assignees_container .assignee_btn .icon.star:hover {
+  color: gold;
 }
 
 #main .container .button_group {

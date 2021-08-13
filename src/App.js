@@ -41,7 +41,7 @@ function App() {
     }, [refreshData, setTasks, setPeople]);
 
     useEffect(() => {
-        if (selectedTask) {
+        if (selectedTask && selectedTask.id) {
             fetch(`http://localhost:4200/api/task/${selectedTask.id}/tracks`)
                 .then((res) => res.json())
                 .then((data) => setTracks(data))

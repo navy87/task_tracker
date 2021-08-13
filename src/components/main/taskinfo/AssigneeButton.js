@@ -1,10 +1,10 @@
 import React from "react";
 import { AiOutlineUserDelete } from "react-icons/ai";
+import { MdStar, MdStarBorder } from "react-icons/md";
 
 const AssigneeButton = ({ taskPerson, setSelectedTask, selectedTask }) => {
     const clicked = (e) => {
-        // e.preventDefault();
-        // alert("Button Clicked");
+        e.preventDefault();
     };
 
     const removeClicked = (e) => {
@@ -26,15 +26,32 @@ const AssigneeButton = ({ taskPerson, setSelectedTask, selectedTask }) => {
         setSelectedTask(newSelectedTask);
     };
 
+    const handleLeaderToggle = (e) => {
+        const assignees = [...selectedTask.assignees].map((assignee) => ({
+            ...assignee,
+            leader: assignee.id === taskPerson.id,
+        }));
+        console.log(assignees);
+        setSelectedTask({ ...selectedTask, assignees });
+    };
+
     return (
         <div className={`btn assignee_btn ${taskPerson.leader && "leader"}`}>
             <span onClick={clicked} className="assignee_name">
                 {taskPerson.person.name}
             </span>
             <AiOutlineUserDelete
-                className="remove_icon"
+                className="icon remove_icon"
                 onClick={removeClicked}
             />
+
+            <span onClick={handleLeaderToggle}>
+                {taskPerson.leader ? (
+                    <MdStar className="icon star leader" />
+                ) : (
+                    <MdStarBorder className="icon star" />
+                )}
+            </span>
         </div>
     );
 };

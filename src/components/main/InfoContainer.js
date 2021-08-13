@@ -7,7 +7,6 @@ const InfoContainer = ({ label, info_render, htmlFor }) => {
                 {label}
             </label>
             {info_render}
-            {/* <div className="info">1250</div> */}
         </div>
     );
 };

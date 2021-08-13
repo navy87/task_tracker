@@ -45,13 +45,22 @@ const TaskInfo = () => {
 
     return selectedTaskCopy ? (
         <div className="container">
-            <h2 className="title">Task Info</h2>
+            <h2 className="title">
+                Task Info{" "}
+                {selectedTaskCopy.id !== 0 || <span className="new">New</span>}
+            </h2>
             <form onSubmit={handleFormSubmit} action="#" method="post">
                 <div className="id_info_container">
                     <InfoContainer
                         label="ID"
                         info_render={
-                            <div className="info">{selectedTaskCopy.id}</div>
+                            <div
+                                className={`info ${
+                                    selectedTaskCopy.id || "new"
+                                }`}
+                            >
+                                {selectedTaskCopy.id || "New"}
+                            </div>
                         }
                     />
                     <InfoContainer
@@ -163,22 +172,29 @@ const TaskInfo = () => {
                 <div className="button_group">
                     <button type="submit" className="btn btn-submit">
                         <MdSave className="btn_icon" color="white" />
-                        Update
+                        {(selectedTaskCopy.id && "Update") || "Add"}
                     </button>
-                    <button
-                        onClick={(e) => e.preventDefault()}
-                        className="btn btn-info"
-                    >
-                        <MdAlarm className="btn_icon" color="black" />
-                        Remind Assignees
-                    </button>
-                    <button
-                        onClick={(e) => e.preventDefault()}
-                        className="btn btn-danger"
-                    >
-                        <MdDeleteForever className="btn_icon" color="darkred" />
-                        Delete Task
-                    </button>
+                    {selectedTaskCopy.id === 0 || (
+                        <>
+                            <button
+                                onClick={(e) => e.preventDefault()}
+                                className="btn btn-info"
+                            >
+                                <MdAlarm className="btn_icon" color="black" />
+                                Remind Assignees
+                            </button>
+                            <button
+                                onClick={(e) => e.preventDefault()}
+                                className="btn btn-danger"
+                            >
+                                <MdDeleteForever
+                                    className="btn_icon"
+                                    color="darkred"
+                                />
+                                Delete Task
+                            </button>
+                        </>
+                    )}
                 </div>
             </form>
         </div>

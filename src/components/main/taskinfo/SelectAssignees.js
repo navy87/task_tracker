@@ -25,7 +25,7 @@ const SelectAssignees = ({ people, selectedTask, setSelectedTask }) => {
     };
 
     return (
-        <select defaultValue="assign_person" onChange={handleChange}>
+        <select className="select_assignees" defaultValue="assign_person" onChange={handleChange}>
             <option value="assign_person">Select Person</option>
             {people
                 .filter(

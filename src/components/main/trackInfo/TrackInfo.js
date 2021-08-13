@@ -8,7 +8,7 @@ const TrackInfo = () => {
     const { selectedTask, trackSortOrder, setTrackSortOrder } =
         useContext(GlobalContext);
 
-    return selectedTask ? (
+    return selectedTask && selectedTask.id ? (
         <div className="container">
             <h2 className="title">Tracks Info</h2>
             <div className="form_list_container">

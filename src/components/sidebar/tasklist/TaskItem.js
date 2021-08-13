@@ -33,16 +33,14 @@ const TaskItem = ({ task }) => {
 
     let displayedName = "";
     if (assignees && assignees.length > 0) {
-        // const leaders = assignees.filter(
-        //     (taskPerson) => taskPerson.person.leader
-        // );
-        // if (leaders > 0) {
-        //     displayedName = leaders[0];
-        // } else if (assignees) {
-        //     displayedName = assignees[0];
-        // }
-        // displayedName = displayedName.person.name;
-        displayedName = assignees[0].person.name;
+        const leaders = assignees.filter((taskPerson) => taskPerson.leader);
+        console.log(leaders);
+        if (leaders.length > 0) {
+            displayedName = leaders[0];
+        } else {
+            displayedName = assignees[0];
+        }
+        displayedName = displayedName.person.name;
     }
 
     return (

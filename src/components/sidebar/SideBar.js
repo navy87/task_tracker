@@ -1,9 +1,9 @@
 import "../../styles/sidebar/sidebar.css";
 import Filter from "./filter/Filter";
 import SearchBar from "./search/SearchBar";
-import TaskList from "./tasklist/TaskList";
 import AddButton from "./add/AddButton";
 import SortSetting from "./sort/SortSetting";
+import TaskListContainer from "./tasklist/TaskListContainer";
 
 const SideBar = () => {
     return (
@@ -11,7 +11,7 @@ const SideBar = () => {
             <SearchBar />
             <Filter />
             <SortSetting />
-            <TaskList />
+            <TaskListContainer />
             <AddButton />
         </div>
     );

@@ -17,6 +17,17 @@
             font-size: 1.4rem;
             font-weight: 300;
             border-bottom: 1px solid black;
+            display: flex;
+            align-items: flex-start;
+
+            .new {
+                color: red;
+                border-radius: 10px;
+                border: 1px solid;
+                padding: 1px 3px;
+                font-size: 0.9rem;
+                margin-left: 3px;
+            }
         }
 
         .id_info_container {
@@ -29,6 +40,10 @@
             margin: 0.5rem 0;
             font-size: 0.9rem;
             align-items: center;
+
+            .info.new {
+                color: red;
+            }
 
             .info-label {
                 width: 8rem;
@@ -65,17 +80,28 @@
                 display: flex;
                 // background-color: red;
 
+                .select_assignees {
+                    padding: 5px 10px;
+                    border: 1px solid transparent;
+                    outline: none;
+                }
+
                 .assignee_btn {
                     display: inline-flex;
                     align-items: center;
                     padding: 5px 10px;
                     border-radius: 5px;
+                    border: 1.5px solid #ddd;
+                    box-shadow: 1px 1px 1px #ccc;
                     background-color: #eee;
                     margin-left: 5px;
                     cursor: pointer;
 
+                    align-items: center;
+
                     &.leader {
                         border-color: gold;
+                        box-shadow: 1px 1px 1px goldenrod;
                         // background-color: gold;
                     }
 
@@ -83,16 +109,26 @@
                         font-size: unset;
                     }
 
-                    .remove_icon {
+                    .icon {
                         width: 1rem;
                         height: 1rem;
-                        margin-left: 3px;
-                        color: darkred;
-                    }
+                        &.remove_icon {
+                            width: 1rem;
+                            height: 1rem;
+                            margin-left: 3px;
+                            color: darkred;
 
-                    &:hover {
-                        .remove_icon {
-                            color: red;
+                            &:hover {
+                                color: red;
+                            }
+                        }
+
+                        &.star {
+                            color: goldenrod;
+
+                            &:hover {
+                                color: gold;
+                            }
                         }
                     }
                 }
