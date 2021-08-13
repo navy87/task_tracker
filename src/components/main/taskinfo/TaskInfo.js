@@ -13,7 +13,8 @@ import StatusInfo from "./StatusInfo";
 import toast from "react-hot-toast";
 
 const TaskInfo = () => {
-    const { selectedTask, refresh } = useContext(GlobalContext);
+    const { selectedTask, setSelectedTask, refresh } =
+        useContext(GlobalContext);
     const [selectedTaskCopy, setSelectedTaskCopy] = useState(undefined);
     const { people } = useContext(DataContext);
 
@@ -38,15 +39,18 @@ const TaskInfo = () => {
 
         fetch(url, requestOptions)
             .then((res) => {
-                res.json();
                 refresh();
                 toast.success("Task has been saved!", {
                     position: "top-center",
                     autoClose: 5000,
                 });
-                // toast("This has been added!");
+                return res.json();
             })
-            .then((data) => console.log(data))
+            .then((data) => {
+                setSelectedTask(data);
+                // console.log(tasks);
+                // console.log([...tasks].filter((task) => task.id === data.id));
+            })
             .catch((err) =>
                 toast.error("There was an error.", {
                     position: "top-center",
@@ -57,14 +61,41 @@ const TaskInfo = () => {
 
     const handleRemindAssignees = (e) => {
         e.preventDefault();
-        toast.error("Not Working");
+        toast.error("Not Working Yet");
     };
 
     const handleTaskDelete = (e) => {
         e.preventDefault();
+        const requestOptions = {
+            method: "DELETE",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify(selectedTaskCopy),
+        };
+
+        const url = `http://localhost:4200/api/task/${selectedTask.id}`;
+
+        fetch(url, requestOptions)
+            .then((res) => {
+                res.text();
+                setSelectedTask(undefined);
+                console.log(selectedTaskCopy);
+                refresh();
+                toast.success("Task has been deleted!", {
+                    position: "top-center",
+                    autoClose: 5000,
+                });
+                // toast("This has been added!");
+            })
+            .then((data) => console.log(data))
+            .catch((err) =>
+                toast.error("There was an error deleting task.", {
+                    position: "top-center",
+                    autoClose: 5000,
+                })
+            );
     };
 
-    return selectedTaskCopy ? (
+    return selectedTask && selectedTaskCopy ? (
         <div className="container">
             <h2 className="title">
                 Task Info{" "}

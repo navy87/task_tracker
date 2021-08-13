@@ -1,13 +1,22 @@
-import React from "react";
+import React, { useContext } from "react";
+import { GlobalContext } from "../../contexts/GlobalContext";
 import "../../styles/main/main.css";
 import TaskInfo from "./taskinfo/TaskInfo";
 import TrackInfo from "./trackInfo/TrackInfo";
 
 const Main = () => {
+    const { selectedTask } = useContext(GlobalContext);
+
     return (
         <div id="main">
-            <TaskInfo />
-            <TrackInfo />
+            {selectedTask ? (
+                <>
+                    <TaskInfo />
+                    <TrackInfo />
+                </>
+            ) : (
+                "Hello"
+            )}
         </div>
     );
 };
