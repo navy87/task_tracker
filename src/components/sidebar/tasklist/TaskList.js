@@ -6,8 +6,12 @@ import { compareTask } from "../../helpers/Helper";
 
 const TaskList = () => {
     const { tasks } = useContext(DataContext);
-    const { filteredPriorities, filteredStatuses, filteredKeywords } =
-        useContext(FilterContext);
+    const {
+        filteredPriorities,
+        filteredStatuses,
+        filteredKeywords,
+        filteredPersons,
+    } = useContext(FilterContext);
     const { taskSortOrder } = useContext(GlobalContext);
 
     return (
@@ -22,8 +26,21 @@ const TaskList = () => {
                 .filter((task) => {
                     const issue = task.issue.toLowerCase();
                     const description = task.description.toLowerCase();
-                    const allText = issue + " " + description;
-                    return allText.includes(filteredKeywords.toLowerCase());
+                    return (issue + " " + description).includes(
+                        filteredKeywords.toLowerCase()
+                    );
+                })
+                .filter((task) => {
+                    if ([...filteredPersons].length === 0) {
+                        return true;
+                    }
+                    const filteredIds = [...filteredPersons].map(
+                        (filteredPerson) => filteredPerson.id
+                    );
+                    const assigneeIds = [...task.assignees]
+                        .map((taskPerson) => taskPerson.person.id)
+                        .filter((id) => filteredIds.includes(id));
+                    return assigneeIds.length > 0;
                 })
                 .sort((task1, task2) =>
                     compareTask(task1, task2, taskSortOrder)

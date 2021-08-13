@@ -1,12 +1,13 @@
 import React from "react";
+import toast from "react-hot-toast";
 
 const SelectAssignees = ({ people, selectedTask, setSelectedTask }) => {
     const handleChange = (e) => {
         const value = e.target.value;
         if (value === "assign_person") {
-            alert("Assign Person");
+            toast.success("Assign Person");
         } else if (value === "add_person") {
-            alert("Add Person");
+            toast.success("Add Person");
         } else {
             const selectedPerson = people.filter(
                 (person) => person.id === parseInt(value)
@@ -25,7 +26,11 @@ const SelectAssignees = ({ people, selectedTask, setSelectedTask }) => {
     };
 
     return (
-        <select className="select_assignees" defaultValue="assign_person" onChange={handleChange}>
+        <select
+            className="select_assignees"
+            defaultValue="assign_person"
+            onChange={handleChange}
+        >
             <option value="assign_person">Select Person</option>
             {people
                 .filter(

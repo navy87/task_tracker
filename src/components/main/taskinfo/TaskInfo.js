@@ -27,6 +27,15 @@ const TaskInfo = () => {
     const handleFormSubmit = (e) => {
         e.preventDefault();
 
+        const assignees = selectedTaskCopy.assignees;
+        if (assignees.length === 0) {
+            toast.error("There must be at least one assignee.", {
+                position: "top-center",
+                autoClose: 5000,
+            });
+            return;
+        }
+
         const requestOptions = {
             method: !selectedTaskCopy.id ? "POST" : "PUT",
             headers: { "Content-Type": "application/json" },
@@ -135,6 +144,7 @@ const TaskInfo = () => {
                             autoComplete="off"
                             placeholder="Issue"
                             value={selectedTaskCopy.issue}
+                            required
                             onChange={(e) => {
                                 setSelectedTaskCopy({
                                     ...selectedTaskCopy,
@@ -153,6 +163,7 @@ const TaskInfo = () => {
                             name="description"
                             placeholder="Description"
                             value={selectedTaskCopy.description}
+                            required
                             onChange={(e) => {
                                 setSelectedTaskCopy({
                                     ...selectedTaskCopy,
@@ -203,6 +214,7 @@ const TaskInfo = () => {
                             type="date"
                             name="due_date"
                             value={selectedTaskCopy.dueDate}
+                            required
                             onChange={(e) => {
                                 setSelectedTaskCopy({
                                     ...selectedTaskCopy,

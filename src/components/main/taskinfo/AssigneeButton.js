@@ -1,6 +1,7 @@
 import React from "react";
 import { AiOutlineUserDelete } from "react-icons/ai";
 import { MdStar, MdStarBorder } from "react-icons/md";
+import toast from "react-hot-toast";
 
 const AssigneeButton = ({ taskPerson, setSelectedTask, selectedTask }) => {
     const clicked = (e) => {
@@ -11,7 +12,10 @@ const AssigneeButton = ({ taskPerson, setSelectedTask, selectedTask }) => {
         e.preventDefault();
         const personId = taskPerson.person.id;
         if (selectedTask.assignees.length === 1) {
-            alert("Need At Least One Person to Assign To");
+            toast.error("Need At Least One Person to Assign To", {
+                duration: 4000,
+                position: "top-center",
+            });
             return;
         }
         const assignees = [...selectedTask.assignees].filter(
