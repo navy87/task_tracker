@@ -11,7 +11,7 @@ import SelectAssignees from "./SelectAssignees";
 import StatusInfo from "./StatusInfo";
 
 const TaskInfo = () => {
-    const { selectedTask } = useContext(GlobalContext);
+    const { selectedTask, refresh } = useContext(GlobalContext);
     const [selectedTaskCopy, setSelectedTaskCopy] = useState(undefined);
     const { people } = useContext(DataContext);
 
@@ -23,10 +23,35 @@ const TaskInfo = () => {
         }
     }, [selectedTask, setSelectedTaskCopy]);
 
+    const handleFormSubmit = (e) => {
+        e.preventDefault();
+
+        const requestOptions = {
+            method: !selectedTaskCopy.id ? "POST" : "PUT",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify(selectedTaskCopy),
+        };
+
+        const url = selectedTaskCopy.id
+            ? `http://localhost:4200/api/task/${selectedTask.id}`
+            : `http://localhost:4200/api/task/`;
+        // console.log(requestOptions);
+        // console.log(url);
+        // console.log(selectedTaskCopy);
+        // console.log(url);
+        fetch(url, requestOptions)
+            .then((res) => {
+                res.json();
+                refresh();
+            })
+            .then((data) => console.log(data))
+            .catch((err) => console.error(err));
+    };
+
     return selectedTaskCopy ? (
         <div className="container">
             <h2 className="title">Task Info</h2>
-            <form action="#" method="post">
+            <form onSubmit={handleFormSubmit} action="#" method="post">
                 <div className="id_info_container">
                     <InfoContainer
                         label="ID"
