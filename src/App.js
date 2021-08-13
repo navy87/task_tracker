@@ -20,7 +20,8 @@ function App() {
     const [filteredPersons, setFilteredPersons] = useState(new Set());
     const [filteredPriorities, setFilteredPriorities] = useState(new Set());
     const [filteredStatuses, setFilteredStatuses] = useState(new Set());
-    const [filteredKeywords, setFilteredKeywords] = useState();
+    const [filteredKeywords, setFilteredKeywords] = useState("");
+
     const [tasks, setTasks] = useState([]);
     const [tracks, setTracks] = useState([]);
     const [people, setPeople] = useState([]);

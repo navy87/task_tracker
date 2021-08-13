@@ -19,25 +19,17 @@ const TaskList = () => {
                 .filter((task) =>
                     filteredStatuses.has(task.status.toLowerCase())
                 )
-                .filter((task) =>
-                    (task.issue + " " + task.description)
-                        .toLowerCase()
-                        .includes(filteredKeywords.toLowerCase())
-                )
+                .filter((task) => {
+                    const issue = task.issue.toLowerCase();
+                    const description = task.description.toLowerCase();
+                    const allText = issue + " " + description;
+                    return allText.includes(filteredKeywords.toLowerCase());
+                })
                 .sort((task1, task2) =>
                     compareTask(task1, task2, taskSortOrder)
                 )
                 .map((task, index) => (
-                    <TaskItem
-                        key={index}
-                        task={task}
-                        // name={task.issue}
-                        // description={task.description}
-                        // dueDate={task.dueDate}
-                        // persons={task.assignees}
-                        // priority={task.priority.toLowerCase()}
-                        // status={task.status}
-                    />
+                    <TaskItem key={index} task={task} />
                 ))}
         </div>
     );
