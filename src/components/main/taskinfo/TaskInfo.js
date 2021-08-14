@@ -11,9 +11,10 @@ import SelectAssignees from "./SelectAssignees";
 import StatusInfo from "./StatusInfo";
 
 import toast from "react-hot-toast";
+import { QuestionDialog } from "../../helpers/Dialog";
 
 const TaskInfo = () => {
-    const { selectedTask, setSelectedTask, refresh } =
+    const { selectedTask, setSelectedTask, refresh, setDialog } =
         useContext(GlobalContext);
     const [selectedTaskCopy, setSelectedTaskCopy] = useState(undefined);
     const { people } = useContext(DataContext);
@@ -57,8 +58,6 @@ const TaskInfo = () => {
             })
             .then((data) => {
                 setSelectedTask(data);
-                // console.log(tasks);
-                // console.log([...tasks].filter((task) => task.id === data.id));
             })
             .catch((err) =>
                 toast.error("There was an error.", {
@@ -68,13 +67,7 @@ const TaskInfo = () => {
             );
     };
 
-    // const handleRemindAssignees = (e) => {
-    //     e.preventDefault();
-    //     toast.error("Not Working Yet");
-    // };
-
-    const handleTaskDelete = (e) => {
-        e.preventDefault();
+    const deleteTask = () => {
         const requestOptions = {
             method: "DELETE",
             headers: { "Content-Type": "application/json" },
@@ -102,6 +95,19 @@ const TaskInfo = () => {
                     autoClose: 5000,
                 })
             );
+    };
+
+    const handleTaskDelete = (e) => {
+        e.preventDefault();
+        setDialog(
+            <QuestionDialog
+                text="Delete Task?"
+                subtext="Are you sure? This action can not be undone."
+                title="Just Checking"
+                onYes={deleteTask}
+                onNo={() => true}
+            />
+        );
     };
 
     return selectedTask && selectedTaskCopy ? (

@@ -1,12 +1,13 @@
 import React, { useContext } from "react";
+import toast from "react-hot-toast";
 import { MdDelete } from "react-icons/md";
 import { GlobalContext } from "../../../contexts/GlobalContext";
+import { QuestionDialog } from "../../helpers/Dialog";
 
 const TrackItem = ({ track }) => {
-    const { refresh } = useContext(GlobalContext);
-    const handleDelete = (e) => {
-        e.preventDefault();
+    const { refresh, setDialog } = useContext(GlobalContext);
 
+    const deleteTrack = () => {
         const requestOptions = {
             method: "DELETE",
         };
@@ -16,9 +17,25 @@ const TrackItem = ({ track }) => {
             .then((res) => {
                 res.text();
                 refresh();
+                toast.success("Track has been deleted!", {
+                    position: "top-center",
+                    autoClose: 5000,
+                });
             })
             .then((data) => console.log(data))
             .catch((err) => console.error(err));
+    };
+    const handleDelete = (e) => {
+        e.preventDefault();
+        setDialog(
+            <QuestionDialog
+                text="Remove Track?"
+                subtext="Are you sure? This action can not be undone."
+                title="Just Checking"
+                onYes={deleteTrack}
+                onNo={() => true}
+            />
+        );
     };
 
     return (

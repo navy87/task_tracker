@@ -18,7 +18,7 @@ const Dialog = ({ render, title }) => {
     );
 };
 
-const CommonDialog = ({ text, type, subtext, onYes, onNo }) => {
+const CommonDialog = ({ text, title, subtext, onYes, onNo }) => {
     const { setDialog } = useContext(GlobalContext);
 
     const handleButton = (e, func) => {
@@ -50,7 +50,7 @@ const CommonDialog = ({ text, type, subtext, onYes, onNo }) => {
                     </div>
                 </>
             }
-            title="Just Checking"
+            title={title}
         />
     );
 };
@@ -63,6 +63,7 @@ export const QuestionDialog = ({ title, subtext, text, onYes, onNo }) => {
             subtext={subtext}
             onYes={onYes}
             onNo={onNo}
+            title={title}
         />
     );
 };
