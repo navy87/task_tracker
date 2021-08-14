@@ -18,21 +18,6 @@ const Dialog = ({ render, title }) => {
     );
 };
 
-// const dialogTypes = {
-//     info: {
-//         icon: <MdInfo className="dialog_icon info" />,
-//     },
-//     warning: {
-//         icon: <MdWarning className="dialog_icon warning" />,
-//     },
-//     error: {
-//         icon: <MdError className="dialog_icon error" />,
-//     },
-//     question: {
-//         icon: <BsQuestionCircleFill className="dialog_icon question" />,
-//     },
-// };
-
 const CommonDialog = ({ text, type, subtext, onYes, onNo }) => {
     const { setDialog } = useContext(GlobalContext);
 
@@ -70,18 +55,6 @@ const CommonDialog = ({ text, type, subtext, onYes, onNo }) => {
     );
 };
 
-// export const InfoDialog = ({ title, text }) => {
-//     return <CommonDialog text={text} title={title} type="info" />;
-// };
-
-// export const ErrorDialog = ({ title, text }) => {
-//     return <CommonDialog text={text} title={title} type="error" />;
-// };
-
-// export const WarningDialog = ({ title, text }) => {
-//     return <CommonDialog text={text} title={title} type="warning" />;
-// };
-
 export const QuestionDialog = ({ title, subtext, text, onYes, onNo }) => {
     return (
         <CommonDialog
@@ -92,29 +65,6 @@ export const QuestionDialog = ({ title, subtext, text, onYes, onNo }) => {
             onNo={onNo}
         />
     );
-
-    // return (
-    //     <Dialog
-    //         render={
-    //             <div className="common_dialog">
-    //                 {dialogTypes.question.icon} <span>{text}</span>
-    //             </div>
-    //         }
-    //         title={title}
-    //     />
-    // );
 };
-
-// export const ErrorDialog = ({ title, text }) => {
-//     return CommonDialog(title, text, "error");
-// };
-
-// export const WarningDialog = ({ title, text }) => {
-//     return CommonDialog(title, text, "question");
-// };
-
-// export const QuestionDialog = ({ title, text }) => {
-//     return CommonDialog(title, text, "question");
-// };
 
 export default Dialog;
