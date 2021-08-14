@@ -8,7 +8,6 @@
         margin-bottom: 1rem;
 
         .form_list_container {
-            // background-color: blue;
             display: flex;
             align-items: flex-start;
         }
@@ -78,7 +77,6 @@
 
             .assignees_container {
                 display: flex;
-                // background-color: red;
 
                 .select_assignees {
                     padding: 5px 10px;
@@ -103,7 +101,6 @@
                     &.leader {
                         border-color: gold;
                         box-shadow: 1px 1px 1px goldenrod;
-                        // background-color: gold;
                     }
 
                     .assignee_name {
@@ -151,8 +148,6 @@
             flex-grow: 1;
 
             .head {
-                // display: flex;
-                // align-items: center;
                 margin-bottom: 0.5rem;
                 h4 {
                     font-weight: 300;
@@ -164,7 +159,6 @@
                 min-height: 10rem;
                 max-height: 15rem;
                 overflow-y: scroll;
-                // background-color: #eee;
                 border: 1px solid #888;
                 flex-grow: 1;
 

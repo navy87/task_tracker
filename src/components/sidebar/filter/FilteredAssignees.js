@@ -10,7 +10,6 @@ const FilteredAssignees = () => {
         const value = e.target.value;
 
         if (value === "select_person") {
-            // toast.success("Assign Person");
         } else if (value === "all_persons") {
             setFilteredPersons(new Set());
         } else {

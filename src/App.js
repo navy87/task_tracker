@@ -1,11 +1,9 @@
-// import axios from "axios";
 import { useState, useEffect } from "react";
 import Main from "./components/main/Main";
 import SideBar from "./components/sidebar/SideBar";
 import { GlobalContext } from "./contexts/GlobalContext";
 import { DataContext, FilterContext } from "./contexts/SidebarContext";
 import "./styles/index/App.css";
-// import { ToastContainer } from "react-toastify";
 import { Toaster } from "react-hot-toast";
 import ReactTooltip from "react-tooltip";
 

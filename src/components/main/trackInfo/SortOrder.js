@@ -3,7 +3,6 @@ import { HiSortAscending, HiSortDescending } from "react-icons/hi";
 import RadioButton from "../../helpers/RadioButton";
 
 const SortOrder = ({ selected, setTrackSortOrder }) => {
-    // const [checked, setChecked] = useState(selected);
     return (
         <div>
             <RadioButton

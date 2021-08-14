@@ -11,7 +11,6 @@ const RadioButton = ({ render, id, name, value, checked, setChecked }) => {
         <label htmlFor={id} className={`radio_label ${checked && "checked"}`}>
             {render}
             <input
-                // style={{ display: "none" }}
                 id={id}
                 type="radio"
                 name={name}

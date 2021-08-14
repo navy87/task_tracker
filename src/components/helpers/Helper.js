@@ -32,8 +32,6 @@ export const compareTask = (task1, task2, taskSortOrder) => {
     let priorityAscendingOrder =
         priorityIndex[task1.priority.toLowerCase()] -
         priorityIndex[task2.priority.toLowerCase()];
-    // let descendingValue =
-    //                         new Date(track2.date) - new Date(track1.date);
     const descFactor = taskSortOrder.order.toLowerCase() === "desc" ? -1 : 1;
     if (taskSortOrder.by.toLowerCase() === "title") {
         return (

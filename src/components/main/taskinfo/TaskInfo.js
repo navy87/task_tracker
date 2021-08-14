@@ -86,7 +86,6 @@ const TaskInfo = () => {
                     position: "top-center",
                     autoClose: 5000,
                 });
-                // toast("This has been added!");
             })
             .then((data) => console.log(data))
             .catch((err) =>

@@ -7,11 +7,9 @@ import {
 } from "react-icons/fc";
 
 const PriorityInfo = ({ selectedTask, setSelectedTask }) => {
-    // const [selectedTask, setSelectedTask] = useState(task);
     const [checked, setChecked] = useState(selectedTask.priority);
 
     useEffect(() => {
-        // setSelectedTask(task);
         setChecked(selectedTask.priority);
     }, [selectedTask, setSelectedTask]);
 

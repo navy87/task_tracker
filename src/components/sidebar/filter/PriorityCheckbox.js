@@ -13,7 +13,6 @@ const PriorityCheckbox = ({ render, id, value }) => {
                 } else {
                     oldPriorities.add(value);
                 }
-                // const newPriorities = ;
                 return new Set([...oldPriorities]);
             });
         };
