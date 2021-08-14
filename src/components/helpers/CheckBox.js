@@ -11,7 +11,7 @@ const CheckBox = ({ render, id, name, value }) => {
         >
             {render}
             <input
-                style={{ display: "none" }}
+                // style={{ display: "none" }}
                 id={id}
                 type="checkbox"
                 name={name}

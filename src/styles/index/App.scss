@@ -1,0 +1,195 @@
+.radio_label,
+.checkbox_label {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 5px;
+
+    cursor: pointer;
+    padding: 5px 10px;
+    color: black;
+    margin: 0 0.1rem;
+    border-radius: 0.25rem;
+    font-size: 0.8rem;
+    font-weight: bold;
+    background-color: lightgray;
+
+    &.checked {
+        background-color: white;
+    }
+}
+
+#page {
+    margin-left: 24rem;
+    height: 100vh;
+    padding: 0.5rem;
+}
+
+#sidebar {
+    position: fixed;
+    width: 23rem;
+    height: 100vh;
+    box-shadow: 3px 3px 3px #bbb;
+}
+
+.no-border {
+    border: none !important;
+    outline: none !important;
+}
+
+.btn {
+    cursor: pointer;
+    padding: 5px 10px;
+    border: 2px solid transparent;
+    outline: none;
+    border-radius: 5px;
+    transition: all 0.05s;
+    font-weight: 300;
+
+    display: inline-flex;
+    align-items: center;
+
+    &.btn-sm {
+        padding: 3px 5px;
+
+        .btn_icon {
+            width: 1rem;
+            height: 1rem;
+            margin-right: 5px;
+        }
+    }
+
+    &:active {
+        transform: scale(0.98);
+    }
+
+    &.btn-submit {
+        background-color: green;
+        color: white;
+
+        &:focus-visible {
+            border-color: white;
+        }
+    }
+
+    &.btn-info {
+        background-color: white;
+        color: black;
+        &:focus-visible {
+            border-color: #333;
+        }
+    }
+
+    &.btn-danger {
+        background-color: #ddd;
+        color: #333;
+        &:focus-visible {
+            border-color: darkred;
+        }
+    }
+
+    .btn_icon {
+        width: 1.2rem;
+        height: 1.2rem;
+        margin-right: 5px;
+    }
+}
+
+.dialog-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    // background-color: #3333338c;
+    background-color: #ffffff50;
+    position: absolute;
+    width: 100vw;
+    height: 100vh;
+    z-index: 200;
+
+    .dialog {
+        box-sizing: content-box;
+        display: flex;
+        flex-direction: column;
+        background-color: white;
+        color: black;
+        overflow: hidden;
+        // border: 1px solid red;
+        border-radius: 20px;
+        max-width: 50%;
+        box-shadow: 0px 10px 50px rgba(128, 128, 128, 0.493);
+        // box-shadow: -5px -5px 5px rgba(128, 128, 128, 0.493);
+
+        .title {
+            font-size: 1.25rem;
+            color: purple;
+            text-align: center;
+            box-shadow: 1px 1px 1px #33333375;
+            padding: 10px 10px;
+        }
+
+        .content {
+            padding: 20px;
+            flex-grow: 1;
+
+            .text {
+                text-align: center;
+                font-size: 2rem;
+                font-weight: 400;
+                margin-bottom: 10px;
+            }
+
+            .subtext {
+                margin: auto;
+                font-size: 0.9rem;
+                font-weight: 300;
+                line-height: 1.25;
+
+                max-width: 80%;
+                text-align: center;
+            }
+        }
+
+        .buttons {
+            border: none;
+            box-sizing: content-box;
+            display: flex;
+            justify-content: center;
+            background-color: darkmagenta;
+            gap: 5px;
+            margin: 0;
+
+            .dialog_btn {
+                box-sizing: content-box;
+                cursor: pointer;
+                font-weight: 400;
+                border: none;
+                outline: none;
+                background-color: transparent;
+                transition: all 0.25s;
+                color: white;
+                flex: 1;
+                padding: 15px;
+
+                &.positive {
+                    color: greenyellow;
+                    border-bottom-left-radius: 20px;
+
+                    &:hover {
+                        background-color: greenyellow;
+                        color: green;
+                    }
+                }
+
+                &.negative {
+                    border-bottom-right-radius: 20px;
+                    color: #bbb;
+                }
+
+                &:hover {
+                    background-color: #333;
+                    color: white;
+                }
+            }
+        }
+    }
+}

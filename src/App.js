@@ -4,7 +4,7 @@ import Main from "./components/main/Main";
 import SideBar from "./components/sidebar/SideBar";
 import { GlobalContext } from "./contexts/GlobalContext";
 import { DataContext, FilterContext } from "./contexts/SidebarContext";
-import "./styles/App.css";
+import "./styles/index/App.css";
 // import { ToastContainer } from "react-toastify";
 import { Toaster } from "react-hot-toast";
 import ReactTooltip from "react-tooltip";
@@ -30,6 +30,8 @@ function App() {
     const [people, setPeople] = useState([]);
 
     const [refreshData, setRefreshData] = useState(false);
+
+    const [dialog, setDialog] = useState();
 
     const refresh = () => {
         setRefreshData((oldRefresh) => !oldRefresh);
@@ -68,6 +70,8 @@ function App() {
                 setTrackSortOrder,
                 taskSortOrder,
                 setTaskSortOrder,
+                dialog,
+                setDialog,
             }}
         >
             <FilterContext.Provider
@@ -97,6 +101,7 @@ function App() {
                     }}
                 >
                     <div className="App">
+                        {dialog || ""}
                         <Toaster />
                         <ReactTooltip />
                         <SideBar />

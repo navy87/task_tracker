@@ -1,0 +1,231 @@
+.radio_label,
+.checkbox_label {
+  display: -webkit-inline-box;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  gap: 5px;
+  cursor: pointer;
+  padding: 5px 10px;
+  color: black;
+  margin: 0 0.1rem;
+  border-radius: 0.25rem;
+  font-size: 0.8rem;
+  font-weight: bold;
+  background-color: lightgray;
+}
+
+.radio_label.checked,
+.checkbox_label.checked {
+  background-color: white;
+}
+
+#page {
+  margin-left: 24rem;
+  height: 100vh;
+  padding: 0.5rem;
+}
+
+#sidebar {
+  position: fixed;
+  width: 23rem;
+  height: 100vh;
+  -webkit-box-shadow: 3px 3px 3px #bbb;
+          box-shadow: 3px 3px 3px #bbb;
+}
+
+.no-border {
+  border: none !important;
+  outline: none !important;
+}
+
+.btn {
+  cursor: pointer;
+  padding: 5px 10px;
+  border: 2px solid transparent;
+  outline: none;
+  border-radius: 5px;
+  -webkit-transition: all 0.05s;
+  transition: all 0.05s;
+  font-weight: 300;
+  display: -webkit-inline-box;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.btn.btn-sm {
+  padding: 3px 5px;
+}
+
+.btn.btn-sm .btn_icon {
+  width: 1rem;
+  height: 1rem;
+  margin-right: 5px;
+}
+
+.btn:active {
+  -webkit-transform: scale(0.98);
+          transform: scale(0.98);
+}
+
+.btn.btn-submit {
+  background-color: green;
+  color: white;
+}
+
+.btn.btn-submit:focus-visible {
+  border-color: white;
+}
+
+.btn.btn-info {
+  background-color: white;
+  color: black;
+}
+
+.btn.btn-info:focus-visible {
+  border-color: #333;
+}
+
+.btn.btn-danger {
+  background-color: #ddd;
+  color: #333;
+}
+
+.btn.btn-danger:focus-visible {
+  border-color: darkred;
+}
+
+.btn .btn_icon {
+  width: 1.2rem;
+  height: 1.2rem;
+  margin-right: 5px;
+}
+
+.dialog-container {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  background-color: #ffffff50;
+  position: absolute;
+  width: 100vw;
+  height: 100vh;
+  z-index: 200;
+}
+
+.dialog-container .dialog {
+  -webkit-box-sizing: content-box;
+          box-sizing: content-box;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  background-color: white;
+  color: black;
+  overflow: hidden;
+  border-radius: 20px;
+  max-width: 50%;
+  -webkit-box-shadow: 0px 10px 50px rgba(128, 128, 128, 0.493);
+          box-shadow: 0px 10px 50px rgba(128, 128, 128, 0.493);
+}
+
+.dialog-container .dialog .title {
+  font-size: 1.25rem;
+  color: purple;
+  text-align: center;
+  -webkit-box-shadow: 1px 1px 1px #33333375;
+          box-shadow: 1px 1px 1px #33333375;
+  padding: 10px 10px;
+}
+
+.dialog-container .dialog .content {
+  padding: 20px;
+  -webkit-box-flex: 1;
+      -ms-flex-positive: 1;
+          flex-grow: 1;
+}
+
+.dialog-container .dialog .content .text {
+  text-align: center;
+  font-size: 2rem;
+  font-weight: 400;
+  margin-bottom: 10px;
+}
+
+.dialog-container .dialog .content .subtext {
+  margin: auto;
+  font-size: 0.9rem;
+  font-weight: 300;
+  line-height: 1.25;
+  max-width: 80%;
+  text-align: center;
+}
+
+.dialog-container .dialog .buttons {
+  border: none;
+  -webkit-box-sizing: content-box;
+          box-sizing: content-box;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  background-color: darkmagenta;
+  gap: 5px;
+  margin: 0;
+}
+
+.dialog-container .dialog .buttons .dialog_btn {
+  -webkit-box-sizing: content-box;
+          box-sizing: content-box;
+  cursor: pointer;
+  font-weight: 400;
+  border: none;
+  outline: none;
+  background-color: transparent;
+  -webkit-transition: all 0.25s;
+  transition: all 0.25s;
+  color: white;
+  -webkit-box-flex: 1;
+      -ms-flex: 1;
+          flex: 1;
+  padding: 15px;
+}
+
+.dialog-container .dialog .buttons .dialog_btn.positive {
+  color: greenyellow;
+  border-bottom-left-radius: 20px;
+}
+
+.dialog-container .dialog .buttons .dialog_btn.positive:hover {
+  background-color: greenyellow;
+  color: green;
+}
+
+.dialog-container .dialog .buttons .dialog_btn.negative {
+  border-bottom-right-radius: 20px;
+  color: #bbb;
+}
+
+.dialog-container .dialog .buttons .dialog_btn:hover {
+  background-color: #333;
+  color: white;
+}
+/*# sourceMappingURL=App.css.map */
