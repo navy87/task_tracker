@@ -235,6 +235,10 @@
   cursor: pointer;
 }
 
+#main .container .track_list_container .tracks_list .track_item .track_head .icon:hover {
+  color: red;
+}
+
 #main .container .track_list_container .tracks_list .track_item .description {
   margin-top: 5px;
   font-size: 0.9rem;

@@ -1,5 +1,5 @@
 import React from "react";
-import { AiOutlineUserDelete } from "react-icons/ai";
+import { TiDelete } from "react-icons/ti";
 import { MdStar, MdStarBorder } from "react-icons/md";
 import toast from "react-hot-toast";
 
@@ -40,22 +40,26 @@ const AssigneeButton = ({ taskPerson, setSelectedTask, selectedTask }) => {
     };
 
     return (
-        <div className={`btn assignee_btn ${taskPerson.leader && "leader"}`}>
+        <div
+            className={`btn assignee_btn ${taskPerson.leader && "leader"}`}
+            data-tip="Remove Person"
+        >
             <span onClick={clicked} className="assignee_name">
                 {taskPerson.person.name}
             </span>
-            <AiOutlineUserDelete
-                className="icon remove_icon"
-                onClick={removeClicked}
-            />
-
-            <span onClick={handleLeaderToggle}>
+            <span onClick={handleLeaderToggle} data-tip="Make Leader">
                 {taskPerson.leader ? (
                     <MdStar className="icon star leader" />
                 ) : (
                     <MdStarBorder className="icon star" />
                 )}
             </span>
+
+            <TiDelete
+                className="icon remove_icon"
+                data-tip="Remove Person"
+                onClick={removeClicked}
+            />
         </div>
     );
 };

@@ -2,19 +2,16 @@ import React from "react";
 
 const RadioButton = ({ render, id, name, value, checked, setChecked }) => {
     const changed = (e) => {
-        // console.log(value + ": " + e.target.checked);
         if (e.target.checked) {
             setChecked(value);
         }
-        // setChecked(e.target.checked);
-        // console.log(value + ": " + e.target.checked);
     };
 
     return (
         <label htmlFor={id} className={`radio_label ${checked && "checked"}`}>
             {render}
             <input
-                style={{ display: "none" }}
+                // style={{ display: "none" }}
                 id={id}
                 type="radio"
                 name={name}

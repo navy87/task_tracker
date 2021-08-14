@@ -1,6 +1,6 @@
 import React, { useContext, useEffect, useState } from "react";
 
-import { MdDeleteForever, MdSave, MdAlarm } from "react-icons/md";
+import { MdDeleteForever, MdSave } from "react-icons/md";
 import { GlobalContext } from "../../../contexts/GlobalContext";
 import { DataContext } from "../../../contexts/SidebarContext";
 import { DeepCopy } from "../../helpers/Helper";
@@ -68,10 +68,10 @@ const TaskInfo = () => {
             );
     };
 
-    const handleRemindAssignees = (e) => {
-        e.preventDefault();
-        toast.error("Not Working Yet");
-    };
+    // const handleRemindAssignees = (e) => {
+    //     e.preventDefault();
+    //     toast.error("Not Working Yet");
+    // };
 
     const handleTaskDelete = (e) => {
         e.preventDefault();
@@ -240,13 +240,13 @@ const TaskInfo = () => {
                     </button>
                     {selectedTaskCopy.id === 0 || (
                         <>
-                            <button
+                            {/* <button
                                 onClick={handleRemindAssignees}
                                 className="btn btn-info"
                             >
                                 <MdAlarm className="btn_icon" color="black" />
                                 Remind Assignees
-                            </button>
+                            </button> */}
                             <button
                                 onClick={handleTaskDelete}
                                 className="btn btn-danger"

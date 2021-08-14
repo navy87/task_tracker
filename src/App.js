@@ -7,6 +7,7 @@ import { DataContext, FilterContext } from "./contexts/SidebarContext";
 import "./styles/App.css";
 // import { ToastContainer } from "react-toastify";
 import { Toaster } from "react-hot-toast";
+import ReactTooltip from "react-tooltip";
 
 function App() {
     const [selectedTask, setSelectedTask] = useState();
@@ -21,6 +22,8 @@ function App() {
     const [filteredPriorities, setFilteredPriorities] = useState(new Set());
     const [filteredStatuses, setFilteredStatuses] = useState(new Set());
     const [filteredKeywords, setFilteredKeywords] = useState("");
+
+    const [sorterVisible, setSorterVisible] = useState(false);
 
     const [tasks, setTasks] = useState([]);
     const [tracks, setTracks] = useState([]);
@@ -79,6 +82,8 @@ function App() {
                     setFilteredStatuses,
                     filteredKeywords,
                     setFilteredKeywords,
+                    sorterVisible,
+                    setSorterVisible,
                 }}
             >
                 <DataContext.Provider
@@ -92,9 +97,10 @@ function App() {
                     }}
                 >
                     <div className="App">
+                        <Toaster />
+                        <ReactTooltip />
                         <SideBar />
                         <div id="page">
-                            <Toaster />
                             <div className="content">
                                 <Main />
                             </div>

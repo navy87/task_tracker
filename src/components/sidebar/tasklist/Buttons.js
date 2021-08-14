@@ -1,6 +1,7 @@
 import React, { useContext } from "react";
 import { GlobalContext } from "../../../contexts/GlobalContext";
 import { GetToday } from "../../helpers/Helper";
+import { MdNoteAdd, MdPeople } from "react-icons/md";
 
 const Buttons = () => {
     const { setSelectedTask } = useContext(GlobalContext);
@@ -42,9 +43,11 @@ const Buttons = () => {
     return (
         <div className="buttons">
             <button className="md_btn" onClick={handleAddTask}>
-                Add Task
+                <MdNoteAdd className="icon" /> Add Task
             </button>
-            <button className="md_btn">People</button>
+            <button className="md_btn">
+                <MdPeople className="icon" /> People
+            </button>
         </div>
     );
 };
