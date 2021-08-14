@@ -35,19 +35,25 @@ const PersonItem = ({ currentPerson, setCurrentPerson, selected }) => {
         const requestOptions = {
             method: "DELETE",
             headers: { "Content-Type": "application/json" },
-            body: JSON.stringify(currentPerson),
         };
 
         const url = `http://localhost:4200/api/person/${currentPerson.id}`;
 
         fetch(url, requestOptions)
             .then((res) => {
-                res.text();
-                refresh();
-                toast.success("Person has been removed!", {
-                    position: "top-center",
-                    autoClose: 5000,
-                });
+                if (res.ok) {
+                    res.text();
+                    refresh();
+                    toast.success("Person has been removed!", {
+                        position: "top-center",
+                        autoClose: 5000,
+                    });
+                } else {
+                    toast.error("Something went wrong!", {
+                        position: "top-center",
+                        autoClose: 5000,
+                    });
+                }
             })
             .then((data) => console.log(data))
             .catch((err) =>

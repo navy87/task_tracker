@@ -17,11 +17,13 @@ const TaskInfo = () => {
     const { selectedTask, setSelectedTask, refresh, setDialog } =
         useContext(GlobalContext);
     const [selectedTaskCopy, setSelectedTaskCopy] = useState(undefined);
-    const { people } = useContext(DataContext);
+    const { people, tasks } = useContext(DataContext);
 
     useEffect(() => {
         if (selectedTask) {
             setSelectedTaskCopy(DeepCopy(selectedTask));
+            console.log("Selected Task: ");
+            console.log(selectedTask);
         }
     }, [selectedTask, setSelectedTaskCopy]);
 
@@ -47,6 +49,7 @@ const TaskInfo = () => {
             ? `http://localhost:4200/api/task/${selectedTask.id}`
             : `http://localhost:4200/api/task/`;
 
+        console.log(selectedTaskCopy);
         fetch(url, requestOptions)
             .then((res) => {
                 refresh();
@@ -57,7 +60,10 @@ const TaskInfo = () => {
                 return res.json();
             })
             .then((data) => {
-                setSelectedTask(data);
+                const id = data.id;
+                let savedTask = [...tasks].filter((task) => task.id === id);
+                savedTask = savedTask ? savedTask[0] : undefined;
+                setSelectedTask(savedTask);
             })
             .catch((err) =>
                 toast.error("There was an error.", {

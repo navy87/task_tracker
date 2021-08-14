@@ -39,7 +39,7 @@ const TaskItem = ({ task }) => {
         } else {
             displayedName = assignees[0];
         }
-        displayedName = displayedName.person.name;
+        displayedName = displayedName.person ? displayedName.person.name : "";
     }
 
     return (

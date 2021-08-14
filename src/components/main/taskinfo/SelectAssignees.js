@@ -33,12 +33,13 @@ const SelectAssignees = ({ people, selectedTask, setSelectedTask }) => {
         >
             <option value="assign_person">Select Person</option>
             {people
-                .filter(
-                    (person) =>
-                        !selectedTask.assignees
-                            .map((taskPerson) => taskPerson.person.id)
-                            .includes(person.id)
-                )
+                .filter((person) => {
+                    const mapped = selectedTask.assignees.map((taskPerson) => {
+                        // console.log(taskPerson);
+                        return taskPerson.person.id;
+                    });
+                    return !mapped.includes(person.id);
+                })
                 .map((person, index) => (
                     <option key={index} value={person.id}>
                         {person.name}
