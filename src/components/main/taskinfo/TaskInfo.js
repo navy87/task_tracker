@@ -22,8 +22,6 @@ const TaskInfo = () => {
     useEffect(() => {
         if (selectedTask) {
             setSelectedTaskCopy(DeepCopy(selectedTask));
-            console.log("Selected Task: ");
-            console.log(selectedTask);
         }
     }, [selectedTask, setSelectedTaskCopy]);
 
@@ -49,7 +47,6 @@ const TaskInfo = () => {
             ? `http://localhost:4200/api/task/${selectedTask.id}`
             : `http://localhost:4200/api/task/`;
 
-        console.log(selectedTaskCopy);
         fetch(url, requestOptions)
             .then((res) => {
                 refresh();
@@ -86,7 +83,6 @@ const TaskInfo = () => {
             .then((res) => {
                 res.text();
                 setSelectedTask(undefined);
-                console.log(selectedTaskCopy);
                 refresh();
                 toast.success("Task has been deleted!", {
                     position: "top-center",

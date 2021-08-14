@@ -27,7 +27,6 @@ const PersonItem = ({ currentPerson, setCurrentPerson, selected }) => {
 
     const handleEdit = (e) => {
         e.preventDefault();
-        console.log(currentPerson);
         setCurrentPerson(DeepCopy(currentPerson));
     };
 

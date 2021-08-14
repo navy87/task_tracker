@@ -35,7 +35,6 @@ const SelectAssignees = ({ people, selectedTask, setSelectedTask }) => {
             {people
                 .filter((person) => {
                     const mapped = selectedTask.assignees.map((taskPerson) => {
-                        // console.log(taskPerson);
                         return taskPerson.person.id;
                     });
                     return !mapped.includes(person.id);

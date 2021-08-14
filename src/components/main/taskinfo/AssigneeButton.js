@@ -35,7 +35,6 @@ const AssigneeButton = ({ taskPerson, setSelectedTask, selectedTask }) => {
             ...assignee,
             leader: assignee.id === taskPerson.id,
         }));
-        console.log(assignees);
         setSelectedTask({ ...selectedTask, assignees });
     };
 
