@@ -105,6 +105,7 @@ const TaskInfo = () => {
                 title="Just Checking"
                 onYes={deleteTask}
                 onNo={() => true}
+                closeAfterwards={true}
             />
         );
     };

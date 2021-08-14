@@ -34,6 +34,7 @@ const TrackItem = ({ track }) => {
                 title="Just Checking"
                 onYes={deleteTrack}
                 onNo={() => true}
+                closeAfterwards={true}
             />
         );
     };

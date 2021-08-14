@@ -2,27 +2,11 @@ import React, { useContext } from "react";
 import { GlobalContext } from "../../../contexts/GlobalContext";
 import { GetToday } from "../../helpers/Helper";
 import { MdNoteAdd, MdPeople } from "react-icons/md";
+import Dialog from "../../helpers/Dialog";
+import PersonDialog from "../person/PersonDialog";
 
 const Buttons = () => {
-    const { setSelectedTask } = useContext(GlobalContext);
-
-    /**
-     * 
-     const k = {
-         id: 4,
-         issue: "Household Chores",
-         description: "Doing dishes, and cleaning the living room",
-         addedDate: "2021-08-13T08:27:10.435083",
-         dueDate: "2021-09-12",
-         status: "ACTIVE",
-         priority: "HIGH",
-         assignees: [
-             { id: 9, person: { id: 2, name: "Mame Fati" }, leader: false },
-             { id: 4, person: { id: 1, name: "Hanan Fati" }, leader: true },
-         ],
-     };
-     *
-     */
+    const { setSelectedTask, setDialog } = useContext(GlobalContext);
 
     const emptyTask = {
         id: 0,
@@ -40,12 +24,17 @@ const Buttons = () => {
         setSelectedTask(emptyTask);
     };
 
+    const handlePeople = (e) => {
+        e.preventDefault();
+        setDialog(<Dialog render={<PersonDialog />} />);
+    };
+
     return (
         <div className="buttons">
             <button className="md_btn" onClick={handleAddTask}>
                 <MdNoteAdd className="icon" /> Add Task
             </button>
-            <button className="md_btn">
+            <button className="md_btn" onClick={handlePeople}>
                 <MdPeople className="icon" /> People
             </button>
         </div>

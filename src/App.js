@@ -101,7 +101,7 @@ function App() {
                     <div className="App">
                         {dialog || ""}
                         <Toaster />
-                        <ReactTooltip />
+                        <ReactTooltip effect="solid" />
                         <SideBar />
                         <div id="page">
                             <div className="content">

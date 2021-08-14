@@ -5,11 +5,17 @@ const Dialog = ({ render, title }) => {
     const { setDialog } = useContext(GlobalContext);
 
     const handleBackgroundClick = (e) => {
-        setDialog(null);
+        if (e.target.id === "id_dialog_holder") {
+            setDialog(null);
+        }
     };
 
     return (
-        <div className="dialog-container" onClick={handleBackgroundClick}>
+        <div
+            id="id_dialog_holder"
+            className="dialog-container"
+            onClick={handleBackgroundClick}
+        >
             <div className="dialog">
                 {title && <h2 className="title">{title}</h2>}
                 <>{render}</>
@@ -18,18 +24,26 @@ const Dialog = ({ render, title }) => {
     );
 };
 
-const CommonDialog = ({ text, title, subtext, onYes, onNo }) => {
+const CommonDialog = ({
+    text,
+    title,
+    subtext,
+    onYes,
+    onNo,
+    closeAfterwards,
+}) => {
     const { setDialog } = useContext(GlobalContext);
-
     const handleButton = (e, func) => {
         func();
-        setDialog(null);
+        if (closeAfterwards) {
+            setDialog(null);
+        }
     };
 
     return (
         <Dialog
             render={
-                <>
+                <div className="common_dialog">
                     <div className="content">
                         <h4 className="text">{text}</h4>
                         <p className="subtext">{subtext}</p>
@@ -48,14 +62,22 @@ const CommonDialog = ({ text, title, subtext, onYes, onNo }) => {
                             No
                         </button>
                     </div>
-                </>
+                </div>
             }
             title={title}
+            closeAfterwards={closeAfterwards}
         />
     );
 };
 
-export const QuestionDialog = ({ title, subtext, text, onYes, onNo }) => {
+export const QuestionDialog = ({
+    title,
+    subtext,
+    text,
+    onYes,
+    onNo,
+    closeAfterwards,
+}) => {
     return (
         <CommonDialog
             text={text}
@@ -64,6 +86,7 @@ export const QuestionDialog = ({ title, subtext, text, onYes, onNo }) => {
             onYes={onYes}
             onNo={onNo}
             title={title}
+            closeAfterwards={closeAfterwards}
         />
     );
 };
