@@ -1,13 +1,27 @@
-import React from "react";
+import React, { useContext } from "react";
 import toast from "react-hot-toast";
+import { GlobalContext } from "../../../contexts/GlobalContext";
+import AddPerson from "./AddPerson";
+import Dialog from "../../helpers/Dialog";
 
 const SelectAssignees = ({ people, selectedTask, setSelectedTask }) => {
+    const { setDialog } = useContext(GlobalContext);
     const handleChange = (e) => {
         const value = e.target.value;
         if (value === "assign_person") {
             toast.success("Assign Person");
         } else if (value === "add_person") {
-            toast.success("Add Person");
+            setDialog(
+                <Dialog
+                    render={
+                        <AddPerson
+                            selectedTask={selectedTask}
+                            setSelectedTask={setSelectedTask}
+                        />
+                    }
+                    title="Add New Person"
+                />
+            );
         } else {
             const selectedPerson = people.filter(
                 (person) => person.id === parseInt(value)
@@ -21,8 +35,8 @@ const SelectAssignees = ({ people, selectedTask, setSelectedTask }) => {
                 },
             ];
             setSelectedTask({ ...selectedTask, assignees });
-            e.target.value = "assign_person";
         }
+        e.target.value = "assign_person";
     };
 
     return (

@@ -316,69 +316,6 @@
   color: #f10000;
 }
 
-#person_dialog .edit_form_container {
-  background-color: #ccc;
-  padding: 10px;
-  border-radius: 10px;
-}
-
-#person_dialog .edit_form_container > h3 {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  border-bottom: 1px solid;
-  padding-bottom: 5px;
-  margin-bottom: 10px;
-}
-
-#person_dialog .edit_form_container > h3 .new {
-  display: block;
-  color: red;
-  font-size: 0.8rem;
-}
-
-#person_dialog .edit_form_container .edit_form {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
-}
-
-#person_dialog .edit_form_container .edit_form input {
-  border: none;
-  outline: none;
-  padding: 0.4rem 0.6rem;
-  margin-bottom: 8px;
-  border-radius: 10px;
-  -webkit-box-flex: 1;
-      -ms-flex-positive: 1;
-          flex-grow: 1;
-  font-size: 0.9rem;
-}
-
-#person_dialog .edit_form_container .edit_form input::-webkit-input-placeholder {
-  font-weight: 300;
-}
-
-#person_dialog .edit_form_container .edit_form input:-ms-input-placeholder {
-  font-weight: 300;
-}
-
-#person_dialog .edit_form_container .edit_form input::-ms-input-placeholder {
-  font-weight: 300;
-}
-
-#person_dialog .edit_form_container .edit_form input::placeholder {
-  font-weight: 300;
-}
-
-#person_dialog .edit_form_container .edit_form .button-container {
-  text-align: right;
-}
-
 #person_dialog .people_list {
   margin-top: 10px;
   max-height: 15rem;
@@ -434,5 +371,72 @@
 
 #person_dialog .people_list .person_item .info.buttons button {
   margin-left: 5px;
+}
+
+.edit_form_container {
+  background-color: #ccc;
+  padding: 10px;
+  border-radius: 10px;
+}
+
+.edit_form_container.alone {
+  min-width: 300px;
+}
+
+.edit_form_container > h3 {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  border-bottom: 1px solid;
+  padding-bottom: 5px;
+  margin-bottom: 10px;
+}
+
+.edit_form_container > h3 .new {
+  display: block;
+  color: red;
+  font-size: 0.8rem;
+}
+
+.edit_form_container .edit_form {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+
+.edit_form_container .edit_form input {
+  border: none;
+  outline: none;
+  padding: 0.4rem 0.6rem;
+  margin-bottom: 8px;
+  border-radius: 10px;
+  -webkit-box-flex: 1;
+      -ms-flex-positive: 1;
+          flex-grow: 1;
+  font-size: 0.9rem;
+}
+
+.edit_form_container .edit_form input::-webkit-input-placeholder {
+  font-weight: 300;
+}
+
+.edit_form_container .edit_form input:-ms-input-placeholder {
+  font-weight: 300;
+}
+
+.edit_form_container .edit_form input::-ms-input-placeholder {
+  font-weight: 300;
+}
+
+.edit_form_container .edit_form input::placeholder {
+  font-weight: 300;
+}
+
+.edit_form_container .edit_form .button-container {
+  text-align: right;
 }
 /*# sourceMappingURL=App.css.map */

@@ -40,12 +40,14 @@ function App() {
             .then((res) => res.json())
             .then((data) => setTasks(data))
             .catch((err) => console.error(err));
+    }, [refreshData, setTasks]);
 
+    useEffect(() => {
         fetch("http://localhost:4200/api/person")
             .then((res) => res.json())
             .then((data) => setPeople(data))
             .catch((err) => console.error(err));
-    }, [refreshData, setTasks, setPeople]);
+    }, [refreshData, setPeople]);
 
     useEffect(() => {
         if (selectedTask && selectedTask.id) {

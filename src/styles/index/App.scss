@@ -256,48 +256,6 @@
         }
     }
 
-    .edit_form_container {
-        background-color: #ccc;
-        padding: 10px;
-        border-radius: 10px;
-
-        & > h3 {
-            display: flex;
-            border-bottom: 1px solid;
-            padding-bottom: 5px;
-            margin-bottom: 10px;
-
-            .new {
-                display: block;
-
-                color: red;
-                font-size: 0.8rem;
-            }
-        }
-        .edit_form {
-            display: flex;
-            flex-direction: column;
-
-            input {
-                border: none;
-                outline: none;
-                padding: 0.4rem 0.6rem;
-                margin-bottom: 8px;
-                border-radius: 10px;
-                flex-grow: 1;
-                font-size: 0.9rem;
-
-                &::placeholder {
-                    font-weight: 300;
-                }
-            }
-
-            .button-container {
-                text-align: right;
-            }
-        }
-    }
-
     .people_list {
         margin-top: 10px;
         max-height: 15rem;
@@ -347,6 +305,52 @@
                     }
                 }
             }
+        }
+    }
+}
+
+.edit_form_container {
+    background-color: #ccc;
+    padding: 10px;
+    border-radius: 10px;
+
+    &.alone {
+        min-width: 300px;
+    }
+
+    & > h3 {
+        display: flex;
+        border-bottom: 1px solid;
+        padding-bottom: 5px;
+        margin-bottom: 10px;
+
+        .new {
+            display: block;
+
+            color: red;
+            font-size: 0.8rem;
+        }
+    }
+    .edit_form {
+        display: flex;
+        flex-direction: column;
+
+        input {
+            border: none;
+            outline: none;
+            padding: 0.4rem 0.6rem;
+            margin-bottom: 8px;
+            border-radius: 10px;
+            flex-grow: 1;
+            font-size: 0.9rem;
+
+            &::placeholder {
+                font-weight: 300;
+            }
+        }
+
+        .button-container {
+            text-align: right;
         }
     }
 }
