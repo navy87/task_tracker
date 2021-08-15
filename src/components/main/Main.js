@@ -3,6 +3,7 @@ import { GlobalContext } from "../../contexts/GlobalContext";
 import "../../styles/main/main.css";
 import TaskInfo from "./taskinfo/TaskInfo";
 import TrackInfo from "./trackInfo/TrackInfo";
+import LogoPage from "./logoPage/LogoPage";
 
 const Main = () => {
     const { selectedTask } = useContext(GlobalContext);
@@ -15,7 +16,7 @@ const Main = () => {
                     <TrackInfo />
                 </>
             ) : (
-                <></>
+                <LogoPage />
             )}
         </div>
     );

@@ -243,4 +243,30 @@
   margin-top: 5px;
   font-size: 0.9rem;
 }
+
+#id_logo_page {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  height: 100vh;
+}
+
+#id_logo_page .icon {
+  width: 10rem;
+  height: 10rem;
+}
+
+#id_logo_page > h1 {
+  font-size: 5rem;
+}
 /*# sourceMappingURL=main.css.map */

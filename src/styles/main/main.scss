@@ -207,3 +207,20 @@
         }
     }
 }
+
+#id_logo_page {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+
+    .icon {
+        width: 10rem;
+        height: 10rem;
+    }
+
+    & > h1 {
+        font-size: 5rem;
+    }
+}
