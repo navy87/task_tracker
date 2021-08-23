@@ -4,7 +4,7 @@ import { GiRadioactive } from "react-icons/gi";
 import { MdEmail, MdPerson } from "react-icons/md";
 import { GlobalContext } from "../../../contexts/GlobalContext";
 import { DataContext } from "../../../contexts/SidebarContext";
-import { DeepCopy } from "../../helpers/Helper";
+import { DeepCopy, getProfileURL } from "../../helpers/Helper";
 import PersonDialog from "./PersonDialog";
 import Dialog, { QuestionDialog } from "../../helpers/Dialog";
 
@@ -36,7 +36,7 @@ const PersonItem = ({ currentPerson, setCurrentPerson, selected }) => {
             headers: { "Content-Type": "application/json" },
         };
 
-        const url = `http://localhost:4200/api/person/${currentPerson.id}`;
+        const url = getProfileURL(currentPerson.id);
 
         fetch(url, requestOptions)
             .then((res) => {

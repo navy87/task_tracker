@@ -8,6 +8,13 @@ import { Toaster } from "react-hot-toast";
 import ReactTooltip from "react-tooltip";
 import Particles from "react-tsparticles";
 import styled from "styled-components";
+import {
+    getProfileURL,
+    getTaskURL,
+    getTaskTracksURL,
+} from "./components/helpers/Helper";
+
+require("dotenv").config();
 
 function App() {
     const [selectedTask, setSelectedTask] = useState();
@@ -38,14 +45,15 @@ function App() {
     };
 
     useEffect(() => {
-        fetch("http://localhost:4200/api/task")
+        // fetch("http://localhost:4200/api/task")
+        fetch(getTaskURL())
             .then((res) => res.json())
             .then((data) => setTasks(data))
             .catch((err) => console.error(err));
     }, [refreshData, setTasks]);
 
     useEffect(() => {
-        fetch("http://localhost:4200/api/person")
+        fetch(getProfileURL())
             .then((res) => res.json())
             .then((data) => setPeople(data))
             .catch((err) => console.error(err));
@@ -53,7 +61,7 @@ function App() {
 
     useEffect(() => {
         if (selectedTask && selectedTask.id) {
-            fetch(`http://localhost:4200/api/task/${selectedTask.id}/tracks`)
+            fetch(getTaskTracksURL(selectedTask.id))
                 .then((res) => res.json())
                 .then((data) => setTracks(data))
                 .catch((err) => console.error(err));

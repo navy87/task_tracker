@@ -3,6 +3,7 @@ import toast from "react-hot-toast";
 import { MdDelete } from "react-icons/md";
 import { GlobalContext } from "../../../contexts/GlobalContext";
 import { QuestionDialog } from "../../helpers/Dialog";
+import { getTracksURL } from "../../helpers/Helper";
 
 const TrackItem = ({ track }) => {
     const { refresh, setDialog } = useContext(GlobalContext);
@@ -12,7 +13,7 @@ const TrackItem = ({ track }) => {
             method: "DELETE",
         };
 
-        const url = `http://localhost:4200/api/track/${track.id}`;
+        const url = getTracksURL(track.id);
         fetch(url, requestOptions)
             .then((res) => {
                 res.text();

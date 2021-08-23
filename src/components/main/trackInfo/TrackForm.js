@@ -1,7 +1,7 @@
 import React, { useContext, useEffect, useState } from "react";
 import { MdAddCircleOutline } from "react-icons/md";
 import InfoContainer from "../InfoContainer";
-import { DeepCopy, GetToday } from "../../helpers/Helper";
+import { DeepCopy, GetToday, getTaskTracksURL } from "../../helpers/Helper";
 import { GlobalContext } from "../../../contexts/GlobalContext";
 import toast from "react-hot-toast";
 const TrackForm = () => {
@@ -29,7 +29,7 @@ const TrackForm = () => {
             body: JSON.stringify(track),
         };
 
-        const url = `http://localhost:4200/api/task/${selectedTask.id}/tracks/`;
+        const url = getTaskTracksURL(selectedTask.id);
         fetch(url, requestOptions)
             .then((res) => {
                 res.json();

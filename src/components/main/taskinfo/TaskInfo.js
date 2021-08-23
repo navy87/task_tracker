@@ -3,7 +3,7 @@ import React, { useContext, useEffect, useState } from "react";
 import { MdDeleteForever, MdSave } from "react-icons/md";
 import { GlobalContext } from "../../../contexts/GlobalContext";
 import { DataContext } from "../../../contexts/SidebarContext";
-import { DeepCopy } from "../../helpers/Helper";
+import { DeepCopy, getTaskURL } from "../../helpers/Helper";
 import InfoContainer from "../InfoContainer";
 import AssigneeButton from "./AssigneeButton";
 import PriorityInfo from "./PriorityInfo";
@@ -44,8 +44,8 @@ const TaskInfo = () => {
         };
 
         const url = selectedTaskCopy.id
-            ? `http://localhost:4200/api/task/${selectedTask.id}`
-            : `http://localhost:4200/api/task/`;
+            ? getTaskURL(selectedTaskCopy.id)
+            : getTaskURL();
 
         fetch(url, requestOptions)
             .then((res) => {
@@ -77,7 +77,7 @@ const TaskInfo = () => {
             body: JSON.stringify(selectedTaskCopy),
         };
 
-        const url = `http://localhost:4200/api/task/${selectedTask.id}`;
+        const url = getTaskURL(selectedTask.id);
 
         fetch(url, requestOptions)
             .then((res) => {

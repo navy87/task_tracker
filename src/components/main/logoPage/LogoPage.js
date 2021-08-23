@@ -1,9 +1,6 @@
 import React from "react";
 import { FcPlanner } from "react-icons/fc";
 
-
-
-
 const LogoPage = () => {
     return (
         <div id="id_logo_page">

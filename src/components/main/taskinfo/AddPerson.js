@@ -1,6 +1,7 @@
 import React, { useContext, useState } from "react";
 import toast from "react-hot-toast";
 import { GlobalContext } from "../../../contexts/GlobalContext";
+import { getProfileURL } from "../../helpers/Helper";
 
 const AddPerson = ({ selectedTask, setSelectedTask }) => {
     const { setDialog, refresh } = useContext(GlobalContext);
@@ -18,9 +19,9 @@ const AddPerson = ({ selectedTask, setSelectedTask }) => {
             body: JSON.stringify(newPerson),
         };
 
-        const url = `http://localhost:4200/api/person/`;
+        // const url = `http://localhost:4200/api/person/`;
 
-        fetch(url, requestOptions)
+        fetch(getProfileURL(), requestOptions)
             .then((res) => {
                 if (res.ok) {
                     refresh();

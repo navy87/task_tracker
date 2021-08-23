@@ -1,7 +1,7 @@
 import React, { useContext } from "react";
 import toast from "react-hot-toast";
 import { GlobalContext } from "../../../contexts/GlobalContext";
-import { DeepCopy } from "../../helpers/Helper";
+import { DeepCopy, getProfileURL } from "../../helpers/Helper";
 
 const PersonForm = ({ currentPerson, setCurrentPerson }) => {
     const { refresh } = useContext(GlobalContext);
@@ -20,8 +20,8 @@ const PersonForm = ({ currentPerson, setCurrentPerson }) => {
         };
 
         const url = currentPerson.id
-            ? `http://localhost:4200/api/person/${currentPerson.id}`
-            : `http://localhost:4200/api/person/`;
+            ? getProfileURL(currentPerson.id)
+            : getProfileURL();
 
         fetch(url, requestOptions)
             .then((res) => {

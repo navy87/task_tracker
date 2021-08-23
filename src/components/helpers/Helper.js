@@ -1,3 +1,5 @@
+require("dotenv").config();
+
 export const Capitalize = (word) => {
     word = word.toLowerCase();
     word = word[0].toUpperCase() + word.substr(1);
@@ -62,4 +64,30 @@ export const compareTask = (task1, task2, taskSortOrder) => {
                 priorityAscendingOrder) * descFactor
         );
     }
+};
+
+export const getBaseURL = () => {
+    return `${process.env.REACT_APP_BACKEND_BASE_URL}:${process.env.REACT_APP_BACKEND_BASE_PORT}${process.env.REACT_APP_BACKEND_API_PREFIX}`;
+};
+
+export const getTaskURL = (id = null) => {
+    return `${getBaseURL()}/${process.env.REACT_APP_TASK_URL}/${
+        id !== null ? id : ""
+    }`;
+};
+
+export const getProfileURL = (id = null) => {
+    return `${getBaseURL()}/${process.env.REACT_APP_PROFILE_URL}/${
+        id !== null ? id : ""
+    }`;
+};
+
+export const getTaskTracksURL = (taskId) => {
+    return `${getTaskURL()}/${taskId}/tracks`;
+};
+
+export const getTracksURL = (id = null) => {
+    return `${getBaseURL()}/${process.env.REACT_APP_TRACK_URL}/${
+        id !== null ? id : ""
+    }`;
 };
