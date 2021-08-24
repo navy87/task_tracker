@@ -4,7 +4,7 @@ import SideBar from "./components/sidebar/SideBar";
 import { GlobalContext } from "./contexts/GlobalContext";
 import { DataContext, FilterContext } from "./contexts/SidebarContext";
 import "./styles/index/App.css";
-import { Toaster } from "react-hot-toast";
+import toast, { Toaster } from "react-hot-toast";
 import ReactTooltip from "react-tooltip";
 import Particles from "react-tsparticles";
 import styled from "styled-components";
@@ -44,19 +44,29 @@ function App() {
         setRefreshData((oldRefresh) => !oldRefresh);
     };
 
+    const fetchingErrorHandler = (err) => {
+        console.error(err);
+        toast.error(
+            "Something went wrong! Please make sure the server is running.",
+            {
+                position: "top-center",
+                autoClose: 5000,
+            }
+        );
+    };
+
     useEffect(() => {
-        // fetch("http://localhost:4200/api/task")
         fetch(getTaskURL())
             .then((res) => res.json())
             .then((data) => setTasks(data))
-            .catch((err) => console.error(err));
+            .catch((err) => fetchingErrorHandler(err));
     }, [refreshData, setTasks]);
 
     useEffect(() => {
         fetch(getProfileURL())
             .then((res) => res.json())
             .then((data) => setPeople(data))
-            .catch((err) => console.error(err));
+            .catch((err) => fetchingErrorHandler(err));
     }, [refreshData, setPeople]);
 
     useEffect(() => {
@@ -64,7 +74,7 @@ function App() {
             fetch(getTaskTracksURL(selectedTask.id))
                 .then((res) => res.json())
                 .then((data) => setTracks(data))
-                .catch((err) => console.error(err));
+                .catch((err) => fetchingErrorHandler(err));
         } else {
             setTracks(null);
         }
