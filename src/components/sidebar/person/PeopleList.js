@@ -7,14 +7,16 @@ const PersonList = ({ currentPerson, setCurrentPerson, filteredKeyword }) => {
     return (
         <div className="people_list">
             {[...people]
-                .filter((person) =>
-                    person.name
+                .filter((person) => {
+                    return person.name
                         .toLowerCase()
-                        .includes(filteredKeyword.toLowerCase())
-                )
-                .sort((a, b) =>
-                    a.name.toLowerCase().localeCompare(b.name.toLowerCase())
-                )
+                        .includes(filteredKeyword.toLowerCase());
+                })
+                .sort((a, b) => {
+                    return a.name
+                        .toLowerCase()
+                        .localeCompare(b.name.toLowerCase());
+                })
                 .map((person, index) => (
                     <PersonItem
                         currentPerson={person}

@@ -4,7 +4,7 @@ import { FcPlanner } from "react-icons/fc";
 const LogoPage = () => {
     return (
         <div id="id_logo_page">
-            <FcPlanner class="icon" />
+            <FcPlanner className="icon" />
             <h1>Task Tracking App</h1>
         </div>
     );
