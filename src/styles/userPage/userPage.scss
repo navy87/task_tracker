@@ -27,15 +27,17 @@
     display: flex;
 
     .content {
+        display: grid;
         flex-grow: 1;
+        height: calc(100vh - 80px);
     }
 }
 
 #sidebar {
     // position: fixed;
     width: 24rem;
-    height: 100vh;
-    box-shadow: 3px 3px 3px #bbb;
+    // height: 100vh;
+    box-shadow: 2px 2px 2px #bbb;
 
     background-color: #eee;
     padding: 0.5rem;
@@ -541,7 +543,7 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    height: 100vh;
+    height: 100%;
 
     .icon {
         width: 10rem;
@@ -560,6 +562,7 @@
     align-items: center;
     background-color: #444;
     color: white;
+    box-shadow: 5px 5px 5px #888;
 
     .logo-container {
         display: flex;
