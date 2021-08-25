@@ -1,47 +1,39 @@
 import React from "react";
 import { FcPlanner } from "react-icons/fc";
 import "../../styles/login/login.css";
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import LoginForm from "./LoginForm";
+import ForgotPassword from "./ForgotPassword";
+import ResetPassword from "./ResetPassword";
 
-const LoginPage = () => {
-    const handleLogin = (e) => {
-        e.preventDefault();
-    };
-
+const LoginPage = ({ match }) => {
     return (
-        <div id="id_login_page">
-            <div className="container">
-                <div className="logo-container">
-                    <FcPlanner className="logo" />
-                    <h1>Task Tracker</h1>
-                </div>
-                <form method="POST" onSubmit={handleLogin}>
-                    <input
-                        type="text"
-                        name="username"
-                        placeholder="Username"
-                        autoComplete="off"
-                    />
-                    <input
-                        type="password"
-                        name="password"
-                        placeholder="Password"
-                        autoComplete="off"
-                    />
-                    <label htmlFor="id_remember_me">
-                        Remember Me
-                        <input
-                            id="id_remember_me"
-                            type="checkbox"
-                            name="remember-me"
+        <Router>
+            <div id="id_login_page">
+                <div className="container">
+                    <div className="logo-container">
+                        <FcPlanner className="logo" />
+                        <h1>Task Tracker</h1>
+                    </div>
+
+                    <Switch>
+                        <Route
+                            path={`${match.url}/`}
+                            exact
+                            component={LoginForm}
                         />
-                    </label>
-                    <input type="submit" value="Login" />
-                </form>
-                <a href="/login" id="id-forgot-password">
-                    Forgot Password
-                </a>
+                        <Route
+                            path={`${match.url}/forgotPassword`}
+                            component={ForgotPassword}
+                        />
+                        <Route
+                            path={`${match.url}/resetPassword`}
+                            component={ResetPassword}
+                        />
+                    </Switch>
+                </div>
             </div>
-        </div>
+        </Router>
     );
 };
 

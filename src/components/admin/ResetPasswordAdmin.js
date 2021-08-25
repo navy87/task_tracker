@@ -1,7 +1,6 @@
 import React from "react";
 
-const ResetPassword = ({ match }) => {
-    
+const ResetPasswordAdmin = ({ match }) => {
     const handleResetPassword = (e) => {
         e.preventDefault();
     };
@@ -27,4 +26,4 @@ const ResetPassword = ({ match }) => {
     );
 };
 
-export default ResetPassword;
+export default ResetPasswordAdmin;

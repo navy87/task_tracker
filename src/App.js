@@ -85,8 +85,8 @@ function App() {
                 enable: true,
                 outMode: "bounce",
                 random: false,
-                speed: 1,
-                straight: false,
+                speed: 0.5,
+                straight: true,
             },
             number: {
                 density: {

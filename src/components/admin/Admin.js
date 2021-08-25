@@ -3,7 +3,7 @@ import "../../styles/admin/admin.css"; // This Import must be last for some reas
 import Dashboard from "./Dashboard";
 import { Switch, Route, BrowserRouter as Router } from "react-router-dom";
 import CreateUser from "./CreateUser";
-import ResetPassword from "./ResetPassword";
+import ResetPasswordAdmin from "./ResetPasswordAdmin";
 import DeactivateAccount from "./DeactivateAccount";
 
 const Admin = ({ match }) => {
@@ -28,7 +28,7 @@ const Admin = ({ match }) => {
                         <Route
                             path={`${match.url}/resetPassword`}
                             exact
-                            component={ResetPassword}
+                            component={ResetPasswordAdmin}
                         />
                         <Route
                             path={`${match.url}/deactivateAccount`}

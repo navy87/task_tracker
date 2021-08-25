@@ -13,9 +13,11 @@
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
           flex-direction: column;
-  -webkit-box-align: end;
-      -ms-flex-align: end;
-          align-items: flex-end;
+  background-color: #fff;
+  padding: 1rem;
+  border-radius: 0.5rem;
+  -webkit-box-shadow: 0px 0px 10px #dedede;
+          box-shadow: 0px 0px 10px #dedede;
 }
 
 #id_login_page .container .logo-container {
@@ -33,7 +35,7 @@
   height: 6rem;
 }
 
-#id_login_page .container form {
+#id_login_page .container .form-container {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -46,7 +48,50 @@
           align-items: flex-end;
 }
 
-#id_login_page .container form > input {
+#id_login_page .container .form-container .forgot-password-container {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  width: 100%;
+  margin-bottom: 0.5rem;
+}
+
+#id_login_page .container .form-container .forgot-password-container > input,
+#id_login_page .container .form-container .forgot-password-container button {
+  padding: 0.5rem;
+  border: 1px solid #ccc;
+  border-radius: 5px 0 0 5px;
+  outline: none;
+  -webkit-transition: all 0.25s;
+  transition: all 0.25s;
+}
+
+#id_login_page .container .form-container .forgot-password-container > input[type="text"] {
+  -webkit-box-flex: 1;
+      -ms-flex-positive: 1;
+          flex-grow: 1;
+}
+
+#id_login_page .container .form-container .forgot-password-container > button {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  cursor: pointer;
+  border-left: none;
+  border-radius: 0 5px 5px 0;
+  background-color: blue;
+  color: white;
+}
+
+#id_login_page .container .form-container .forgot-password-container > button:active {
+  -webkit-transform: scale(0.98) translateX(-2px);
+          transform: scale(0.98) translateX(-2px);
+}
+
+#id_login_page .container .form-container > input {
   min-width: 300px;
   padding: 0.5rem;
   outline: none;
@@ -59,14 +104,14 @@
   transition: all 0.5s;
 }
 
-#id_login_page .container form > input:focus {
+#id_login_page .container .form-container > input:focus {
   -webkit-box-shadow: 5px 5px 5px #ccc;
           box-shadow: 5px 5px 5px #ccc;
   -webkit-transform: scale(1.015);
           transform: scale(1.015);
 }
 
-#id_login_page .container form > label {
+#id_login_page .container .form-container > label {
   margin-bottom: 0.5rem;
   cursor: pointer;
   display: -webkit-box;
@@ -79,7 +124,7 @@
   font-size: 0.9rem;
 }
 
-#id_login_page .container form input[type="submit"] {
+#id_login_page .container .form-container input[type="submit"] {
   cursor: pointer;
   color: white;
   background: -webkit-gradient(linear, left top, right top, from(#3d4699), color-stop(50.67%, #233e74), to(#0068e2));
@@ -89,7 +134,7 @@
           box-shadow: 5px 5px 10px #ddd;
 }
 
-#id_login_page .container form input[type="submit"]:active {
+#id_login_page .container .form-container input[type="submit"]:active {
   -webkit-transform: scale(0.99);
           transform: scale(0.99);
   background-color: navy;
