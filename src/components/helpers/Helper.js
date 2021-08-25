@@ -95,3 +95,7 @@ export const getTracksURL = (id = null) => {
 export const getUserURL = () => {
     return `${getBaseURL()}/${process.env.REACT_APP_USER_URL}`;
 };
+
+export const getLoginURL = () => {
+    return `${process.env.REACT_APP_LOGIN_URL}`;
+};

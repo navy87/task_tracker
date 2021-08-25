@@ -1,8 +1,40 @@
-import React from "react";
+import React, { useState } from "react";
+import toast from "react-hot-toast";
+import { getLoginURL } from "../helpers/Helper";
+import axios from "axios";
 
 const LoginForm = ({ match }) => {
+    const emptyForm = {
+        username: "",
+        password: "",
+    };
+    const [login, setLogin] = useState(emptyForm);
+
     const handleLogin = (e) => {
         e.preventDefault();
+        console.log(login);
+
+        const requestOptions = {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+                accept: "*/*",
+            },
+            body: JSON.stringify(login),
+        };
+
+        const url = getLoginURL();
+
+        axios
+            .post(url, JSON.stringify(login), requestOptions)
+            .then((res) => console.log(res.headers))
+            .catch((error) => {
+                console.error(error);
+                toast.error("There was an error.", {
+                    position: "top-center",
+                    autoClose: 5000,
+                });
+            });
     };
 
     return (
@@ -18,6 +50,13 @@ const LoginForm = ({ match }) => {
                     name="username"
                     placeholder="Username"
                     autoComplete="off"
+                    value={login.username}
+                    onChange={(e) =>
+                        setLogin((current) => ({
+                            ...current,
+                            username: e.target.value,
+                        }))
+                    }
                 />
                 <input
                     type="password"
@@ -25,6 +64,13 @@ const LoginForm = ({ match }) => {
                     name="password"
                     placeholder="Password"
                     autoComplete="off"
+                    value={login.password}
+                    onChange={(e) =>
+                        setLogin((current) => ({
+                            ...current,
+                            password: e.target.value,
+                        }))
+                    }
                 />
                 <label htmlFor="id_remember_me">
                     Remember Me

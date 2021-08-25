@@ -6,7 +6,7 @@ import LoginForm from "./LoginForm";
 import ForgotPassword from "./ForgotPassword";
 import ResetPassword from "./ResetPassword";
 
-const LoginPage = ({ match }) => {
+const LoginPageContainer = ({ match }) => {
     return (
         <Router>
             <div id="id_login_page">
@@ -37,4 +37,4 @@ const LoginPage = ({ match }) => {
     );
 };
 
-export default LoginPage;
+export default LoginPageContainer;
