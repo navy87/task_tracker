@@ -2,12 +2,13 @@ import React, { useContext } from "react";
 import toast from "react-hot-toast";
 import { MdDelete } from "react-icons/md";
 import { GlobalContext } from "../../../contexts/GlobalContext";
+import { DataContext } from "../../../contexts/SidebarContext";
 import { QuestionDialog } from "../../helpers/Dialog";
 import { getTracksURL } from "../../helpers/Helper";
 
 const TrackItem = ({ track }) => {
-    const { refresh, setDialog } = useContext(GlobalContext);
-
+    const { setDialog } = useContext(GlobalContext);
+    const { refresh } = useContext(DataContext);
     const deleteTrack = () => {
         const requestOptions = {
             method: "DELETE",

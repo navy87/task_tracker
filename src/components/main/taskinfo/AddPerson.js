@@ -1,10 +1,12 @@
 import React, { useContext, useState } from "react";
 import toast from "react-hot-toast";
 import { GlobalContext } from "../../../contexts/GlobalContext";
+import { DataContext } from "../../../contexts/SidebarContext";
 import { getProfileURL } from "../../helpers/Helper";
 
 const AddPerson = ({ selectedTask, setSelectedTask }) => {
-    const { setDialog, refresh } = useContext(GlobalContext);
+    const { setDialog } = useContext(GlobalContext);
+    const { refresh } = useContext(DataContext);
     // const { people } = useContext(DataContext);
 
     const [newPerson, setNewPerson] = useState({ id: 0, name: "", email: "" });

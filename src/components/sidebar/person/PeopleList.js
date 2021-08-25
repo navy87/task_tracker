@@ -4,18 +4,20 @@ import { DataContext } from "../../../contexts/SidebarContext";
 
 const PersonList = ({ currentPerson, setCurrentPerson, filteredKeyword }) => {
     const { people } = useContext(DataContext);
+
+    console.log(people);
     return (
         <div className="people_list">
             {[...people]
                 .filter((person) => {
-                    return person.name
+                    return person.fullName
                         .toLowerCase()
                         .includes(filteredKeyword.toLowerCase());
                 })
                 .sort((a, b) => {
-                    return a.name
+                    return a.fullName
                         .toLowerCase()
-                        .localeCompare(b.name.toLowerCase());
+                        .localeCompare(b.fullName.toLowerCase());
                 })
                 .map((person, index) => (
                     <PersonItem

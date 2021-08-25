@@ -2,10 +2,10 @@ import React, { useContext, useEffect, useState } from "react";
 import { MdAddCircleOutline } from "react-icons/md";
 import InfoContainer from "../InfoContainer";
 import { DeepCopy, GetToday, getTaskTracksURL } from "../../helpers/Helper";
-import { GlobalContext } from "../../../contexts/GlobalContext";
 import toast from "react-hot-toast";
+import { DataContext } from "../../../contexts/SidebarContext";
 const TrackForm = () => {
-    const { selectedTask, refresh } = useContext(GlobalContext);
+    const { selectedTask, refresh } = useContext(DataContext);
 
     const [emptyTrack] = useState({
         date: GetToday(),

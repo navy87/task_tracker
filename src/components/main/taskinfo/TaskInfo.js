@@ -14,10 +14,10 @@ import toast from "react-hot-toast";
 import { QuestionDialog } from "../../helpers/Dialog";
 
 const TaskInfo = () => {
-    const { selectedTask, setSelectedTask, refresh, setDialog } =
-        useContext(GlobalContext);
+    const { setDialog } = useContext(GlobalContext);
     const [selectedTaskCopy, setSelectedTaskCopy] = useState(undefined);
-    const { people, tasks } = useContext(DataContext);
+    const { people, tasks, selectedTask, setSelectedTask, refresh } =
+        useContext(DataContext);
 
     useEffect(() => {
         if (selectedTask) {

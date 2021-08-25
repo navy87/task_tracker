@@ -9,8 +9,8 @@ import PersonDialog from "./PersonDialog";
 import Dialog, { QuestionDialog } from "../../helpers/Dialog";
 
 const PersonItem = ({ currentPerson, setCurrentPerson, selected }) => {
-    const { tasks } = useContext(DataContext);
-    const { refresh, setDialog } = useContext(GlobalContext);
+    const { tasks, refresh } = useContext(DataContext);
+    const { setDialog } = useContext(GlobalContext);
     const [actives, setActives] = useState(0);
 
     useEffect(() => {
@@ -87,7 +87,7 @@ const PersonItem = ({ currentPerson, setCurrentPerson, selected }) => {
     return (
         <div className={`person_item ${selected && "selected"}`}>
             <div className="info">
-                <MdPerson className="icon" /> {currentPerson.name}
+                <MdPerson className="icon" /> {currentPerson.fullName}
             </div>
             <div className="info">
                 <MdEmail className="icon" />

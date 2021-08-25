@@ -1,11 +1,9 @@
 import React, { useContext } from "react";
-import { GlobalContext } from "../../../contexts/GlobalContext";
 import { DataContext } from "../../../contexts/SidebarContext";
 import TrackItem from "./TrackItem";
 
 const TrackList = () => {
-    const { tracks } = useContext(DataContext);
-    const { trackSortOrder } = useContext(GlobalContext);
+    const { tracks, trackSortOrder } = useContext(DataContext);
 
     return (
         <div className="tracks_list">

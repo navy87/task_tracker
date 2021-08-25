@@ -25,12 +25,14 @@
             min-width: 300px;
             padding: 0.5rem;
             outline: none;
-            box-shadow: 5px 5px 5px #88888855;
+            box-shadow: 5px 5px 5px transparent;
             margin-bottom: 0.5rem;
             border-radius: 5px;
+            transition: all 0.5s;
 
             &:focus {
                 box-shadow: 5px 5px 5px #888;
+                transform: scale(1.015);
             }
         }
 
@@ -38,11 +40,12 @@
             cursor: pointer;
             color: white;
             background-color: blue;
-            box-shadow: 5px 5px 5px #888;
+            box-shadow: 5px 5px 5px #aaa;
 
             &:active {
-                box-shadow: none;
-                // box-shadow: 5px 5px 5px #888;
+                transform: scale(0.99);
+                background-color: navy;
+                box-shadow: 2px 2px 2px #888;
             }
         }
 
@@ -103,29 +106,11 @@
             }
         }
 
+        .reset_password_container,
+        .deactivate_account_container,
         .create-user-container {
             padding: 20px;
-            background-color: #cccccccc;
-            box-shadow: 5px 5px 5px #888;
-            border-radius: 10px;
-
-            h2 {
-                text-align: center;
-                margin: 10px auto;
-                font-size: 1.5rem;
-                font-weight: 300;
-            }
-            #create-user-form {
-                display: flex;
-                flex-direction: column;
-                padding: 10px;
-            }
-        }
-
-        .reset_password_container,
-        .deactivate_account_container {
-            padding: 20px;
-            background-color: #cccccccc;
+            background-color: #cccccc;
             box-shadow: 5px 5px 5px #888;
             border-radius: 10px;
 
@@ -137,9 +122,18 @@
             }
 
             #id_reset_password_form,
-            #id_deactivate_account_form {
+            #id_deactivate_account_form,
+            #create-user-form {
                 display: flex;
                 flex-direction: column;
+
+                .form-subtitle {
+                    margin: 0.5rem 0;
+                    padding: 3px 0;
+                    font-weight: 300;
+                    // border-top: 1px solid #bbb;
+                    border-bottom: 1px solid #bbb;
+                }
             }
         }
     }

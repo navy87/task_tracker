@@ -1,12 +1,12 @@
 import React, { useContext } from "react";
-import { GlobalContext } from "../../contexts/GlobalContext";
 import "../../styles/main/main.css";
 import TaskInfo from "./taskinfo/TaskInfo";
 import TrackInfo from "./trackInfo/TrackInfo";
 import LogoPage from "./logoPage/LogoPage";
+import { DataContext } from "../../contexts/SidebarContext";
 
 const Main = () => {
-    const { selectedTask } = useContext(GlobalContext);
+    const { selectedTask } = useContext(DataContext);
 
     return (
         <div id="main">

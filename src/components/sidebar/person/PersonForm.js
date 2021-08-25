@@ -1,10 +1,10 @@
 import React, { useContext } from "react";
 import toast from "react-hot-toast";
-import { GlobalContext } from "../../../contexts/GlobalContext";
+import { DataContext } from "../../../contexts/SidebarContext";
 import { DeepCopy, getProfileURL } from "../../helpers/Helper";
 
 const PersonForm = ({ currentPerson, setCurrentPerson }) => {
-    const { refresh } = useContext(GlobalContext);
+    const { refresh } = useContext(DataContext);
 
     const emptyPerson = {
         id: 0,

@@ -8,7 +8,7 @@ import {
 import { BsCalendar } from "react-icons/bs";
 import { IoIosPeople } from "react-icons/io";
 import { Capitalize } from "../../helpers/Helper";
-import { GlobalContext } from "../../../contexts/GlobalContext";
+import { DataContext } from "../../../contexts/SidebarContext";
 
 const priorityMap = {
     low: {
@@ -26,7 +26,7 @@ const priorityMap = {
 };
 
 const TaskItem = ({ task }) => {
-    const { setSelectedTask, selectedTask } = useContext(GlobalContext);
+    const { setSelectedTask, selectedTask } = useContext(DataContext);
 
     const { issue, description, dueDate, assignees, status } = task;
     const priority = task.priority.toLowerCase();

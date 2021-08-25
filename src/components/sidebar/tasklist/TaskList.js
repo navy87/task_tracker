@@ -1,5 +1,4 @@
 import React, { useContext } from "react";
-import { GlobalContext } from "../../../contexts/GlobalContext";
 import { DataContext, FilterContext } from "../../../contexts/SidebarContext";
 import TaskItem from "./TaskItem";
 import { compareTask } from "../../helpers/Helper";
@@ -12,7 +11,7 @@ const TaskList = () => {
         filteredKeywords,
         filteredPersons,
     } = useContext(FilterContext);
-    const { taskSortOrder } = useContext(GlobalContext);
+    const { taskSortOrder } = useContext(DataContext);
 
     return (
         <div className="task_list">

@@ -1,11 +1,10 @@
 import React, { useContext } from "react";
-import { GlobalContext } from "../../../contexts/GlobalContext";
-import { FilterContext } from "../../../contexts/SidebarContext";
+import { DataContext, FilterContext } from "../../../contexts/SidebarContext";
 import SortBySelect from "./SortBySelect";
 import SortOrderSelect from "./SortOrderSelect";
 
 const SortSetting = () => {
-    const { taskSortOrder, setTaskSortOrder } = useContext(GlobalContext);
+    const { taskSortOrder, setTaskSortOrder } = useContext(DataContext);
     const { sorterVisible } = useContext(FilterContext);
     return sorterVisible ? (
         <div className="sort_setting">

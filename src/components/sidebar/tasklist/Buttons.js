@@ -1,12 +1,10 @@
 import React, { useContext } from "react";
-import { GlobalContext } from "../../../contexts/GlobalContext";
 import { GetToday } from "../../helpers/Helper";
-import { MdNoteAdd, MdPeople } from "react-icons/md";
-import Dialog from "../../helpers/Dialog";
-import PersonDialog from "../person/PersonDialog";
+import { MdNoteAdd } from "react-icons/md";
+import { DataContext } from "../../../contexts/SidebarContext";
 
 const Buttons = () => {
-    const { setSelectedTask, setDialog } = useContext(GlobalContext);
+    const { setSelectedTask } = useContext(DataContext);
 
     const emptyTask = {
         id: 0,
@@ -24,18 +22,10 @@ const Buttons = () => {
         setSelectedTask(emptyTask);
     };
 
-    const handlePeople = (e) => {
-        e.preventDefault();
-        setDialog(<Dialog render={<PersonDialog />} />);
-    };
-
     return (
         <div className="buttons">
             <button className="md_btn" onClick={handleAddTask}>
                 <MdNoteAdd className="icon" /> Add Task
-            </button>
-            <button className="md_btn" onClick={handlePeople}>
-                <MdPeople className="icon" /> People
             </button>
         </div>
     );

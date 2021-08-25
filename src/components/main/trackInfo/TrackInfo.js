@@ -1,12 +1,12 @@
 import React, { useContext } from "react";
-import { GlobalContext } from "../../../contexts/GlobalContext";
 import TrackForm from "./TrackForm";
 import TrackList from "./TrackList";
 import SortOrder from "./SortOrder";
+import { DataContext } from "../../../contexts/SidebarContext";
 
 const TrackInfo = () => {
     const { selectedTask, trackSortOrder, setTrackSortOrder } =
-        useContext(GlobalContext);
+        useContext(DataContext);
 
     return selectedTask && selectedTask.id ? (
         <div className="container">
