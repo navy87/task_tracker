@@ -1,5 +1,4 @@
 import React, { useContext } from "react";
-import "../../styles/main/main.css";
 import TaskInfo from "./taskinfo/TaskInfo";
 import TrackInfo from "./trackInfo/TrackInfo";
 import LogoPage from "./logoPage/LogoPage";

@@ -1,10 +1,12 @@
 import { useEffect, useState } from "react";
 import toast from "react-hot-toast";
 import { DataContext, FilterContext } from "../contexts/SidebarContext";
+import Header from "./header/Header";
 import { getProfileURL, getTaskTracksURL, getTaskURL } from "./helpers/Helper";
 import Main from "./main/Main";
 import SideBar from "./sidebar/SideBar";
 
+import "../styles/userPage/userPage.css";
 const UserPage = () => {
     const [selectedTask, setSelectedTask] = useState();
     const [trackSortOrder, setTrackSortOrder] = useState("desc");
@@ -101,8 +103,9 @@ const UserPage = () => {
     return (
         <FilterContext.Provider value={filterContextValues}>
             <DataContext.Provider value={dataContextValues}>
-                <SideBar />
+                <Header />
                 <div id="page">
+                    <SideBar />
                     <div className="content">
                         <Main />
                     </div>
