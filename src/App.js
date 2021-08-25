@@ -12,6 +12,7 @@ import { Switch, Route, BrowserRouter as Router } from "react-router-dom";
 
 import Admin from "./components/admin/Admin";
 import "./styles/index/App.css"; // This Import must be last for some reason
+import LoginPage from "./components/login/LoginPage";
 
 function App() {
     const [dialog, setDialog] = useState();
@@ -121,6 +122,7 @@ function App() {
                     <Toaster />
                     <ReactTooltip effect="solid" />
                     <Switch>
+                        <Route path="/login" component={LoginPage} />
                         <Route path="/admin" component={Admin} />
                         <Route path="/" exact component={UserPage} />
                     </Switch>

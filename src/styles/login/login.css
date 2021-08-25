@@ -1,0 +1,106 @@
+#id_login_page {
+  display: -ms-grid;
+  display: grid;
+  place-content: center;
+  height: 100vh;
+}
+
+#id_login_page .container {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: end;
+      -ms-flex-align: end;
+          align-items: flex-end;
+}
+
+#id_login_page .container .logo-container {
+  width: 100%;
+  text-align: center;
+  padding-bottom: 2rem;
+}
+
+#id_login_page .container .logo-container h1 {
+  font-size: 3rem;
+}
+
+#id_login_page .container .logo-container .logo {
+  width: 6rem;
+  height: 6rem;
+}
+
+#id_login_page .container form {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: end;
+      -ms-flex-align: end;
+          align-items: flex-end;
+}
+
+#id_login_page .container form > input {
+  min-width: 300px;
+  padding: 0.5rem;
+  outline: none;
+  border: 1px solid #ccc;
+  -webkit-box-shadow: 5px 5px 5px transparent;
+          box-shadow: 5px 5px 5px transparent;
+  margin-bottom: 0.5rem;
+  border-radius: 5px;
+  -webkit-transition: all 0.5s;
+  transition: all 0.5s;
+}
+
+#id_login_page .container form > input:focus {
+  -webkit-box-shadow: 5px 5px 5px #ccc;
+          box-shadow: 5px 5px 5px #ccc;
+  -webkit-transform: scale(1.015);
+          transform: scale(1.015);
+}
+
+#id_login_page .container form > label {
+  margin-bottom: 0.5rem;
+  cursor: pointer;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  gap: 3px;
+  font-size: 0.9rem;
+}
+
+#id_login_page .container form input[type="submit"] {
+  cursor: pointer;
+  color: white;
+  background: -webkit-gradient(linear, left top, right top, from(#3d4699), color-stop(50.67%, #233e74), to(#0068e2));
+  background: linear-gradient(90deg, #3d4699 0%, #233e74 50.67%, #0068e2 100%);
+  border-radius: 5px;
+  -webkit-box-shadow: 5px 5px 10px #ddd;
+          box-shadow: 5px 5px 10px #ddd;
+}
+
+#id_login_page .container form input[type="submit"]:active {
+  -webkit-transform: scale(0.99);
+          transform: scale(0.99);
+  background-color: navy;
+  -webkit-box-shadow: 2px 2px 2px #888;
+          box-shadow: 2px 2px 2px #888;
+}
+
+#id_login_page .container #id-forgot-password {
+  font-size: 0.9rem;
+  font-style: italic;
+  color: blue;
+  text-decoration: none;
+}
+/*# sourceMappingURL=login.css.map */
