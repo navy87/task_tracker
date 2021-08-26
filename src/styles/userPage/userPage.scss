@@ -629,8 +629,8 @@
     .container {
         background-color: white;
         border-radius: 0.5rem;
-        padding: 1rem;
-        box-shadow: 0px 0px 10px #dedede;
+        padding: 2rem;
+        box-shadow: 0px 0px 20px #888;
         display: flex;
         flex-direction: column;
 
@@ -653,9 +653,42 @@
             text-align: center;
             margin-bottom: 1rem;
 
-            .profile_pic {
-                width: 6rem;
-                height: 6rem;
+            .pic-container {
+                overflow: hidden;
+                border-radius: 100rem;
+                position: relative;
+
+                .profile_pic {
+                    width: 6rem;
+                    height: 6rem;
+                }
+                .changePhoto {
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+
+                    cursor: pointer;
+
+                    font-weight: 300;
+                    width: 6rem;
+                    height: 6rem;
+                    border-radius: 6rem;
+
+                    background-color: #444444aa;
+                    color: white;
+
+                    position: absolute;
+                    top: 0;
+                    left: -100%;
+                    transition: all 0.5s;
+                }
+
+                &:hover {
+                    .changePhoto {
+                        font-weight: 400;
+                        left: 0;
+                    }
+                }
             }
 
             .dep_title {
@@ -679,6 +712,29 @@
             .icon {
                 color: navy;
                 margin-right: 0.25rem;
+            }
+
+            .changePhone {
+                margin-left: 0.5rem;
+                display: flex;
+                align-items: center;
+                cursor: pointer;
+
+                .text {
+                    opacity: 0;
+                    margin-left: 0.25rem;
+                    font-size: 0.8rem;
+                    transition: opacity 0.5s;
+                }
+
+                &:hover,
+                &:focus,
+                &:active {
+                    color: navy;
+                    .text {
+                        opacity: 1;
+                    }
+                }
             }
         }
     }

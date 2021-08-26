@@ -761,9 +761,9 @@
 #id_profile_page .container {
   background-color: white;
   border-radius: 0.5rem;
-  padding: 1rem;
-  -webkit-box-shadow: 0px 0px 10px #dedede;
-          box-shadow: 0px 0px 10px #dedede;
+  padding: 2rem;
+  -webkit-box-shadow: 0px 0px 20px #888;
+          box-shadow: 0px 0px 20px #888;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -796,9 +796,44 @@
   margin-bottom: 1rem;
 }
 
-#id_profile_page .container .title_pic_container .profile_pic {
+#id_profile_page .container .title_pic_container .pic-container {
+  overflow: hidden;
+  border-radius: 100rem;
+  position: relative;
+}
+
+#id_profile_page .container .title_pic_container .pic-container .profile_pic {
   width: 6rem;
   height: 6rem;
+}
+
+#id_profile_page .container .title_pic_container .pic-container .changePhoto {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  cursor: pointer;
+  font-weight: 300;
+  width: 6rem;
+  height: 6rem;
+  border-radius: 6rem;
+  background-color: #444444aa;
+  color: white;
+  position: absolute;
+  top: 0;
+  left: -100%;
+  -webkit-transition: all 0.5s;
+  transition: all 0.5s;
+}
+
+#id_profile_page .container .title_pic_container .pic-container:hover .changePhoto {
+  font-weight: 400;
+  left: 0;
 }
 
 #id_profile_page .container .title_pic_container .dep_title {
@@ -826,5 +861,32 @@
 #id_profile_page .container .detail .icon {
   color: navy;
   margin-right: 0.25rem;
+}
+
+#id_profile_page .container .detail .changePhone {
+  margin-left: 0.5rem;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  cursor: pointer;
+}
+
+#id_profile_page .container .detail .changePhone .text {
+  opacity: 0;
+  margin-left: 0.25rem;
+  font-size: 0.8rem;
+  -webkit-transition: opacity 0.5s;
+  transition: opacity 0.5s;
+}
+
+#id_profile_page .container .detail .changePhone:hover, #id_profile_page .container .detail .changePhone:focus, #id_profile_page .container .detail .changePhone:active {
+  color: navy;
+}
+
+#id_profile_page .container .detail .changePhone:hover .text, #id_profile_page .container .detail .changePhone:focus .text, #id_profile_page .container .detail .changePhone:active .text {
+  opacity: 1;
 }
 /*# sourceMappingURL=userPage.css.map */

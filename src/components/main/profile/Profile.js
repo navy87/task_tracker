@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import { FaUserCircle } from "react-icons/fa";
-import { AiOutlineMail, AiOutlinePhone } from "react-icons/ai";
+import { AiFillEdit, AiOutlineMail, AiOutlinePhone } from "react-icons/ai";
 import { TiGroup } from "react-icons/ti";
 import { BsPerson } from "react-icons/bs";
 import { Link } from "react-router-dom";
@@ -12,11 +12,16 @@ const Profile = ({ match }) => {
     return (
         <div id="id_profile_page">
             <div className="container">
-                <Link className="edit-link" to="/">
+                {/* <Link className="edit-link" to="/">
                     Edit
-                </Link>
+                </Link> */}
                 <div className="title_pic_container">
-                    <FaUserCircle className="profile_pic" />
+                    <div className="pic-container">
+                        <FaUserCircle className="profile_pic" />
+                        <Link to="/" className="changePhoto">
+                            Change Photo
+                        </Link>
+                    </div>
                     <p className="dep_title">Manager</p>
                 </div>
                 <p className="detail name">
@@ -30,6 +35,10 @@ const Profile = ({ match }) => {
                 <p className="detail phone">
                     <AiOutlinePhone className="icon" />
                     +251925240618
+                    <Link to="/" className="changePhone">
+                        <AiFillEdit className="edit" />
+                        <p className="text">Change</p>
+                    </Link>
                 </p>
                 <p className="detail department">
                     <TiGroup className="icon" />
