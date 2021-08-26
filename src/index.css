@@ -9,6 +9,11 @@
     box-sizing: content-box;
 }
 
+a {
+    color: inherit;
+    text-decoration: inherit;
+}
+
 body {
     line-height: 1;
     overflow-x: hidden;

@@ -124,7 +124,7 @@ function App() {
                     <Switch>
                         <Route path="/login" component={LoginPageContainer} />
                         <Route path="/admin" component={Admin} />
-                        <Route path="/" exact component={UserPage} />
+                        <Route path="/" component={UserPage} />
                     </Switch>
                 </div>
             </GlobalContext.Provider>

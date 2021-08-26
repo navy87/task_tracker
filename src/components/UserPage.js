@@ -5,9 +5,11 @@ import Header from "./header/Header";
 import { getProfileURL, getTaskTracksURL, getTaskURL } from "./helpers/Helper";
 import Main from "./main/Main";
 import SideBar from "./sidebar/SideBar";
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 
 import "../styles/userPage/userPage.css";
-const UserPage = () => {
+import Profile from "./main/profile/Profile";
+const UserPage = ({ match }) => {
     const [selectedTask, setSelectedTask] = useState();
     const [trackSortOrder, setTrackSortOrder] = useState("desc");
     const [taskSortOrder, setTaskSortOrder] = useState({
@@ -101,17 +103,29 @@ const UserPage = () => {
     };
 
     return (
-        <FilterContext.Provider value={filterContextValues}>
-            <DataContext.Provider value={dataContextValues}>
-                <Header />
-                <div id="page">
-                    <SideBar />
-                    <div className="content">
-                        <Main />
+        <Router>
+            <FilterContext.Provider value={filterContextValues}>
+                <DataContext.Provider value={dataContextValues}>
+                    <Header />
+                    <div id="page">
+                        <SideBar />
+                        <div className="content">
+                            <Switch>
+                                <Route
+                                    path={match.url}
+                                    exact
+                                    component={Main}
+                                />
+                                <Route
+                                    path={`${match.url}profile`}
+                                    component={Profile}
+                                />
+                            </Switch>
+                        </div>
                     </div>
-                </div>
-            </DataContext.Provider>
-        </FilterContext.Provider>
+                </DataContext.Provider>
+            </FilterContext.Provider>
+        </Router>
     );
 };
 
