@@ -1,8 +1,8 @@
 import { useState } from "react";
 
-import UserPage from "./components/UserPage";
+import UserPage from "./components/userPage/UserPage";
 
-import { GlobalContext } from "./contexts/GlobalContext";
+import { AuthContext, GlobalContext } from "./contexts/GlobalContext";
 import { Toaster } from "react-hot-toast";
 import ReactTooltip from "react-tooltip";
 import Particles from "react-tsparticles";
@@ -28,6 +28,8 @@ function App() {
         dialog,
         setDialog,
     };
+
+    const authContextValues = {};
 
     const particleStyledOption = {
         background: {
@@ -111,23 +113,28 @@ function App() {
 
     return (
         <Router>
-            <GlobalContext.Provider value={globalContextValues}>
-                <div className="App">
-                    <ParticleStyled
-                        options={particleStyledOption}
-                        width="100vw"
-                        height="100vh"
-                    />
-                    {dialog || ""}
-                    <Toaster />
-                    <ReactTooltip effect="solid" />
-                    <Switch>
-                        <Route path="/login" component={LoginPageContainer} />
-                        <Route path="/admin" component={Admin} />
-                        <Route path="/" component={UserPage} />
-                    </Switch>
-                </div>
-            </GlobalContext.Provider>
+            <AuthContext.Provider value={authContextValues}>
+                <GlobalContext.Provider value={globalContextValues}>
+                    <div className="App">
+                        <ParticleStyled
+                            options={particleStyledOption}
+                            width="100vw"
+                            height="100vh"
+                        />
+                        {dialog || ""}
+                        <Toaster />
+                        <ReactTooltip effect="solid" />
+                        <Switch>
+                            <Route
+                                path="/login"
+                                component={LoginPageContainer}
+                            />
+                            <Route path="/admin" component={Admin} />
+                            <Route path="/" component={UserPage} />
+                        </Switch>
+                    </div>
+                </GlobalContext.Provider>
+            </AuthContext.Provider>
         </Router>
     );
 }
