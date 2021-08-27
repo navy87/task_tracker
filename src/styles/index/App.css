@@ -425,4 +425,11 @@
 .edit_form_container .edit_form .button-container {
   text-align: right;
 }
+
+.particles-background {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: -200;
+}
 /*# sourceMappingURL=App.css.map */
