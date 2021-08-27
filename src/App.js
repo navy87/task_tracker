@@ -6,12 +6,12 @@ import ReactTooltip from "react-tooltip";
 import { Switch, Route, BrowserRouter as Router } from "react-router-dom";
 
 import { AuthContext, GlobalContext } from "contexts/GlobalContext";
-import Admin from "components/admin/Admin";
-import LoginPageContainer from "components/login/LoginPageContainer";
-import ParticlesBackground from "components/particles/ParticlesBackground";
-import UserPage from "components/userPage/UserPage";
+import Admin from "./components/admin/Admin";
+import LoginPageContainer from "./components/login/LoginPageContainer";
+import ParticlesBackground from "./components/particles/ParticlesBackground";
+import UserPage from "./components/userPage/UserPage";
 
-import "./styles/index/App.css"; // This Import must be last for some reason
+import "styles/index/App.css"; // This Import must be last for some reason
 
 function App() {
     const [dialog, setDialog] = useState();
