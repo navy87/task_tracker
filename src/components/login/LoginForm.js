@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import toast from "react-hot-toast";
 import { getLoginURL } from "../helpers/Helper";
-import axios from "axios";
 
 const LoginForm = ({ match }) => {
     const emptyForm = {
@@ -25,9 +24,12 @@ const LoginForm = ({ match }) => {
 
         const url = getLoginURL();
 
-        axios
-            .post(url, JSON.stringify(login), requestOptions)
-            .then((res) => console.log(res.headers))
+        fetch(url, requestOptions)
+            .then((res) => {
+                for (const header of res.headers) {
+                    console.log(header);
+                }
+            })
             .catch((error) => {
                 console.error(error);
                 toast.error("There was an error.", {
