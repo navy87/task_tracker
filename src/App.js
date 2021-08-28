@@ -7,21 +7,26 @@ import { Switch, Route, BrowserRouter as Router } from "react-router-dom";
 
 import { AuthContext, GlobalContext } from "contexts/GlobalContext";
 import Admin from "./components/admin/Admin";
-import LoginPageContainer from "./components/login/LoginPageContainer";
+import LoginPageContainer from "./components/auth/LoginPageContainer";
 import ParticlesBackground from "./components/particles/ParticlesBackground";
 import UserPage from "./components/userPage/UserPage";
 
 import "styles/index/App.css"; // This Import must be last for some reason
+import ProtectedRoute from "./components/auth/ProtectedRoute";
 
 function App() {
     const [dialog, setDialog] = useState();
+    const [auth, setAuth] = useState({
+        authenticated: false,
+        token: null,
+    });
 
     const globalContextValues = {
         dialog,
         setDialog,
     };
 
-    const authContextValues = {};
+    const authContextValues = { auth, setAuth };
 
     return (
         <Router>
@@ -38,7 +43,7 @@ function App() {
                                 component={LoginPageContainer}
                             />
                             <Route path="/admin" component={Admin} />
-                            <Route path="/" component={UserPage} />
+                            <ProtectedRoute path="/" component={UserPage} />
                         </Switch>
                     </div>
                 </GlobalContext.Provider>

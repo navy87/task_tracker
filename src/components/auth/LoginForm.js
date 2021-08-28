@@ -1,5 +1,8 @@
-import React, { useState } from "react";
+import axios from "axios";
+import React, { useContext, useState } from "react";
 import toast from "react-hot-toast";
+import { useHistory } from "react-router-dom";
+import { AuthContext } from "../../contexts/GlobalContext";
 import { getLoginURL } from "../helpers/Helper";
 
 const LoginForm = ({ match }) => {
@@ -8,8 +11,11 @@ const LoginForm = ({ match }) => {
         password: "",
     };
     const [login, setLogin] = useState(emptyForm);
+    const { setAuth } = useContext(AuthContext);
 
-    const handleLogin = (e) => {
+    const history = useHistory();
+
+    const handleLogin = async (e) => {
         e.preventDefault();
         console.log(login);
 
@@ -24,18 +30,25 @@ const LoginForm = ({ match }) => {
 
         const url = getLoginURL();
 
-        fetch(url, requestOptions)
+        axios
+            .post(url, JSON.stringify(login), requestOptions)
             .then((res) => {
-                for (const header of res.headers) {
-                    console.log(header);
+                if (res.status === 200) {
+                    console.log(res.headers["authorization"]);
+                    setAuth({
+                        authenticated: true,
+                        token: res.headers["authorization"],
+                    });
+                    history.push("/");
+                } else {
+                    toast.error("Username and/or Password is wrong.", {
+                        autoClose: 5000,
+                    });
                 }
             })
             .catch((error) => {
-                console.error(error);
-                toast.error("There was an error.", {
-                    position: "top-center",
-                    autoClose: 5000,
-                });
+                console.error("There has been an error: ");
+                console.log(error);
             });
     };
 
