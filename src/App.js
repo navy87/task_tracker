@@ -13,6 +13,7 @@ import UserPage from "./components/userPage/UserPage";
 
 import "styles/index/App.css"; // This Import must be last for some reason
 import ProtectedRoute from "./components/auth/ProtectedRoute";
+import Logout from "./components/auth/Logout";
 
 function App() {
     const [dialog, setDialog] = useState();
@@ -43,6 +44,10 @@ function App() {
                                 component={LoginPageContainer}
                             />
                             <Route path="/admin" component={Admin} />
+                            <ProtectedRoute
+                                path="/logout"
+                                component={Logout}
+                            />
                             <ProtectedRoute path="/" component={UserPage} />
                         </Switch>
                     </div>
