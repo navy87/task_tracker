@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useContext } from "react";
 import {
     FcLowPriority,
     FcMediumPriority,
@@ -27,8 +27,7 @@ const priorityMap = {
 };
 
 const TaskItem = ({ task }) => {
-    const { selectedTask } = useState(DataContext);
-
+    const { selectedTask } = useContext(DataContext);
     const { issue, description, dueDate, assignees, status } = task;
     const priority = task.priority.toLowerCase();
 
@@ -40,8 +39,8 @@ const TaskItem = ({ task }) => {
         } else {
             displayedName = assignees[0];
         }
-        displayedName = displayedName.userProfile
-            ? displayedName.userProfile.fullName
+        displayedName = displayedName.profile
+            ? displayedName.profile.fullName
             : "";
     }
 

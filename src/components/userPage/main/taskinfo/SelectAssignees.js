@@ -21,7 +21,7 @@ const SelectAssignees = ({ selectedTask, setSelectedTask }) => {
 
     useEffect(() => {
         const mapped = selectedTask.assignees.map(
-            (taskPerson) => taskPerson.userProfile.id
+            (taskPerson) => taskPerson.profile.id
         );
         setAvailablePeople(
             people.filter((person) => {
@@ -55,7 +55,7 @@ const SelectAssignees = ({ selectedTask, setSelectedTask }) => {
                 {
                     id: 0,
                     leader: false,
-                    userProfile: selectedPerson,
+                    profile: selectedPerson,
                 },
             ];
             setSelectedTask({ ...selectedTask, assignees });

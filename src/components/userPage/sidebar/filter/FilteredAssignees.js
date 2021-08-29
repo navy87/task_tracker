@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import {
     DataContext,
     FilterContext,
@@ -7,7 +7,18 @@ import FilterAssigneeButton from "./FilterAssigneeButton";
 
 const FilteredAssignees = () => {
     const { filteredPersons, setFilteredPersons } = useContext(FilterContext);
+    // const [people, setPeople] = useState([]);
     const { people } = useContext(DataContext);
+    const [availablePeople, setAvailablePeople] = useState([]);
+
+    useEffect(() => {
+        const mapped = people.map((person) => person.id);
+        setAvailablePeople(
+            people.filter((person) => {
+                return !mapped.includes(person.id);
+            })
+        );
+    }, [people, setAvailablePeople]);
 
     const handleChange = (e) => {
         const value = e.target.value;
@@ -33,17 +44,11 @@ const FilteredAssignees = () => {
             >
                 <option value="select_person">Select Person</option>
                 <option value="all_persons">All Persons</option>
-                {people
-                    .filter((person) => {
-                        return ![...filteredPersons]
-                            .map((filteredPerson) => filteredPerson.id)
-                            .includes(person.id);
-                    })
-                    .map((person, index) => (
-                        <option key={index} value={person.id}>
-                            {person.name}
-                        </option>
-                    ))}
+                {availablePeople.map((person, index) => (
+                    <option key={index} value={person.id}>
+                        {person.name}
+                    </option>
+                ))}
             </select>
             {[...filteredPersons].length > 0 ? (
                 [...filteredPersons].map((filteredPerson, index) => {

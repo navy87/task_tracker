@@ -10,7 +10,7 @@ import { Switch, Route } from "react-router-dom";
 import "../../styles/userPage/userPage.css";
 import Profile from "./main/profile/Profile";
 const UserPage = ({ match }) => {
-    const [selectedTask, setSelectedTask] = useState();
+    const [selectedTask, setSelectedTask] = useState({ id: null });
     const [trackSortOrder, setTrackSortOrder] = useState("desc");
     const [taskSortOrder, setTaskSortOrder] = useState({
         by: "dueDate",
@@ -110,11 +110,11 @@ const UserPage = ({ match }) => {
                     <SideBar />
                     <div className="content">
                         <Switch>
+                            <Route path={match.url} component={Main} />
                             <Route
                                 path={`${match.url}profile`}
                                 component={Profile}
                             />
-                            <Route path={match.url} component={Main} />
                         </Switch>
                     </div>
                 </div>

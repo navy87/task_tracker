@@ -8,6 +8,7 @@ import { compareTask } from "../../../helpers/Helper";
 
 const TaskList = () => {
     const { tasks } = useContext(DataContext);
+    // const [tasks, setTasks] = useState([]);
     const {
         filteredPriorities,
         filteredStatuses,
@@ -15,6 +16,18 @@ const TaskList = () => {
         filteredPersons,
     } = useContext(FilterContext);
     const { taskSortOrder } = useContext(DataContext);
+
+    // useEffect(() => {
+    //     const fetchTasks = async () => {
+    //         fetch(getTaskURL())
+    //             .then((res) => res.json())
+    //             .then((data) => {
+    //                 setTasks(data);
+    //             })
+    //             .catch((err) => fetchingErrorHandler(err));
+    //     };
+    //     fetchTasks();
+    // }, []);
 
     return (
         <div className="task_list">
