@@ -17,7 +17,11 @@ const TrackInfo = ({ match }) => {
     const STATUSES = { loaded: "loaded", loading: "loading", new: "new" };
     Object.freeze(STATUSES);
     const [status, setStatus] = useState(STATUSES.loading);
+    const [refresh, setRefresh] = useState(true);
 
+    const refreshTracks = () => {
+        setRefresh((current) => !current);
+    };
     useEffect(() => {
         setTaskId(match.params.id);
     }, [match]);
@@ -39,7 +43,14 @@ const TrackInfo = ({ match }) => {
             setStatus(STATUSES.loading);
             fetchTracks();
         }
-    }, [taskId, setTracks, STATUSES.loaded, STATUSES.loading, STATUSES.new]);
+    }, [
+        refresh,
+        taskId,
+        setTracks,
+        STATUSES.loaded,
+        STATUSES.loading,
+        STATUSES.new,
+    ]);
 
     const notLoadedSelect = () => {
         return status === STATUSES.loading ? (
@@ -55,7 +66,7 @@ const TrackInfo = ({ match }) => {
         <div className="container">
             <h2 className="title">Tracks Info</h2>
             <div className="form_list_container">
-                <TrackForm />
+                <TrackForm refreshTracks={refreshTracks} />
                 <div className="track_list_container">
                     <div className="head">
                         <h4>List of all Tracks</h4>

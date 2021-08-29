@@ -40,6 +40,7 @@ const TaskInfo = ({ match }) => {
         }
     }, [taskId, setSelectedTask, emptyTask]);
 
+    // console.log(selectedTask);
     return !loading ? (
         <TaskForm
             selectedTask={selectedTask}

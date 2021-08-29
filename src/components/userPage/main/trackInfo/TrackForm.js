@@ -4,8 +4,8 @@ import InfoContainer from "../InfoContainer";
 import { DeepCopy, GetToday, getTaskTracksURL } from "../../../helpers/Helper";
 import toast from "react-hot-toast";
 import { DataContext } from "../../../../contexts/SidebarContext";
-const TrackForm = () => {
-    const { selectedTask, refresh } = useContext(DataContext);
+const TrackForm = ({ refreshTracks }) => {
+    const { selectedTask } = useContext(DataContext);
 
     const [emptyTrack] = useState({
         date: GetToday(),
@@ -33,7 +33,7 @@ const TrackForm = () => {
         fetch(url, requestOptions)
             .then((res) => {
                 res.json();
-                refresh();
+                refreshTracks();
                 toast.success("Track has been added!", {
                     position: "top-center",
                     autoClose: 4000,
