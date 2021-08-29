@@ -39,7 +39,7 @@
   -webkit-box-flex: 1;
       -ms-flex-positive: 1;
           flex-grow: 1;
-  height: calc(100vh - 80px);
+  height: 100vh;
 }
 
 #sidebar {
@@ -281,6 +281,7 @@
 }
 
 #sidebar .task_list_container .task_list .task_item {
+  display: block;
   cursor: pointer;
   margin: 0.5rem 0;
   padding: 0.5rem;
@@ -391,6 +392,13 @@
 
 #main {
   padding: 0.5rem;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
 }
 
 #main .container {
@@ -633,6 +641,17 @@
 #main .container .track_list_container .tracks_list .track_item .description {
   margin-top: 5px;
   font-size: 0.9rem;
+}
+
+#main .loading-container {
+  display: -ms-grid;
+  display: grid;
+  place-content: center;
+  border-radius: 0.5rem;
+  background-color: #eee;
+  -webkit-box-flex: 1;
+      -ms-flex-positive: 1;
+          flex-grow: 1;
 }
 
 #id_logo_page {

@@ -1,22 +1,26 @@
-import React, { useContext } from "react";
+import React from "react";
 import TaskInfo from "./taskinfo/TaskInfo";
 import TrackInfo from "./trackInfo/TrackInfo";
 import LogoPage from "./logoPage/LogoPage";
-import { DataContext } from "../../../contexts/SidebarContext";
+import { Route, Switch } from "react-router-dom";
 
-const Main = () => {
-    const { selectedTask } = useContext(DataContext);
-
+const Main = ({ match }) => {
     return (
         <div id="main">
-            {selectedTask ? (
-                <>
-                    <TaskInfo />
-                    <TrackInfo />
-                </>
-            ) : (
-                <LogoPage />
-            )}
+            <Switch>
+                <Route
+                    path="/task/:id"
+                    render={(props) => {
+                        return (
+                            <>
+                                <TaskInfo {...props} />
+                                <TrackInfo {...props} />
+                            </>
+                        );
+                    }}
+                />
+                <Route path="/" exact component={LogoPage} />
+            </Switch>
         </div>
     );
 };

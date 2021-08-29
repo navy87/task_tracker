@@ -110,11 +110,11 @@ const UserPage = ({ match }) => {
                     <SideBar />
                     <div className="content">
                         <Switch>
-                            <Route path={match.url} exact component={Main} />
                             <Route
                                 path={`${match.url}profile`}
                                 component={Profile}
                             />
+                            <Route path={match.url} component={Main} />
                         </Switch>
                     </div>
                 </div>

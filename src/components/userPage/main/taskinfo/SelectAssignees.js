@@ -1,11 +1,35 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import toast from "react-hot-toast";
 import { GlobalContext } from "../../../../contexts/GlobalContext";
 import AddPerson from "./AddPerson";
 import Dialog from "../../../helpers/Dialog";
+import { fetchingErrorHandler, getProfileURL } from "../../../helpers/Helper";
 
-const SelectAssignees = ({ people, selectedTask, setSelectedTask }) => {
+const SelectAssignees = ({ selectedTask, setSelectedTask }) => {
     const { setDialog } = useContext(GlobalContext);
+    const [people, setPeople] = useState([]);
+    const [availablePeople, setAvailablePeople] = useState([]);
+
+    useEffect(() => {
+        fetch(getProfileURL())
+            .then((res) => res.json())
+            .then((data) => {
+                setPeople(data);
+            })
+            .catch((err) => fetchingErrorHandler(err));
+    }, [setPeople]);
+
+    useEffect(() => {
+        const mapped = selectedTask.assignees.map(
+            (taskPerson) => taskPerson.userProfile.id
+        );
+        setAvailablePeople(
+            people.filter((person) => {
+                return !mapped.includes(person.id);
+            })
+        );
+    }, [people, setAvailablePeople, selectedTask]);
+
     const handleChange = (e) => {
         const value = e.target.value;
         if (value === "assign_person") {
@@ -31,7 +55,7 @@ const SelectAssignees = ({ people, selectedTask, setSelectedTask }) => {
                 {
                     id: 0,
                     leader: false,
-                    person: selectedPerson,
+                    userProfile: selectedPerson,
                 },
             ];
             setSelectedTask({ ...selectedTask, assignees });
@@ -46,18 +70,11 @@ const SelectAssignees = ({ people, selectedTask, setSelectedTask }) => {
             onChange={handleChange}
         >
             <option value="assign_person">Select Person</option>
-            {people
-                .filter((person) => {
-                    const mapped = selectedTask.assignees.map((taskPerson) => {
-                        return taskPerson.person.id;
-                    });
-                    return !mapped.includes(person.id);
-                })
-                .map((person, index) => (
-                    <option key={index} value={person.id}>
-                        {person.name}
-                    </option>
-                ))}
+            {availablePeople.map((person, index) => (
+                <option key={index} value={person.id}>
+                    {person.fullName}
+                </option>
+            ))}
             <option value="add_person">Add Person</option>
         </select>
     );

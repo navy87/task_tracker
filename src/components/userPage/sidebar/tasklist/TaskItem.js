@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useState } from "react";
 import {
     FcLowPriority,
     FcMediumPriority,
@@ -9,6 +9,7 @@ import { BsCalendar } from "react-icons/bs";
 import { IoIosPeople } from "react-icons/io";
 import { Capitalize } from "../../../helpers/Helper";
 import { DataContext } from "../../../../contexts/SidebarContext";
+import { Link } from "react-router-dom";
 
 const priorityMap = {
     low: {
@@ -26,7 +27,7 @@ const priorityMap = {
 };
 
 const TaskItem = ({ task }) => {
-    const { setSelectedTask, selectedTask } = useContext(DataContext);
+    const { selectedTask } = useState(DataContext);
 
     const { issue, description, dueDate, assignees, status } = task;
     const priority = task.priority.toLowerCase();
@@ -39,15 +40,17 @@ const TaskItem = ({ task }) => {
         } else {
             displayedName = assignees[0];
         }
-        displayedName = displayedName.person ? displayedName.person.name : "";
+        displayedName = displayedName.userProfile
+            ? displayedName.userProfile.fullName
+            : "";
     }
 
     return (
-        <div
+        <Link
             className={`task_item ${
                 selectedTask && selectedTask.id === task.id && "selected"
             }`}
-            onClick={() => setSelectedTask(task)}
+            to={`/task/${task.id}`}
         >
             <div className="task_head">
                 <h3>{issue}</h3>
@@ -72,7 +75,7 @@ const TaskItem = ({ task }) => {
                     </b>
                 </div>
             </div>
-        </div>
+        </Link>
     );
 };
 

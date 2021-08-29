@@ -44,11 +44,9 @@ function App() {
                                 component={LoginPageContainer}
                             />
                             <Route path="/admin" component={Admin} />
-                            <ProtectedRoute
-                                path="/logout"
-                                component={Logout}
-                            />
-                            <ProtectedRoute path="/" component={UserPage} />
+                            <ProtectedRoute path="/logout" component={Logout} />
+                            <Route path="/" component={UserPage} />
+                            {/* <ProtectedRoute path="/" component={UserPage} /> */}
                         </Switch>
                     </div>
                 </GlobalContext.Provider>

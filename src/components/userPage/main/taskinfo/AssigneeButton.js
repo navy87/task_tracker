@@ -10,7 +10,7 @@ const AssigneeButton = ({ taskPerson, setSelectedTask, selectedTask }) => {
 
     const removeClicked = (e) => {
         e.preventDefault();
-        const personId = taskPerson.person.id;
+        const personId = taskPerson.userProfile.id;
         if (selectedTask.assignees.length === 1) {
             toast.error("Need At Least One Person to Assign To", {
                 duration: 4000,
@@ -19,7 +19,7 @@ const AssigneeButton = ({ taskPerson, setSelectedTask, selectedTask }) => {
             return;
         }
         const assignees = [...selectedTask.assignees].filter(
-            (taskPerson1) => taskPerson1.person.id !== personId
+            (taskPerson1) => taskPerson1.userProfile.id !== personId
         );
 
         if (assignees.length === 1) {
@@ -44,7 +44,7 @@ const AssigneeButton = ({ taskPerson, setSelectedTask, selectedTask }) => {
             data-tip="Remove Person"
         >
             <span onClick={clicked} className="assignee_name">
-                {taskPerson.person.name}
+                {taskPerson.userProfile.fullName}
             </span>
             <span onClick={handleLeaderToggle} data-tip="Make Leader">
                 {taskPerson.leader ? (

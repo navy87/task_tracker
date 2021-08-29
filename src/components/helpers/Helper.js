@@ -1,3 +1,5 @@
+import toast from "react-hot-toast";
+
 require("dotenv").config();
 
 export const Capitalize = (word) => {
@@ -83,7 +85,7 @@ export const getProfileURL = (id = null) => {
 };
 
 export const getTaskTracksURL = (taskId) => {
-    return `${getTaskURL()}/${taskId}/tracks`;
+    return `${getTaskURL(taskId)}/tracks`;
 };
 
 export const getTracksURL = (id = null) => {
@@ -98,4 +100,15 @@ export const getUserURL = () => {
 
 export const getLoginURL = () => {
     return `${process.env.REACT_APP_LOGIN_URL}`;
+};
+
+export const fetchingErrorHandler = (err) => {
+    console.error(err);
+    toast.error(
+        "Something went wrong! Please make sure the server is running.",
+        {
+            position: "top-center",
+            autoClose: 5000,
+        }
+    );
 };

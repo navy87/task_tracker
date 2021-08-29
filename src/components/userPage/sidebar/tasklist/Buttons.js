@@ -1,25 +1,12 @@
-import React, { useContext } from "react";
-import { GetToday } from "../../../helpers/Helper";
+import React from "react";
 import { MdNoteAdd } from "react-icons/md";
-import { DataContext } from "../../../../contexts/SidebarContext";
+import { useHistory } from "react-router-dom";
 
 const Buttons = () => {
-    const { setSelectedTask } = useContext(DataContext);
-
-    const emptyTask = {
-        id: 0,
-        issue: "",
-        description: "",
-        addedDate: new Date().toISOString(),
-        dueDate: GetToday(),
-        status: "ACTIVE",
-        priority: "HIGH",
-        assignees: [],
-    };
-
+    const history = useHistory();
     const handleAddTask = (e) => {
         e.preventDefault();
-        setSelectedTask(emptyTask);
+        history.push("/task/new");
     };
 
     return (
