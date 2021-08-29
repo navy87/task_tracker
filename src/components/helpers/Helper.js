@@ -73,9 +73,13 @@ export const getBaseURL = () => {
 };
 
 export const getTaskURL = (id = null) => {
-    return `${getBaseURL()}/${process.env.REACT_APP_TASK_URL}/${
-        id !== null ? id : ""
+    return `${getBaseURL()}/${process.env.REACT_APP_TASK_URL}${
+        id !== null ? `/${id}` : ""
     }`;
+};
+
+export const getTaskExistsURL = (id) => {
+    return `${getTaskURL()}/exists/${id}`;
 };
 
 export const getProfileURL = (id = null) => {

@@ -14,7 +14,8 @@ import { useHistory } from "react-router-dom";
 
 const TaskForm = ({ selectedTask, setSelectedTask }) => {
     const { setDialog } = useContext(GlobalContext);
-    const { refresh } = useContext(DataContext);
+    const { refresh, setSelectedTask: setSelectedTaskGlobal } =
+        useContext(DataContext);
 
     const history = useHistory();
 
@@ -74,23 +75,28 @@ const TaskForm = ({ selectedTask, setSelectedTask }) => {
 
         const url = getTaskURL(selectedTask.id);
 
-        fetch(url, requestOptions)
-            .then((res) => {
-                res.text();
-                setSelectedTask(undefined);
-                refresh();
-                toast.success("Task has been deleted!", {
-                    position: "top-center",
-                    autoClose: 5000,
-                });
-            })
-            .then((data) => console.log(data))
-            .catch((err) =>
+        const fetchDelete = async () => {
+            try {
+                const res = await fetch(url, requestOptions);
+                if (res.ok) {
+                    toast.success("Task has been deleted!", {
+                        position: "top-center",
+                        autoClose: 5000,
+                    });
+                }
+            } catch (error) {
+                console.log(error);
                 toast.error("There was an error deleting task.", {
                     position: "top-center",
                     autoClose: 5000,
-                })
-            );
+                });
+            }
+        };
+        fetchDelete().then(() => {
+            setSelectedTaskGlobal({ id: null });
+            history.push("/");
+            refresh();
+        });
     };
 
     const handleTaskDelete = (e) => {
@@ -106,7 +112,6 @@ const TaskForm = ({ selectedTask, setSelectedTask }) => {
             />
         );
     };
-
     return (
         <div className="container">
             <h2 className="title">
