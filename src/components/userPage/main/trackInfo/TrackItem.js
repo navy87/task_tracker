@@ -5,27 +5,24 @@ import { GlobalContext } from "../../../../contexts/GlobalContext";
 import { DataContext } from "../../../../contexts/SidebarContext";
 import { QuestionDialog } from "../../../../helpers/Dialog";
 import { getTracksURL } from "../../../../helpers/Helper";
+import axios from "axios";
 
 const TrackItem = ({ track }) => {
     const { setDialog } = useContext(GlobalContext);
     const { refresh } = useContext(DataContext);
-    const deleteTrack = () => {
-        const requestOptions = {
-            method: "DELETE",
-        };
-
+    const deleteTrack = async () => {
         const url = getTracksURL(track.id);
-        fetch(url, requestOptions)
-            .then((res) => {
-                res.text();
+        try {
+            const res = await axios.delete(url);
+            if (res.status === 200) {
                 refresh();
                 toast.success("Track has been deleted!", {
-                    position: "top-center",
-                    autoClose: 5000,
+                    duration: 5000,
                 });
-            })
-            .then((data) => console.log(data))
-            .catch((err) => console.error(err));
+            }
+        } catch (e) {
+            console.error(e)
+        }
     };
     const handleDelete = (e) => {
         e.preventDefault();

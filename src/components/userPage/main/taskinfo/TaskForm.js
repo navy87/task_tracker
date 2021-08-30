@@ -43,7 +43,6 @@ const TaskForm = ({ selectedTask, setSelectedTask }) => {
             : getTaskURL();
 
         try {
-            // const res = await fetch(url, requestOptions);
 
             const res = await axios(url, {
                 method: !selectedTask.id ? "POST" : "PUT",
@@ -70,19 +69,18 @@ const TaskForm = ({ selectedTask, setSelectedTask }) => {
     };
 
     const deleteTask = () => {
-        const requestOptions = {
-            method: "DELETE",
-            headers: { "Content-Type": "application/json" },
-            body: JSON.stringify(selectedTask),
-        };
-
         const url = getTaskURL(selectedTask.id);
 
         const fetchDelete = async () => {
             try {
-                const res = await fetch(url, requestOptions);
-                if (res.ok) {
+                const res = await axios.delete(url);
+                if (res.status === 200) {
                     toast.success("Task has been deleted!", {
+                        duration: 5000,
+                    });
+                } else {
+                    console.error(res.data);
+                    toast.error("There was an error deleting task.", {
                         duration: 5000,
                     });
                 }

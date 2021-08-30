@@ -8,6 +8,7 @@ import {
     fetchingErrorHandler,
     getTaskTracksURL,
 } from "../../../../helpers/Helper";
+import axios from "axios";
 
 const TrackInfo = ({ match }) => {
     const { trackSortOrder, setTrackSortOrder } = useContext(DataContext);
@@ -28,20 +29,21 @@ const TrackInfo = ({ match }) => {
 
     useEffect(() => {
         const fetchTracks = async () => {
-            const url = getTaskTracksURL(taskId);
-            fetch(url)
-                .then((res) => res.json())
-                .then((data) => {
-                    setTracks(data);
-                    setStatus(STATUSES.loaded);
-                })
-                .catch((err) => fetchingErrorHandler(err));
+            try {
+                const url = getTaskTracksURL(taskId);
+                const res = await axios.get(url);
+                const data = res.data
+                setTracks(data)
+                setStatus(STATUSES.loaded)
+            } catch (e) {
+                fetchingErrorHandler(e)
+            }
         };
         if (taskId.toLowerCase() === "new") {
             setStatus(STATUSES.new);
         } else {
             setStatus(STATUSES.loading);
-            fetchTracks();
+            fetchTracks().then(null);
         }
     }, [
         refresh,

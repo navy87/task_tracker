@@ -2,11 +2,12 @@ import React, { useContext, useEffect, useState } from "react";
 import toast from "react-hot-toast";
 import { GiRadioactive } from "react-icons/gi";
 import { MdEmail, MdPerson } from "react-icons/md";
-import { GlobalContext } from "../../../contexts/GlobalContext";
-import { DataContext } from "../../../contexts/SidebarContext";
-import { DeepCopy, getProfileURL } from "../../helpers/Helper";
+import { GlobalContext } from "../../../../contexts/GlobalContext";
+import { DataContext } from "../../../../contexts/SidebarContext";
+import { DeepCopy, getProfileURL } from "../../../../helpers/Helper";
 import PersonDialog from "./PersonDialog";
-import Dialog, { QuestionDialog } from "../../helpers/Dialog";
+import Dialog, { QuestionDialog } from "../../../../helpers/Dialog";
+import axios from "axios";
 
 const PersonItem = ({ currentPerson, setCurrentPerson, selected }) => {
     const { tasks, refresh } = useContext(DataContext);
@@ -30,37 +31,29 @@ const PersonItem = ({ currentPerson, setCurrentPerson, selected }) => {
         setCurrentPerson(DeepCopy(currentPerson));
     };
 
-    const deletePerson = () => {
-        const requestOptions = {
-            method: "DELETE",
-            headers: { "Content-Type": "application/json" },
-        };
-
+    const deletePerson = async () => {
         const url = getProfileURL(currentPerson.id);
-
-        fetch(url, requestOptions)
-            .then((res) => {
-                if (res.ok) {
-                    res.text();
-                    refresh();
-                    toast.success("Person has been removed!", {
-                        position: "top-center",
-                        autoClose: 5000,
-                    });
-                } else {
-                    toast.error("Something went wrong!", {
-                        position: "top-center",
-                        autoClose: 5000,
-                    });
-                }
-            })
-            .then((data) => console.log(data))
-            .catch((err) =>
-                toast.error("There was an error deleting person.", {
+        try {
+            const res = await axios.delete(url);
+            if (res.status === 200) {
+                refresh();
+                toast.success("Person has been removed!", {
+                    duration: 5000,
+                });
+            } else {
+                console.log(res);
+                toast.error("Something went wrong!", {
                     position: "top-center",
                     autoClose: 5000,
-                })
-            );
+                });
+            }
+        } catch (e) {
+            console.error(e)
+            toast.error("There was an error deleting person.", {
+                position: "top-center",
+                autoClose: 5000,
+            })
+        }
     };
 
     const openPersonDialog = () => {
@@ -75,7 +68,7 @@ const PersonItem = ({ currentPerson, setCurrentPerson, selected }) => {
                 subtext="Are you sure? This action can not be undone."
                 title="Just Checking"
                 onYes={() => {
-                    deletePerson();
+                    deletePerson().then(null);
                     openPersonDialog();
                 }}
                 onNo={() => openPersonDialog()}

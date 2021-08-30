@@ -63,18 +63,29 @@ const UserPage = ({ match }) => {
     }, [refreshData, setTasks]);
 
     useEffect(() => {
-        fetch(getProfileURL())
-            .then((res) => res.json())
-            .then((data) => setPeople(data))
-            .catch((err) => fetchingErrorHandler(err));
+        const fetchPeople = async () => {
+            try {
+                const res = await axios.get(getProfileURL())
+                setPeople(res.data)
+            } catch (e) {
+                fetchingErrorHandler(e)
+            }
+        }
+        fetchPeople().then(res => res)
     }, [refreshData, setPeople]);
 
     useEffect(() => {
+        const fetchTracks = async () => {
+            try {
+                const res = await axios.get(getTaskTracksURL(selectedTask.id))
+                setTracks(res.data)
+            } catch (e) {
+                fetchingErrorHandler(e)
+            }
+        }
+
         if (selectedTask && selectedTask.id) {
-            fetch(getTaskTracksURL(selectedTask.id))
-                .then((res) => res.json())
-                .then((data) => setTracks(data))
-                .catch((err) => fetchingErrorHandler(err));
+            fetchTracks().then(res => res)
         } else {
             setTracks(null);
         }

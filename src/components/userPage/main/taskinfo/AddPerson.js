@@ -3,6 +3,7 @@ import toast from "react-hot-toast";
 import { GlobalContext } from "../../../../contexts/GlobalContext";
 import { DataContext } from "../../../../contexts/SidebarContext";
 import { getProfileURL } from "../../../../helpers/Helper";
+import axios from "axios";
 
 const AddPerson = ({ selectedTask, setSelectedTask }) => {
     const { setDialog } = useContext(GlobalContext);
@@ -11,51 +12,24 @@ const AddPerson = ({ selectedTask, setSelectedTask }) => {
 
     const [newPerson, setNewPerson] = useState({ id: 0, name: "", email: "" });
 
-    const handleSubmit = (e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault();
         setDialog(null);
 
-        const requestOptions = {
-            method: "POST",
-            headers: { "Content-Type": "application/json" },
-            body: JSON.stringify(newPerson),
-        };
-
-        // const url = `http://localhost:4200/api/person/`;
-
-        fetch(getProfileURL(), requestOptions)
-            .then((res) => {
-                if (res.ok) {
-                    refresh();
-                    toast.success("Person has been saved!", {
-                        position: "top-center",
-                        autoClose: 5000,
-                    });
-                    return res.json();
-                } else {
-                    toast.error("Something went wrong!", {
-                        position: "top-center",
-                        autoClose: 5000,
-                    });
-                }
+        try {
+            const res = await axios.post(getProfileURL(), JSON.stringify(newPerson));
+            if (res.status === 200) {
+                refresh()
+                toast.success("Person has been saved!", {
+                    duration: 5000,
+                });
+                return res.data
+            }
+        } catch (e) {
+            toast.error("There was an error.", {
+                duration: 5000,
             })
-            .then((data) => {
-                // console.log(data);
-                // console.log(people);
-                // const savedPerson = [...people].filter(
-                //     (person) => person.id === data.id
-                // );
-                // console.log(savedPerson);
-                // const assignees = [...selectedTask.assignees];
-                // setSelectedTask({ ...selectedTask, assignees });
-                // setNewPerson(DeepCopy(emptyPerson));
-            })
-            .catch((err) =>
-                toast.error("There was an error.", {
-                    position: "top-center",
-                    autoClose: 5000,
-                })
-            );
+        }
     };
     return (
         <div className="edit_form_container alone">

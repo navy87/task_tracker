@@ -15,9 +15,9 @@ const LoginForm = ({ match }) => {
 
     const getUser = async (username) => {
         try {
-            const res = await fetch(getUserMetaURL(username));
-            if (res.ok) {
-                return await res.json();
+            const res = await axios.get(getUserMetaURL(username))
+            if (res.status === 200) {
+                return res.data;
             } else {
                 return null;
             }

@@ -4,6 +4,7 @@ import { GlobalContext } from "../../../../contexts/GlobalContext";
 import AddPerson from "./AddPerson";
 import Dialog from "../../../../helpers/Dialog";
 import { fetchingErrorHandler, getProfileURL } from "../../../../helpers/Helper";
+import axios from "axios";
 
 const SelectAssignees = ({ selectedTask, setSelectedTask }) => {
     const { setDialog } = useContext(GlobalContext);
@@ -11,12 +12,15 @@ const SelectAssignees = ({ selectedTask, setSelectedTask }) => {
     const [availablePeople, setAvailablePeople] = useState([]);
 
     useEffect(() => {
-        fetch(getProfileURL())
-            .then((res) => res.json())
-            .then((data) => {
-                setPeople(data);
-            })
-            .catch((err) => fetchingErrorHandler(err));
+        const fetchPeople = async () => {
+            try {
+                const res = await axios.get(getProfileURL());
+                setPeople(res.data);
+            } catch (e) {
+                fetchingErrorHandler(e);
+            }
+        }
+        fetchPeople().then(null)
     }, [setPeople]);
 
     useEffect(() => {

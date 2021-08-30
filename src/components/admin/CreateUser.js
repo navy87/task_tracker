@@ -1,6 +1,7 @@
 import React, {useState} from "react";
 import toast from "react-hot-toast";
 import {getUserURL} from "../../helpers/Helper";
+import axios from "axios";
 
 const CreateUser = ({match}) => {
     const emptyUserMeta = {
@@ -14,7 +15,7 @@ const CreateUser = ({match}) => {
     const [userMeta, setUserMeta] = useState(emptyUserMeta);
     const [confirmPassword, setConfirmPassword] = useState("");
 
-    const handleCreateUser = (e) => {
+    const handleCreateUser = async (e) => {
         e.preventDefault();
 
         if (confirmPassword !== userMeta.password) {
@@ -27,34 +28,22 @@ const CreateUser = ({match}) => {
 
         console.log(userMeta);
 
-        const requestOptions = {
-            method: "POST",
-            headers: {"Content-Type": "application/json"},
-            body: JSON.stringify(userMeta),
-        };
-
         const url = getUserURL();
 
-        fetch(url, requestOptions)
-            .then((res) => {
-                if (res.ok) {
-                    toast.success("Task has been saved!", {
-                        position: "top-center",
-                        autoClose: 5000,
-                    });
-                    setUserMeta(emptyUserMeta);
-                    setConfirmPassword("");
-                }
-                return res.json();
-            })
-            .then((data) => {
-                console.log(data);
-            })
-            .catch((err) => {
-                    console.log(err);
-                    toast.error("There was an error.", {duration: 5000});
-                }
-            )
+        try {
+            const res = await axios.post(url, JSON.stringify(userMeta));
+            if (res.status === 200) {
+                toast.success("User has been saved!", {
+                    duration: 5000,
+                });
+                setUserMeta(emptyUserMeta);
+                setConfirmPassword("");
+            }
+        } catch (e) {
+            console.error(e)
+            toast.error("There was an error.", {duration: 5000});
+        }
+
     };
 
     return (

@@ -2,6 +2,7 @@ import React, { useContext } from "react";
 import toast from "react-hot-toast";
 import { DataContext } from "../../../contexts/SidebarContext";
 import { DeepCopy, getProfileURL } from "../../helpers/Helper";
+import axios from "axios";
 
 const PersonForm = ({ currentPerson, setCurrentPerson }) => {
     const { refresh } = useContext(DataContext);
@@ -11,36 +12,31 @@ const PersonForm = ({ currentPerson, setCurrentPerson }) => {
         name: "",
         email: "",
     };
-    const handleSubmit = (e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault();
         const requestOptions = {
             method: !currentPerson.id ? "POST" : "PUT",
-            headers: { "Content-Type": "application/json" },
-            body: JSON.stringify(currentPerson),
+            data: JSON.stringify(currentPerson),
         };
 
         const url = currentPerson.id
             ? getProfileURL(currentPerson.id)
             : getProfileURL();
 
-        fetch(url, requestOptions)
-            .then((res) => {
+        try {
+            const res = await axios(url, requestOptions);
+            if (res.status === 200) {
                 refresh();
                 toast.success("Person has been saved!", {
-                    position: "top-center",
-                    autoClose: 5000,
+                    duration: 5000,
                 });
-                return res.json();
+                setCurrentPerson(DeepCopy(emptyPerson))
+            }
+        } catch (e) {
+            toast.error("There was an error.", {
+                duration: 5000,
             })
-            .then((data) => {
-                setCurrentPerson(DeepCopy(emptyPerson));
-            })
-            .catch((err) =>
-                toast.error("There was an error.", {
-                    position: "top-center",
-                    autoClose: 5000,
-                })
-            );
+        }
     };
 
     return (

@@ -4,6 +4,7 @@ import InfoContainer from "../InfoContainer";
 import { DeepCopy, GetToday, getTaskTracksURL } from "../../../../helpers/Helper";
 import toast from "react-hot-toast";
 import { DataContext } from "../../../../contexts/SidebarContext";
+import axios from "axios";
 const TrackForm = ({ refreshTracks }) => {
     const { selectedTask } = useContext(DataContext);
 
@@ -20,32 +21,24 @@ const TrackForm = ({ refreshTracks }) => {
         setTrack(DeepCopy(emptyTrack));
     }, [selectedTask, emptyTrack]);
 
-    const handleFormSubmit = (e) => {
+    const handleFormSubmit = async (e) => {
         e.preventDefault();
 
-        const requestOptions = {
-            method: "POST",
-            headers: { "Content-Type": "application/json" },
-            body: JSON.stringify(track),
-        };
-
         const url = getTaskTracksURL(selectedTask.id);
-        fetch(url, requestOptions)
-            .then((res) => {
-                res.json();
+        try {
+            const res = await axios.post(url, JSON.stringify(track));
+            if (res.status === 200) {
                 refreshTracks();
                 toast.success("Track has been added!", {
-                    position: "top-center",
-                    autoClose: 4000,
+                    duration: 4000,
                 });
+            }
+        } catch (e) {
+            console.error(e)
+            toast.error("There was an error.", {
+                duration: 4000,
             })
-            .then((data) => console.log(data))
-            .catch((err) =>
-                toast.error("There was an error.", {
-                    position: "top-center",
-                    autoClose: 4000,
-                })
-            );
+        }
 
         setTrack(DeepCopy(emptyTrack));
     };
