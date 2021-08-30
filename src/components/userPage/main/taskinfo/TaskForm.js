@@ -19,7 +19,6 @@ const TaskForm = ({ selectedTask, setSelectedTask }) => {
         useContext(DataContext);
 
     const history = useHistory();
-    console.log(selectedTask)
 
     const handleFormSubmit = async (e) => {
         e.preventDefault();
@@ -57,11 +56,10 @@ const TaskForm = ({ selectedTask, setSelectedTask }) => {
                 });
                 const data = res.data;
                 const id = data.id;
-                console.log(data)
                 history.push(`/task/${id}`);
             }
-        } catch (e) {
-            console.log(e)
+        } catch (error) {
+            console.error(error)
             toast.error("There was an error.", {
                 duration: 5000,
             })
@@ -85,7 +83,7 @@ const TaskForm = ({ selectedTask, setSelectedTask }) => {
                     });
                 }
             } catch (error) {
-                console.log(error);
+                console.error(error);
                 toast.error("There was an error deleting task.", {
                     duration: 5000,
                 });

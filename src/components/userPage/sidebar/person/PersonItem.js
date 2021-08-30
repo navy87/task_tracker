@@ -41,7 +41,6 @@ const PersonItem = ({ currentPerson, setCurrentPerson, selected }) => {
                     duration: 5000,
                 });
             } else {
-                console.log(res);
                 toast.error("Something went wrong!", {
                     position: "top-center",
                     autoClose: 5000,

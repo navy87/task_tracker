@@ -15,7 +15,7 @@ const TrackInfo = ({ match }) => {
     const [taskId, setTaskId] = useState(match.params.id);
     const [tracks, setTracks] = useState({});
 
-    const STATUSES = { loaded: "loaded", loading: "loading", new: "new" };
+    const STATUSES = { loading: 0, loaded: 1, new: 2, forbidden: 3 };
     Object.freeze(STATUSES);
     const [status, setStatus] = useState(STATUSES.loading);
     const [refresh, setRefresh] = useState(true);
@@ -33,9 +33,15 @@ const TrackInfo = ({ match }) => {
                 const url = getTaskTracksURL(taskId);
                 const res = await axios.get(url);
                 const data = res.data
-                setTracks(data)
-                setStatus(STATUSES.loaded)
+                if (res.status === 200) {
+                    setTracks(data)
+                    setStatus(STATUSES.loaded)
+                } else if(res.status === 403) {
+                    setStatus(STATUSES.forbidden)
+                }
+                return data
             } catch (e) {
+                console.log(JSON.stringify(e))
                 fetchingErrorHandler(e)
             }
         };
@@ -52,16 +58,22 @@ const TrackInfo = ({ match }) => {
         STATUSES.loaded,
         STATUSES.loading,
         STATUSES.new,
+        STATUSES.forbidden,
     ]);
 
     const notLoadedSelect = () => {
-        return status === STATUSES.loading ? (
-            <div className="loading-container">
-                <ReactLoading />
-            </div>
-        ) : (
-            <></>
-        );
+        switch (status) {
+            case STATUSES.loading:
+                return <div className="loading-container">
+                    <ReactLoading />
+                </div>
+            case STATUSES.new:
+                return <></>
+            case STATUSES.forbidden:
+                return <div>Forbidden</div>
+            default:
+                return <></>
+        }
     };
 
     return status === STATUSES.loaded ? (

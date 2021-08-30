@@ -5,7 +5,6 @@ import { DataContext } from "../../../contexts/SidebarContext";
 const PersonList = ({ currentPerson, setCurrentPerson, filteredKeyword }) => {
     const { people } = useContext(DataContext);
 
-    console.log(people);
     return (
         <div className="people_list">
             {[...people]

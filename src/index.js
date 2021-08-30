@@ -6,7 +6,6 @@ import reportWebVitals from "./reportWebVitals";
 import axios from "axios";
 
 axios.interceptors.request.use(req => {
-
     req.headers = {
         ...req.headers,
         "Content-Type": "application/json",
@@ -14,6 +13,18 @@ axios.interceptors.request.use(req => {
         Authorization: localStorage.getItem("token"),
     }
     return req
+})
+
+axios.interceptors.response.use( res => {return res}, error => {
+    console.error(error)
+    if (error.response.status === 401) { // UnauthorizedAccess
+        localStorage.removeItem("token")
+        localStorage.removeItem("user")
+        document.location="/"
+    } else if (error.response.status === 403) { // Forbidden
+        return error.response} else {
+    }
+    throw error;
 })
 
 ReactDOM.render(

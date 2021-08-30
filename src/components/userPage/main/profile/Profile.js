@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React from "react";
 import { FaUserCircle } from "react-icons/fa";
 import { AiFillEdit, AiOutlineMail, AiOutlinePhone } from "react-icons/ai";
 import { TiGroup } from "react-icons/ti";
@@ -6,9 +6,7 @@ import { BsPerson } from "react-icons/bs";
 import { Link } from "react-router-dom";
 
 const Profile = ({ match }) => {
-    useEffect(() => {
-        console.log(match);
-    });
+
     return (
         <div id="id_profile_page">
             <div className="container">

@@ -34,16 +34,10 @@ const LoginForm = ({ match }) => {
         try {
             const res = await axios.post(url, JSON.stringify(login))
             if (res.status === 200) {
-                const userMeta = await getUser(login.username);
                 localStorage.setItem("token", res.headers.authorization)
+                const userMeta = await getUser(login.username);
                 localStorage.setItem("user", JSON.stringify(userMeta))
                 history.push("/");
-            } else if (res.status === 401) {
-                toast.error("Username and/or Password is wrong.", {
-                    duration: 5000,
-                });
-            } else {
-                console.log(res)
             }
         } catch (e) {
             console.error(e)

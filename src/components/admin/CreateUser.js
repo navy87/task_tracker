@@ -26,8 +26,6 @@ const CreateUser = ({match}) => {
             return;
         }
 
-        console.log(userMeta);
-
         const url = getUserURL();
 
         try {

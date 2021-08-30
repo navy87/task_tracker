@@ -12,9 +12,13 @@ const TaskTrackContainer = (props) => {
 
     useEffect(() => {
         const fetchExists = async () => {
-            const url = getTaskExistsURL(taskId);
-            const res = await axios.get(url)
-            return res.data; // Boolean
+            try {
+                const url = getTaskExistsURL(taskId);
+                const res = await axios.get(url)
+                return res.data; // Boolean
+            } catch (error) {
+                console.error(error)
+            }
         };
 
         if (taskId.toLowerCase() !== "new") {
@@ -23,7 +27,7 @@ const TaskTrackContainer = (props) => {
                 setExistsOrNew(res);
             });
         } else {
-            setSelectedTask({ id: "new" });
+            setSelectedTask({ id: null });
             setExistsOrNew(true);
         }
     }, [setSelectedTask, taskId]);
