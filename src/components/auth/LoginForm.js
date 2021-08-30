@@ -1,9 +1,9 @@
 import axios from "axios";
-import React, { useContext, useState } from "react";
+import React, {useContext, useState} from "react";
 import toast from "react-hot-toast";
-import { useHistory } from "react-router-dom";
-import { AuthContext } from "../../contexts/GlobalContext";
-import { getLoginURL } from "../../helpers/Helper";
+import {useHistory} from "react-router-dom";
+import {AuthContext} from "../../contexts/GlobalContext";
+import {getLoginURL, getUserMetaURL} from "../../helpers/Helper";
 
 const LoginForm = ({ match }) => {
     const emptyForm = {
@@ -11,46 +11,58 @@ const LoginForm = ({ match }) => {
         password: "",
     };
     const [login, setLogin] = useState(emptyForm);
-    const { setAuth } = useContext(AuthContext);
+    const { auth, setAuth } = useContext(AuthContext);
 
     const history = useHistory();
+
+    const getUser = async (username) => {
+        try {
+            const res = await fetch(getUserMetaURL(username));
+            if (res.ok) {
+                return await res.json();
+            } else {
+                return null;
+            }
+        } catch (e) {
+            console.error(e)
+        }
+        return null;
+    }
 
     const handleLogin = async (e) => {
         e.preventDefault();
         console.log(login);
 
-        const requestOptions = {
-            method: "POST",
-            credentials: "include",
-            headers: {
-                "Content-Type": "application/json",
-                accept: "*/*",
-            },
-            body: JSON.stringify(login),
-        };
-
         const url = getLoginURL();
-
-        axios
-            .post(url, JSON.stringify(login), requestOptions)
-            .then((res) => {
-                if (res.status === 200) {
-                    console.log(res.headers["authorization"]);
-                    setAuth({
-                        authenticated: true,
-                        token: res.headers["authorization"],
-                    });
-                    history.push("/");
-                } else {
-                    toast.error("Username and/or Password is wrong.", {
-                        autoClose: 5000,
-                    });
-                }
+        try {
+            const res = await axios.post(url, JSON.stringify(login), {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                    accept: "*/*"
+                },
+                data: JSON.stringify(login)
             })
-            .catch((error) => {
-                console.error("There has been an error: ");
-                console.log(error);
+            if (res.status === 200) {
+                const userMeta = await getUser(login.username);
+                const newAuth = {
+                    authenticated: true,
+                    token: res.headers.authorization,
+                    user: userMeta
+                }
+                setAuth(newAuth)
+                history.push("/");
+            } else {
+                toast.error("Username and/or Password is wrong.", {
+                    autoClose: 5000,
+                });
+            }
+        } catch (e) {
+            console.error(e)
+            toast.error("Username and/or Password is wrong.", {
+                autoClose: 5000,
             });
+        }
     };
 
     return (

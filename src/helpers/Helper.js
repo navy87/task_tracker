@@ -102,6 +102,10 @@ export const getUserURL = () => {
     return `${getBaseURL()}/${process.env.REACT_APP_USER_URL}`;
 };
 
+export const getUserMetaURL = (username) => {
+    return `${getUserURL()}/${process.env.REACT_APP_USER_META_URL}/${username}`
+}
+
 export const getLoginURL = () => {
     return `${process.env.REACT_APP_LOGIN_URL}`;
 };

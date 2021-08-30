@@ -1,8 +1,8 @@
-import React, { useState } from "react";
+import React, {useState} from "react";
 import toast from "react-hot-toast";
-import { getUserURL } from "../../helpers/Helper";
+import {getUserURL} from "../../helpers/Helper";
 
-const CreateUser = ({ match }) => {
+const CreateUser = ({match}) => {
     const emptyUserMeta = {
         username: "",
         password: "",
@@ -29,7 +29,7 @@ const CreateUser = ({ match }) => {
 
         const requestOptions = {
             method: "POST",
-            headers: { "Content-Type": "application/json" },
+            headers: {"Content-Type": "application/json"},
             body: JSON.stringify(userMeta),
         };
 
@@ -50,12 +50,11 @@ const CreateUser = ({ match }) => {
             .then((data) => {
                 console.log(data);
             })
-            .catch((err) =>
-                toast.error("There was an error.", {
-                    position: "top-center",
-                    autoClose: 5000,
-                })
-            );
+            .catch((err) => {
+                    console.log(err);
+                    toast.error("There was an error.", {duration: 5000});
+                }
+            )
     };
 
     return (
@@ -72,6 +71,7 @@ const CreateUser = ({ match }) => {
                     required
                     autoComplete="off"
                     autoCorrect="off"
+                    name="firstName"
                     placeholder="First Name"
                     value={userMeta.firstName}
                     onChange={(e) =>
@@ -87,6 +87,7 @@ const CreateUser = ({ match }) => {
                     autoComplete="off"
                     autoCorrect="off"
                     placeholder="Last Name"
+                    name="lastName"
                     value={userMeta.lastName}
                     onChange={(e) =>
                         setUserMeta((current) => ({
@@ -101,6 +102,7 @@ const CreateUser = ({ match }) => {
                     autoComplete="off"
                     autoCorrect="off"
                     placeholder="Email"
+                    name="email"
                     value={userMeta.email}
                     onChange={(e) =>
                         setUserMeta((current) => ({
@@ -114,6 +116,7 @@ const CreateUser = ({ match }) => {
                     required
                     autoComplete="off"
                     placeholder="Phone Number"
+                    name="phone"
                     value={userMeta.phone}
                     onChange={(e) =>
                         setUserMeta((current) => ({
@@ -128,6 +131,7 @@ const CreateUser = ({ match }) => {
                     required
                     autoComplete="off"
                     placeholder="Username"
+                    name="username"
                     autoCorrect="off"
                     value={userMeta.username}
                     onChange={(e) =>
@@ -142,6 +146,7 @@ const CreateUser = ({ match }) => {
                     required
                     autoComplete="off"
                     placeholder="Password"
+                    name="password"
                     autoCorrect="off"
                     value={userMeta.password}
                     onChange={(e) =>
@@ -157,12 +162,13 @@ const CreateUser = ({ match }) => {
                     required
                     autoComplete="off"
                     placeholder="Confirm Password"
+                    name="confirmPassword"
                     autoCorrect="off"
                     value={confirmPassword}
                     onChange={(e) => setConfirmPassword(e.target.value)}
                 />
 
-                <input type="submit" value="Sign Up" />
+                <input type="submit" value="Sign Up"/>
             </form>
         </div>
     );

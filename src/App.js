@@ -20,6 +20,7 @@ function App() {
     const [auth, setAuth] = useState({
         authenticated: false,
         token: null,
+        user: null
     });
 
     const globalContextValues = {
