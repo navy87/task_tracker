@@ -1,6 +1,6 @@
 import React from "react";
 import { HiSortAscending, HiSortDescending } from "react-icons/hi";
-import RadioButton from "../../../helpers/RadioButton";
+import RadioButton from "../../../../helpers/RadioButton";
 
 const SortOrder = ({ selected, setTrackSortOrder }) => {
     return (

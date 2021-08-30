@@ -1,6 +1,6 @@
 import React, { useContext } from "react";
 import { GlobalContext } from "../../../../contexts/GlobalContext";
-import { QuestionDialog } from "../../../helpers/Dialog";
+import { QuestionDialog } from "../../../../helpers/Dialog";
 import { MdDeleteForever, MdSave } from "react-icons/md";
 import InfoContainer from "../InfoContainer";
 import AssigneeButton from "./AssigneeButton";
@@ -8,7 +8,7 @@ import PriorityInfo from "./PriorityInfo";
 import SelectAssignees from "./SelectAssignees";
 import StatusInfo from "./StatusInfo";
 import toast from "react-hot-toast";
-import { getTaskURL } from "../../../helpers/Helper";
+import { getTaskURL } from "../../../../helpers/Helper";
 import { DataContext } from "../../../../contexts/SidebarContext";
 import { useHistory } from "react-router-dom";
 

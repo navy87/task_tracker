@@ -7,7 +7,7 @@ import {
 
 import { BsCalendar } from "react-icons/bs";
 import { IoIosPeople } from "react-icons/io";
-import { Capitalize } from "../../../helpers/Helper";
+import { Capitalize } from "../../../../helpers/Helper";
 import { DataContext } from "../../../../contexts/SidebarContext";
 import { Link } from "react-router-dom";
 

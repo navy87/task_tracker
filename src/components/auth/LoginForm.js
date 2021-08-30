@@ -3,7 +3,7 @@ import React, { useContext, useState } from "react";
 import toast from "react-hot-toast";
 import { useHistory } from "react-router-dom";
 import { AuthContext } from "../../contexts/GlobalContext";
-import { getLoginURL } from "../helpers/Helper";
+import { getLoginURL } from "../../helpers/Helper";
 
 const LoginForm = ({ match }) => {
     const emptyForm = {
@@ -21,6 +21,7 @@ const LoginForm = ({ match }) => {
 
         const requestOptions = {
             method: "POST",
+            credentials: "include",
             headers: {
                 "Content-Type": "application/json",
                 accept: "*/*",

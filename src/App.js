@@ -5,7 +5,7 @@ import ReactTooltip from "react-tooltip";
 
 import { Switch, Route, BrowserRouter as Router } from "react-router-dom";
 
-import { AuthContext, GlobalContext } from "contexts/GlobalContext";
+import { AuthContext, GlobalContext } from "./contexts/GlobalContext";
 import Admin from "./components/admin/Admin";
 import LoginPageContainer from "./components/auth/LoginPageContainer";
 import ParticlesBackground from "./components/particles/ParticlesBackground";

@@ -7,7 +7,7 @@ import ReactLoading from "react-loading";
 import {
     fetchingErrorHandler,
     getTaskTracksURL,
-} from "../../../helpers/Helper";
+} from "../../../../helpers/Helper";
 
 const TrackInfo = ({ match }) => {
     const { trackSortOrder, setTrackSortOrder } = useContext(DataContext);

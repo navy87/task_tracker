@@ -4,7 +4,7 @@ import {
     FilterContext,
 } from "../../../../contexts/SidebarContext";
 import TaskItem from "./TaskItem";
-import { compareTask } from "../../../helpers/Helper";
+import { compareTask } from "../../../../helpers/Helper";
 
 const TaskList = () => {
     const { tasks } = useContext(DataContext);

@@ -2,8 +2,8 @@ import React, { useContext, useEffect, useState } from "react";
 import toast from "react-hot-toast";
 import { GlobalContext } from "../../../../contexts/GlobalContext";
 import AddPerson from "./AddPerson";
-import Dialog from "../../../helpers/Dialog";
-import { fetchingErrorHandler, getProfileURL } from "../../../helpers/Helper";
+import Dialog from "../../../../helpers/Dialog";
+import { fetchingErrorHandler, getProfileURL } from "../../../../helpers/Helper";
 
 const SelectAssignees = ({ selectedTask, setSelectedTask }) => {
     const { setDialog } = useContext(GlobalContext);

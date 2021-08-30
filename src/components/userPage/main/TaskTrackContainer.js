@@ -1,6 +1,6 @@
 import React, { useContext, useEffect, useState } from "react";
 import { DataContext } from "../../../contexts/SidebarContext";
-import { getTaskExistsURL } from "../../helpers/Helper";
+import { getTaskExistsURL } from "../../../helpers/Helper";
 import TaskInfo from "./taskinfo/TaskInfo";
 import TrackInfo from "./trackInfo/TrackInfo";
 

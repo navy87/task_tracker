@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import toast from "react-hot-toast";
-import { getUserURL } from "../helpers/Helper";
+import { getUserURL } from "../../helpers/Helper";
 
 const CreateUser = ({ match }) => {
     const emptyUserMeta = {

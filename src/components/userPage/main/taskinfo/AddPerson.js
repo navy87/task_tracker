@@ -2,7 +2,7 @@ import React, { useContext, useState } from "react";
 import toast from "react-hot-toast";
 import { GlobalContext } from "../../../../contexts/GlobalContext";
 import { DataContext } from "../../../../contexts/SidebarContext";
-import { getProfileURL } from "../../../helpers/Helper";
+import { getProfileURL } from "../../../../helpers/Helper";
 
 const AddPerson = ({ selectedTask, setSelectedTask }) => {
     const { setDialog } = useContext(GlobalContext);

@@ -3,8 +3,8 @@ import toast from "react-hot-toast";
 import { MdDelete } from "react-icons/md";
 import { GlobalContext } from "../../../../contexts/GlobalContext";
 import { DataContext } from "../../../../contexts/SidebarContext";
-import { QuestionDialog } from "../../../helpers/Dialog";
-import { getTracksURL } from "../../../helpers/Helper";
+import { QuestionDialog } from "../../../../helpers/Dialog";
+import { getTracksURL } from "../../../../helpers/Helper";
 
 const TrackItem = ({ track }) => {
     const { setDialog } = useContext(GlobalContext);
