@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import {useContext, useEffect, useState} from "react";
 import toast from "react-hot-toast";
 import { DataContext, FilterContext } from "../../contexts/SidebarContext";
 import Header from "./header/Header";
@@ -9,6 +9,7 @@ import { Switch, Route } from "react-router-dom";
 
 import "../../styles/userPage/userPage.css";
 import Profile from "./main/profile/Profile";
+
 const UserPage = ({ match }) => {
     const [selectedTask, setSelectedTask] = useState({ id: null });
     const [trackSortOrder, setTrackSortOrder] = useState("desc");
