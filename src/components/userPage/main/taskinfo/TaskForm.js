@@ -3,15 +3,14 @@ import {GlobalContext} from "../../../../contexts/GlobalContext";
 import {QuestionDialog} from "../../../../helpers/Dialog";
 import {MdDeleteForever, MdSave} from "react-icons/md";
 import InfoContainer from "../InfoContainer";
-import AssigneeButton from "./AssigneeButton";
 import PriorityInfo from "./PriorityInfo";
-import SelectAssignees from "./SelectAssignees";
 import StatusInfo from "./StatusInfo";
 import toast from "react-hot-toast";
 import {getTaskURL} from "../../../../helpers/Helper";
 import {DataContext} from "../../../../contexts/SidebarContext";
 import {useHistory} from "react-router-dom";
 import axios from "axios";
+import AssigneesRow from "./AssigneesRow";
 
 const TaskForm = ({selectedTask, setSelectedTask, isOwner}) => {
     const {setDialog} = useContext(GlobalContext);
@@ -30,12 +29,6 @@ const TaskForm = ({selectedTask, setSelectedTask, isOwner}) => {
             });
             return;
         }
-
-        // const requestOptions = {
-        //     method: !selectedTask.id ? "POST" : "PUT",
-        //     headers: { "Content-Type": "application/json", "Authorization": auth.token},
-        //     body: JSON.stringify(selectedTask),
-        // };
 
         const url = selectedTask.id
             ? getTaskURL(selectedTask.id)
@@ -175,22 +168,7 @@ const TaskForm = ({selectedTask, setSelectedTask, isOwner}) => {
                 <InfoContainer
                     label="Assigned To"
                     info_render={
-                        <div className="assignees_container">
-                            <SelectAssignees
-                                selectedTask={selectedTask}
-                                setSelectedTask={setSelectedTask}
-                            />
-
-                            {selectedTask.assignees.map((assignee, index) => (
-                                <AssigneeButton
-                                    key={index}
-                                    taskPerson={assignee}
-                                    selectedTask={selectedTask}
-                                    setSelectedTask={setSelectedTask}
-                                    isOwner={isOwner}
-                                />
-                            ))}
-                        </div>
+                        <AssigneesRow isOwner={isOwner} selectedTask={selectedTask} setSelectedTask={setSelectedTask} />
                     }
                 />
                 <InfoContainer

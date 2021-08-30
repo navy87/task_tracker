@@ -33,7 +33,7 @@ const AssigneeButton = ({taskPerson, setSelectedTask, selectedTask, isOwner}) =>
     const handleLeaderToggle = (e) => {
         const assignees = [...selectedTask.assignees].map((assignee) => ({
             ...assignee,
-            leader: assignee.id === taskPerson.id,
+            leader: assignee.profile.id === taskPerson.profile.id,
         }));
         setSelectedTask({...selectedTask, assignees});
     };
