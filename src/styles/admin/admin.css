@@ -1,158 +1,158 @@
 #adminPage {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
-  height: 100vh;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    -ms-flex-direction: column;
+    flex-direction: column;
+    height: 100vh;
 }
 
 #adminPage header {
-  background-color: navy;
-  color: white;
-  padding: 1rem 5rem;
+    background-color: navy;
+    color: white;
+    padding: 1rem 5rem;
 }
 
 #adminPage header h1 {
-  font-size: 2rem;
+    font-size: 2rem;
 }
 
 #adminPage main {
-  display: -ms-grid;
-  display: grid;
-  -ms-grid-columns: auto auto;
-      grid-template-columns: auto auto;
-  place-content: center;
-  -webkit-box-flex: 1;
-      -ms-flex-positive: 1;
-          flex-grow: 1;
-  padding: 0 5rem;
+    display: -ms-grid;
+    display: grid;
+    -ms-grid-columns: auto auto;
+    grid-template-columns: auto auto;
+    place-content: center;
+    -webkit-box-flex: 1;
+    -ms-flex-positive: 1;
+    flex-grow: 1;
+    padding: 0 5rem;
 }
 
 #adminPage main input {
-  min-width: 300px;
-  padding: 0.5rem;
-  outline: none;
-  -webkit-box-shadow: 5px 5px 5px transparent;
-          box-shadow: 5px 5px 5px transparent;
-  margin-bottom: 0.5rem;
-  border-radius: 5px;
-  -webkit-transition: all 0.5s;
-  transition: all 0.5s;
+    min-width: 300px;
+    padding: 0.5rem;
+    outline: none;
+    -webkit-box-shadow: 5px 5px 5px transparent;
+    box-shadow: 5px 5px 5px transparent;
+    margin-bottom: 0.5rem;
+    border-radius: 5px;
+    -webkit-transition: all 0.5s;
+    transition: all 0.5s;
 }
 
 #adminPage main input:focus {
-  -webkit-box-shadow: 5px 5px 5px #888;
-          box-shadow: 5px 5px 5px #888;
-  -webkit-transform: scale(1.015);
-          transform: scale(1.015);
+    -webkit-box-shadow: 5px 5px 5px #888;
+    box-shadow: 5px 5px 5px #888;
+    -webkit-transform: scale(1.015);
+    transform: scale(1.015);
 }
 
 #adminPage main input[type="submit"] {
-  cursor: pointer;
-  color: white;
-  background-color: blue;
-  -webkit-box-shadow: 5px 5px 5px #aaa;
-          box-shadow: 5px 5px 5px #aaa;
+    cursor: pointer;
+    color: white;
+    background-color: blue;
+    -webkit-box-shadow: 5px 5px 5px #aaa;
+    box-shadow: 5px 5px 5px #aaa;
 }
 
 #adminPage main input[type="submit"]:active {
-  -webkit-transform: scale(0.99);
-          transform: scale(0.99);
-  background-color: navy;
-  -webkit-box-shadow: 2px 2px 2px #888;
-          box-shadow: 2px 2px 2px #888;
+    -webkit-transform: scale(0.99);
+    transform: scale(0.99);
+    background-color: navy;
+    -webkit-box-shadow: 2px 2px 2px #888;
+    box-shadow: 2px 2px 2px #888;
 }
 
 #adminPage main .buttons-container {
-  display: -ms-grid;
-  display: grid;
-  gap: 5rem;
-  -ms-grid-columns: auto auto;
-      grid-template-columns: auto auto;
+    display: -ms-grid;
+    display: grid;
+    gap: 5rem;
+    -ms-grid-columns: auto auto;
+    grid-template-columns: auto auto;
 }
 
 #adminPage main .buttons-container .button-link {
-  text-decoration: none;
+    text-decoration: none;
 }
 
 #adminPage main .buttons-container .button-link .dashboard-button {
-  cursor: pointer;
-  background-color: navy;
-  color: white;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  padding: 1rem 2rem;
-  width: 15rem;
-  font-size: 1.15rem;
-  font-weight: 500;
-  border-radius: 0.5rem;
-  -webkit-box-shadow: 5px 5px 5px transparent;
-          box-shadow: 5px 5px 5px transparent;
+    cursor: pointer;
+    background-color: navy;
+    color: white;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    padding: 1rem 2rem;
+    width: 15rem;
+    font-size: 1.15rem;
+    font-weight: 500;
+    border-radius: 0.5rem;
+    -webkit-box-shadow: 5px 5px 5px transparent;
+    box-shadow: 5px 5px 5px transparent;
 }
 
 #adminPage main .buttons-container .button-link .dashboard-button:active {
-  -webkit-transform: scale(0.99);
-          transform: scale(0.99);
+    -webkit-transform: scale(0.99);
+    transform: scale(0.99);
 }
 
 #adminPage main .buttons-container .button-link .dashboard-button.create {
-  background-color: #23235c;
+    background-color: #23235c;
 }
 
 #adminPage main .buttons-container .button-link .dashboard-button.reset {
-  background-color: #b72929;
+    background-color: #b72929;
 }
 
 #adminPage main .buttons-container .button-link .dashboard-button.deactivate {
-  background-color: #336d36;
+    background-color: #336d36;
 }
 
 #adminPage main .buttons-container .button-link .dashboard-button.logout {
-  background-color: #262626;
+    background-color: #262626;
 }
 
 #adminPage main .buttons-container .button-link .dashboard-button .icon {
-  width: 5rem;
-  height: 5rem;
-  opacity: 0.5;
-  margin-right: 1rem;
-  -webkit-transition: all 0.5s;
-  transition: all 0.5s;
+    width: 5rem;
+    height: 5rem;
+    opacity: 0.5;
+    margin-right: 1rem;
+    -webkit-transition: all 0.5s;
+    transition: all 0.5s;
 }
 
 #adminPage main .buttons-container .button-link .dashboard-button:hover {
-  -webkit-box-shadow: 10px 10px 10px #ddd;
-          box-shadow: 10px 10px 10px #ddd;
+    -webkit-box-shadow: 10px 10px 10px #ddd;
+    box-shadow: 10px 10px 10px #ddd;
 }
 
 #adminPage main .buttons-container .button-link .dashboard-button:hover .icon {
-  opacity: 1;
+    opacity: 1;
 }
 
 #adminPage main .reset_password_container,
 #adminPage main .deactivate_account_container,
 #adminPage main .create-user-container {
-  padding: 20px;
-  background-color: #cccccc;
-  -webkit-box-shadow: 5px 5px 5px #888;
-          box-shadow: 5px 5px 5px #888;
-  border-radius: 10px;
+    padding: 20px;
+    background-color: #cccccc;
+    -webkit-box-shadow: 5px 5px 5px #888;
+    box-shadow: 5px 5px 5px #888;
+    border-radius: 10px;
 }
 
 #adminPage main .reset_password_container h2,
 #adminPage main .deactivate_account_container h2,
 #adminPage main .create-user-container h2 {
-  text-align: center;
-  margin: 10px auto;
-  font-size: 1.5rem;
-  font-weight: 300;
+    text-align: center;
+    margin: 10px auto;
+    font-size: 1.5rem;
+    font-weight: 300;
 }
 
 #adminPage main .reset_password_container #id_reset_password_form,
@@ -164,13 +164,13 @@
 #adminPage main .create-user-container #id_reset_password_form,
 #adminPage main .create-user-container #id_deactivate_account_form,
 #adminPage main .create-user-container #create-user-form {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    -ms-flex-direction: column;
+    flex-direction: column;
 }
 
 #adminPage main .reset_password_container #id_reset_password_form .form-subtitle,
@@ -182,9 +182,10 @@
 #adminPage main .create-user-container #id_reset_password_form .form-subtitle,
 #adminPage main .create-user-container #id_deactivate_account_form .form-subtitle,
 #adminPage main .create-user-container #create-user-form .form-subtitle {
-  margin: 0.5rem 0;
-  padding: 3px 0;
-  font-weight: 300;
-  border-bottom: 1px solid #bbb;
+    margin: 0.5rem 0;
+    padding: 3px 0;
+    font-weight: 300;
+    border-bottom: 1px solid #bbb;
 }
+
 /*# sourceMappingURL=admin.css.map */

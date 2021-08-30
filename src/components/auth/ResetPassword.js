@@ -15,7 +15,7 @@ const ResetPassword = () => {
                 name="confirm-password"
                 placeholder="Confirm Password"
             />
-            <input type="submit" value="Reset Password" />
+            <input type="submit" value="Reset Password"/>
         </form>
     );
 };

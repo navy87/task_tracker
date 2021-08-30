@@ -1,11 +1,11 @@
-import React, { useEffect, useState } from "react";
+import React, {useEffect, useState} from "react";
 import RadioButton from "../../../../helpers/RadioButton";
 
-const SortBySelect = ({ selected, setTaskSortOrder }) => {
+const SortBySelect = ({selected, setTaskSortOrder}) => {
     const [checked, setChecked] = useState(selected.by);
 
     useEffect(() => {
-        setTaskSortOrder((current) => ({ ...current, by: checked }));
+        setTaskSortOrder((current) => ({...current, by: checked}));
     }, [setTaskSortOrder, checked]);
 
     return (

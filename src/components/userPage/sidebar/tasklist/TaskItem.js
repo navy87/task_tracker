@@ -1,34 +1,30 @@
-import React, { useContext } from "react";
-import {
-    FcLowPriority,
-    FcMediumPriority,
-    FcHighPriority,
-} from "react-icons/fc";
+import React, {useContext} from "react";
+import {FcHighPriority, FcLowPriority, FcMediumPriority,} from "react-icons/fc";
 
-import { BsCalendar } from "react-icons/bs";
-import { IoIosPeople } from "react-icons/io";
-import { Capitalize } from "../../../../helpers/Helper";
-import { DataContext } from "../../../../contexts/SidebarContext";
-import { Link } from "react-router-dom";
+import {BsCalendar} from "react-icons/bs";
+import {IoIosPeople} from "react-icons/io";
+import {Capitalize} from "../../../../helpers/Helper";
+import {DataContext} from "../../../../contexts/SidebarContext";
+import {Link} from "react-router-dom";
 
 const priorityMap = {
     low: {
         text: "Low Priority",
-        icon: <FcLowPriority className="icon" />,
+        icon: <FcLowPriority className="icon"/>,
     },
     medium: {
         text: "Medium Priority",
-        icon: <FcMediumPriority className="icon" />,
+        icon: <FcMediumPriority className="icon"/>,
     },
     high: {
         text: "High Priority",
-        icon: <FcHighPriority className="icon" />,
+        icon: <FcHighPriority className="icon"/>,
     },
 };
 
-const TaskItem = ({ task }) => {
-    const { selectedTask } = useContext(DataContext);
-    const { issue, description, dueDate, assignees, status } = task;
+const TaskItem = ({task}) => {
+    const {selectedTask} = useContext(DataContext);
+    const {issue, description, dueDate, assignees, status} = task;
     const priority = task.priority.toLowerCase();
 
     let displayedName = "";
@@ -64,11 +60,11 @@ const TaskItem = ({ task }) => {
                 </div>
 
                 <div className="date">
-                    <BsCalendar className="icon" /> {dueDate}
+                    <BsCalendar className="icon"/> {dueDate}
                 </div>
 
                 <div className="assignees">
-                    <IoIosPeople className="icon" />
+                    <IoIosPeople className="icon"/>
                     <b className={displayedName || "warning"}>
                         {displayedName ? displayedName : "Not Assigned"}
                     </b>

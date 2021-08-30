@@ -1,21 +1,21 @@
-import React, { useContext } from "react";
-import { GlobalContext} from "../../../../contexts/GlobalContext";
-import { QuestionDialog } from "../../../../helpers/Dialog";
-import { MdDeleteForever, MdSave } from "react-icons/md";
+import React, {useContext} from "react";
+import {GlobalContext} from "../../../../contexts/GlobalContext";
+import {QuestionDialog} from "../../../../helpers/Dialog";
+import {MdDeleteForever, MdSave} from "react-icons/md";
 import InfoContainer from "../InfoContainer";
 import AssigneeButton from "./AssigneeButton";
 import PriorityInfo from "./PriorityInfo";
 import SelectAssignees from "./SelectAssignees";
 import StatusInfo from "./StatusInfo";
 import toast from "react-hot-toast";
-import { getTaskURL } from "../../../../helpers/Helper";
-import { DataContext } from "../../../../contexts/SidebarContext";
-import { useHistory } from "react-router-dom";
+import {getTaskURL} from "../../../../helpers/Helper";
+import {DataContext} from "../../../../contexts/SidebarContext";
+import {useHistory} from "react-router-dom";
 import axios from "axios";
 
-const TaskForm = ({ selectedTask, setSelectedTask }) => {
-    const { setDialog } = useContext(GlobalContext);
-    const { refresh, setSelectedTask: setSelectedTaskGlobal } =
+const TaskForm = ({selectedTask, setSelectedTask, isOwner}) => {
+    const {setDialog} = useContext(GlobalContext);
+    const {refresh, setSelectedTask: setSelectedTaskGlobal} =
         useContext(DataContext);
 
     const history = useHistory();
@@ -90,7 +90,7 @@ const TaskForm = ({ selectedTask, setSelectedTask }) => {
             }
         };
         fetchDelete().then(() => {
-            setSelectedTaskGlobal({ id: null });
+            setSelectedTaskGlobal({id: null});
             history.push("/");
             refresh();
         });
@@ -169,7 +169,7 @@ const TaskForm = ({ selectedTask, setSelectedTask }) => {
                                     description: e.target.value,
                                 });
                             }}
-                        ></textarea>
+                        />
                     }
                 />
                 <InfoContainer
@@ -187,6 +187,7 @@ const TaskForm = ({ selectedTask, setSelectedTask }) => {
                                     taskPerson={assignee}
                                     selectedTask={selectedTask}
                                     setSelectedTask={setSelectedTask}
+                                    isOwner={isOwner}
                                 />
                             ))}
                         </div>
@@ -230,8 +231,8 @@ const TaskForm = ({ selectedTask, setSelectedTask }) => {
                     }
                 />
                 <div className="button_group">
-                    <button type="submit" className="btn btn-submit">
-                        <MdSave className="btn_icon" color="white" />
+                    <button type="submit" disabled={!isOwner} className="btn btn-submit">
+                        <MdSave className="btn_icon" />
                         {(selectedTask.id && "Update") || "Add"}
                     </button>
                     {selectedTask.id === 0 || (
@@ -246,8 +247,9 @@ const TaskForm = ({ selectedTask, setSelectedTask }) => {
                             <button
                                 onClick={handleTaskDelete}
                                 className="btn btn-danger"
+                                disabled={!isOwner}
                             >
-                                <MdDeleteForever className="btn_icon" />
+                                <MdDeleteForever className="btn_icon"/>
                                 Delete Task
                             </button>
                         </>

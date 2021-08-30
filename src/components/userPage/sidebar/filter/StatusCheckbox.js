@@ -1,9 +1,9 @@
-import React, { useContext, useEffect, useState } from "react";
-import { FilterContext } from "../../../../contexts/SidebarContext";
+import React, {useContext, useEffect, useState} from "react";
+import {FilterContext} from "../../../../contexts/SidebarContext";
 
-const StatusCheckbox = ({ render, id, value }) => {
+const StatusCheckbox = ({render, id, value}) => {
     const [checked, setChecked] = useState(true);
-    const { setFilteredStatuses } = useContext(FilterContext);
+    const {setFilteredStatuses} = useContext(FilterContext);
 
     useEffect(() => {
         const filterData = () => {

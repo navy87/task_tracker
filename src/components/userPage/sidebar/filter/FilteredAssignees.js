@@ -1,14 +1,11 @@
-import React, { useContext, useEffect, useState } from "react";
-import {
-    DataContext,
-    FilterContext,
-} from "../../../../contexts/SidebarContext";
+import React, {useContext, useEffect, useState} from "react";
+import {DataContext, FilterContext,} from "../../../../contexts/SidebarContext";
 import FilterAssigneeButton from "./FilterAssigneeButton";
 
 const FilteredAssignees = () => {
-    const { filteredPersons, setFilteredPersons } = useContext(FilterContext);
+    const {filteredPersons, setFilteredPersons} = useContext(FilterContext);
     // const [people, setPeople] = useState([]);
-    const { people } = useContext(DataContext);
+    const {people} = useContext(DataContext);
     const [availablePeople, setAvailablePeople] = useState([]);
 
     useEffect(() => {

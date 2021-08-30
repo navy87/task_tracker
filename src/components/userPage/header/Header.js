@@ -1,8 +1,8 @@
-import React, { useEffect, useState} from "react";
-import { FcDepartment, FcPlanner } from "react-icons/fc";
-import { RiLogoutCircleFill } from "react-icons/ri";
-import { FaUserCircle } from "react-icons/fa";
-import { Link } from "react-router-dom";
+import React, {useEffect, useState} from "react";
+import {FcDepartment, FcPlanner} from "react-icons/fc";
+import {RiLogoutCircleFill} from "react-icons/ri";
+import {FaUserCircle} from "react-icons/fa";
+import {Link} from "react-router-dom";
 
 const Header = () => {
     const [user, setUser] = useState({})
@@ -15,20 +15,20 @@ const Header = () => {
         <header id="header">
             <Link to="/">
                 <div className="logo-container">
-                    <FcPlanner className="logo" />
+                    <FcPlanner className="logo"/>
                     <h1>Task Planner</h1>
                 </div>
             </Link>
             <div className="user-info-list">
                 <div className="no-btn">
-                    <FcDepartment className="icon" />
+                    <FcDepartment className="icon"/>
                     {user.department || "Unspecified"}
                 </div>
                 <Link className="list-item" to="/profile">
-                    <FaUserCircle className="icon" /> {user.fullName}
+                    <FaUserCircle className="icon"/> {user.fullName}
                 </Link>
                 <Link className="list-item" to="/logout">
-                    <RiLogoutCircleFill className="icon" /> Logout
+                    <RiLogoutCircleFill className="icon"/> Logout
                 </Link>
             </div>
         </header>

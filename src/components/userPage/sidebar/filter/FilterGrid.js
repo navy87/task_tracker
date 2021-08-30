@@ -8,11 +8,11 @@ import StatusFilter from "./StatusFilter";
 const FilterGrid = () => {
     return (
         <div className="filters_grid">
-            <FilterItem label="Assigned To" render={<FilteredAssignees />} />
+            <FilterItem label="Assigned To" render={<FilteredAssignees/>}/>
 
-            <FilterItem label="Priorities" render={<PriorityFilter />} />
+            <FilterItem label="Priorities" render={<PriorityFilter/>}/>
 
-            <FilterItem label="Status" render={<StatusFilter />} />
+            <FilterItem label="Status" render={<StatusFilter/>}/>
         </div>
     );
 };

@@ -1,12 +1,13 @@
-import React, { useContext, useEffect, useState } from "react";
-import { MdAddCircleOutline } from "react-icons/md";
+import React, {useContext, useEffect, useState} from "react";
+import {MdAddCircleOutline} from "react-icons/md";
 import InfoContainer from "../InfoContainer";
-import { DeepCopy, GetToday, getTaskTracksURL } from "../../../../helpers/Helper";
+import {DeepCopy, getTaskTracksURL, GetToday} from "../../../../helpers/Helper";
 import toast from "react-hot-toast";
-import { DataContext } from "../../../../contexts/SidebarContext";
+import {DataContext} from "../../../../contexts/SidebarContext";
 import axios from "axios";
-const TrackForm = ({ refreshTracks }) => {
-    const { selectedTask } = useContext(DataContext);
+
+const TrackForm = ({refreshTracks}) => {
+    const {selectedTask} = useContext(DataContext);
 
     const [emptyTrack] = useState({
         date: GetToday(),
@@ -56,7 +57,7 @@ const TrackForm = ({ refreshTracks }) => {
                         value={track.date}
                         required
                         onChange={(e) =>
-                            setTrack({ ...track, date: e.target.value })
+                            setTrack({...track, date: e.target.value})
                         }
                     />
                 }
@@ -74,7 +75,7 @@ const TrackForm = ({ refreshTracks }) => {
                         required
                         value={track.title}
                         onChange={(e) =>
-                            setTrack({ ...track, title: e.target.value })
+                            setTrack({...track, title: e.target.value})
                         }
                     />
                 }
@@ -90,13 +91,13 @@ const TrackForm = ({ refreshTracks }) => {
                         required
                         value={track.description}
                         onChange={(e) =>
-                            setTrack({ ...track, description: e.target.value })
+                            setTrack({...track, description: e.target.value})
                         }
                     ></textarea>
                 }
             />
             <button type="submit" className="btn btn-submit">
-                <MdAddCircleOutline className="btn_icon" /> Accept
+                <MdAddCircleOutline className="btn_icon"/> Accept
             </button>
         </form>
     );

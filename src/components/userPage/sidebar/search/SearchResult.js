@@ -1,8 +1,5 @@
-import React, { useContext, useEffect, useState } from "react";
-import {
-    DataContext,
-    FilterContext,
-} from "../../../../contexts/SidebarContext";
+import React, {useContext, useEffect, useState} from "react";
+import {DataContext, FilterContext,} from "../../../../contexts/SidebarContext";
 
 const SearchResult = () => {
     const {
@@ -11,7 +8,7 @@ const SearchResult = () => {
         filteredKeywords,
         filteredPersons,
     } = useContext(FilterContext);
-    const { tasks } = useContext(DataContext);
+    const {tasks} = useContext(DataContext);
 
     const [allTasks, setAllTasks] = useState(0);
     const [activeTasks, setActiveTasks] = useState(0);

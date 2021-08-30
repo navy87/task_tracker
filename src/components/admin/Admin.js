@@ -1,12 +1,12 @@
 import React from "react";
 import "../../styles/admin/admin.css"; // This Import must be last for some reason
 import Dashboard from "./Dashboard";
-import { Switch, Route } from "react-router-dom";
+import {Route, Switch} from "react-router-dom";
 import CreateUser from "./CreateUser";
 import ResetPasswordAdmin from "./ResetPasswordAdmin";
 import DeactivateAccount from "./DeactivateAccount";
 
-const Admin = ({ match }) => {
+const Admin = ({match}) => {
     return (
         <div id="adminPage">
             <header>
@@ -14,7 +14,7 @@ const Admin = ({ match }) => {
             </header>
             <main>
                 <Switch>
-                    <Route path={`${match.url}/`} exact component={Dashboard} />
+                    <Route path={`${match.url}/`} exact component={Dashboard}/>
                     <Route
                         path={`${match.url}/createUser`}
                         exact

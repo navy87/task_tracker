@@ -1,10 +1,10 @@
 import axios from "axios";
-import React, { useState } from "react";
+import React, {useState} from "react";
 import toast from "react-hot-toast";
 import {useHistory} from "react-router-dom";
 import {getLoginURL, getUserMetaURL} from "../../helpers/Helper";
 
-const LoginForm = ({ match }) => {
+const LoginForm = ({match}) => {
     const emptyForm = {
         username: "",
         password: "",
@@ -90,7 +90,7 @@ const LoginForm = ({ match }) => {
                         name="remember-me"
                     />
                 </label>
-                <input type="submit" value="Login" />
+                <input type="submit" value="Login"/>
                 <a href={`${match.url}/forgotPassword`} id="id-forgot-password">
                     Forgot Password
                 </a>

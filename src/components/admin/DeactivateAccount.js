@@ -19,7 +19,7 @@ const DeactivateAccount = () => {
                     placeholder="Username"
                     autoCorrect="off"
                 />
-                <input type="submit" value="Deactivate Account" />
+                <input type="submit" value="Deactivate Account"/>
             </form>
         </div>
     );

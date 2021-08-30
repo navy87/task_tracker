@@ -1,6 +1,6 @@
 import React from "react";
 
-const ResetPasswordAdmin = ({ match }) => {
+const ResetPasswordAdmin = ({match}) => {
     const handleResetPassword = (e) => {
         e.preventDefault();
     };
@@ -20,7 +20,7 @@ const ResetPasswordAdmin = ({ match }) => {
                     placeholder="Username"
                     autoCorrect="off"
                 />
-                <input type="submit" value="Reset Password" />
+                <input type="submit" value="Reset Password"/>
             </form>
         </div>
     );

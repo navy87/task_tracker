@@ -1,9 +1,9 @@
-import React, { useContext } from "react";
+import React, {useContext} from "react";
 import PersonItem from "./PersonItem";
-import { DataContext } from "../../../contexts/SidebarContext";
+import {DataContext} from "../../../contexts/SidebarContext";
 
-const PersonList = ({ currentPerson, setCurrentPerson, filteredKeyword }) => {
-    const { people } = useContext(DataContext);
+const PersonList = ({currentPerson, setCurrentPerson, filteredKeyword}) => {
+    const {people} = useContext(DataContext);
 
     return (
         <div className="people_list">

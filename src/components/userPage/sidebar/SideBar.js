@@ -6,10 +6,10 @@ import TaskListContainer from "./tasklist/TaskListContainer";
 const SideBar = () => {
     return (
         <div id="sidebar">
-            <SearchBar />
-            <Filter />
-            <SortSetting />
-            <TaskListContainer />
+            <SearchBar/>
+            <Filter/>
+            <SortSetting/>
+            <TaskListContainer/>
         </div>
     );
 };

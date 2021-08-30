@@ -1,140 +1,143 @@
 #adminPage {
-    display: flex;
-    flex-direction: column;
-    height: 100vh;
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
 
-    header {
+  header {
+    background-color: navy;
+    color: white;
+    padding: 1rem 5rem;
+
+    h1 {
+      font-size: 2rem;
+    }
+  }
+
+  main {
+    display: grid;
+    grid-template-columns: auto auto;
+    place-content: center;
+    // background-color: #aaaaaaaa;
+    flex-grow: 1;
+    padding: 0 5rem;
+
+    input {
+      min-width: 300px;
+      padding: 0.5rem;
+      outline: none;
+      box-shadow: 5px 5px 5px transparent;
+      margin-bottom: 0.5rem;
+      border-radius: 5px;
+      transition: all 0.5s;
+
+      &:focus {
+        box-shadow: 5px 5px 5px #888;
+        transform: scale(1.015);
+      }
+    }
+
+    input[type="submit"] {
+      cursor: pointer;
+      color: white;
+      background-color: blue;
+      box-shadow: 5px 5px 5px #aaa;
+
+      &:active {
+        transform: scale(0.99);
         background-color: navy;
-        color: white;
-        padding: 1rem 5rem;
-
-        h1 {
-            font-size: 2rem;
-        }
+        box-shadow: 2px 2px 2px #888;
+      }
     }
 
-    main {
-        display: grid;
-        grid-template-columns: auto auto;
-        place-content: center;
-        // background-color: #aaaaaaaa;
-        flex-grow: 1;
-        padding: 0 5rem;
+    .buttons-container {
+      display: grid;
+      gap: 5rem;
+      grid-template-columns: auto auto;
 
-        input {
-            min-width: 300px;
-            padding: 0.5rem;
-            outline: none;
-            box-shadow: 5px 5px 5px transparent;
-            margin-bottom: 0.5rem;
-            border-radius: 5px;
+      .button-link {
+        text-decoration: none;
+
+        .dashboard-button {
+          cursor: pointer;
+          background-color: navy;
+          color: white;
+          display: flex;
+          align-items: center;
+          padding: 1rem 2rem;
+          width: 15rem;
+          font-size: 1.15rem;
+          font-weight: 500;
+          border-radius: 0.5rem;
+          box-shadow: 5px 5px 5px transparent;
+
+          &:active {
+            transform: scale(0.99);
+          }
+
+          &.create {
+            background-color: #23235c;
+          }
+
+          &.reset {
+            background-color: #b72929;
+          }
+
+          &.deactivate {
+            background-color: #336d36;
+          }
+
+          &.logout {
+            background-color: #262626;
+          }
+
+          .icon {
+            width: 5rem;
+            height: 5rem;
+            opacity: 0.5;
+            margin-right: 1rem;
             transition: all 0.5s;
+          }
 
-            &:focus {
-                box-shadow: 5px 5px 5px #888;
-                transform: scale(1.015);
+          &:hover {
+            box-shadow: 10px 10px 10px #ddd;
+
+            .icon {
+              opacity: 1;
             }
+          }
         }
-
-        input[type="submit"] {
-            cursor: pointer;
-            color: white;
-            background-color: blue;
-            box-shadow: 5px 5px 5px #aaa;
-
-            &:active {
-                transform: scale(0.99);
-                background-color: navy;
-                box-shadow: 2px 2px 2px #888;
-            }
-        }
-
-        .buttons-container {
-            display: grid;
-            gap: 5rem;
-            grid-template-columns: auto auto;
-            .button-link {
-                text-decoration: none;
-                .dashboard-button {
-                    cursor: pointer;
-                    background-color: navy;
-                    color: white;
-                    display: flex;
-                    align-items: center;
-                    padding: 1rem 2rem;
-                    width: 15rem;
-                    font-size: 1.15rem;
-                    font-weight: 500;
-                    border-radius: 0.5rem;
-                    box-shadow: 5px 5px 5px transparent;
-
-                    &:active {
-                        transform: scale(0.99);
-                    }
-
-                    &.create {
-                        background-color: #23235c;
-                    }
-
-                    &.reset {
-                        background-color: #b72929;
-                    }
-
-                    &.deactivate {
-                        background-color: #336d36;
-                    }
-
-                    &.logout {
-                        background-color: #262626;
-                    }
-
-                    .icon {
-                        width: 5rem;
-                        height: 5rem;
-                        opacity: 0.5;
-                        margin-right: 1rem;
-                        transition: all 0.5s;
-                    }
-
-                    &:hover {
-                        box-shadow: 10px 10px 10px #ddd;
-                        .icon {
-                            opacity: 1;
-                        }
-                    }
-                }
-            }
-        }
-
-        .reset_password_container,
-        .deactivate_account_container,
-        .create-user-container {
-            padding: 20px;
-            background-color: #cccccc;
-            box-shadow: 5px 5px 5px #888;
-            border-radius: 10px;
-
-            h2 {
-                text-align: center;
-                margin: 10px auto;
-                font-size: 1.5rem;
-                font-weight: 300;
-            }
-
-            #id_reset_password_form,
-            #id_deactivate_account_form,
-            #create-user-form {
-                display: flex;
-                flex-direction: column;
-
-                .form-subtitle {
-                    margin: 0.5rem 0;
-                    padding: 3px 0;
-                    font-weight: 300;
-                    // border-top: 1px solid #bbb;
-                    border-bottom: 1px solid #bbb;
-                }
-            }
-        }
+      }
     }
+
+    .reset_password_container,
+    .deactivate_account_container,
+    .create-user-container {
+      padding: 20px;
+      background-color: #cccccc;
+      box-shadow: 5px 5px 5px #888;
+      border-radius: 10px;
+
+      h2 {
+        text-align: center;
+        margin: 10px auto;
+        font-size: 1.5rem;
+        font-weight: 300;
+      }
+
+      #id_reset_password_form,
+      #id_deactivate_account_form,
+      #create-user-form {
+        display: flex;
+        flex-direction: column;
+
+        .form-subtitle {
+          margin: 0.5rem 0;
+          padding: 3px 0;
+          font-weight: 300;
+          // border-top: 1px solid #bbb;
+          border-bottom: 1px solid #bbb;
+        }
+      }
+    }
+  }
 }

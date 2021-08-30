@@ -1,6 +1,6 @@
-import React, { useState } from "react";
-import { BsSearch } from "react-icons/bs";
-import { DeepCopy } from "../../helpers/Helper";
+import React, {useState} from "react";
+import {BsSearch} from "react-icons/bs";
+import {DeepCopy} from "../../helpers/Helper";
 import PeopleList from "./PeopleList";
 import PersonForm from "./PersonForm";
 
@@ -27,7 +27,7 @@ const PersonDialog = () => {
                     value={filteredKeyword}
                     onChange={(e) => setFilteredKeyword(e.target.value)}
                 />
-                <BsSearch className="search_btn" />
+                <BsSearch className="search_btn"/>
             </div>
             <div className="buttons">
                 <button onClick={handleAddPerson}>Add Person</button>

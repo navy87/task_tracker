@@ -1,18 +1,18 @@
-import { useEffect, useState} from "react";
+import {useEffect, useState} from "react";
 import toast from "react-hot-toast";
-import { DataContext, FilterContext } from "../../contexts/SidebarContext";
+import {DataContext, FilterContext} from "../../contexts/SidebarContext";
 import Header from "./header/Header";
-import { getProfileURL, getTaskTracksURL, getTaskURL } from "../../helpers/Helper";
+import {getProfileURL, getTaskTracksURL, getTaskURL} from "../../helpers/Helper";
 import Main from "./main/Main";
 import SideBar from "./sidebar/SideBar";
-import { Switch, Route } from "react-router-dom";
+import {Route, Switch} from "react-router-dom";
 
 import "../../styles/userPage/userPage.css";
 import Profile from "./main/profile/Profile";
 import axios from "axios";
 
-const UserPage = ({ match }) => {
-    const [selectedTask, setSelectedTask] = useState({ id: null });
+const UserPage = ({match}) => {
+    const [selectedTask, setSelectedTask] = useState({id: null});
     const [trackSortOrder, setTrackSortOrder] = useState("desc");
     const [taskSortOrder, setTaskSortOrder] = useState({
         by: "dueDate",
@@ -125,12 +125,12 @@ const UserPage = ({ match }) => {
     return (
         <FilterContext.Provider value={filterContextValues}>
             <DataContext.Provider value={dataContextValues}>
-                <Header />
+                <Header/>
                 <div id="page">
-                    <SideBar />
+                    <SideBar/>
                     <div className="content">
                         <Switch>
-                            <Route path={match.url} component={Main} />
+                            <Route path={match.url} component={Main}/>
                             <Route
                                 path={`${match.url}profile`}
                                 component={Profile}

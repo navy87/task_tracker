@@ -5,8 +5,8 @@ import Buttons from "./Buttons";
 const TaskListContainer = () => {
     return (
         <div className="task_list_container">
-            <Buttons />
-            <TaskList />
+            <Buttons/>
+            <TaskList/>
         </div>
     );
 };

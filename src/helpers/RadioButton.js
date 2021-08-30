@@ -1,6 +1,6 @@
 import React from "react";
 
-const RadioButton = ({ render, id, name, value, checked, setChecked }) => {
+const RadioButton = ({render, id, name, value, checked, setChecked}) => {
     const changed = (e) => {
         if (e.target.checked) {
             setChecked(value);

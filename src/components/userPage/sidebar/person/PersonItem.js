@@ -1,17 +1,17 @@
-import React, { useContext, useEffect, useState } from "react";
+import React, {useContext, useEffect, useState} from "react";
 import toast from "react-hot-toast";
-import { GiRadioactive } from "react-icons/gi";
-import { MdEmail, MdPerson } from "react-icons/md";
-import { GlobalContext } from "../../../../contexts/GlobalContext";
-import { DataContext } from "../../../../contexts/SidebarContext";
-import { DeepCopy, getProfileURL } from "../../../../helpers/Helper";
+import {GiRadioactive} from "react-icons/gi";
+import {MdEmail, MdPerson} from "react-icons/md";
+import {GlobalContext} from "../../../../contexts/GlobalContext";
+import {DataContext} from "../../../../contexts/SidebarContext";
+import {DeepCopy, getProfileURL} from "../../../../helpers/Helper";
 import PersonDialog from "./PersonDialog";
-import Dialog, { QuestionDialog } from "../../../../helpers/Dialog";
+import Dialog, {QuestionDialog} from "../../../../helpers/Dialog";
 import axios from "axios";
 
-const PersonItem = ({ currentPerson, setCurrentPerson, selected }) => {
-    const { tasks, refresh } = useContext(DataContext);
-    const { setDialog } = useContext(GlobalContext);
+const PersonItem = ({currentPerson, setCurrentPerson, selected}) => {
+    const {tasks, refresh} = useContext(DataContext);
+    const {setDialog} = useContext(GlobalContext);
     const [actives, setActives] = useState(0);
 
     useEffect(() => {
@@ -56,7 +56,7 @@ const PersonItem = ({ currentPerson, setCurrentPerson, selected }) => {
     };
 
     const openPersonDialog = () => {
-        setDialog(<Dialog render={<PersonDialog />} />);
+        setDialog(<Dialog render={<PersonDialog/>}/>);
     };
 
     const handleDelete = (e) => {
@@ -79,10 +79,10 @@ const PersonItem = ({ currentPerson, setCurrentPerson, selected }) => {
     return (
         <div className={`person_item ${selected && "selected"}`}>
             <div className="info">
-                <MdPerson className="icon" /> {currentPerson.fullName}
+                <MdPerson className="icon"/> {currentPerson.fullName}
             </div>
             <div className="info">
-                <MdEmail className="icon" />
+                <MdEmail className="icon"/>
                 {currentPerson.email ? (
                     currentPerson.email
                 ) : (
@@ -90,7 +90,7 @@ const PersonItem = ({ currentPerson, setCurrentPerson, selected }) => {
                 )}
             </div>
             <div className="info">
-                <GiRadioactive className="icon" /> {actives} Active Tasks
+                <GiRadioactive className="icon"/> {actives} Active Tasks
             </div>
             <div className="info buttons">
                 <button onClick={handleEdit}>Edit</button>

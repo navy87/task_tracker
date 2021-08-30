@@ -1,12 +1,8 @@
-import React, { useEffect, useState } from "react";
+import React, {useEffect, useState} from "react";
 import RadioButton from "../../../../helpers/RadioButton";
-import {
-    FcHighPriority,
-    FcLowPriority,
-    FcMediumPriority,
-} from "react-icons/fc";
+import {FcHighPriority, FcLowPriority, FcMediumPriority,} from "react-icons/fc";
 
-const PriorityInfo = ({ selectedTask, setSelectedTask }) => {
+const PriorityInfo = ({selectedTask, setSelectedTask}) => {
     const [checked, setChecked] = useState(selectedTask.priority);
 
     useEffect(() => {
@@ -27,7 +23,7 @@ const PriorityInfo = ({ selectedTask, setSelectedTask }) => {
                 name="priority"
                 render={
                     <>
-                        <FcHighPriority /> High
+                        <FcHighPriority/> High
                     </>
                 }
                 checked={checked.toLowerCase() === "high"}
@@ -39,7 +35,7 @@ const PriorityInfo = ({ selectedTask, setSelectedTask }) => {
                 name="priority"
                 render={
                     <>
-                        <FcMediumPriority /> Medium
+                        <FcMediumPriority/> Medium
                     </>
                 }
                 checked={checked.toLowerCase() === "medium"}
@@ -51,7 +47,7 @@ const PriorityInfo = ({ selectedTask, setSelectedTask }) => {
                 name="priority"
                 render={
                     <>
-                        <FcLowPriority /> Low
+                        <FcLowPriority/> Low
                     </>
                 }
                 checked={checked.toLowerCase() === "low"}

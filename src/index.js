@@ -15,14 +15,17 @@ axios.interceptors.request.use(req => {
     return req
 })
 
-axios.interceptors.response.use( res => {return res}, error => {
+axios.interceptors.response.use(res => {
+    return res
+}, error => {
     console.error(error)
     if (error.response.status === 401) { // UnauthorizedAccess
         localStorage.removeItem("token")
         localStorage.removeItem("user")
-        document.location="/"
+        document.location = "/"
     } else if (error.response.status === 403) { // Forbidden
-        return error.response} else {
+        return error.response
+    } else {
     }
     throw error;
 })

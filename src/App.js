@@ -1,11 +1,11 @@
-import { useState} from "react";
+import {useState} from "react";
 
 import {Toaster} from "react-hot-toast";
 import ReactTooltip from "react-tooltip";
 
 import {BrowserRouter as Router, Route, Switch} from "react-router-dom";
 
-import { GlobalContext} from "./contexts/GlobalContext";
+import {GlobalContext} from "./contexts/GlobalContext";
 import Admin from "./components/admin/Admin";
 import LoginPageContainer from "./components/auth/LoginPageContainer";
 import ParticlesBackground from "./components/particles/ParticlesBackground";
@@ -26,25 +26,25 @@ function App() {
 
     return (
         <Router>
-                <GlobalContext.Provider value={globalContextValues}>
-                    <div className="App">
-                        <ParticlesBackground/>
-                        {dialog || ""}
-                        <Toaster/>
-                        <ReactTooltip effect="solid"/>
-                        <Switch>
-                            <Route
-                                path="/login"
-                                component={LoginPageContainer}
-                            />
-                            <Route path="/admin" component={Admin}/>
-                            <ProtectedRoute path="/logout" component={Logout}/>
-                            {/* TODO Unprotected */}
-                            {/* <Route path="/" component={UserPage} /> */}
-                            <ProtectedRoute path="/" component={UserPage}/>
-                        </Switch>
-                    </div>
-                </GlobalContext.Provider>
+            <GlobalContext.Provider value={globalContextValues}>
+                <div className="App">
+                    <ParticlesBackground/>
+                    {dialog || ""}
+                    <Toaster/>
+                    <ReactTooltip effect="solid"/>
+                    <Switch>
+                        <Route
+                            path="/login"
+                            component={LoginPageContainer}
+                        />
+                        <Route path="/admin" component={Admin}/>
+                        <ProtectedRoute path="/logout" component={Logout}/>
+                        {/* TODO Unprotected */}
+                        {/* <Route path="/" component={UserPage} /> */}
+                        <ProtectedRoute path="/" component={UserPage}/>
+                    </Switch>
+                </div>
+            </GlobalContext.Provider>
         </Router>
     );
 }

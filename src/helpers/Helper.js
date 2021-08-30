@@ -32,7 +32,7 @@ export const compareTask = (task1, task2, taskSortOrder) => {
     let addedDateAscendingOrder =
         new Date(task1.addedDate) - new Date(task2.addedDate);
 
-    const priorityIndex = { high: 2, medium: 1, low: 0 };
+    const priorityIndex = {high: 2, medium: 1, low: 0};
     let priorityAscendingOrder =
         priorityIndex[task1.priority.toLowerCase()] -
         priorityIndex[task2.priority.toLowerCase()];

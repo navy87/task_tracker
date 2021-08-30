@@ -1,9 +1,5 @@
 import React from "react";
-import {
-    FcHighPriority,
-    FcLowPriority,
-    FcMediumPriority,
-} from "react-icons/fc";
+import {FcHighPriority, FcLowPriority, FcMediumPriority,} from "react-icons/fc";
 import PriorityCheckbox from "./PriorityCheckbox";
 
 const PriorityFilter = () => {
@@ -12,7 +8,7 @@ const PriorityFilter = () => {
             <PriorityCheckbox
                 render={
                     <>
-                        <FcLowPriority /> Low
+                        <FcLowPriority/> Low
                     </>
                 }
                 id="low_priority"
@@ -21,7 +17,7 @@ const PriorityFilter = () => {
             <PriorityCheckbox
                 render={
                     <>
-                        <FcMediumPriority /> Medium
+                        <FcMediumPriority/> Medium
                     </>
                 }
                 id="medium_priority"
@@ -30,7 +26,7 @@ const PriorityFilter = () => {
             <PriorityCheckbox
                 render={
                     <>
-                        <FcHighPriority /> High
+                        <FcHighPriority/> High
                     </>
                 }
                 id="high_priority"

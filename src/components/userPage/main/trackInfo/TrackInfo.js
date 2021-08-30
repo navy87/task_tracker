@@ -1,21 +1,18 @@
-import React, { useContext, useEffect, useState } from "react";
+import React, {useContext, useEffect, useState} from "react";
 import TrackForm from "./TrackForm";
 import TrackList from "./TrackList";
 import SortOrder from "./SortOrder";
-import { DataContext } from "../../../../contexts/SidebarContext";
+import {DataContext} from "../../../../contexts/SidebarContext";
 import ReactLoading from "react-loading";
-import {
-    fetchingErrorHandler,
-    getTaskTracksURL,
-} from "../../../../helpers/Helper";
+import {fetchingErrorHandler, getTaskTracksURL,} from "../../../../helpers/Helper";
 import axios from "axios";
 
-const TrackInfo = ({ match }) => {
-    const { trackSortOrder, setTrackSortOrder } = useContext(DataContext);
+const TrackInfo = ({match}) => {
+    const {trackSortOrder, setTrackSortOrder} = useContext(DataContext);
     const [taskId, setTaskId] = useState(match.params.id);
     const [tracks, setTracks] = useState({});
 
-    const STATUSES = { loading: 0, loaded: 1, new: 2, forbidden: 3 };
+    const STATUSES = {loading: 0, loaded: 1, new: 2, forbidden: 3};
     Object.freeze(STATUSES);
     const [status, setStatus] = useState(STATUSES.loading);
     const [refresh, setRefresh] = useState(true);
@@ -36,7 +33,7 @@ const TrackInfo = ({ match }) => {
                 if (res.status === 200) {
                     setTracks(data)
                     setStatus(STATUSES.loaded)
-                } else if(res.status === 403) {
+                } else if (res.status === 403) {
                     setStatus(STATUSES.forbidden)
                 }
                 return data
@@ -65,7 +62,7 @@ const TrackInfo = ({ match }) => {
         switch (status) {
             case STATUSES.loading:
                 return <div className="loading-container">
-                    <ReactLoading />
+                    <ReactLoading/>
                 </div>
             case STATUSES.new:
                 return <></>
@@ -80,7 +77,7 @@ const TrackInfo = ({ match }) => {
         <div className="container">
             <h2 className="title">Tracks Info</h2>
             <div className="form_list_container">
-                <TrackForm refreshTracks={refreshTracks} />
+                <TrackForm refreshTracks={refreshTracks}/>
                 <div className="track_list_container">
                     <div className="head">
                         <h4>List of all Tracks</h4>
@@ -90,7 +87,7 @@ const TrackInfo = ({ match }) => {
                             setTrackSortOrder={setTrackSortOrder}
                         />
                     </div>
-                    <TrackList tracks={tracks} />
+                    <TrackList tracks={tracks}/>
                 </div>
             </div>
         </div>

@@ -1,6 +1,6 @@
 import React from "react";
 
-const FilterAssigneeButton = ({ filteredPerson, setFilteredPersons }) => {
+const FilterAssigneeButton = ({filteredPerson, setFilteredPersons}) => {
     const handleRemovePerson = (e) => {
         e.preventDefault();
         setFilteredPersons((currentPersons) => {

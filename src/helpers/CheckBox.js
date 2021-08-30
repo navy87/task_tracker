@@ -1,7 +1,6 @@
-import React, { useState } from "react";
-import styled from "styled-components";
+import React, {useState} from "react";
 
-const CheckBox = ({ render, id, name, value }) => {
+const CheckBox = ({render, id, name, value}) => {
     const [checked, setChecked] = useState(value);
 
     return (

@@ -1,9 +1,9 @@
-import React, { useContext, useEffect, useState } from "react";
-import { FilterContext } from "../../../../contexts/SidebarContext";
+import React, {useContext, useEffect, useState} from "react";
+import {FilterContext} from "../../../../contexts/SidebarContext";
 
-const PriorityCheckbox = ({ render, id, value }) => {
+const PriorityCheckbox = ({render, id, value}) => {
     const [checked, setChecked] = useState(true);
-    const { setFilteredPriorities } = useContext(FilterContext);
+    const {setFilteredPriorities} = useContext(FilterContext);
 
     useEffect(() => {
         const filterData = () => {

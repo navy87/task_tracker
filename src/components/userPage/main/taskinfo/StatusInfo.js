@@ -1,7 +1,8 @@
-import React, { useEffect, useState } from "react";
+import React, {useEffect, useState} from "react";
 import RadioButton from "../../../../helpers/RadioButton";
-import { MdBubbleChart, MdCancel, MdCheckCircle } from "react-icons/md";
-const StatusInfo = ({ selectedTask, setSelectedTask }) => {
+import {MdBubbleChart, MdCancel, MdCheckCircle} from "react-icons/md";
+
+const StatusInfo = ({selectedTask, setSelectedTask}) => {
     const [checked, setChecked] = useState(selectedTask.status);
 
     useEffect(() => {
@@ -22,7 +23,7 @@ const StatusInfo = ({ selectedTask, setSelectedTask }) => {
                 name="status"
                 render={
                     <>
-                        <MdBubbleChart /> Active
+                        <MdBubbleChart/> Active
                     </>
                 }
                 value="active"
@@ -34,7 +35,7 @@ const StatusInfo = ({ selectedTask, setSelectedTask }) => {
                 name="status"
                 render={
                     <>
-                        <MdCheckCircle /> Done
+                        <MdCheckCircle/> Done
                     </>
                 }
                 value="done"
@@ -46,7 +47,7 @@ const StatusInfo = ({ selectedTask, setSelectedTask }) => {
                 name="status"
                 render={
                     <>
-                        <MdCancel /> Cancelled
+                        <MdCancel/> Cancelled
                     </>
                 }
                 value="cancelled"

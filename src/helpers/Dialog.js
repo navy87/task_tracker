@@ -1,8 +1,8 @@
-import React, { useContext } from "react";
-import { GlobalContext } from "../contexts/GlobalContext";
+import React, {useContext} from "react";
+import {GlobalContext} from "../contexts/GlobalContext";
 
-const Dialog = ({ render, title }) => {
-    const { setDialog } = useContext(GlobalContext);
+const Dialog = ({render, title}) => {
+    const {setDialog} = useContext(GlobalContext);
 
     const handleBackgroundClick = (e) => {
         if (e.target.id === "id_dialog_holder") {
@@ -25,14 +25,14 @@ const Dialog = ({ render, title }) => {
 };
 
 const CommonDialog = ({
-    text,
-    title,
-    subtext,
-    onYes,
-    onNo,
-    closeAfterwards,
-}) => {
-    const { setDialog } = useContext(GlobalContext);
+                          text,
+                          title,
+                          subtext,
+                          onYes,
+                          onNo,
+                          closeAfterwards,
+                      }) => {
+    const {setDialog} = useContext(GlobalContext);
     const handleButton = (e, func) => {
         func();
         if (closeAfterwards) {
@@ -71,13 +71,13 @@ const CommonDialog = ({
 };
 
 export const QuestionDialog = ({
-    title,
-    subtext,
-    text,
-    onYes,
-    onNo,
-    closeAfterwards,
-}) => {
+                                   title,
+                                   subtext,
+                                   text,
+                                   onYes,
+                                   onNo,
+                                   closeAfterwards,
+                               }) => {
     return (
         <CommonDialog
             text={text}

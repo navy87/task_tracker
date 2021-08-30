@@ -1,13 +1,13 @@
-import React, { useContext, useEffect, useState } from "react";
+import React, {useContext, useEffect, useState} from "react";
 import toast from "react-hot-toast";
-import { GlobalContext } from "../../../../contexts/GlobalContext";
+import {GlobalContext} from "../../../../contexts/GlobalContext";
 import AddPerson from "./AddPerson";
 import Dialog from "../../../../helpers/Dialog";
-import { fetchingErrorHandler, getProfileURL } from "../../../../helpers/Helper";
+import {fetchingErrorHandler, getProfileURL} from "../../../../helpers/Helper";
 import axios from "axios";
 
-const SelectAssignees = ({ selectedTask, setSelectedTask }) => {
-    const { setDialog } = useContext(GlobalContext);
+const SelectAssignees = ({selectedTask, setSelectedTask}) => {
+    const {setDialog} = useContext(GlobalContext);
     const [people, setPeople] = useState([]);
     const [availablePeople, setAvailablePeople] = useState([]);
 
@@ -62,7 +62,7 @@ const SelectAssignees = ({ selectedTask, setSelectedTask }) => {
                     profile: selectedPerson,
                 },
             ];
-            setSelectedTask({ ...selectedTask, assignees });
+            setSelectedTask({...selectedTask, assignees});
         }
         e.target.value = "assign_person";
     };

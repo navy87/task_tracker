@@ -1,5 +1,5 @@
 import React from "react";
-import { FiSend } from "react-icons/fi";
+import {FiSend} from "react-icons/fi";
 
 const ForgotPassword = () => {
     return (
@@ -13,7 +13,7 @@ const ForgotPassword = () => {
                     placeholder="Username/Email/Phone"
                 />
                 <button>
-                    <FiSend /> Send Code
+                    <FiSend/> Send Code
                 </button>
                 {/* <input type="button" value="Send Code" /> */}
             </div>
@@ -24,7 +24,7 @@ const ForgotPassword = () => {
                 name="code"
                 placeholder="Code"
             />
-            <input type="submit" value="Reset Password" />
+            <input type="submit" value="Reset Password"/>
         </div>
     );
 };

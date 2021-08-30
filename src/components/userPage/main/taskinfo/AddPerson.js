@@ -1,16 +1,16 @@
-import React, { useContext, useState } from "react";
+import React, {useContext, useState} from "react";
 import toast from "react-hot-toast";
-import { GlobalContext } from "../../../../contexts/GlobalContext";
-import { DataContext } from "../../../../contexts/SidebarContext";
-import { getProfileURL } from "../../../../helpers/Helper";
+import {GlobalContext} from "../../../../contexts/GlobalContext";
+import {DataContext} from "../../../../contexts/SidebarContext";
+import {getProfileURL} from "../../../../helpers/Helper";
 import axios from "axios";
 
-const AddPerson = ({ selectedTask, setSelectedTask }) => {
-    const { setDialog } = useContext(GlobalContext);
-    const { refresh } = useContext(DataContext);
+const AddPerson = ({selectedTask, setSelectedTask}) => {
+    const {setDialog} = useContext(GlobalContext);
+    const {refresh} = useContext(DataContext);
     // const { people } = useContext(DataContext);
 
-    const [newPerson, setNewPerson] = useState({ id: 0, name: "", email: "" });
+    const [newPerson, setNewPerson] = useState({id: 0, name: "", email: ""});
 
     const handleSubmit = async (e) => {
         e.preventDefault();

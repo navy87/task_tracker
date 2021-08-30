@@ -1,11 +1,11 @@
-import React, { useContext } from "react";
+import React, {useContext} from "react";
 import toast from "react-hot-toast";
-import { DataContext } from "../../../contexts/SidebarContext";
-import { DeepCopy, getProfileURL } from "../../helpers/Helper";
+import {DataContext} from "../../../contexts/SidebarContext";
+import {DeepCopy, getProfileURL} from "../../helpers/Helper";
 import axios from "axios";
 
-const PersonForm = ({ currentPerson, setCurrentPerson }) => {
-    const { refresh } = useContext(DataContext);
+const PersonForm = ({currentPerson, setCurrentPerson}) => {
+    const {refresh} = useContext(DataContext);
 
     const emptyPerson = {
         id: 0,
@@ -53,7 +53,7 @@ const PersonForm = ({ currentPerson, setCurrentPerson }) => {
                 autoComplete="off"
                 value={currentPerson.name}
                 onChange={(e) =>
-                    setCurrentPerson({ ...currentPerson, name: e.target.value })
+                    setCurrentPerson({...currentPerson, name: e.target.value})
                 }
                 placeholder="Full Name"
                 required

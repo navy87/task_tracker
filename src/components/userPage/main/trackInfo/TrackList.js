@@ -1,9 +1,9 @@
-import React, { useContext } from "react";
-import { DataContext } from "../../../../contexts/SidebarContext";
+import React, {useContext} from "react";
+import {DataContext} from "../../../../contexts/SidebarContext";
 import TrackItem from "./TrackItem";
 
-const TrackList = ({ tracks }) => {
-    const { trackSortOrder } = useContext(DataContext);
+const TrackList = ({tracks}) => {
+    const {trackSortOrder} = useContext(DataContext);
 
     return (
         <div className="tracks_list">
@@ -23,7 +23,7 @@ const TrackList = ({ tracks }) => {
                     );
                 })
                 .map((track, index) => (
-                    <TrackItem track={track} key={index} />
+                    <TrackItem track={track} key={index}/>
                 ))}
         </div>
     );

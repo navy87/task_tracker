@@ -1,16 +1,16 @@
-import React, { useEffect, useState} from "react";
+import React, {useEffect, useState} from "react";
 
-import { getTaskURL, GetToday } from "../../../../helpers/Helper";
+import {getTaskURL, GetToday} from "../../../../helpers/Helper";
 
 import TaskForm from "./TaskForm";
 import ReactLoading from "react-loading";
 import axios from "axios";
 
-const TaskInfo = ({ match }) => {
+const TaskInfo = ({match}) => {
     const [selectedTask, setSelectedTask] = useState(undefined);
-    // const [loading, setLoading] = useState(true);
+    const [isOwner, setIsOwner] = useState(true);
 
-    const STATUSES = {loading: 0, loaded:1, forbidden: 2}
+    const STATUSES = {loading: 0, loaded: 1, forbidden: 2}
     Object.freeze(STATUSES)
 
     const [status, setStatus] = useState(STATUSES.loading)
@@ -37,7 +37,7 @@ const TaskInfo = ({ match }) => {
                 if (res.status === 200) {
                     setSelectedTask(data);
                     setStatus(STATUSES.loaded)
-                } else if (res.status === 403){
+                } else if (res.status === 403) {
                     setStatus(STATUSES.forbidden)
                 }
                 return data
@@ -53,12 +53,20 @@ const TaskInfo = ({ match }) => {
             fetchData().then(null)
         }
     }, [taskId, setSelectedTask, emptyTask, setStatus,
-            STATUSES.loading, STATUSES.loaded, STATUSES.forbidden]);
+        STATUSES.loading, STATUSES.loaded, STATUSES.forbidden]);
 
+    useEffect(() => {
+        if (!selectedTask || !selectedTask.id) {
+            setIsOwner(true);
+        } else {
+            const loggedInUsername = JSON.parse(localStorage.getItem("user")).username
+            setIsOwner(selectedTask.owner.username.toLowerCase() === loggedInUsername.toLowerCase())
+        }
+    }, [selectedTask])
     const notLoadedSelect = () => {
         return status === STATUSES.loading ? (
             <div className="loading-container">
-                <ReactLoading />
+                <ReactLoading/>
             </div>
         ) : (
             <div>Forbidden</div>
@@ -69,6 +77,7 @@ const TaskInfo = ({ match }) => {
         <TaskForm
             selectedTask={selectedTask}
             setSelectedTask={setSelectedTask}
+            isOwner={isOwner}
         />
     ) : (
         notLoadedSelect()

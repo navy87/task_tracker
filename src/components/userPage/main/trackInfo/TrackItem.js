@@ -1,15 +1,15 @@
-import React, { useContext } from "react";
+import React, {useContext} from "react";
 import toast from "react-hot-toast";
-import { MdDelete } from "react-icons/md";
-import { GlobalContext } from "../../../../contexts/GlobalContext";
-import { DataContext } from "../../../../contexts/SidebarContext";
-import { QuestionDialog } from "../../../../helpers/Dialog";
-import { getTracksURL } from "../../../../helpers/Helper";
+import {MdDelete} from "react-icons/md";
+import {GlobalContext} from "../../../../contexts/GlobalContext";
+import {DataContext} from "../../../../contexts/SidebarContext";
+import {QuestionDialog} from "../../../../helpers/Dialog";
+import {getTracksURL} from "../../../../helpers/Helper";
 import axios from "axios";
 
-const TrackItem = ({ track }) => {
-    const { setDialog } = useContext(GlobalContext);
-    const { refresh } = useContext(DataContext);
+const TrackItem = ({track}) => {
+    const {setDialog} = useContext(GlobalContext);
+    const {refresh} = useContext(DataContext);
     const deleteTrack = async () => {
         const url = getTracksURL(track.id);
         try {
@@ -43,7 +43,7 @@ const TrackItem = ({ track }) => {
             <p className="date">{track.date}</p>
             <div className="track_head">
                 <h5 className="head">{track.title}</h5>
-                <MdDelete className="icon" onClick={handleDelete} />
+                <MdDelete className="icon" onClick={handleDelete}/>
             </div>
             <p className="description">{track.description}</p>
         </div>

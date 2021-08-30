@@ -1,12 +1,12 @@
-import React, { useEffect, useState } from "react";
-import { HiSortAscending, HiSortDescending } from "react-icons/hi";
+import React, {useEffect, useState} from "react";
+import {HiSortAscending, HiSortDescending} from "react-icons/hi";
 import RadioButton from "../../../../helpers/RadioButton";
 
-const SortOrderSelect = ({ selected, setTaskSortOrder }) => {
+const SortOrderSelect = ({selected, setTaskSortOrder}) => {
     const [checked, setChecked] = useState(selected.order);
 
     useEffect(() => {
-        setTaskSortOrder((current) => ({ ...current, order: checked }));
+        setTaskSortOrder((current) => ({...current, order: checked}));
     }, [setTaskSortOrder, checked]);
 
     return (
@@ -18,7 +18,7 @@ const SortOrderSelect = ({ selected, setTaskSortOrder }) => {
                 checked={checked.toLowerCase() === "asc"}
                 render={
                     <>
-                        <HiSortAscending className="btn_icon" />
+                        <HiSortAscending className="btn_icon"/>
                         Ascending
                     </>
                 }
@@ -31,7 +31,7 @@ const SortOrderSelect = ({ selected, setTaskSortOrder }) => {
                 checked={checked.toLowerCase() === "desc".toLowerCase()}
                 render={
                     <>
-                        <HiSortDescending className="btn_icon" />
+                        <HiSortDescending className="btn_icon"/>
                         Descending
                     </>
                 }

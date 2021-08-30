@@ -1,6 +1,6 @@
 import React from "react";
-import { MdNoteAdd } from "react-icons/md";
-import { useHistory } from "react-router-dom";
+import {MdNoteAdd} from "react-icons/md";
+import {useHistory} from "react-router-dom";
 
 const Buttons = () => {
     const history = useHistory();
@@ -12,7 +12,7 @@ const Buttons = () => {
     return (
         <div className="buttons">
             <button className="md_btn" onClick={handleAddTask}>
-                <MdNoteAdd className="icon" /> Add Task
+                <MdNoteAdd className="icon"/> Add Task
             </button>
         </div>
     );

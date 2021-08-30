@@ -6,7 +6,7 @@ import TrackInfo from "./trackInfo/TrackInfo";
 import axios from "axios";
 
 const TaskTrackContainer = (props) => {
-    const { setSelectedTask } = useContext(DataContext);
+    const {setSelectedTask} = useContext(DataContext);
     const [existsOrNew, setExistsOrNew] = useState(false);
     const taskId = props.match.params.id;
 
@@ -22,12 +22,12 @@ const TaskTrackContainer = (props) => {
         };
 
         if (taskId.toLowerCase() !== "new") {
-            setSelectedTask({ id: parseInt(taskId) });
+            setSelectedTask({id: parseInt(taskId)});
             fetchExists().then((res) => {
                 setExistsOrNew(res);
             });
         } else {
-            setSelectedTask({ id: null });
+            setSelectedTask({id: null});
             setExistsOrNew(true);
         }
     }, [setSelectedTask, taskId]);
