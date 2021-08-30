@@ -1,9 +1,10 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState} from "react";
 
 import { getTaskURL, GetToday } from "../../../../helpers/Helper";
 
 import TaskForm from "./TaskForm";
 import ReactLoading from "react-loading";
+import axios from "axios";
 
 const TaskInfo = ({ match }) => {
     const [selectedTask, setSelectedTask] = useState(undefined);
@@ -24,21 +25,24 @@ const TaskInfo = ({ match }) => {
         setLoading(true);
         const fetchData = async () => {
             const url = getTaskURL(taskId);
-            fetch(url)
-                .then((res) => res.json())
-                .then((data) => {
-                    setSelectedTask(data);
-                    setLoading(false);
-                })
-                .catch(console.error);
+            try {
+                const res = await axios(url);
+                const data = res.data;
+                setSelectedTask(data);
+                setLoading(false)
+                return data
+            } catch (e) {
+                console.error(e)
+                return e
+            }
         };
         if (taskId.toLowerCase() === "new") {
             setSelectedTask(emptyTask);
             setLoading(false);
         } else {
-            fetchData();
+            fetchData().then(console.log)
         }
-    }, [taskId, setSelectedTask, emptyTask]);
+    }, [taskId, setSelectedTask, emptyTask,]);
 
     // console.log(selectedTask);
     return !loading ? (

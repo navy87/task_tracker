@@ -1,8 +1,9 @@
-import React, { useContext, useEffect, useState } from "react";
-import { DataContext } from "../../../contexts/SidebarContext";
-import { getTaskExistsURL } from "../../../helpers/Helper";
+import React, {useContext, useEffect, useState} from "react";
+import {DataContext} from "../../../contexts/SidebarContext";
+import {getTaskExistsURL} from "../../../helpers/Helper";
 import TaskInfo from "./taskinfo/TaskInfo";
 import TrackInfo from "./trackInfo/TrackInfo";
+import axios from "axios";
 
 const TaskTrackContainer = (props) => {
     const { setSelectedTask } = useContext(DataContext);
@@ -12,9 +13,8 @@ const TaskTrackContainer = (props) => {
     useEffect(() => {
         const fetchExists = async () => {
             const url = getTaskExistsURL(taskId);
-            const res = await fetch(url);
-            const data = await res.text();
-            return data.toLowerCase() === "true";
+            const res = await axios.get(url)
+            return res.data; // Boolean
         };
 
         if (taskId.toLowerCase() !== "new") {

@@ -1,11 +1,11 @@
-import React, { useContext, useEffect } from "react";
+import React, {  useEffect } from "react";
 import { Redirect } from "react-router-dom";
-import { AuthContext } from "../../contexts/GlobalContext";
 
 const Logout = () => {
-    const { setAuth } = useContext(AuthContext);
+
     useEffect(() => {
-        setAuth({ authenticated: false, token: null });
+        localStorage.removeItem("token")
+        localStorage.removeItem("user")
     });
     return <Redirect to={{ pathname: "/login" }} />;
 };

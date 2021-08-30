@@ -8,6 +8,7 @@ import { compareTask } from "../../../../helpers/Helper";
 
 const TaskList = () => {
     const { tasks } = useContext(DataContext);
+    // console.log(tasks)
     // const [tasks, setTasks] = useState([]);
     const {
         filteredPriorities,

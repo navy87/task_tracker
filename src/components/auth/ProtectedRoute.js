@@ -1,15 +1,13 @@
-import React, { useContext } from "react";
+import React  from "react";
 import { Redirect, Route } from "react-router-dom";
-import { AuthContext } from "../../contexts/GlobalContext";
 
 const ProtectedRoute = ({ component: Component, ...rest }) => {
-    const { auth } = useContext(AuthContext);
-    console.log(auth)
+
     return (
         <Route
             {...rest}
             render={(props) => {
-                if (auth.authenticated) {
+                if (localStorage.getItem("token")) {
                     return <Component {...props} />;
                 } else {
                     return (

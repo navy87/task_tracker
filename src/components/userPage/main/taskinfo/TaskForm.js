@@ -1,5 +1,5 @@
 import React, { useContext } from "react";
-import { GlobalContext } from "../../../../contexts/GlobalContext";
+import { GlobalContext} from "../../../../contexts/GlobalContext";
 import { QuestionDialog } from "../../../../helpers/Dialog";
 import { MdDeleteForever, MdSave } from "react-icons/md";
 import InfoContainer from "../InfoContainer";
@@ -11,6 +11,7 @@ import toast from "react-hot-toast";
 import { getTaskURL } from "../../../../helpers/Helper";
 import { DataContext } from "../../../../contexts/SidebarContext";
 import { useHistory } from "react-router-dom";
+import axios from "axios";
 
 const TaskForm = ({ selectedTask, setSelectedTask }) => {
     const { setDialog } = useContext(GlobalContext);
@@ -18,52 +19,54 @@ const TaskForm = ({ selectedTask, setSelectedTask }) => {
         useContext(DataContext);
 
     const history = useHistory();
+    console.log(selectedTask)
 
-    const handleFormSubmit = (e) => {
+    const handleFormSubmit = async (e) => {
         e.preventDefault();
-
         const assignees = selectedTask.assignees;
         if (assignees.length === 0) {
             toast.error("There must be at least one assignee.", {
                 position: "top-center",
-                autoClose: 5000,
+                duration: 5000,
             });
             return;
         }
 
-        const requestOptions = {
-            method: !selectedTask.id ? "POST" : "PUT",
-            headers: { "Content-Type": "application/json" },
-            body: JSON.stringify(selectedTask),
-        };
+        // const requestOptions = {
+        //     method: !selectedTask.id ? "POST" : "PUT",
+        //     headers: { "Content-Type": "application/json", "Authorization": auth.token},
+        //     body: JSON.stringify(selectedTask),
+        // };
 
         const url = selectedTask.id
             ? getTaskURL(selectedTask.id)
             : getTaskURL();
 
-        console.log("Before: ");
-        console.log(selectedTask);
-        fetch(url, requestOptions)
-            .then((res) => {
-                refresh();
+        try {
+            // const res = await fetch(url, requestOptions);
+
+            const res = await axios(url, {
+                method: !selectedTask.id ? "POST" : "PUT",
+                data: JSON.stringify(selectedTask)
+            })
+            if (res.status !== 200) {
+                console.error(res)
+            } else {
+                refresh()
                 toast.success("Task has been saved!", {
-                    position: "top-center",
-                    autoClose: 5000,
+                    duration: 5000,
                 });
-                return res.json();
-            })
-            .then((data) => {
-                console.log("After: ");
-                console.log(data);
+                const data = res.data;
                 const id = data.id;
+                console.log(data)
                 history.push(`/task/${id}`);
+            }
+        } catch (e) {
+            console.log(e)
+            toast.error("There was an error.", {
+                duration: 5000,
             })
-            .catch((err) =>
-                toast.error("There was an error.", {
-                    position: "top-center",
-                    autoClose: 5000,
-                })
-            );
+        }
     };
 
     const deleteTask = () => {
@@ -80,15 +83,13 @@ const TaskForm = ({ selectedTask, setSelectedTask }) => {
                 const res = await fetch(url, requestOptions);
                 if (res.ok) {
                     toast.success("Task has been deleted!", {
-                        position: "top-center",
-                        autoClose: 5000,
+                        duration: 5000,
                     });
                 }
             } catch (error) {
                 console.log(error);
                 toast.error("There was an error deleting task.", {
-                    position: "top-center",
-                    autoClose: 5000,
+                    duration: 5000,
                 });
             }
         };

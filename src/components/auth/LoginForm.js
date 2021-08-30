@@ -1,8 +1,7 @@
 import axios from "axios";
-import React, {useContext, useState} from "react";
+import React, { useState } from "react";
 import toast from "react-hot-toast";
 import {useHistory} from "react-router-dom";
-import {AuthContext} from "../../contexts/GlobalContext";
 import {getLoginURL, getUserMetaURL} from "../../helpers/Helper";
 
 const LoginForm = ({ match }) => {
@@ -11,7 +10,6 @@ const LoginForm = ({ match }) => {
         password: "",
     };
     const [login, setLogin] = useState(emptyForm);
-    const { auth, setAuth } = useContext(AuthContext);
 
     const history = useHistory();
 
@@ -31,36 +29,26 @@ const LoginForm = ({ match }) => {
 
     const handleLogin = async (e) => {
         e.preventDefault();
-        console.log(login);
 
         const url = getLoginURL();
         try {
-            const res = await axios.post(url, JSON.stringify(login), {
-                method: "POST",
-                headers: {
-                    "Content-Type": "application/json",
-                    accept: "*/*"
-                },
-                data: JSON.stringify(login)
-            })
+            const res = await axios.post(url, JSON.stringify(login))
             if (res.status === 200) {
                 const userMeta = await getUser(login.username);
-                const newAuth = {
-                    authenticated: true,
-                    token: res.headers.authorization,
-                    user: userMeta
-                }
-                setAuth(newAuth)
+                localStorage.setItem("token", res.headers.authorization)
+                localStorage.setItem("user", JSON.stringify(userMeta))
                 history.push("/");
-            } else {
+            } else if (res.status === 401) {
                 toast.error("Username and/or Password is wrong.", {
-                    autoClose: 5000,
+                    duration: 5000,
                 });
+            } else {
+                console.log(res)
             }
         } catch (e) {
             console.error(e)
             toast.error("Username and/or Password is wrong.", {
-                autoClose: 5000,
+                duration: 5000,
             });
         }
     };

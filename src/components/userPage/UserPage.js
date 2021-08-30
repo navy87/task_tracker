@@ -1,4 +1,4 @@
-import {useContext, useEffect, useState} from "react";
+import { useEffect, useState} from "react";
 import toast from "react-hot-toast";
 import { DataContext, FilterContext } from "../../contexts/SidebarContext";
 import Header from "./header/Header";
@@ -9,6 +9,7 @@ import { Switch, Route } from "react-router-dom";
 
 import "../../styles/userPage/userPage.css";
 import Profile from "./main/profile/Profile";
+import axios from "axios";
 
 const UserPage = ({ match }) => {
     const [selectedTask, setSelectedTask] = useState({ id: null });
@@ -38,7 +39,7 @@ const UserPage = ({ match }) => {
             "Something went wrong! Please make sure the server is running.",
             {
                 position: "top-center",
-                autoClose: 5000,
+                duration: 5000,
             }
         );
     };
@@ -48,10 +49,17 @@ const UserPage = ({ match }) => {
     };
 
     useEffect(() => {
-        fetch(getTaskURL())
-            .then((res) => res.json())
-            .then((data) => setTasks(data))
-            .catch((err) => fetchingErrorHandler(err));
+        const fetchTasks = async () => {
+            try {
+                const res = await axios.get(getTaskURL());
+                const data = res.data;
+                setTasks(data)
+                return data
+            } catch (e) {
+                fetchingErrorHandler(e)
+            }
+        }
+        fetchTasks().then(data => data); // Just to remove the annoying warning on webstorm
     }, [refreshData, setTasks]);
 
     useEffect(() => {
