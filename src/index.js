@@ -22,7 +22,7 @@ axios.interceptors.response.use(res => {
     if (error.response.status === 401) { // UnauthorizedAccess
         localStorage.removeItem("token")
         localStorage.removeItem("user")
-        document.location = "/"
+        // document.location = "/"
     } else if (error.response.status === 403) { // Forbidden
         return error.response
     } else {

@@ -363,3 +363,27 @@
   left: 0;
   z-index: -200;
 }
+
+.error-full-page {
+  height: 100vh;
+  display: grid;
+  place-content: center;
+
+  background-color: #790b0b;
+  color: white;
+  font-size: 1.2rem;
+
+  .logout-btn {
+    cursor: pointer;
+    display: block;
+    background-color: white;
+    color: #790b0b;
+    padding: 1rem;
+    margin: 1rem auto;
+    border-radius: .5rem;
+
+    &:active {
+      transform: scale(.98);
+    }
+  }
+}

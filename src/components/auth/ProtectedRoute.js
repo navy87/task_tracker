@@ -1,14 +1,28 @@
 import React from "react";
-import {Redirect, Route} from "react-router-dom";
+import {Link, Redirect, Route} from "react-router-dom";
+import {RiLogoutCircleFill} from "react-icons/ri";
 
-const ProtectedRoute = ({component: Component, ...rest}) => {
+const ProtectedRoute = ({component: Component, requiredRole, ...rest}) => {
 
     return (
         <Route
             {...rest}
             render={(props) => {
                 if (localStorage.getItem("token")) {
-                    return <Component {...props} />;
+                    const currentRole = JSON.parse(localStorage.getItem("user")).role.name.toUpperCase();
+                    if (!requiredRole || requiredRole.toUpperCase() === "USER") {
+                        if (currentRole !== "SUPER_ADMIN") {
+                            return <Component {...props} />;
+                        } else {
+                            return <Redirect to={{pathname: "/admin"}} />
+                        }
+                    } else if (requiredRole.toUpperCase() === "ADMIN" && (currentRole === "ADMIN" || currentRole === "SUPER_ADMIN")) {
+                        return <Component {...props} />
+                    } else if (requiredRole.toUpperCase() === "SUPER_ADMIN" && currentRole === "SUPER_ADMIN") {
+                        return <Component {...props} />
+                    } else {
+                        return <div>Unauthorized</div>
+                    }
                 } else {
                     return (
                         <Redirect
@@ -20,8 +34,7 @@ const ProtectedRoute = ({component: Component, ...rest}) => {
                     );
                 }
             }}
-        />
-    );
+        />)
 };
 
 export default ProtectedRoute;

@@ -37,11 +37,11 @@ function App() {
                             path="/login"
                             component={LoginPageContainer}
                         />
-                        <Route path="/admin" component={Admin}/>
-                        <ProtectedRoute path="/logout" component={Logout}/>
+                        <ProtectedRoute path="/admin" component={Admin} requiredRole={"ADMIN"}/>
+                        <Route path="/logout" component={Logout}/>
                         {/* TODO Unprotected */}
                         {/* <Route path="/" component={UserPage} /> */}
-                        <ProtectedRoute path="/" component={UserPage}/>
+                        <ProtectedRoute path="/" component={UserPage} requiredRole={"USER"}/>
                     </Switch>
                 </div>
             </GlobalContext.Provider>
