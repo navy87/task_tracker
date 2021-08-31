@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useEffect, useState} from "react";
 import {FaUserCircle} from "react-icons/fa";
 import {AiFillEdit, AiOutlineMail, AiOutlinePhone} from "react-icons/ai";
 import {TiGroup} from "react-icons/ti";
@@ -6,7 +6,11 @@ import {BsPerson} from "react-icons/bs";
 import {Link} from "react-router-dom";
 
 const Profile = ({match}) => {
-
+    const [user, setUser] = useState({})
+    useEffect(() => {
+        const user = JSON.parse(localStorage.getItem("user"))
+        setUser(user)
+    }, [])
     return (
         <div id="id_profile_page">
             <div className="container">
@@ -20,28 +24,28 @@ const Profile = ({match}) => {
                             Change Photo
                         </Link>
                     </div>
-                    <p className="dep_title">Manager</p>
+                    <div className="dep_title">Manager</div>
                 </div>
-                <p className="detail name">
+                <div className="detail name">
                     <BsPerson className="icon"/>
-                    Yahya Fati
-                </p>
-                <p className="detail email">
+                    {user.fullName}
+                </div>
+                <div className="detail email">
                     <AiOutlineMail className="icon"/>
-                    yahyafati123@gmail.com
-                </p>
-                <p className="detail phone">
+                    {user.email}
+                </div>
+                <div className="detail phone">
                     <AiOutlinePhone className="icon"/>
-                    +251925240618
+                    {user.phone}
                     <Link to="/" className="changePhone">
                         <AiFillEdit className="edit"/>
-                        <p className="text">Change</p>
+                        <div className="text">Change</div>
                     </Link>
-                </p>
-                <p className="detail department">
+                </div>
+                <div className="detail department">
                     <TiGroup className="icon"/>
-                    IT Department
-                </p>
+                    {user.department}
+                </div>
             </div>
         </div>
     );

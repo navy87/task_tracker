@@ -8,7 +8,6 @@ import SideBar from "./sidebar/SideBar";
 import {Route, Switch} from "react-router-dom";
 
 import "../../styles/userPage/userPage.css";
-import Profile from "./main/profile/Profile";
 import axios from "axios";
 
 const UserPage = ({match}) => {
@@ -130,11 +129,8 @@ const UserPage = ({match}) => {
                     <SideBar/>
                     <div className="content">
                         <Switch>
+
                             <Route path={match.url} component={Main}/>
-                            <Route
-                                path={`${match.url}profile`}
-                                component={Profile}
-                            />
                         </Switch>
                     </div>
                 </div>

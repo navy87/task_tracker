@@ -20,6 +20,10 @@ const Header = () => {
                 </div>
             </Link>
             <div className="user-info-list">
+                <div className={"list-item"}>
+                    <label htmlFor={"id_animation_check"}>Animation</label>
+                    <input id={"id_animation_check"} type={"checkbox"} />
+                </div>
                 <div className="no-btn">
                     <FcDepartment className="icon"/>
                     {user.department || "Unspecified"}

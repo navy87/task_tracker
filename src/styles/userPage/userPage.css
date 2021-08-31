@@ -561,6 +561,7 @@
 #id_profile_page {
   display: grid;
   place-content: center;
+  height: 100%;
 }
 #id_profile_page .container {
   background-color: white;
