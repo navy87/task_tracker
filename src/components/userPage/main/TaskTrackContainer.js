@@ -38,7 +38,15 @@ const TaskTrackContainer = (props) => {
             <TrackInfo {...props} />
         </>
     ) : (
-        <div>Task doesn't exist</div>
+        <div className={"error-page"}>
+            <h1>Wrong Address.</h1>
+            <p className={"subtitle"}>The task you are looking for doesn't exist or you are not authorized to look it up.</p>
+            <p className={"disclaimer"}>If you think this shouldn't happen, please refresh the page (F5 or Ctrl-R) and try again.
+                However if the problem persists, please make sure to contact your IT Department</p>
+            <a className={"refresh-button"} href={props.match.url}>
+                Refresh
+            </a>
+        </div>
     );
 };
 

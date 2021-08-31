@@ -315,11 +315,25 @@
   height: 100vh;
   display: grid;
   place-content: center;
+  text-align: center;
   background-color: #790b0b;
   color: white;
   font-size: 1.2rem;
 }
-.error-full-page .logout-btn {
+.error-full-page > h1 {
+  font-size: 3rem;
+  font-weight: bold;
+  margin-bottom: 2rem;
+}
+.error-full-page > .subtitle {
+  font-weight: 300;
+}
+.error-full-page > .disclaimer {
+  margin-top: 2rem;
+  font-size: 1rem;
+  font-weight: 300;
+}
+.error-full-page .go-back-btn {
   cursor: pointer;
   display: block;
   background-color: white;
@@ -328,7 +342,7 @@
   margin: 1rem auto;
   border-radius: 0.5rem;
 }
-.error-full-page .logout-btn:active {
+.error-full-page .go-back-btn:active {
   transform: scale(0.98);
 }
 

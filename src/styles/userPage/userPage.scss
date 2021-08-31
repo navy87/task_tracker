@@ -6,12 +6,10 @@
 
   cursor: pointer;
   padding: 0.25rem 0.75rem;
-  background-color: white;
   color: black;
-  margin: 0 0.1rem;
   border-radius: 0.25rem;
   background-color: lightgray;
-  margin-bottom: 5px;
+  margin: 0 0.1rem 5px;
 
   &.checked {
     background-color: white;
@@ -40,7 +38,6 @@
   box-shadow: 2px 2px 2px #bbb;
 
   background-color: #eee;
-  padding: 0.5rem;
   padding: 0.5rem 5px;
   overflow-y: scroll;
 
@@ -556,6 +553,44 @@
     border-radius: 0.5rem;
     background-color: #eee;
     flex-grow: 1;
+  }
+
+  .error-page {
+    display: grid;
+    place-content: center;
+    background-color: #790b0b;
+    color: white;
+    height: 100%;
+    font-weight: lighter;
+    text-align: center;
+
+    h1 {
+      font-size: 3rem;
+      font-weight: bold;
+    }
+
+    .subtitle {
+      margin-top: 1rem;
+      font-size: 1.2rem;
+    }
+
+    .disclaimer {
+      margin-top: 1.5rem;
+      font-size: .9rem;
+    }
+
+    .refresh-button {
+      font-weight: normal;
+      background-color: white;
+      color: #790b0b;
+      margin: 1rem auto;
+      padding: 1rem;
+      border-radius: .5rem;
+
+      &:active {
+        transform: scale(.98);
+      }
+    }
   }
 }
 

@@ -30,7 +30,7 @@ const Dashboard = ({match}) => {
             <DashboardButton
                 icon={<RiLogoutCircleFill className="icon"/>}
                 text="Logout"
-                to={`${match.url}/logout`}
+                to={`/logout`}
                 type="logout"
             />
         </div>
