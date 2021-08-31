@@ -18,7 +18,7 @@
   flex-grow: 1;
   padding: 0 5rem;
 }
-#adminPage main input {
+#adminPage main input, #adminPage main select {
   min-width: 300px;
   padding: 0.5rem;
   outline: none;
@@ -27,7 +27,7 @@
   border-radius: 5px;
   transition: all 0.5s;
 }
-#adminPage main input:focus {
+#adminPage main input:focus, #adminPage main select:focus {
   box-shadow: 5px 5px 5px #888;
   transform: scale(1.015);
 }

@@ -112,7 +112,26 @@ const CreateUser = ({match}) => {
                         }))
                     }
                 />
+                <h3 className="form-subtitle">Department Information</h3>
+                <select placeholder={"Department"}>
+                    <option>IT Department</option>
+                    <option>Arts Department</option>
+                    <option>Finance Department</option>
+                </select>
+                <input
+                    type="text"
+                    required
+                    autoComplete="off"
+                    placeholder="Title"
+                    name="title"
+                    autoCorrect="off"
+                />
                 <h3 className="form-subtitle">Security Information</h3>
+                <select placeholder={"Select Role"} required={true}>
+                    <option>Select a role</option>
+                    <option>USER</option>
+                    <option>ADMIN</option>
+                </select>
                 <input
                     type="text"
                     required
