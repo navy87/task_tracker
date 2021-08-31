@@ -2,8 +2,9 @@ import React from "react";
 import {HiUserAdd} from "react-icons/hi";
 import {CgPassword} from "react-icons/cg";
 import {GiShieldDisabled} from "react-icons/gi";
-import {RiLogoutCircleFill} from "react-icons/ri";
+import {RiAdminFill, RiLockPasswordLine, RiLogoutCircleFill} from "react-icons/ri";
 import DashboardButton from "./DashboardButton";
+import {GrUserAdmin, Si1Password} from "react-icons/all";
 
 const Dashboard = ({match}) => {
 
@@ -13,6 +14,18 @@ const Dashboard = ({match}) => {
                 icon={<HiUserAdd className="icon"/>}
                 text="Create New User"
                 to={`${match.url}/createUser`}
+                type="create"
+            />
+            <DashboardButton
+                icon={<RiAdminFill className="icon"/>}
+                text="Create New Admin"
+                to={`${match.url}/createAdmin`}
+                type="create"
+            />
+            <DashboardButton
+                icon={<Si1Password className="icon"/>}
+                text="Change Superadmin Password"
+                to={`${match.url}/changeSuperAdminPassword`}
                 type="create"
             />
             <DashboardButton
