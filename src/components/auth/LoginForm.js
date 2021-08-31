@@ -4,7 +4,7 @@ import toast from "react-hot-toast";
 import {useHistory} from "react-router-dom";
 import {getLoginURL, getUserMetaURL} from "../../helpers/Helper";
 
-const LoginForm = ({match}) => {
+const LoginForm = ({match, location}) => {
     const emptyForm = {
         username: "",
         password: "",
@@ -37,7 +37,11 @@ const LoginForm = ({match}) => {
                 localStorage.setItem("token", res.headers.authorization)
                 const userMeta = await getUser(login.username);
                 localStorage.setItem("user", JSON.stringify(userMeta))
-                history.push("/");
+                if (location.state) {
+                    history.push(location.state.from);
+                } else {
+                    history.push("/");
+                }
             }
         } catch (e) {
             console.error(e)
