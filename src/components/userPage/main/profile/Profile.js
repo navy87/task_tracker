@@ -44,7 +44,7 @@ const Profile = ({match}) => {
                 </div>
                 <div className="detail department">
                     <TiGroup className="icon"/>
-                    {user.department}
+                    {user.departmentProfile}
                 </div>
             </div>
         </div>

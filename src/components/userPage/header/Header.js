@@ -26,7 +26,9 @@ const Header = () => {
                 </div>
                 <div className="no-btn">
                     <FcDepartment className="icon"/>
-                    {user.department || "Unspecified"}
+                    {/*TODO Department Header Text*/}
+                    {/*{user.departmentProfile.department.name || "Unspecified"}*/}
+                    {"Unspecified Department"}
                 </div>
                 <Link className="list-item" to="/profile">
                     <FaUserCircle className="icon"/> {user.fullName}
