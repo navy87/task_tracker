@@ -6,11 +6,12 @@ import {BsPerson} from "react-icons/bs";
 import {Link} from "react-router-dom";
 
 const Profile = ({match}) => {
-    const [user, setUser] = useState({})
+    const [user, setUser] = useState(JSON.parse(localStorage.getItem("user")))
     useEffect(() => {
         const user = JSON.parse(localStorage.getItem("user"))
         setUser(user)
     }, [])
+    console.log()
     return (
         <div id="id_profile_page">
             <div className="container">
@@ -24,7 +25,7 @@ const Profile = ({match}) => {
                             Change Photo
                         </Link>
                     </div>
-                    <div className="dep_title">Manager</div>
+                    <div className="dep_title">{user.departmentTitle}</div>
                 </div>
                 <div className="detail name">
                     <BsPerson className="icon"/>
@@ -44,7 +45,7 @@ const Profile = ({match}) => {
                 </div>
                 <div className="detail department">
                     <TiGroup className="icon"/>
-                    {user.department}
+                    {user.department.name}
                 </div>
             </div>
         </div>
