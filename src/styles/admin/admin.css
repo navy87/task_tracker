@@ -18,29 +18,32 @@
   flex-grow: 1;
   padding: 0 5rem;
 }
-#adminPage main input, #adminPage main select {
-  min-width: 300px;
-  padding: 0.5rem;
+#adminPage main form.inline {
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+  flex-grow: 1;
+}
+#adminPage main form.inline input {
+  padding: 0.25rem;
+  border: none;
   outline: none;
-  box-shadow: 5px 5px 5px transparent;
-  margin-bottom: 0.5rem;
-  border-radius: 5px;
-  transition: all 0.5s;
+  border-radius: 0.5rem;
+  flex-grow: 1;
 }
-#adminPage main input:focus, #adminPage main select:focus {
-  box-shadow: 5px 5px 5px #888;
-  transform: scale(1.015);
-}
-#adminPage main input[type=submit] {
+#adminPage main form.inline input[type=submit] {
   cursor: pointer;
-  color: white;
-  background-color: blue;
-  box-shadow: 5px 5px 5px #aaa;
+  border-radius: 0;
+  background-color: transparent;
+  color: blue;
+  padding: 0;
+  flex-grow: 0;
 }
-#adminPage main input[type=submit]:active {
-  transform: scale(0.99);
-  background-color: navy;
-  box-shadow: 2px 2px 2px #888;
+#adminPage main form.inline input[type=submit].cancel {
+  color: red;
+}
+#adminPage main form.inline input[type=submit]:active {
+  transform: scale(0.98);
 }
 #adminPage main .buttons-container {
   display: grid;
@@ -93,15 +96,17 @@
 }
 #adminPage main .reset_password_container,
 #adminPage main .deactivate_account_container,
-#adminPage main .create-user-container {
-  padding: 20px;
+#adminPage main .create-user-container,
+#adminPage main .form-container {
+  padding: 1rem;
   background-color: #cccccc;
   box-shadow: 5px 5px 5px #888;
   border-radius: 10px;
 }
 #adminPage main .reset_password_container h2,
 #adminPage main .deactivate_account_container h2,
-#adminPage main .create-user-container h2 {
+#adminPage main .create-user-container h2,
+#adminPage main .form-container h2 {
   text-align: center;
   margin: 10px auto;
   font-size: 1.5rem;
@@ -110,28 +115,285 @@
 #adminPage main .reset_password_container #id_reset_password_form,
 #adminPage main .reset_password_container #id_deactivate_account_form,
 #adminPage main .reset_password_container #create-user-form,
+#adminPage main .reset_password_container form,
 #adminPage main .deactivate_account_container #id_reset_password_form,
 #adminPage main .deactivate_account_container #id_deactivate_account_form,
 #adminPage main .deactivate_account_container #create-user-form,
+#adminPage main .deactivate_account_container form,
 #adminPage main .create-user-container #id_reset_password_form,
 #adminPage main .create-user-container #id_deactivate_account_form,
-#adminPage main .create-user-container #create-user-form {
+#adminPage main .create-user-container #create-user-form,
+#adminPage main .create-user-container form,
+#adminPage main .form-container #id_reset_password_form,
+#adminPage main .form-container #id_deactivate_account_form,
+#adminPage main .form-container #create-user-form,
+#adminPage main .form-container form {
   display: flex;
   flex-direction: column;
 }
 #adminPage main .reset_password_container #id_reset_password_form .form-subtitle,
 #adminPage main .reset_password_container #id_deactivate_account_form .form-subtitle,
 #adminPage main .reset_password_container #create-user-form .form-subtitle,
+#adminPage main .reset_password_container form .form-subtitle,
 #adminPage main .deactivate_account_container #id_reset_password_form .form-subtitle,
 #adminPage main .deactivate_account_container #id_deactivate_account_form .form-subtitle,
 #adminPage main .deactivate_account_container #create-user-form .form-subtitle,
+#adminPage main .deactivate_account_container form .form-subtitle,
 #adminPage main .create-user-container #id_reset_password_form .form-subtitle,
 #adminPage main .create-user-container #id_deactivate_account_form .form-subtitle,
-#adminPage main .create-user-container #create-user-form .form-subtitle {
+#adminPage main .create-user-container #create-user-form .form-subtitle,
+#adminPage main .create-user-container form .form-subtitle,
+#adminPage main .form-container #id_reset_password_form .form-subtitle,
+#adminPage main .form-container #id_deactivate_account_form .form-subtitle,
+#adminPage main .form-container #create-user-form .form-subtitle,
+#adminPage main .form-container form .form-subtitle {
   margin: 0.5rem 0;
   padding: 3px 0;
   font-weight: 300;
   border-bottom: 1px solid #bbb;
+}
+#adminPage main .reset_password_container #id_reset_password_form input, #adminPage main .reset_password_container #id_reset_password_form select, #adminPage main .reset_password_container #id_reset_password_form button,
+#adminPage main .reset_password_container #id_deactivate_account_form input,
+#adminPage main .reset_password_container #id_deactivate_account_form select,
+#adminPage main .reset_password_container #id_deactivate_account_form button,
+#adminPage main .reset_password_container #create-user-form input,
+#adminPage main .reset_password_container #create-user-form select,
+#adminPage main .reset_password_container #create-user-form button,
+#adminPage main .reset_password_container form input,
+#adminPage main .reset_password_container form select,
+#adminPage main .reset_password_container form button,
+#adminPage main .deactivate_account_container #id_reset_password_form input,
+#adminPage main .deactivate_account_container #id_reset_password_form select,
+#adminPage main .deactivate_account_container #id_reset_password_form button,
+#adminPage main .deactivate_account_container #id_deactivate_account_form input,
+#adminPage main .deactivate_account_container #id_deactivate_account_form select,
+#adminPage main .deactivate_account_container #id_deactivate_account_form button,
+#adminPage main .deactivate_account_container #create-user-form input,
+#adminPage main .deactivate_account_container #create-user-form select,
+#adminPage main .deactivate_account_container #create-user-form button,
+#adminPage main .deactivate_account_container form input,
+#adminPage main .deactivate_account_container form select,
+#adminPage main .deactivate_account_container form button,
+#adminPage main .create-user-container #id_reset_password_form input,
+#adminPage main .create-user-container #id_reset_password_form select,
+#adminPage main .create-user-container #id_reset_password_form button,
+#adminPage main .create-user-container #id_deactivate_account_form input,
+#adminPage main .create-user-container #id_deactivate_account_form select,
+#adminPage main .create-user-container #id_deactivate_account_form button,
+#adminPage main .create-user-container #create-user-form input,
+#adminPage main .create-user-container #create-user-form select,
+#adminPage main .create-user-container #create-user-form button,
+#adminPage main .create-user-container form input,
+#adminPage main .create-user-container form select,
+#adminPage main .create-user-container form button,
+#adminPage main .form-container #id_reset_password_form input,
+#adminPage main .form-container #id_reset_password_form select,
+#adminPage main .form-container #id_reset_password_form button,
+#adminPage main .form-container #id_deactivate_account_form input,
+#adminPage main .form-container #id_deactivate_account_form select,
+#adminPage main .form-container #id_deactivate_account_form button,
+#adminPage main .form-container #create-user-form input,
+#adminPage main .form-container #create-user-form select,
+#adminPage main .form-container #create-user-form button,
+#adminPage main .form-container form input,
+#adminPage main .form-container form select,
+#adminPage main .form-container form button {
+  min-width: 300px;
+  padding: 0.5rem;
+  outline: none;
+  box-shadow: 5px 5px 5px transparent;
+  margin-bottom: 0.5rem;
+  border-radius: 5px;
+  transition: all 0.5s;
+}
+#adminPage main .reset_password_container #id_reset_password_form input:focus, #adminPage main .reset_password_container #id_reset_password_form select:focus, #adminPage main .reset_password_container #id_reset_password_form button:focus,
+#adminPage main .reset_password_container #id_deactivate_account_form input:focus,
+#adminPage main .reset_password_container #id_deactivate_account_form select:focus,
+#adminPage main .reset_password_container #id_deactivate_account_form button:focus,
+#adminPage main .reset_password_container #create-user-form input:focus,
+#adminPage main .reset_password_container #create-user-form select:focus,
+#adminPage main .reset_password_container #create-user-form button:focus,
+#adminPage main .reset_password_container form input:focus,
+#adminPage main .reset_password_container form select:focus,
+#adminPage main .reset_password_container form button:focus,
+#adminPage main .deactivate_account_container #id_reset_password_form input:focus,
+#adminPage main .deactivate_account_container #id_reset_password_form select:focus,
+#adminPage main .deactivate_account_container #id_reset_password_form button:focus,
+#adminPage main .deactivate_account_container #id_deactivate_account_form input:focus,
+#adminPage main .deactivate_account_container #id_deactivate_account_form select:focus,
+#adminPage main .deactivate_account_container #id_deactivate_account_form button:focus,
+#adminPage main .deactivate_account_container #create-user-form input:focus,
+#adminPage main .deactivate_account_container #create-user-form select:focus,
+#adminPage main .deactivate_account_container #create-user-form button:focus,
+#adminPage main .deactivate_account_container form input:focus,
+#adminPage main .deactivate_account_container form select:focus,
+#adminPage main .deactivate_account_container form button:focus,
+#adminPage main .create-user-container #id_reset_password_form input:focus,
+#adminPage main .create-user-container #id_reset_password_form select:focus,
+#adminPage main .create-user-container #id_reset_password_form button:focus,
+#adminPage main .create-user-container #id_deactivate_account_form input:focus,
+#adminPage main .create-user-container #id_deactivate_account_form select:focus,
+#adminPage main .create-user-container #id_deactivate_account_form button:focus,
+#adminPage main .create-user-container #create-user-form input:focus,
+#adminPage main .create-user-container #create-user-form select:focus,
+#adminPage main .create-user-container #create-user-form button:focus,
+#adminPage main .create-user-container form input:focus,
+#adminPage main .create-user-container form select:focus,
+#adminPage main .create-user-container form button:focus,
+#adminPage main .form-container #id_reset_password_form input:focus,
+#adminPage main .form-container #id_reset_password_form select:focus,
+#adminPage main .form-container #id_reset_password_form button:focus,
+#adminPage main .form-container #id_deactivate_account_form input:focus,
+#adminPage main .form-container #id_deactivate_account_form select:focus,
+#adminPage main .form-container #id_deactivate_account_form button:focus,
+#adminPage main .form-container #create-user-form input:focus,
+#adminPage main .form-container #create-user-form select:focus,
+#adminPage main .form-container #create-user-form button:focus,
+#adminPage main .form-container form input:focus,
+#adminPage main .form-container form select:focus,
+#adminPage main .form-container form button:focus {
+  box-shadow: 5px 5px 5px #888;
+  transform: scale(1.015);
+}
+#adminPage main .reset_password_container #id_reset_password_form input[type=submit], #adminPage main .reset_password_container #id_reset_password_form button,
+#adminPage main .reset_password_container #id_deactivate_account_form input[type=submit],
+#adminPage main .reset_password_container #id_deactivate_account_form button,
+#adminPage main .reset_password_container #create-user-form input[type=submit],
+#adminPage main .reset_password_container #create-user-form button,
+#adminPage main .reset_password_container form input[type=submit],
+#adminPage main .reset_password_container form button,
+#adminPage main .deactivate_account_container #id_reset_password_form input[type=submit],
+#adminPage main .deactivate_account_container #id_reset_password_form button,
+#adminPage main .deactivate_account_container #id_deactivate_account_form input[type=submit],
+#adminPage main .deactivate_account_container #id_deactivate_account_form button,
+#adminPage main .deactivate_account_container #create-user-form input[type=submit],
+#adminPage main .deactivate_account_container #create-user-form button,
+#adminPage main .deactivate_account_container form input[type=submit],
+#adminPage main .deactivate_account_container form button,
+#adminPage main .create-user-container #id_reset_password_form input[type=submit],
+#adminPage main .create-user-container #id_reset_password_form button,
+#adminPage main .create-user-container #id_deactivate_account_form input[type=submit],
+#adminPage main .create-user-container #id_deactivate_account_form button,
+#adminPage main .create-user-container #create-user-form input[type=submit],
+#adminPage main .create-user-container #create-user-form button,
+#adminPage main .create-user-container form input[type=submit],
+#adminPage main .create-user-container form button,
+#adminPage main .form-container #id_reset_password_form input[type=submit],
+#adminPage main .form-container #id_reset_password_form button,
+#adminPage main .form-container #id_deactivate_account_form input[type=submit],
+#adminPage main .form-container #id_deactivate_account_form button,
+#adminPage main .form-container #create-user-form input[type=submit],
+#adminPage main .form-container #create-user-form button,
+#adminPage main .form-container form input[type=submit],
+#adminPage main .form-container form button {
+  cursor: pointer;
+  color: white;
+  background-color: blue;
+  box-shadow: 5px 5px 5px #aaa;
+}
+#adminPage main .reset_password_container #id_reset_password_form input[type=submit]:active, #adminPage main .reset_password_container #id_reset_password_form button:active,
+#adminPage main .reset_password_container #id_deactivate_account_form input[type=submit]:active,
+#adminPage main .reset_password_container #id_deactivate_account_form button:active,
+#adminPage main .reset_password_container #create-user-form input[type=submit]:active,
+#adminPage main .reset_password_container #create-user-form button:active,
+#adminPage main .reset_password_container form input[type=submit]:active,
+#adminPage main .reset_password_container form button:active,
+#adminPage main .deactivate_account_container #id_reset_password_form input[type=submit]:active,
+#adminPage main .deactivate_account_container #id_reset_password_form button:active,
+#adminPage main .deactivate_account_container #id_deactivate_account_form input[type=submit]:active,
+#adminPage main .deactivate_account_container #id_deactivate_account_form button:active,
+#adminPage main .deactivate_account_container #create-user-form input[type=submit]:active,
+#adminPage main .deactivate_account_container #create-user-form button:active,
+#adminPage main .deactivate_account_container form input[type=submit]:active,
+#adminPage main .deactivate_account_container form button:active,
+#adminPage main .create-user-container #id_reset_password_form input[type=submit]:active,
+#adminPage main .create-user-container #id_reset_password_form button:active,
+#adminPage main .create-user-container #id_deactivate_account_form input[type=submit]:active,
+#adminPage main .create-user-container #id_deactivate_account_form button:active,
+#adminPage main .create-user-container #create-user-form input[type=submit]:active,
+#adminPage main .create-user-container #create-user-form button:active,
+#adminPage main .create-user-container form input[type=submit]:active,
+#adminPage main .create-user-container form button:active,
+#adminPage main .form-container #id_reset_password_form input[type=submit]:active,
+#adminPage main .form-container #id_reset_password_form button:active,
+#adminPage main .form-container #id_deactivate_account_form input[type=submit]:active,
+#adminPage main .form-container #id_deactivate_account_form button:active,
+#adminPage main .form-container #create-user-form input[type=submit]:active,
+#adminPage main .form-container #create-user-form button:active,
+#adminPage main .form-container form input[type=submit]:active,
+#adminPage main .form-container form button:active {
+  transform: scale(0.99);
+  background-color: navy;
+  box-shadow: 2px 2px 2px #888;
+}
+#adminPage main .department-container {
+  display: flex;
+  gap: 0.5rem;
+  align-items: flex-start;
+}
+#adminPage main .department-container .department-list-container {
+  padding: 1rem;
+  border-radius: 1rem;
+  background-color: #ccc;
+  min-width: 300px;
+  min-height: 300px;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+#adminPage main .department-container .department-list-container > h2 {
+  text-align: center;
+  margin: 10px auto;
+  font-size: 1.5rem;
+  font-weight: 300;
+}
+#adminPage main .department-container .department-list-container .new-department {
+  cursor: pointer;
+  margin: 0 auto;
+  padding: 0.5rem 1rem;
+  background-color: white;
+  color: darkblue;
+  border-radius: 0.5rem;
+  box-shadow: 5px 5px 5px #aaa;
+}
+#adminPage main .department-container .department-list-container .new-department:active {
+  transform: scale(0.98);
+  box-shadow: 3px 3px 3px #666;
+}
+#adminPage main .department-container .department-list-container .department-item {
+  background-color: #eee;
+  display: flex;
+  gap: 0.5rem;
+  border-radius: 0.5rem;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.5rem;
+}
+#adminPage main .department-container .department-list-container .department-item.new {
+  background-color: lightseagreen !important;
+}
+#adminPage main .department-container .department-list-container .department-item .inline-input {
+  min-width: 0;
+  padding: 0.25rem;
+  outline: none;
+  box-shadow: none;
+  margin-bottom: 0;
+  border-radius: 5px;
+  transition: all 0.5s;
+}
+#adminPage main .department-container .department-list-container .department-item .buttons {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+#adminPage main .department-container .department-list-container .department-item .buttons .link-btn {
+  cursor: pointer;
+}
+#adminPage main .department-container .department-list-container .department-item .buttons .link-btn.edit {
+  color: blue;
+}
+#adminPage main .department-container .department-list-container .department-item .buttons .link-btn.delete {
+  color: red;
 }
 
 /*# sourceMappingURL=admin.css.map */

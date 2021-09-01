@@ -1,35 +1,43 @@
 import React from "react";
-import "../../styles/admin/admin.css"; // This Import must be last for some reason
+
 import Dashboard from "./Dashboard";
-import {Route, Switch} from "react-router-dom";
+import {Link, Route, Switch} from "react-router-dom";
 import CreateUser from "./CreateUser";
 import ResetPasswordAdmin from "./ResetPasswordAdmin";
 import DeactivateAccount from "./DeactivateAccount";
+import Department from "./department/Department";
 
+import "../../styles/admin/admin.css"; // This Import must be last for some reason
 const Admin = ({match}) => {
     return (
         <div id="adminPage">
             <header>
-                <h1>Admin Panel</h1>
+                <Link to={"/admin"}>
+                    <h1>Admin Panel</h1>
+                </Link>
             </header>
             <main>
                 <Switch>
-                    <Route path={`${match.url}/`} exact component={Dashboard}/>
                     <Route
                         path={`${match.url}/createUser`}
-                        exact
                         component={CreateUser}
                     />
+                    {/* Department */}
+                    <Route
+                        path={`${match.url}/department/`}
+                        component={Department}
+                    />
+
                     <Route
                         path={`${match.url}/resetPassword`}
-                        exact
                         component={ResetPasswordAdmin}
                     />
                     <Route
                         path={`${match.url}/deactivateAccount`}
-                        exact
                         component={DeactivateAccount}
                     />
+
+                    <Route path={`${match.url}/`} exact component={Dashboard}/>
                 </Switch>
             </main>
         </div>

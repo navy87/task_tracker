@@ -110,6 +110,10 @@ export const getLoginURL = () => {
     return `${process.env.REACT_APP_LOGIN_URL}`;
 };
 
+export const getDepartmentURL = (id = null) => {
+    return `${getBaseURL()}/${process.env.REACT_APP_USER_DEPARTMENT_URL}/${id || ""}`
+}
+
 export const fetchingErrorHandler = (err) => {
     console.error(err);
     toast.error(

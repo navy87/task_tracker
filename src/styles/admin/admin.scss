@@ -21,31 +21,33 @@
     flex-grow: 1;
     padding: 0 5rem;
 
-    input, select {
-      min-width: 300px;
-      padding: 0.5rem;
-      outline: none;
-      box-shadow: 5px 5px 5px transparent;
-      margin-bottom: 0.5rem;
-      border-radius: 5px;
-      transition: all 0.5s;
+    form.inline {
+      display: flex;
+      align-items: center;
+      gap: .25rem;
+      flex-grow: 1;
+      input {
+        padding: .25rem;
+        border: none;
+        outline: none;
+        border-radius: .5rem;
+        flex-grow: 1;
 
-      &:focus {
-        box-shadow: 5px 5px 5px #888;
-        transform: scale(1.015);
-      }
-    }
+        &[type="submit"] {
+          cursor: pointer;
+          border-radius: 0;
+          background-color: transparent;
+          color: blue;
+          padding: 0;
+          flex-grow: 0;
+          &.cancel {
+            color: red;
+          }
 
-    input[type="submit"] {
-      cursor: pointer;
-      color: white;
-      background-color: blue;
-      box-shadow: 5px 5px 5px #aaa;
-
-      &:active {
-        transform: scale(0.99);
-        background-color: navy;
-        box-shadow: 2px 2px 2px #888;
+          &:active {
+            transform: scale(.98);
+          }
+        }
       }
     }
 
@@ -111,8 +113,9 @@
 
     .reset_password_container,
     .deactivate_account_container,
-    .create-user-container {
-      padding: 20px;
+    .create-user-container,
+    .form-container {
+      padding: 1rem;
       background-color: #cccccc;
       box-shadow: 5px 5px 5px #888;
       border-radius: 10px;
@@ -126,7 +129,8 @@
 
       #id_reset_password_form,
       #id_deactivate_account_form,
-      #create-user-form {
+      #create-user-form,
+      form {
         display: flex;
         flex-direction: column;
 
@@ -136,6 +140,120 @@
           font-weight: 300;
           // border-top: 1px solid #bbb;
           border-bottom: 1px solid #bbb;
+        }
+
+        input, select, button{
+          min-width: 300px;
+          padding: 0.5rem;
+          outline: none;
+          box-shadow: 5px 5px 5px transparent;
+          margin-bottom: 0.5rem;
+          border-radius: 5px;
+          transition: all 0.5s;
+
+          &:focus {
+            box-shadow: 5px 5px 5px #888;
+            transform: scale(1.015);
+          }
+        }
+
+        input[type="submit"], button {
+          cursor: pointer;
+          color: white;
+          background-color: blue;
+          box-shadow: 5px 5px 5px #aaa;
+
+          &:active {
+            transform: scale(0.99);
+            background-color: navy;
+            box-shadow: 2px 2px 2px #888;
+          }
+        }
+
+      }
+    }
+
+    .department-container {
+      display: flex;
+      gap: 0.5rem;
+      align-items: flex-start;
+
+
+      .department-list-container {
+        padding: 1rem;
+        border-radius: 1rem;
+        background-color: #ccc;
+        min-width: 300px;
+        min-height: 300px;
+        display: flex;
+        flex-direction: column;
+        gap: .5rem;
+
+        & > h2 {
+          text-align: center;
+          margin: 10px auto;
+          font-size: 1.5rem;
+          font-weight: 300;
+        }
+
+        .new-department {
+          cursor: pointer;
+          margin: 0 auto;
+          padding: .5rem 1rem;
+          background-color: white;
+          color: darkblue;
+          border-radius: .5rem;
+          box-shadow: 5px 5px 5px #aaa;
+
+          &:active {
+            transform: scale(.98);
+            box-shadow: 3px 3px 3px #666;
+          }
+        }
+
+        .department-item {
+          background-color: #eee;
+          display: flex;
+          gap: .5rem;
+          border-radius: .5rem;
+          justify-content: space-between;
+          align-items: center;
+          padding: .5rem;
+
+          &.new {
+            background-color: lightseagreen !important;
+          }
+
+          .inline-input {
+            min-width: 0;
+            padding: .25rem;
+            outline: none;
+            box-shadow: none;
+            margin-bottom: 0;
+            border-radius: 5px;
+            transition: all 0.5s;
+          }
+
+          .buttons {
+            display: flex;
+            align-items: center;
+            gap: .5rem;
+
+            .link-btn {
+              cursor: pointer;
+              &.edit {
+                color: blue;
+              }
+
+              &.delete {
+                color: red;
+              }
+            }
+
+            //&.edit {
+            //  color: blue
+            //}
+          }
         }
       }
     }
