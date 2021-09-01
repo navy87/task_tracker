@@ -5,7 +5,7 @@ import {FaUserCircle} from "react-icons/fa";
 import {Link} from "react-router-dom";
 
 const Header = () => {
-    const [user, setUser] = useState({})
+    const [user, setUser] = useState(JSON.parse(localStorage.getItem("user")))
 
     useEffect(() => {
         setUser(JSON.parse(localStorage.getItem("user")))

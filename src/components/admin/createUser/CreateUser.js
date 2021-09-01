@@ -1,9 +1,11 @@
-import React, {useState} from "react";
+import React, {useState, useContext} from "react";
 import toast from "react-hot-toast";
 import {getUserURL} from "../../../helpers/Helper";
 import axios from "axios";
 import RoleSelect from "./RoleSelect";
 import DepartmentSelect from "./DepartmentSelect";
+import {GlobalContext} from "../../../contexts/GlobalContext";
+import {QuestionDialog} from "../../../helpers/Dialog";
 
 const CreateUser = ({match}) => {
     const emptyUserMeta = {
@@ -23,19 +25,11 @@ const CreateUser = ({match}) => {
             name: "USER"
         },
     };
+    const {setDialog} = useContext(GlobalContext)
     const [userMeta, setUserMeta] = useState(emptyUserMeta);
     const [confirmPassword, setConfirmPassword] = useState("");
 
-    const handleCreateUser = async (e) => {
-        e.preventDefault();
-
-        if (confirmPassword !== userMeta.password) {
-            toast.error("Password doesn't match!", {
-                position: "top-center",
-                autoClose: 5000,
-            });
-            return;
-        }
+    const createUser = async () => {
         const url = getUserURL();
         try {
             const res = await axios.post(url, JSON.stringify(userMeta));
@@ -50,7 +44,33 @@ const CreateUser = ({match}) => {
             console.error(e)
             toast.error("There was an error.", {duration: 5000});
         }
+    }
 
+    const handleCreateUser = (e) => {
+        e.preventDefault();
+
+        if (confirmPassword !== userMeta.password) {
+            toast.error("Password doesn't match!", {
+                position: "top-center",
+                autoClose: 5000,
+            });
+            return;
+        }
+        console.log(userMeta)
+        if (userMeta.role.name === "USER") {
+            createUser();
+        } else {
+            setDialog(
+                <QuestionDialog
+                    text={`Elevated Privileges?`}
+                    subtext={`Are you sure? Do you want to make this user a ${userMeta.role.name}?`}
+                    title="Just Checking"
+                    onYes={createUser}
+                    onNo={() => true}
+                    closeAfterwards={true}
+                />
+            );
+        }
     };
 
     return (

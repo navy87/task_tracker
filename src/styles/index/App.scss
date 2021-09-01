@@ -108,7 +108,7 @@
     box-sizing: content-box;
     display: flex;
     flex-direction: column;
-    max-width: 50%;
+    max-width: min(400px, 50%);
 
     .title {
       display: none;
