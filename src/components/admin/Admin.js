@@ -2,7 +2,7 @@ import React from "react";
 
 import Dashboard from "./Dashboard";
 import {Link, Route, Switch} from "react-router-dom";
-import CreateUser from "./CreateUser";
+import CreateUser from "./createUser/CreateUser";
 import ResetPasswordAdmin from "./ResetPasswordAdmin";
 import DeactivateAccount from "./DeactivateAccount";
 import Department from "./department/Department";

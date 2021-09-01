@@ -4,18 +4,20 @@ import FilterAssigneeButton from "./FilterAssigneeButton";
 
 const FilteredAssignees = () => {
     const {filteredPersons, setFilteredPersons} = useContext(FilterContext);
-    // const [people, setPeople] = useState([]);
-    const {people} = useContext(DataContext);
     const [availablePeople, setAvailablePeople] = useState([]);
+    const {people} = useContext(DataContext)
+    // const [people, setPeople] = useState([])
+    // const [loading, setLoading] = useState(true)
 
     useEffect(() => {
-        const mapped = people.map((person) => person.id);
+        const mapped = [...filteredPersons].map((person) => person.id);
         setAvailablePeople(
-            people.filter((person) => {
-                return !mapped.includes(person.id);
-            })
+            people
+                .filter((person) => !mapped.includes(person.id))
+                .sort((a, b) => a.fullName.localeCompare(b.fullName))
+
         );
-    }, [people, setAvailablePeople]);
+    }, [people, setAvailablePeople, filteredPersons]);
 
     const handleChange = (e) => {
         const value = e.target.value;
@@ -32,8 +34,7 @@ const FilteredAssignees = () => {
         e.target.value = "select_person";
     };
 
-    return (
-        <div>
+    return <div>
             <select
                 className="filter_assignees"
                 defaultValue="assign_person"
@@ -43,7 +44,7 @@ const FilteredAssignees = () => {
                 <option value="all_persons">All Persons</option>
                 {availablePeople.map((person, index) => (
                     <option key={index} value={person.id}>
-                        {person.name}
+                        {person.fullName}
                     </option>
                 ))}
             </select>
@@ -61,7 +62,7 @@ const FilteredAssignees = () => {
                 <button className="btn btn-sm">All</button>
             )}
         </div>
-    );
+
 };
 
 export default FilteredAssignees;

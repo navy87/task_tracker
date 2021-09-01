@@ -1,7 +1,9 @@
 import React, {useState} from "react";
 import toast from "react-hot-toast";
-import {getUserURL} from "../../helpers/Helper";
+import {getUserURL} from "../../../helpers/Helper";
 import axios from "axios";
+import RoleSelect from "./RoleSelect";
+import DepartmentSelect from "./DepartmentSelect";
 
 const CreateUser = ({match}) => {
     const emptyUserMeta = {
@@ -11,6 +13,15 @@ const CreateUser = ({match}) => {
         lastName: "",
         email: "",
         phone: "",
+        department: {
+            id: null,
+            name: ""
+        },
+        departmentTitle: "",
+        role: {
+            id: 0,
+            name: "USER"
+        },
     };
     const [userMeta, setUserMeta] = useState(emptyUserMeta);
     const [confirmPassword, setConfirmPassword] = useState("");
@@ -25,9 +36,7 @@ const CreateUser = ({match}) => {
             });
             return;
         }
-
         const url = getUserURL();
-
         try {
             const res = await axios.post(url, JSON.stringify(userMeta));
             if (res.status === 200) {
@@ -113,11 +122,7 @@ const CreateUser = ({match}) => {
                     }
                 />
                 <h3 className="form-subtitle">Department Information</h3>
-                <select placeholder={"Department"}>
-                    <option>IT Department</option>
-                    <option>Arts Department</option>
-                    <option>Finance Department</option>
-                </select>
+                <DepartmentSelect userMeta={userMeta} setUserMeta={setUserMeta} />
                 <input
                     type="text"
                     required
@@ -125,13 +130,11 @@ const CreateUser = ({match}) => {
                     placeholder="Title"
                     name="title"
                     autoCorrect="off"
+                    value={userMeta.departmentTitle}
+                    onChange={e => setUserMeta(current =>({...current, departmentTitle: e.target.value}))}
                 />
                 <h3 className="form-subtitle">Security Information</h3>
-                <select placeholder={"Select Role"} required={true}>
-                    <option>Select a role</option>
-                    <option>USER</option>
-                    <option>ADMIN</option>
-                </select>
+                <RoleSelect userMeta={userMeta} setUserMeta={setUserMeta}  />
                 <input
                     type="text"
                     required
