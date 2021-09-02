@@ -1,4 +1,4 @@
-import {useState} from "react";
+import React, {useState} from "react";
 
 import {Toaster} from "react-hot-toast";
 import ReactTooltip from "react-tooltip";
@@ -17,10 +17,12 @@ import Logout from "./components/auth/Logout";
 
 function App() {
     const [dialog, setDialog] = useState();
+    const [animationBackground, setAnimationBackground] = useState(true)
 
     const globalContextValues = {
         dialog,
         setDialog,
+        animationBackground, setAnimationBackground
     };
 
 
@@ -28,7 +30,7 @@ function App() {
         <Router>
             <GlobalContext.Provider value={globalContextValues}>
                 <div className="App">
-                    <ParticlesBackground/>
+                    {animationBackground && <ParticlesBackground/>}
                     {dialog || ""}
                     <Toaster/>
                     <ReactTooltip effect="solid"/>
@@ -39,8 +41,6 @@ function App() {
                         />
                         <ProtectedRoute path="/admin" component={Admin} requiredRole={"ADMIN"}/>
                         <Route path="/logout" component={Logout}/>
-                        {/* TODO Unprotected */}
-                        {/* <Route path="/" component={UserPage} /> */}
                         <ProtectedRoute path="/" component={UserPage} requiredRole={"USER"}/>
                     </Switch>
                 </div>
