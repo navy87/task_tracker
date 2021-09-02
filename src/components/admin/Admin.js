@@ -7,7 +7,8 @@ import ResetPasswordAdmin from "./ResetPasswordAdmin";
 import ActivateDeactivateAccount from "./ActivateDeactivateAccount";
 import Department from "./department/Department";
 
-import "../../styles/admin/admin.css"; // This Import must be last for some reason
+import "../../styles/admin/admin.css";
+import ChangeRole from "./ChangeRole"; // This Import must be last for some reason
 const Admin = ({match}) => {
     return (
         <div id="adminPage">
@@ -22,12 +23,14 @@ const Admin = ({match}) => {
                         path={`${match.url}/createUser`}
                         component={CreateUser}
                     />
-                    {/* Department */}
                     <Route
                         path={`${match.url}/department/`}
                         component={Department}
                     />
-
+                    <Route
+                        path={`${match.url}/changeRole/`}
+                        component={ChangeRole}
+                    />
                     <Route
                         path={`${match.url}/resetPassword`}
                         component={ResetPasswordAdmin}

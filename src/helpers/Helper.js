@@ -1,4 +1,5 @@
 import toast from "react-hot-toast";
+import axios from "axios";
 
 require("dotenv").config();
 
@@ -106,6 +107,10 @@ export const getUserExistsURL = (username) => {
     return `${getUserURL()}/exists/${username}`
 }
 
+export const getChangeRoleURL = (username) => {
+    return `${getUserURL()}/${process.env.REACT_APP_USER_CHANGE_ROLE_URL}/${username}`
+}
+
 export const getUserActivateURL = (username) => {
     return `${getUserURL()}/${process.env.REACT_APP_USER_ACTIVATE_URL}/${username}`
 }
@@ -128,6 +133,30 @@ export const getDepartmentURL = (id = null) => {
 
 export const getRoleURL = (id=null) => {
     return`${getBaseURL()}/${process.env.REACT_APP_USER_ROLE_URL}/${id || ""}`
+}
+
+export const checkUserExists = async (username) => {
+    try {
+        const response = await axios.get(getUserExistsURL(username))
+        if (response.status === 200) {
+            return response.data
+        }
+    } catch (e) {
+        console.error(e)
+    }
+    return false;
+}
+
+export const getUserByUsername = async (username) => {
+    try {
+        const response = await axios.get(getUserMetaURL(username))
+        if (response.status === 200) {
+            return response.data
+        }
+    } catch (e) {
+        console.error(e)
+    }
+    return {};
 }
 
 export const fetchingErrorHandler = (err) => {

@@ -1,6 +1,6 @@
 import React, {useContext, useState} from "react";
 import axios from "axios";
-import {getUserActivateURL, getUserDeactivateURL, getUserExistsURL} from "../../helpers/Helper";
+import {checkUserExists, getUserActivateURL, getUserDeactivateURL } from "../../helpers/Helper";
 import {GlobalContext} from "../../contexts/GlobalContext";
 import {QuestionDialog} from "../../helpers/Dialog";
 import toast from "react-hot-toast";
@@ -8,19 +8,6 @@ import toast from "react-hot-toast";
 const ActivateDeactivateAccount = ({activate = false, deactivate=false}) => {
     const { setDialog } = useContext(GlobalContext)
     const [username, setUsername] = useState("")
-
-    const checkUserExists = async () => {
-        try {
-            console.log(getUserExistsURL(username))
-            const response = await axios.get(getUserExistsURL(username))
-            if (response.status === 200) {
-                return response.data
-            }
-        } catch (e) {
-            console.error(e)
-        }
-        return false;
-    }
 
     const changeStatus = async () => {
         try {
@@ -38,7 +25,7 @@ const ActivateDeactivateAccount = ({activate = false, deactivate=false}) => {
 
     const handleAccountStatusChange = async (e) => {
         e.preventDefault();
-        const exists = await checkUserExists();
+        const exists = await checkUserExists(username);
         if (!exists) {
             toast.error(`No User account exists with the username provided.`, {
                 duration: 5000
