@@ -41,7 +41,7 @@ const DepartmentSelect = ({setUserMeta, userMeta}) => {
             }
             required
         >
-            <option>Select a Department</option>
+            <option value={""}>Select a Department</option>
             {
                 departments.map((department, index) =>
                     <option value={department.name} key={index}>

@@ -12,8 +12,6 @@ const RoleSelect = ({setUserMeta, userMeta}) => {
         return filtered[0]
     }
 
-
-
     useEffect(() => {
         const fetchRoles = async () => {
             try {
@@ -29,20 +27,13 @@ const RoleSelect = ({setUserMeta, userMeta}) => {
             .catch(fetchingErrorHandler)
     }, [setRoles])
 
-    // const getRoleCallBack = useCallback(getRole, [roles])
-    // useEffect(() => {
-    //     setUserMeta(current => {
-    //         if (current.role.id){
-    //             return current;
-    //         }
-    //         return {...current, role: getRoleCallBack("USER")}
-    //     })
-    // }, [getRoleCallBack, setUserMeta])
-
     return (
-        <select name={"role"} value={userMeta.role.name} onChange={e =>
-            setUserMeta(current => ({...current, role: getRole(e.target.value)}))}
+        <select name={"role"}
+                required={true}
+                value={userMeta.role.name}
+                onChange={e => setUserMeta(current => ({...current, role: getRole(e.target.value)}))}
         >
+            <option>Select a role</option>
             {
                 roles.map((role, index) =>
                     <option value={role.name} key={index}>
