@@ -119,6 +119,11 @@ export const getUserDeactivateURL = (username) => {
     return `${getUserURL()}/${process.env.REACT_APP_USER_DEACTIVATE_URL}/${username}`
 }
 
+export const getUserResetPassword = (username) => {
+    return `${getUserURL()}/${process.env.REACT_APP_USER_RESET_PASSWORD_URL}`
+
+}
+
 export const getUserMetaURL = (username) => {
     return `${getUserURL()}/${process.env.REACT_APP_USER_META_URL}/${username}`
 }

@@ -21,8 +21,8 @@ const CreateUser = ({match}) => {
         },
         departmentTitle: "",
         role: {
-            id: 0,
-            name: "USER"
+            id: null,
+            name: ""
         },
     };
     const {setDialog} = useContext(GlobalContext)
