@@ -1,152 +1,116 @@
 #id_login_page {
-    display: -ms-grid;
-    display: grid;
-    place-content: center;
-    height: 100vh;
+  display: grid;
+  place-content: center;
+  height: 100vh;
 }
-
 #id_login_page .container {
-    display: -webkit-box;
-    display: -ms-flexbox;
-    display: flex;
-    -webkit-box-orient: vertical;
-    -webkit-box-direction: normal;
-    -ms-flex-direction: column;
-    flex-direction: column;
-    background-color: #fff;
-    padding: 1rem;
-    border-radius: 0.5rem;
-    -webkit-box-shadow: 0px 0px 10px #dedede;
-    box-shadow: 0px 0px 10px #dedede;
+  display: flex;
+  flex-direction: column;
+  background-color: #fff;
+  padding: 1rem;
+  border-radius: 0.5rem;
+  box-shadow: 0 0 10px #dedede;
+  /* animation: name duration timing-function delay iteration-count direction fill-mode; */
+  animation: login_animation 3s ease-in-out;
 }
-
+@keyframes login_animation {
+  0% {
+    transform: translateX(-200%);
+  }
+  50% {
+    transform: translateX(50%);
+  }
+  75% {
+    transform: translateX(-25%);
+  }
+  100% {
+    transform: translateX(0);
+  }
+}
 #id_login_page .container .logo-container {
-    width: 100%;
-    text-align: center;
-    padding-bottom: 2rem;
+  width: 100%;
+  text-align: center;
+  padding-bottom: 2rem;
 }
-
 #id_login_page .container .logo-container h1 {
-    font-size: 3rem;
+  font-size: 3rem;
 }
-
 #id_login_page .container .logo-container .logo {
-    width: 6rem;
-    height: 6rem;
+  width: 6rem;
+  height: 6rem;
 }
-
 #id_login_page .container .form-container {
-    display: -webkit-box;
-    display: -ms-flexbox;
-    display: flex;
-    -webkit-box-orient: vertical;
-    -webkit-box-direction: normal;
-    -ms-flex-direction: column;
-    flex-direction: column;
-    -webkit-box-align: end;
-    -ms-flex-align: end;
-    align-items: flex-end;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
 }
-
 #id_login_page .container .form-container .forgot-password-container {
-    display: -webkit-box;
-    display: -ms-flexbox;
-    display: flex;
-    width: 100%;
-    margin-bottom: 0.5rem;
+  display: flex;
+  width: 100%;
+  margin-bottom: 0.5rem;
 }
-
 #id_login_page .container .form-container .forgot-password-container > input,
 #id_login_page .container .form-container .forgot-password-container button {
-    padding: 0.5rem;
-    border: 1px solid #ccc;
-    border-radius: 5px 0 0 5px;
-    outline: none;
-    -webkit-transition: all 0.25s;
-    transition: all 0.25s;
+  padding: 0.5rem;
+  border: 1px solid #ccc;
+  border-radius: 5px 0 0 5px;
+  outline: none;
+  transition: all 0.25s;
 }
-
-#id_login_page .container .form-container .forgot-password-container > input[type="text"] {
-    -webkit-box-flex: 1;
-    -ms-flex-positive: 1;
-    flex-grow: 1;
+#id_login_page .container .form-container .forgot-password-container > input[type=text] {
+  flex-grow: 1;
 }
-
 #id_login_page .container .form-container .forgot-password-container > button {
-    display: -webkit-box;
-    display: -ms-flexbox;
-    display: flex;
-    -webkit-box-align: center;
-    -ms-flex-align: center;
-    align-items: center;
-    cursor: pointer;
-    border-left: none;
-    border-radius: 0 5px 5px 0;
-    background-color: blue;
-    color: white;
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  border-left: none;
+  border-radius: 0 5px 5px 0;
+  background-color: blue;
+  color: white;
 }
-
 #id_login_page .container .form-container .forgot-password-container > button:active {
-    -webkit-transform: scale(0.98) translateX(-2px);
-    transform: scale(0.98) translateX(-2px);
+  transform: scale(0.98) translateX(-2px);
 }
-
 #id_login_page .container .form-container > input {
-    min-width: 300px;
-    padding: 0.5rem;
-    outline: none;
-    border: 1px solid #ccc;
-    -webkit-box-shadow: 5px 5px 5px transparent;
-    box-shadow: 5px 5px 5px transparent;
-    margin-bottom: 0.5rem;
-    border-radius: 5px;
-    -webkit-transition: all 0.5s;
-    transition: all 0.5s;
+  min-width: 300px;
+  padding: 0.5rem;
+  outline: none;
+  border: 1px solid #ccc;
+  box-shadow: 5px 5px 5px transparent;
+  margin-bottom: 0.5rem;
+  border-radius: 5px;
+  transition: all 0.5s;
 }
-
 #id_login_page .container .form-container > input:focus {
-    -webkit-box-shadow: 5px 5px 5px #ccc;
-    box-shadow: 5px 5px 5px #ccc;
-    -webkit-transform: scale(1.015);
-    transform: scale(1.015);
+  box-shadow: 5px 5px 5px #ccc;
+  transform: scale(1.015);
 }
-
 #id_login_page .container .form-container > label {
-    margin-bottom: 0.5rem;
-    cursor: pointer;
-    display: -webkit-box;
-    display: -ms-flexbox;
-    display: flex;
-    -webkit-box-align: center;
-    -ms-flex-align: center;
-    align-items: center;
-    gap: 3px;
-    font-size: 0.9rem;
+  margin-bottom: 0.5rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 3px;
+  font-size: 0.9rem;
 }
-
-#id_login_page .container .form-container input[type="submit"] {
-    cursor: pointer;
-    color: white;
-    background: -webkit-gradient(linear, left top, right top, from(#3d4699), color-stop(50.67%, #233e74), to(#0068e2));
-    background: linear-gradient(90deg, #3d4699 0%, #233e74 50.67%, #0068e2 100%);
-    border-radius: 5px;
-    -webkit-box-shadow: 5px 5px 10px #ddd;
-    box-shadow: 5px 5px 10px #ddd;
+#id_login_page .container .form-container input[type=submit] {
+  cursor: pointer;
+  color: white;
+  background: linear-gradient(90deg, #3d4699 0%, #233e74 50.67%, #0068e2 100%);
+  border-radius: 5px;
+  box-shadow: 5px 5px 10px #ddd;
 }
-
-#id_login_page .container .form-container input[type="submit"]:active {
-    -webkit-transform: scale(0.99);
-    transform: scale(0.99);
-    background-color: navy;
-    -webkit-box-shadow: 2px 2px 2px #888;
-    box-shadow: 2px 2px 2px #888;
+#id_login_page .container .form-container input[type=submit]:active {
+  transform: scale(0.99);
+  background-color: navy;
+  box-shadow: 2px 2px 2px #888;
 }
-
 #id_login_page .container #id-forgot-password {
-    font-size: 0.9rem;
-    font-style: italic;
-    color: blue;
-    text-decoration: none;
+  font-size: 0.9rem;
+  font-style: italic;
+  color: blue;
+  text-decoration: none;
 }
 
 /*# sourceMappingURL=login.css.map */

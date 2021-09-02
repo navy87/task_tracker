@@ -76,11 +76,15 @@ const SelectAssignees = ({selectedTask, setSelectedTask}) => {
             onChange={handleChange}
         >
             <option value="assign_person">Select Person</option>
-            {availablePeople.map((person, index) => (
-                <option key={index} value={person.id}>
-                    {person.fullName}
-                </option>
-            ))}
+                {availablePeople
+                    .sort((a, b) => a.fullName.localeCompare(b.fullName))
+                    .map((person, index) => (
+                        <option key={index} value={person.id}>
+                            {person.fullName}
+                        </option>
+
+                    ))
+                }
             <option value="add_person">Add Person</option>
         </select>
     );

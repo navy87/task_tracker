@@ -10,7 +10,27 @@
     background-color: #fff;
     padding: 1rem;
     border-radius: 0.5rem;
-    box-shadow: 0px 0px 10px #dedede;
+    box-shadow: 0 0 10px #dedede;
+    /* animation: name duration timing-function delay iteration-count direction fill-mode; */
+    animation: login_animation 3s ease-in-out;
+
+    @keyframes login_animation {
+      0% {
+        transform: translateX(-200%);
+      }
+
+      50% {
+        transform: translateX(50%);
+      }
+
+      75% {
+        transform: translateX(-25%);
+      }
+
+      100% {
+        transform: translateX(0);
+      }
+    }
 
     .logo-container {
       width: 100%;

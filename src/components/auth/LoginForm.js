@@ -86,14 +86,14 @@ const LoginForm = ({match, location}) => {
                         }))
                     }
                 />
-                <label htmlFor="id_remember_me">
-                    Remember Me
-                    <input
-                        id="id_remember_me"
-                        type="checkbox"
-                        name="remember-me"
-                    />
-                </label>
+                {/*<label htmlFor="id_remember_me">*/}
+                {/*    Remember Me*/}
+                {/*    <input*/}
+                {/*        id="id_remember_me"*/}
+                {/*        type="checkbox"*/}
+                {/*        name="remember-me"*/}
+                {/*    />*/}
+                {/*</label>*/}
                 <input type="submit" value="Login"/>
                 <a href={`${match.url}/forgotPassword`} id="id-forgot-password">
                     Forgot Password

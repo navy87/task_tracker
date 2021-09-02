@@ -5,6 +5,7 @@ import App from "./App";
 import reportWebVitals from "./reportWebVitals";
 import axios from "axios";
 import toast from "react-hot-toast";
+import {getCurrentUserURL} from "./helpers/Helper";
 
 axios.interceptors.request.use(req => {
     req.headers = {
@@ -24,14 +25,26 @@ axios.interceptors.response.use(res => {
         localStorage.removeItem("token")
         localStorage.removeItem("user")
         toast.error("There is a problem with authentication. Please logout and login again.", {duration: 6000});
-        setTimeout(() => {
-            document.location = "/"
-        }, 6000)
+        document.location = "/"
     } else if (error.response.status === 403) { // Forbidden
         return error.response
     }
     throw error;
 })
+
+const refreshUser = async () => {
+    if (localStorage.getItem("token")) {
+        try {
+            const response = await axios.get(getCurrentUserURL());
+            const user = response.data;
+            localStorage.setItem("user", user)
+        }catch (e) {
+            console.error(e)
+        }
+    }
+}
+
+refreshUser().then(null);
 
 ReactDOM.render(
     <React.StrictMode>

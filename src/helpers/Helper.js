@@ -121,7 +121,6 @@ export const getUserDeactivateURL = (username) => {
 
 export const getUserResetPassword = (username) => {
     return `${getUserURL()}/${process.env.REACT_APP_USER_RESET_PASSWORD_URL}`
-
 }
 
 export const getUserMetaURL = (username) => {
@@ -131,6 +130,10 @@ export const getUserMetaURL = (username) => {
 export const getLoginURL = () => {
     return `${process.env.REACT_APP_LOGIN_URL}`;
 };
+
+export const getCurrentUserURL = () => {
+    return `${getUserURL()}/${process.env.REACT_APP_CURRENT_USER_URL}`
+}
 
 export const getDepartmentURL = (id = null) => {
     return `${getBaseURL()}/${process.env.REACT_APP_USER_DEPARTMENT_URL}/${id || ""}`
