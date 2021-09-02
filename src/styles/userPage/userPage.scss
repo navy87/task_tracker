@@ -375,8 +375,13 @@
       font-size: 0.9rem;
       align-items: center;
 
-      .info.new {
-        color: red;
+      .info {
+        &.new {
+          color: red;
+        }
+        &.owner {
+          color: blue;
+        }
       }
 
       .info-label {

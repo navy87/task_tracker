@@ -126,6 +126,14 @@ const TaskForm = ({selectedTask, setSelectedTask, isOwner}) => {
                     />
                 </div>
                 <InfoContainer
+                    label={"Creator"}
+                    info_render={
+                        <div className={`info owner`}>
+                            {selectedTask.owner.fullName.toUpperCase()}
+                        </div>
+                    }
+                />
+                <InfoContainer
                     label="Issue"
                     htmlFor="info_name"
                     info_render={
