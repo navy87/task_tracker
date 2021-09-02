@@ -1,6 +1,9 @@
 import React, {useContext} from "react";
 import {GlobalContext} from "../contexts/GlobalContext";
 
+const DialogTypes = {info: "info", question: "question"}
+Object.freeze(DialogTypes)
+
 const Dialog = ({render, title}) => {
     const {setDialog} = useContext(GlobalContext);
 
@@ -30,7 +33,8 @@ const CommonDialog = ({
                           subtext,
                           onYes,
                           onNo,
-                          closeAfterwards,
+                          closeAfterwards=true,
+                          type
                       }) => {
     const {setDialog} = useContext(GlobalContext);
     const handleButton = (e, func) => {
@@ -53,14 +57,14 @@ const CommonDialog = ({
                             className="dialog_btn positive"
                             onClick={(e) => handleButton(e, onYes)}
                         >
-                            Yes
+                            {type === DialogTypes.question ? "Yes" : "Okay"}
                         </button>
-                        <button
+                        {type===DialogTypes.question && (<button
                             className="dialog_btn negative"
                             onClick={(e) => handleButton(e, onNo)}
                         >
                             No
-                        </button>
+                        </button>)}
                     </div>
                 </div>
             }
@@ -81,10 +85,30 @@ export const QuestionDialog = ({
     return (
         <CommonDialog
             text={text}
-            type="question"
+            type={DialogTypes.question}
             subtext={subtext}
             onYes={onYes}
             onNo={onNo}
+            title={title}
+            closeAfterwards={closeAfterwards}
+        />
+    );
+};
+
+export const InfoDialog = ({
+                                   title,
+                                   subtext,
+                                   text,
+                                   onYes,
+                                   onNo,
+                                   closeAfterwards,
+                               }) => {
+    return (
+        <CommonDialog
+            text={text}
+            type={DialogTypes.info}
+            subtext={subtext}
+            onYes={onYes}
             title={title}
             closeAfterwards={closeAfterwards}
         />

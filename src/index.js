@@ -4,6 +4,7 @@ import "./index.css";
 import App from "./App";
 import reportWebVitals from "./reportWebVitals";
 import axios from "axios";
+import toast from "react-hot-toast";
 
 axios.interceptors.request.use(req => {
     req.headers = {
@@ -22,10 +23,12 @@ axios.interceptors.response.use(res => {
     if (error.response.status === 401) { // UnauthorizedAccess
         localStorage.removeItem("token")
         localStorage.removeItem("user")
-        // document.location = "/"
+        toast.error("There is a problem with authentication. Please logout and login again.", {duration: 6000});
+        setTimeout(() => {
+            document.location = "/"
+        }, 6000)
     } else if (error.response.status === 403) { // Forbidden
         return error.response
-    } else {
     }
     throw error;
 })
@@ -37,7 +40,4 @@ ReactDOM.render(
     document.getElementById("root")
 );
 
-// If you want to start measuring performance in your app, pass a function
-// to log results (for example: reportWebVitals(console.log))
-// or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
 reportWebVitals();

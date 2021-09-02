@@ -129,7 +129,6 @@ const UserPage = ({match}) => {
                     <SideBar/>
                     <div className="content">
                         <Switch>
-
                             <Route path={match.url} component={Main}/>
                         </Switch>
                     </div>
