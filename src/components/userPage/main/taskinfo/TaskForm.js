@@ -121,7 +121,11 @@ const TaskForm = ({selectedTask, setSelectedTask, isOwner}) => {
                     <InfoContainer
                         label="Creation Date"
                         info_render={
-                            <div className="info">{selectedTask.addedDate}</div>
+                            <div className="info">
+                                {new Date(selectedTask.addedDate).toDateString()}
+                                {", "}
+                                {new Date(selectedTask.addedDate).toLocaleTimeString()}
+                            </div>
                         }
                     />
                 </div>
@@ -129,7 +133,9 @@ const TaskForm = ({selectedTask, setSelectedTask, isOwner}) => {
                     label={"Creator"}
                     info_render={
                         <div className={`info owner`}>
-                            {selectedTask.owner.fullName.toUpperCase()}
+                            {selectedTask.owner ?
+                                selectedTask.owner.fullName.toUpperCase() : "Self"
+                            }
                         </div>
                     }
                 />

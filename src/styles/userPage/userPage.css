@@ -317,7 +317,8 @@
   color: red;
 }
 #main .container .info_container .info.owner {
-  color: blue;
+  color: darkslategray;
+  font-weight: bold;
 }
 #main .container .info_container .info-label {
   width: 8rem;
