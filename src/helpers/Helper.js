@@ -102,6 +102,18 @@ export const getUserURL = () => {
     return `${getBaseURL()}/${process.env.REACT_APP_USER_URL}`;
 };
 
+export const getUserExistsURL = (username) => {
+    return `${getUserURL()}/exists/${username}`
+}
+
+export const getUserActivateURL = (username) => {
+    return `${getUserURL()}/${process.env.REACT_APP_USER_ACTIVATE_URL}/${username}`
+}
+
+export const getUserDeactivateURL = (username) => {
+    return `${getUserURL()}/${process.env.REACT_APP_USER_DEACTIVATE_URL}/${username}`
+}
+
 export const getUserMetaURL = (username) => {
     return `${getUserURL()}/${process.env.REACT_APP_USER_META_URL}/${username}`
 }

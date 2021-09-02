@@ -4,7 +4,7 @@ import Dashboard from "./Dashboard";
 import {Link, Route, Switch} from "react-router-dom";
 import CreateUser from "./createUser/CreateUser";
 import ResetPasswordAdmin from "./ResetPasswordAdmin";
-import DeactivateAccount from "./DeactivateAccount";
+import ActivateDeactivateAccount from "./ActivateDeactivateAccount";
 import Department from "./department/Department";
 
 import "../../styles/admin/admin.css"; // This Import must be last for some reason
@@ -34,7 +34,11 @@ const Admin = ({match}) => {
                     />
                     <Route
                         path={`${match.url}/deactivateAccount`}
-                        component={DeactivateAccount}
+                        render={props => <ActivateDeactivateAccount {...props} deactivate={true} />}
+                    />
+                    <Route
+                        path={`${match.url}/activateAccount`}
+                        render={props => <ActivateDeactivateAccount {...props} activate={true} />}
                     />
 
                     <Route path={`${match.url}/`} exact component={Dashboard}/>
