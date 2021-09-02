@@ -1,4 +1,4 @@
-import React, {useState, useContext} from "react";
+import React, {useContext, useState} from "react";
 import toast from "react-hot-toast";
 import {getUserURL} from "../../../helpers/Helper";
 import axios from "axios";
@@ -142,7 +142,7 @@ const CreateUser = ({match}) => {
                     }
                 />
                 <h3 className="form-subtitle">Department Information</h3>
-                <DepartmentSelect userMeta={userMeta} setUserMeta={setUserMeta} />
+                <DepartmentSelect userMeta={userMeta} setUserMeta={setUserMeta}/>
                 <input
                     type="text"
                     required
@@ -151,10 +151,10 @@ const CreateUser = ({match}) => {
                     name="title"
                     autoCorrect="off"
                     value={userMeta.departmentTitle}
-                    onChange={e => setUserMeta(current =>({...current, departmentTitle: e.target.value}))}
+                    onChange={e => setUserMeta(current => ({...current, departmentTitle: e.target.value}))}
                 />
                 <h3 className="form-subtitle">Security Information</h3>
-                <RoleSelect userMeta={userMeta} setUserMeta={setUserMeta}  />
+                <RoleSelect userMeta={userMeta} setUserMeta={setUserMeta}/>
                 <input
                     type="text"
                     required

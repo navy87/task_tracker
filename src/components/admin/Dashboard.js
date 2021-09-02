@@ -41,18 +41,18 @@ const Dashboard = ({match}) => {
                 to={`${match.url}/changeRole`}
                 type="deactivate"
             />
-                <DashboardButton
-                    icon={<GiShieldDisabled className="icon"/>}
-                    text="Activate"
-                    to={`${match.url}/activateAccount`}
-                    type="deactivate"
-                />
-                <DashboardButton
-                    icon={<GiShieldDisabled className="icon"/>}
-                    text="Deactivate"
-                    to={`${match.url}/deactivateAccount`}
-                    type="deactivate"
-                />
+            <DashboardButton
+                icon={<GiShieldDisabled className="icon"/>}
+                text="Activate"
+                to={`${match.url}/activateAccount`}
+                type="deactivate"
+            />
+            <DashboardButton
+                icon={<GiShieldDisabled className="icon"/>}
+                text="Deactivate"
+                to={`${match.url}/deactivateAccount`}
+                type="deactivate"
+            />
             <DashboardButton
                 icon={<RiLogoutCircleFill className="icon"/>}
                 text="Logout"

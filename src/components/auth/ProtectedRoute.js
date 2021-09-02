@@ -13,7 +13,7 @@ const ProtectedRoute = ({component: Component, requiredRole, ...rest}) => {
                         if (currentRole !== "SUPER_ADMIN") {
                             return <Component {...props} />;
                         } else {
-                            return <Redirect to={{pathname: "/admin"}} />
+                            return <Redirect to={{pathname: "/admin"}}/>
                         }
                     } else if (requiredRole.toUpperCase() === "ADMIN" && (currentRole === "ADMIN" || currentRole === "SUPER_ADMIN")) {
                         return <Component {...props} />
@@ -22,8 +22,10 @@ const ProtectedRoute = ({component: Component, requiredRole, ...rest}) => {
                     } else {
                         return <div className={"error-full-page"}>
                             <h1>You are not authorized.</h1>
-                            <p className={"subtitle"}>You are unauthorized to access this page. This page is reserved for system administration people.</p>
-                            <p className={"disclaimer"}>If you think you are seeing this wrongly, please contact your system administration or IT department.</p>
+                            <p className={"subtitle"}>You are unauthorized to access this page. This page is reserved
+                                for system administration people.</p>
+                            <p className={"disclaimer"}>If you think you are seeing this wrongly, please contact your
+                                system administration or IT department.</p>
                             <Link className={"go-back-btn"} to={"/"}>
                                 Go Home
                             </Link>

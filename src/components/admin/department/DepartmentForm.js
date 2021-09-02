@@ -17,9 +17,9 @@ const DepartmentForm = ({selectedDepartment, setSelectedDepartment, refreshDepar
                 toast.success(`Department has been ${selectedDepartment.id ? "updated" : "added"} successfully.`, {
                     duration: 4000
                 })
-                setSelectedDepartment({id: null, name:""})
+                setSelectedDepartment({id: null, name: ""})
             }
-        }catch (e) {
+        } catch (e) {
             console.error(e)
         }
 
@@ -43,4 +43,4 @@ const DepartmentForm = ({selectedDepartment, setSelectedDepartment, refreshDepar
     </div>
 }
 
-export default  DepartmentForm;
+export default DepartmentForm;

@@ -13,7 +13,7 @@ const ResetPasswordAdmin = ({match}) => {
         try {
             const url = getUserResetPassword()
             const response = await axios.put(url, null, {
-                params: { username }
+                params: {username}
             })
             if (response.status === 200) {
                 toast.success(`Password has been reset for ${username} successfully.`, {duration: 5000})

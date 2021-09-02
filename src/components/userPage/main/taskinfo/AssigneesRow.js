@@ -11,8 +11,7 @@ const AssigneesRow = ({selectedTask, setSelectedTask, isOwner}) => {
                 setSelectedTask={setSelectedTask}
             />
 
-            {selectedTask.assignees.map((assignee, index) =>
-                {
+            {selectedTask.assignees.map((assignee, index) => {
                     assignee = {...assignee, uuid: UUIDv4()}
                     return <AssigneeButton
                         key={index}

@@ -9,7 +9,7 @@ import ResetPassword from "./ResetPassword";
 const LoginPageContainer = ({match}) => {
     const token = localStorage.getItem("token")
     if (token) {
-        return <Redirect to={"/logout"} />
+        return <Redirect to={"/logout"}/>
     }
 
     return (

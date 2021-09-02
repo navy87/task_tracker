@@ -6,7 +6,7 @@ import {QuestionDialog} from "../../helpers/Dialog";
 import {GlobalContext} from "../../contexts/GlobalContext";
 
 const ChangeRole = () => {
-    const { setDialog } = useContext(GlobalContext)
+    const {setDialog} = useContext(GlobalContext)
     const [username, setUsername] = useState("")
     const [selectedRole, setSelectedRole] = useState("")
     const [roles, setRoles] = useState([])
@@ -62,7 +62,7 @@ const ChangeRole = () => {
         }
         let subtext = ""
         if (selectedRole === "USER") {
-           subtext = "Do you want to take away admin privileges from this user? You can always change this back."
+            subtext = "Do you want to take away admin privileges from this user? You can always change this back."
         } else {
             subtext = "Do you want to give admin privileges to this user? You can always change this back."
         }

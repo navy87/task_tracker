@@ -75,15 +75,15 @@ const DepartmentItem = ({department, refreshDepartments, isNew, setIsAdding}) =>
         {edit ? <InlineForm initialValue={department.name} onSubmit={onSubmit}/> : department.name}
         {!isNew && (
             <div className={"buttons"}>
-            {
-                !edit &&
-                <div className={"link-btn edit"} onClick={event => setEdit(current => {
-                    setIsAdding(false)
-                    return !current
-                })}>
-                    Edit
-                </div>
-            }
+                {
+                    !edit &&
+                    <div className={"link-btn edit"} onClick={event => setEdit(current => {
+                        setIsAdding(false)
+                        return !current
+                    })}>
+                        Edit
+                    </div>
+                }
 
                 <div className={"link-btn delete"} onClick={handleDelete}>
                     Delete

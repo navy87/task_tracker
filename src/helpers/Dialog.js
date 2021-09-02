@@ -33,7 +33,7 @@ const CommonDialog = ({
                           subtext,
                           onYes,
                           onNo,
-                          closeAfterwards=true,
+                          closeAfterwards = true,
                           type
                       }) => {
     const {setDialog} = useContext(GlobalContext);
@@ -59,7 +59,7 @@ const CommonDialog = ({
                         >
                             {type === DialogTypes.question ? "Yes" : "Okay"}
                         </button>
-                        {type===DialogTypes.question && (<button
+                        {type === DialogTypes.question && (<button
                             className="dialog_btn negative"
                             onClick={(e) => handleButton(e, onNo)}
                         >
@@ -96,13 +96,13 @@ export const QuestionDialog = ({
 };
 
 export const InfoDialog = ({
-                                   title,
-                                   subtext,
-                                   text,
-                                   onYes,
-                                   onNo,
-                                   closeAfterwards,
-                               }) => {
+                               title,
+                               subtext,
+                               text,
+                               onYes,
+                               onNo,
+                               closeAfterwards,
+                           }) => {
     return (
         <CommonDialog
             text={text}

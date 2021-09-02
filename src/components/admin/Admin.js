@@ -37,11 +37,11 @@ const Admin = ({match}) => {
                     />
                     <Route
                         path={`${match.url}/deactivateAccount`}
-                        render={props => <ActivateDeactivateAccount {...props} deactivate={true} />}
+                        render={props => <ActivateDeactivateAccount {...props} deactivate={true}/>}
                     />
                     <Route
                         path={`${match.url}/activateAccount`}
-                        render={props => <ActivateDeactivateAccount {...props} activate={true} />}
+                        render={props => <ActivateDeactivateAccount {...props} activate={true}/>}
                     />
 
                     <Route path={`${match.url}/`} exact component={Dashboard}/>

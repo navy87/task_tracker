@@ -1,349 +1,403 @@
 .radio_label,
 .checkbox_label {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  gap: 5px;
-  cursor: pointer;
-  padding: 5px 10px;
-  color: black;
-  margin: 0 0.1rem;
-  border-radius: 0.25rem;
-  font-size: 0.8rem;
-  font-weight: bold;
-  background-color: lightgray;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 5px;
+    cursor: pointer;
+    padding: 5px 10px;
+    color: black;
+    margin: 0 0.1rem;
+    border-radius: 0.25rem;
+    font-size: 0.8rem;
+    font-weight: bold;
+    background-color: lightgray;
 }
+
 .radio_label.checked,
 .checkbox_label.checked {
-  background-color: white;
+    background-color: white;
 }
 
 .no-border {
-  border: none !important;
-  outline: none !important;
+    border: none !important;
+    outline: none !important;
 }
 
 .btn {
-  cursor: pointer;
-  padding: 5px 10px;
-  border: 2px solid transparent;
-  outline: none;
-  border-radius: 5px;
-  transition: all 0.05s;
-  font-weight: 300;
-  display: inline-flex;
-  align-items: center;
+    cursor: pointer;
+    padding: 5px 10px;
+    border: 2px solid transparent;
+    outline: none;
+    border-radius: 5px;
+    transition: all 0.05s;
+    font-weight: 300;
+    display: inline-flex;
+    align-items: center;
 }
+
 .btn.btn-sm {
-  padding: 3px 5px;
+    padding: 3px 5px;
 }
+
 .btn.btn-sm .btn_icon {
-  width: 1rem;
-  height: 1rem;
-  margin-right: 5px;
+    width: 1rem;
+    height: 1rem;
+    margin-right: 5px;
 }
+
 .btn:active {
-  transform: scale(0.98);
+    transform: scale(0.98);
 }
+
 .btn.btn-submit {
-  background-color: green;
-  color: white;
+    background-color: green;
+    color: white;
 }
+
 .btn.btn-submit:focus-visible {
-  border-color: white;
+    border-color: white;
 }
+
 .btn.btn-info {
-  background-color: white;
-  color: black;
+    background-color: white;
+    color: black;
 }
+
 .btn.btn-info:focus-visible {
-  border-color: #333;
+    border-color: #333;
 }
+
 .btn.btn-danger {
-  background-color: #ddd;
-  color: #333;
+    background-color: #ddd;
+    color: #333;
 }
+
 .btn.btn-danger:focus-visible {
-  border-color: darkred;
+    border-color: darkred;
 }
+
 .btn .btn_icon {
-  width: 1.2rem;
-  height: 1.2rem;
-  margin-right: 5px;
+    width: 1.2rem;
+    height: 1.2rem;
+    margin-right: 5px;
 }
+
 .btn:disabled {
-  cursor: not-allowed;
-  background-color: #ccc;
-  color: #888;
+    cursor: not-allowed;
+    background-color: #ccc;
+    color: #888;
 }
+
 .btn:disabled.btn_icon {
-  color: #888;
+    color: #888;
 }
 
 .dialog-container {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background-color: #00000050;
-  position: absolute;
-  width: 100vw;
-  height: 100vh;
-  z-index: 200;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #00000050;
+    position: absolute;
+    width: 100vw;
+    height: 100vh;
+    z-index: 200;
 }
+
 .dialog-container .dialog {
-  box-sizing: content-box;
-  display: flex;
-  flex-direction: column;
-  max-width: min(400px, 50%);
+    box-sizing: content-box;
+    display: flex;
+    flex-direction: column;
+    max-width: min(400px, 50%);
 }
+
 .dialog-container .dialog .title {
-  display: none;
-  background-color: white;
-  font-size: 1.25rem;
-  color: purple;
-  text-align: center;
-  box-shadow: 1px 1px 1px #33333375;
-  padding: 10px 10px;
+    display: none;
+    background-color: white;
+    font-size: 1.25rem;
+    color: purple;
+    text-align: center;
+    box-shadow: 1px 1px 1px #33333375;
+    padding: 10px 10px;
 }
+
 .dialog-container .dialog .common_dialog {
-  display: flex;
-  flex-direction: column;
-  background-color: white;
-  color: black;
-  border-radius: 20px;
-  box-shadow: 0px 10px 50px rgba(128, 128, 128, 0.493);
-  min-width: 300px;
-  min-height: 200px;
-  overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    background-color: white;
+    color: black;
+    border-radius: 20px;
+    box-shadow: 0px 10px 50px rgba(128, 128, 128, 0.493);
+    min-width: 300px;
+    min-height: 200px;
+    overflow: hidden;
 }
+
 .dialog-container .dialog .common_dialog .content {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  padding: 20px;
-  flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 20px;
+    flex-grow: 1;
 }
+
 .dialog-container .dialog .common_dialog .content .text {
-  text-align: center;
-  font-size: 2rem;
-  font-weight: 400;
-  margin-bottom: 10px;
+    text-align: center;
+    font-size: 2rem;
+    font-weight: 400;
+    margin-bottom: 10px;
 }
+
 .dialog-container .dialog .common_dialog .content .subtext {
-  margin: 0 auto;
-  font-size: 0.9rem;
-  font-weight: 300;
-  line-height: 1.25;
-  max-width: 80%;
-  text-align: center;
+    margin: 0 auto;
+    font-size: 0.9rem;
+    font-weight: 300;
+    line-height: 1.25;
+    max-width: 80%;
+    text-align: center;
 }
+
 .dialog-container .dialog .common_dialog .buttons {
-  border: none;
-  box-sizing: content-box;
-  display: flex;
-  justify-content: center;
-  background-color: darkmagenta;
-  gap: 5px;
-  margin: 0;
+    border: none;
+    box-sizing: content-box;
+    display: flex;
+    justify-content: center;
+    background-color: darkmagenta;
+    gap: 5px;
+    margin: 0;
 }
+
 .dialog-container .dialog .common_dialog .buttons .dialog_btn {
-  box-sizing: content-box;
-  cursor: pointer;
-  font-weight: 400;
-  border: none;
-  outline: none;
-  background-color: transparent;
-  transition: all 0.25s;
-  color: white;
-  flex: 1;
-  padding: 15px;
+    box-sizing: content-box;
+    cursor: pointer;
+    font-weight: 400;
+    border: none;
+    outline: none;
+    background-color: transparent;
+    transition: all 0.25s;
+    color: white;
+    flex: 1;
+    padding: 15px;
 }
+
 .dialog-container .dialog .common_dialog .buttons .dialog_btn.positive {
-  color: greenyellow;
-  border-bottom-left-radius: 20px;
+    color: greenyellow;
+    border-bottom-left-radius: 20px;
 }
+
 .dialog-container .dialog .common_dialog .buttons .dialog_btn.positive:hover {
-  background-color: greenyellow;
-  color: green;
+    background-color: greenyellow;
+    color: green;
 }
+
 .dialog-container .dialog .common_dialog .buttons .dialog_btn.negative {
-  border-bottom-right-radius: 20px;
-  color: #bbb;
+    border-bottom-right-radius: 20px;
+    color: #bbb;
 }
+
 .dialog-container .dialog .common_dialog .buttons .dialog_btn:hover {
-  background-color: #333;
-  color: white;
+    background-color: #333;
+    color: white;
 }
 
 #person_dialog {
-  background-color: #ddd;
-  padding: 10px;
-  border-radius: 10px;
-  width: 20rem;
-  box-shadow: 0px 10px 10px #cccccc;
+    background-color: #ddd;
+    padding: 10px;
+    border-radius: 10px;
+    width: 20rem;
+    box-shadow: 0px 10px 10px #cccccc;
 }
+
 #person_dialog .searchbox {
-  display: flex;
-  align-items: center;
-  border: none;
-  outline: none;
-  justify-content: center;
-  background-color: white;
-  flex-grow: 1;
-  padding: 0.5rem;
-  border-radius: 2rem;
+    display: flex;
+    align-items: center;
+    border: none;
+    outline: none;
+    justify-content: center;
+    background-color: white;
+    flex-grow: 1;
+    padding: 0.5rem;
+    border-radius: 2rem;
 }
+
 #person_dialog .searchbox input {
-  width: 90%;
-  border: none;
-  outline: none;
+    width: 90%;
+    border: none;
+    outline: none;
 }
+
 #person_dialog .searchbox .search_btn {
-  cursor: pointer;
-  color: gray;
+    cursor: pointer;
+    color: gray;
 }
+
 #person_dialog .buttons {
-  padding: 10px 5px;
+    padding: 10px 5px;
 }
+
 #person_dialog .buttons button {
-  background-color: transparent;
-  cursor: pointer;
-  color: blue;
-  font-weight: 500;
+    background-color: transparent;
+    cursor: pointer;
+    color: blue;
+    font-weight: 500;
 }
+
 #person_dialog .buttons button:hover {
-  color: #000099;
+    color: #000099;
 }
+
 #person_dialog .buttons button.delete {
-  color: darkred;
+    color: darkred;
 }
+
 #person_dialog .buttons button.delete:hover {
-  color: #f10000;
+    color: #f10000;
 }
+
 #person_dialog .people_list {
-  margin-top: 10px;
-  max-height: 15rem;
-  min-height: 15rem;
-  overflow-y: scroll;
+    margin-top: 10px;
+    max-height: 15rem;
+    min-height: 15rem;
+    overflow-y: scroll;
 }
+
 #person_dialog .people_list .person_item {
-  margin: 0 3px;
-  cursor: pointer;
-  display: grid;
-  grid-template-columns: auto auto;
-  background-color: white;
-  padding: 5px;
-  margin-bottom: 5px;
-  border-radius: 5px;
-  box-shadow: 2px 2px 2px #ccc;
-  font-size: 0.9rem;
+    margin: 0 3px;
+    cursor: pointer;
+    display: grid;
+    grid-template-columns: auto auto;
+    background-color: white;
+    padding: 5px;
+    margin-bottom: 5px;
+    border-radius: 5px;
+    box-shadow: 2px 2px 2px #ccc;
+    font-size: 0.9rem;
 }
+
 #person_dialog .people_list .person_item.selected {
-  background-color: lightgray;
-  box-shadow: 2px 2px 2px #ccc;
+    background-color: lightgray;
+    box-shadow: 2px 2px 2px #ccc;
 }
+
 #person_dialog .people_list .person_item .info {
-  padding: 5px 0;
+    padding: 5px 0;
 }
+
 #person_dialog .people_list .person_item .info .icon {
-  margin-right: 3px;
+    margin-right: 3px;
 }
+
 #person_dialog .people_list .person_item .info .email {
-  font-style: italic;
-  text-decoration: none;
-  color: navy;
-  text-align: right;
+    font-style: italic;
+    text-decoration: none;
+    color: navy;
+    text-align: right;
 }
+
 #person_dialog .people_list .person_item .info .no-email {
-  font-style: italic;
-  color: #888;
+    font-style: italic;
+    color: #888;
 }
+
 #person_dialog .people_list .person_item .info.buttons {
-  text-align: right;
+    text-align: right;
 }
+
 #person_dialog .people_list .person_item .info.buttons button {
-  margin-left: 5px;
+    margin-left: 5px;
 }
 
 .edit_form_container {
-  background-color: #ccc;
-  padding: 10px;
-  border-radius: 10px;
+    background-color: #ccc;
+    padding: 10px;
+    border-radius: 10px;
 }
+
 .edit_form_container.alone {
-  min-width: 300px;
+    min-width: 300px;
 }
+
 .edit_form_container > h3 {
-  display: flex;
-  border-bottom: 1px solid;
-  padding-bottom: 5px;
-  margin-bottom: 10px;
+    display: flex;
+    border-bottom: 1px solid;
+    padding-bottom: 5px;
+    margin-bottom: 10px;
 }
+
 .edit_form_container > h3 .new {
-  display: block;
-  color: red;
-  font-size: 0.8rem;
+    display: block;
+    color: red;
+    font-size: 0.8rem;
 }
+
 .edit_form_container .edit_form {
-  display: flex;
-  flex-direction: column;
+    display: flex;
+    flex-direction: column;
 }
+
 .edit_form_container .edit_form input {
-  border: none;
-  outline: none;
-  padding: 0.4rem 0.6rem;
-  margin-bottom: 8px;
-  border-radius: 10px;
-  flex-grow: 1;
-  font-size: 0.9rem;
+    border: none;
+    outline: none;
+    padding: 0.4rem 0.6rem;
+    margin-bottom: 8px;
+    border-radius: 10px;
+    flex-grow: 1;
+    font-size: 0.9rem;
 }
+
 .edit_form_container .edit_form input::placeholder {
-  font-weight: 300;
+    font-weight: 300;
 }
+
 .edit_form_container .edit_form .button-container {
-  text-align: right;
+    text-align: right;
 }
 
 .particles-background {
-  position: fixed;
-  top: 0;
-  left: 0;
-  z-index: -200;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: -200;
 }
 
 .error-full-page {
-  height: 100vh;
-  display: grid;
-  place-content: center;
-  text-align: center;
-  background-color: #790b0b;
-  color: white;
-  font-size: 1.2rem;
+    height: 100vh;
+    display: grid;
+    place-content: center;
+    text-align: center;
+    background-color: #790b0b;
+    color: white;
+    font-size: 1.2rem;
 }
+
 .error-full-page > h1 {
-  font-size: 3rem;
-  font-weight: bold;
-  margin-bottom: 2rem;
+    font-size: 3rem;
+    font-weight: bold;
+    margin-bottom: 2rem;
 }
+
 .error-full-page > .subtitle {
-  font-weight: 300;
+    font-weight: 300;
 }
+
 .error-full-page > .disclaimer {
-  margin-top: 2rem;
-  font-size: 1rem;
-  font-weight: 300;
+    margin-top: 2rem;
+    font-size: 1rem;
+    font-weight: 300;
 }
+
 .error-full-page .go-back-btn {
-  cursor: pointer;
-  display: block;
-  background-color: white;
-  color: #790b0b;
-  padding: 1rem;
-  margin: 1rem auto;
-  border-radius: 0.5rem;
+    cursor: pointer;
+    display: block;
+    background-color: white;
+    color: #790b0b;
+    padding: 1rem;
+    margin: 1rem auto;
+    border-radius: 0.5rem;
 }
+
 .error-full-page .go-back-btn:active {
-  transform: scale(0.98);
+    transform: scale(0.98);
 }
 
 /*# sourceMappingURL=App.css.map */

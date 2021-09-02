@@ -1,4 +1,4 @@
-import React, { useState} from "react";
+import React, {useState} from "react";
 import DepartmentItem from "./DepartmentItem";
 
 const DepartmentsList = ({departmentsList, selectedDepartment, setSelectedDepartment, refreshDepartments}) => {
@@ -17,12 +17,12 @@ const DepartmentsList = ({departmentsList, selectedDepartment, setSelectedDepart
         )
         }
         {isAdding &&
-            <DepartmentItem
-                department={{id: null, name: ""}}
-                refreshDepartments={refreshDepartments}
-                isNew={true}
-                setIsAdding={setIsAdding}
-            />
+        <DepartmentItem
+            department={{id: null, name: ""}}
+            refreshDepartments={refreshDepartments}
+            isNew={true}
+            setIsAdding={setIsAdding}
+        />
         }
         {!isAdding &&
         (<div

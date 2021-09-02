@@ -5,7 +5,7 @@ import AddPerson from "./AddPerson";
 import Dialog from "../../../../helpers/Dialog";
 import {fetchingErrorHandler, getProfileURL} from "../../../../helpers/Helper";
 import axios from "axios";
-import { v4 as UUIDv4} from "uuid";
+import {v4 as UUIDv4} from "uuid";
 
 const SelectAssignees = ({selectedTask, setSelectedTask}) => {
     const {setDialog} = useContext(GlobalContext);

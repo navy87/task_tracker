@@ -168,7 +168,7 @@ const TaskForm = ({selectedTask, setSelectedTask, isOwner}) => {
                 <InfoContainer
                     label="Assigned To"
                     info_render={
-                        <AssigneesRow isOwner={isOwner} selectedTask={selectedTask} setSelectedTask={setSelectedTask} />
+                        <AssigneesRow isOwner={isOwner} selectedTask={selectedTask} setSelectedTask={setSelectedTask}/>
                     }
                 />
                 <InfoContainer
@@ -210,7 +210,7 @@ const TaskForm = ({selectedTask, setSelectedTask, isOwner}) => {
                 />
                 <div className="button_group">
                     <button type="submit" disabled={!isOwner} className="btn btn-submit">
-                        <MdSave className="btn_icon" />
+                        <MdSave className="btn_icon"/>
                         {(selectedTask.id && "Update") || "Add"}
                     </button>
                     {selectedTask.id === 0 || (

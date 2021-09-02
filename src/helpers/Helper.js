@@ -136,8 +136,8 @@ export const getDepartmentURL = (id = null) => {
     return `${getBaseURL()}/${process.env.REACT_APP_USER_DEPARTMENT_URL}/${id || ""}`
 }
 
-export const getRoleURL = (id=null) => {
-    return`${getBaseURL()}/${process.env.REACT_APP_USER_ROLE_URL}/${id || ""}`
+export const getRoleURL = (id = null) => {
+    return `${getBaseURL()}/${process.env.REACT_APP_USER_ROLE_URL}/${id || ""}`
 }
 
 export const checkUserExists = async (username) => {

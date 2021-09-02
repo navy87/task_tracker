@@ -47,7 +47,7 @@ const AssigneeButton = ({taskPerson, setSelectedTask, selectedTask, isOwner}) =>
             </span>
 
             {isOwner &&
-                <>
+            <>
                     <span onClick={handleLeaderToggle} data-tip="Make Leader">
                         {taskPerson.leader ? (
                             <MdStar className="icon star leader"/>
@@ -56,12 +56,12 @@ const AssigneeButton = ({taskPerson, setSelectedTask, selectedTask, isOwner}) =>
                         )}
                     </span>
 
-                    <TiDelete
-                        className="icon remove_icon"
-                        data-tip="Remove Person"
-                        onClick={removeClicked}
-                    />
-                </>
+                <TiDelete
+                    className="icon remove_icon"
+                    data-tip="Remove Person"
+                    onClick={removeClicked}
+                />
+            </>
             }
         </div>
     );

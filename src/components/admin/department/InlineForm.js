@@ -1,4 +1,5 @@
-import React, {useState, useEffect} from "react"
+import React, {useEffect, useState} from "react"
+
 const InlineForm = ({initialValue, onSubmit}) => {
     const [value, setValue] = useState(initialValue)
     const [cancelled, setCancelled] = useState(true);
@@ -17,8 +18,8 @@ const InlineForm = ({initialValue, onSubmit}) => {
         />
         <input
             type={"submit"}
-            className={cancelled ? "cancel": ""}
-            value={ !cancelled ? "Submit" : "Cancel"}
+            className={cancelled ? "cancel" : ""}
+            value={!cancelled ? "Submit" : "Cancel"}
         />
     </form>
 }

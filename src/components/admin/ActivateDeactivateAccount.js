@@ -1,12 +1,12 @@
 import React, {useContext, useState} from "react";
 import axios from "axios";
-import {checkUserExists, getUserActivateURL, getUserDeactivateURL } from "../../helpers/Helper";
+import {checkUserExists, getUserActivateURL, getUserDeactivateURL} from "../../helpers/Helper";
 import {GlobalContext} from "../../contexts/GlobalContext";
 import {QuestionDialog} from "../../helpers/Dialog";
 import toast from "react-hot-toast";
 
-const ActivateDeactivateAccount = ({activate = false, deactivate=false}) => {
-    const { setDialog } = useContext(GlobalContext)
+const ActivateDeactivateAccount = ({activate = false, deactivate = false}) => {
+    const {setDialog} = useContext(GlobalContext)
     const [username, setUsername] = useState("")
 
     const changeStatus = async () => {

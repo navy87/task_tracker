@@ -45,7 +45,7 @@ const TrackItem = ({track}) => {
                 <h5 className="head">{track.title}</h5>
                 {track.userMeta.username.toLowerCase() === JSON.parse(localStorage.getItem("user")).username.toLowerCase()
                 &&
-                    <MdDelete className="icon" onClick={handleDelete}/>
+                <MdDelete className="icon" onClick={handleDelete}/>
                 }
             </div>
             <p className="description">{track.description}</p>

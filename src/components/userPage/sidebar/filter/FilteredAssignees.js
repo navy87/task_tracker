@@ -15,7 +15,6 @@ const FilteredAssignees = () => {
             people
                 .filter((person) => !mapped.includes(person.id))
                 .sort((a, b) => a.fullName.localeCompare(b.fullName))
-
         );
     }, [people, setAvailablePeople, filteredPersons]);
 
@@ -35,33 +34,33 @@ const FilteredAssignees = () => {
     };
 
     return <div>
-            <select
-                className="filter_assignees"
-                defaultValue="assign_person"
-                onChange={handleChange}
-            >
-                <option value="select_person">Select Person</option>
-                <option value="all_persons">All Persons</option>
-                {availablePeople.map((person, index) => (
-                    <option key={index} value={person.id}>
-                        {person.fullName}
-                    </option>
-                ))}
-            </select>
-            {[...filteredPersons].length > 0 ? (
-                [...filteredPersons].map((filteredPerson, index) => {
-                    return (
-                        <FilterAssigneeButton
-                            key={index}
-                            filteredPerson={filteredPerson}
-                            setFilteredPersons={setFilteredPersons}
-                        />
-                    );
-                })
-            ) : (
-                <button className="btn btn-sm">All</button>
-            )}
-        </div>
+        <select
+            className="filter_assignees"
+            defaultValue="assign_person"
+            onChange={handleChange}
+        >
+            <option value="select_person">Select Person</option>
+            <option value="all_persons">All Persons</option>
+            {availablePeople.map((person, index) => (
+                <option key={index} value={person.id}>
+                    {person.fullName}
+                </option>
+            ))}
+        </select>
+        {[...filteredPersons].length > 0 ? (
+            [...filteredPersons].map((filteredPerson, index) => {
+                return (
+                    <FilterAssigneeButton
+                        key={index}
+                        filteredPerson={filteredPerson}
+                        setFilteredPersons={setFilteredPersons}
+                    />
+                );
+            })
+        ) : (
+            <button className="btn btn-sm">All</button>
+        )}
+    </div>
 
 };
 
