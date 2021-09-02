@@ -1,12 +1,17 @@
 import React from "react";
 import {FcPlanner} from "react-icons/fc";
 import "../../styles/login/login.css";
-import {Route, Switch} from "react-router-dom";
+import {Redirect, Route, Switch} from "react-router-dom";
 import LoginForm from "./LoginForm";
 import ForgotPassword from "./ForgotPassword";
 import ResetPassword from "./ResetPassword";
 
 const LoginPageContainer = ({match}) => {
+    const token = localStorage.getItem("token")
+    if (token) {
+        return <Redirect to={"/logout"} />
+    }
+
     return (
         <div id="id_login_page">
             <div className="container">
