@@ -36,6 +36,7 @@ const LoginForm = ({match, location}) => {
             if (res.status === 200) {
                 localStorage.setItem("token", res.headers.authorization)
                 const userMeta = await getUser(login.username);
+                console.log(userMeta)
                 localStorage.setItem("user", JSON.stringify(userMeta))
                 if (location.state) {
                     history.push(location.state.from);

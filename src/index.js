@@ -32,20 +32,6 @@ axios.interceptors.response.use(res => {
     throw error;
 })
 
-const refreshUser = async () => {
-    if (localStorage.getItem("token")) {
-        try {
-            const response = await axios.get(getCurrentUserURL());
-            const user = response.data;
-            localStorage.setItem("user", user)
-        }catch (e) {
-            console.error(e)
-        }
-    }
-}
-
-refreshUser().then(null);
-
 ReactDOM.render(
     <React.StrictMode>
         <App/>

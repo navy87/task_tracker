@@ -1,4 +1,4 @@
-import React, {useState} from "react";
+import React, {useEffect, useState} from "react";
 
 import {Toaster} from "react-hot-toast";
 import ReactTooltip from "react-tooltip";
@@ -14,6 +14,8 @@ import UserPage from "./components/userPage/UserPage";
 import "styles/index/App.css"; // This Import must be last for some reason
 import ProtectedRoute from "./components/auth/ProtectedRoute";
 import Logout from "./components/auth/Logout";
+import axios from "axios";
+import {getCurrentUserURL} from "./helpers/Helper";
 
 function App() {
     const [dialog, setDialog] = useState();
@@ -25,6 +27,21 @@ function App() {
         animationBackground, setAnimationBackground
     };
 
+    const refreshUser = async () => {
+        if (localStorage.getItem("token")) {
+            try {
+                const response = await axios.get(getCurrentUserURL());
+                const user = response.data;
+                localStorage.setItem("user", JSON.stringify(user))
+            }catch (e) {
+                console.error(e)
+            }
+        }
+    }
+
+    useEffect(() => {
+        refreshUser().then(null);
+    }, [])
 
     return (
         <Router>
