@@ -17,9 +17,18 @@ import Logout from "./components/auth/Logout";
 import axios from "axios";
 import {getCurrentUserURL} from "./helpers/Helper";
 
+const getAnimation = () => {
+    const value = localStorage.getItem("animation");
+    return value === "true";
+}
+
 function App() {
     const [dialog, setDialog] = useState();
-    const [animationBackground, setAnimationBackground] = useState(true)
+    const [animationBackground, setAnimationBackground] = useState(getAnimation())
+
+    useEffect(() => {
+        localStorage.setItem("animation", animationBackground.toString())
+    }, [animationBackground])
 
     const globalContextValues = {
         dialog,

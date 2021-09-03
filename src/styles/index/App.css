@@ -365,7 +365,7 @@
   font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
 #header .logo-container h1 .admin {
-  color: lightcoral;
+  color: coral;
 }
 #header .logo-container .logo {
   margin-right: 0.25rem;
@@ -390,6 +390,9 @@
 }
 #header .user-info-list > div:hover, #header .user-info-list > .list-item:hover {
   color: #aaa;
+}
+#header .user-info-list > div.to-admin, #header .user-info-list > .list-item.to-admin {
+  color: coral;
 }
 #header .user-info-list > div:active, #header .user-info-list > .list-item:active {
   color: #ddd;

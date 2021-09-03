@@ -1,5 +1,5 @@
 import React, {useContext, useEffect, useState} from "react";
-import {FcDepartment, FcPlanner} from "react-icons/fc";
+import { FcPlanner } from "react-icons/fc";
 import {RiAdminFill, RiLogoutCircleFill} from "react-icons/ri";
 import {FaUserCircle} from "react-icons/fa";
 import {Link} from "react-router-dom";
@@ -39,7 +39,7 @@ const Header = ({admin}) => {
                     />
                 </div>
                 {user.role.name === "ADMIN" &&
-                <Link className="list-item" to={admin ? "/" : "/admin"}>
+                <Link className="list-item to-admin" to={admin ? "/" : "/admin"}>
                     {admin ?
                         <>
                             <AiFillHome className={"icon"} /> Go To Home
@@ -49,13 +49,6 @@ const Header = ({admin}) => {
                         </>
                     }
                 </Link>
-                }
-                {
-                    user.role.name !== "SUPER_ADMIN" &&
-                    <div className="no-btn">
-                        <FcDepartment className="icon"/>
-                        {user.department.name}
-                    </div>
                 }
                 <Link className="list-item" to="/profile">
                     <FaUserCircle className="icon"/> {user.fullName}

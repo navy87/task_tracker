@@ -424,7 +424,7 @@
       font-family: Verdana, Geneva, Tahoma, sans-serif;
 
       .admin {
-        color: lightcoral;
+        color: coral;
       }
     }
 
@@ -455,6 +455,10 @@
 
       &:hover {
         color: #aaa;
+      }
+
+      &.to-admin {
+        color: coral;
       }
 
       &:active {
