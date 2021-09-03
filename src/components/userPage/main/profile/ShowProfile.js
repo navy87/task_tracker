@@ -1,16 +1,18 @@
-import React, {useEffect, useState} from "react";
+import React, {useEffect, useState, useContext} from "react";
 import {FaUserCircle} from "react-icons/fa";
 import {Link} from "react-router-dom";
 import {BsPerson} from "react-icons/bs";
 import {AiFillEdit, AiOutlineMail, AiOutlinePhone} from "react-icons/ai";
 import {TiGroup} from "react-icons/ti";
+import {GlobalContext} from "../../../../contexts/GlobalContext";
 
 const ShowProfile = ({match}) => {
     const [user, setUser] = useState(JSON.parse(localStorage.getItem("user")))
+    const { userRefreshed } = useContext(GlobalContext);
     useEffect(() => {
         const user = JSON.parse(localStorage.getItem("user"))
         setUser(user)
-    }, [])
+    }, [userRefreshed])
 
     return <div className="container">
         <Link className="edit-link" to={`${match.url}/edit`}>

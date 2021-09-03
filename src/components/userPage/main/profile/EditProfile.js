@@ -1,16 +1,27 @@
-import React, {useState, useEffect} from "react"
-import {Link} from "react-router-dom";
+import React, {useState, useEffect, useContext} from "react"
+import {Link, useHistory} from "react-router-dom";
 import {FaUserCircle} from "react-icons/fa";
-import {fetchDepartments, fetchingErrorHandler, getDepartment} from "../../../../helpers/Helper";
+import {
+    fetchDepartments,
+    fetchingErrorHandler,
+    getDepartment,
+    getUserMetaURL
+} from "../../../../helpers/Helper";
+import axios from "axios";
+import {GlobalContext} from "../../../../contexts/GlobalContext";
+import toast from "react-hot-toast";
 
 const EditProfile = ({match}) => {
     const [user, setUser] = useState(JSON.parse(localStorage.getItem("user")))
     const [departments, setDepartments] = useState([])
+    const {refreshSavedUser, userRefreshed} = useContext(GlobalContext);
+    const history = useHistory();
+
     useEffect(() => {
         const user = JSON.parse(localStorage.getItem("user"))
         setUser(user)
         console.log("Rendered")
-    }, [])
+    }, [userRefreshed])
 
     useEffect(() => {
         fetchDepartments()
@@ -18,11 +29,25 @@ const EditProfile = ({match}) => {
             .catch(fetchingErrorHandler)
     }, [setDepartments])
 
-    const handleSubmit = (e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault();
+
+        const url = getUserMetaURL(user.username)
+        try {
+            const res = await axios.put(url, JSON.stringify(user))
+            if (res.status === 200) {
+                toast.success("Your Profile has been updated successfully.", {duration: 5000})
+                refreshSavedUser().then(res => history.push("/profile"));
+            }
+        } catch (e) {
+            fetchingErrorHandler(e)
+        }
     }
 
     return <div className="container">
+        <Link className="edit-link" to={`/profile`}>
+            Back To Show Profile
+        </Link>
         <div className="title_pic_container">
             <div className="pic-container">
                 <FaUserCircle className="profile_pic"/>
@@ -79,6 +104,16 @@ const EditProfile = ({match}) => {
                     <option value={department.name} key={index}>{department.name}</option>
                 )}
             </select>
+            <input
+                type="text"
+                required
+                autoComplete="off"
+                placeholder="Title"
+                autoCorrect="off"
+                name={"title"}
+                value={user.departmentTitle}
+                onChange={event => setUser(current => ({...current, departmentTitle: event.target.value}))}
+            />
             <button type={"submit"}>Save</button>
         </form>
     </div>

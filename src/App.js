@@ -25,23 +25,18 @@ const getAnimation = () => {
 function App() {
     const [dialog, setDialog] = useState();
     const [animationBackground, setAnimationBackground] = useState(getAnimation())
-
+    const [userRefreshed, setUserRefreshed] = useState(true);
     useEffect(() => {
         localStorage.setItem("animation", animationBackground.toString())
     }, [animationBackground])
 
-    const globalContextValues = {
-        dialog,
-        setDialog,
-        animationBackground, setAnimationBackground
-    };
-
-    const refreshUser = async () => {
+    const refreshSavedUser = async () => {
         if (localStorage.getItem("token")) {
             try {
                 const response = await axios.get(getCurrentUserURL());
                 const user = response.data;
-                localStorage.setItem("user", JSON.stringify(user))
+                localStorage.setItem("user", JSON.stringify(user));
+                setUserRefreshed(current => !current);
             }catch (e) {
                 console.error(e)
             }
@@ -49,8 +44,15 @@ function App() {
     }
 
     useEffect(() => {
-        refreshUser().then(null);
+        refreshSavedUser().then(null);
     }, [])
+
+    const globalContextValues = {
+        dialog,
+        setDialog,
+        animationBackground, setAnimationBackground,
+        refreshSavedUser, userRefreshed
+    };
 
     return (
         <Router>

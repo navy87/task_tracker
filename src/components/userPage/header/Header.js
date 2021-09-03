@@ -8,11 +8,11 @@ import {AiFillHome} from "react-icons/all";
 
 const Header = ({admin}) => {
     const [user, setUser] = useState(JSON.parse(localStorage.getItem("user")))
-    const {animationBackground, setAnimationBackground} = useContext(GlobalContext)
+    const {animationBackground, setAnimationBackground, userRefreshed} = useContext(GlobalContext)
 
     useEffect(() => {
         setUser(JSON.parse(localStorage.getItem("user")))
-    }, [])
+    }, [userRefreshed])
 
     return (
         <header id="header">
