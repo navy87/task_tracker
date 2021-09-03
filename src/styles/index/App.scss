@@ -404,3 +404,75 @@
     }
   }
 }
+
+#header {
+  display: flex;
+  padding: 0.5rem;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #444;
+  color: white;
+  box-shadow: 5px 5px 5px #888;
+
+  .logo-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    h1 {
+      font-size: 1.5rem;
+      font-family: Verdana, Geneva, Tahoma, sans-serif;
+
+      .admin {
+        color: lightcoral;
+      }
+    }
+
+    .logo {
+      margin-right: 0.25rem;
+      font-size: 3rem;
+    }
+  }
+
+  .user-info-list {
+    display: flex;
+    list-style-type: none;
+
+    & > div,
+    & > .list-item {
+      display: flex;
+      align-items: center;
+      cursor: pointer;
+      padding: 0.9rem;
+      margin: 0 0.25rem;
+      font-weight: normal;
+      transition: all 0.2s;
+      outline: none;
+
+      .icon {
+        padding: 0 0.25rem;
+      }
+
+      &:hover {
+        color: #aaa;
+      }
+
+      &:active {
+        color: #ddd;
+      }
+
+      &:focus {
+        background-color: #ffffff55;
+        border-radius: 30px;
+      }
+
+      &.no-btn {
+        &:hover,
+        &:active,
+        &:focus {
+          background-color: inherit;
+        }
+      }
+    }
+  }
+}

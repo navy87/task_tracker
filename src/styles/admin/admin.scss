@@ -3,14 +3,9 @@
   flex-direction: column;
   height: 100vh;
 
-  header {
+  #header {
     background-color: navy;
     color: white;
-    padding: 1rem 5rem;
-
-    h1 {
-      font-size: 2rem;
-    }
   }
 
   main {

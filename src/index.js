@@ -5,7 +5,6 @@ import App from "./App";
 import reportWebVitals from "./reportWebVitals";
 import axios from "axios";
 import toast from "react-hot-toast";
-import {getCurrentUserURL} from "./helpers/Helper";
 
 axios.interceptors.request.use(req => {
     req.headers = {

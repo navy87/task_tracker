@@ -515,59 +515,6 @@
   font-size: 5rem;
 }
 
-#header {
-  display: flex;
-  padding: 0.5rem;
-  justify-content: space-between;
-  align-items: center;
-  background-color: #444;
-  color: white;
-  box-shadow: 5px 5px 5px #888;
-}
-#header .logo-container {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-#header .logo-container h1 {
-  font-size: 1.5rem;
-  font-family: Verdana, Geneva, Tahoma, sans-serif;
-}
-#header .logo-container .logo {
-  margin-right: 0.25rem;
-  font-size: 3rem;
-}
-#header .user-info-list {
-  display: flex;
-  list-style-type: none;
-}
-#header .user-info-list > div, #header .user-info-list > .list-item {
-  display: flex;
-  align-items: center;
-  cursor: pointer;
-  padding: 0.9rem;
-  margin: 0 0.25rem;
-  font-weight: normal;
-  transition: all 0.2s;
-  outline: none;
-}
-#header .user-info-list > div .icon, #header .user-info-list > .list-item .icon {
-  padding: 0 0.25rem;
-}
-#header .user-info-list > div:hover, #header .user-info-list > .list-item:hover {
-  color: #aaa;
-}
-#header .user-info-list > div:active, #header .user-info-list > .list-item:active {
-  color: #ddd;
-}
-#header .user-info-list > div:focus, #header .user-info-list > .list-item:focus {
-  background-color: #ffffff55;
-  border-radius: 30px;
-}
-#header .user-info-list > div.no-btn:hover, #header .user-info-list > div.no-btn:active, #header .user-info-list > div.no-btn:focus, #header .user-info-list > .list-item.no-btn:hover, #header .user-info-list > .list-item.no-btn:active, #header .user-info-list > .list-item.no-btn:focus {
-  background-color: inherit;
-}
-
 #id_profile_page {
   display: grid;
   place-content: center;

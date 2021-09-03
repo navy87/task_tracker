@@ -1,11 +1,12 @@
 import React, {useContext, useEffect, useState} from "react";
 import {FcDepartment, FcPlanner} from "react-icons/fc";
-import {RiLogoutCircleFill} from "react-icons/ri";
+import {RiAdminFill, RiLogoutCircleFill} from "react-icons/ri";
 import {FaUserCircle} from "react-icons/fa";
 import {Link} from "react-router-dom";
 import {GlobalContext} from "../../../contexts/GlobalContext";
+import {AiFillHome} from "react-icons/all";
 
-const Header = () => {
+const Header = ({admin}) => {
     const [user, setUser] = useState(JSON.parse(localStorage.getItem("user")))
     const {animationBackground, setAnimationBackground} = useContext(GlobalContext)
 
@@ -15,10 +16,12 @@ const Header = () => {
 
     return (
         <header id="header">
-            <Link to="/">
+            <Link to={admin ? "/admin" : "/"}>
                 <div className="logo-container">
                     <FcPlanner className="logo"/>
-                    <h1>Task Planner</h1>
+                    <h1>
+                        Task Planner{admin && " | "}{admin && <span className={"admin"}>Admin Panel</span>}
+                    </h1>
                 </div>
             </Link>
             <div className="user-info-list">
@@ -35,10 +38,25 @@ const Header = () => {
                         }}
                     />
                 </div>
-                <div className="no-btn">
-                    <FcDepartment className="icon"/>
-                    {user.department.name}
-                </div>
+                {user.role.name === "ADMIN" &&
+                <Link className="list-item" to={admin ? "/" : "/admin"}>
+                    {admin ?
+                        <>
+                            <AiFillHome className={"icon"} /> Go To Home
+                        </> :
+                        <>
+                            <RiAdminFill className={"icon"} /> Go To Admin Panel
+                        </>
+                    }
+                </Link>
+                }
+                {
+                    user.role.name !== "SUPER_ADMIN" &&
+                    <div className="no-btn">
+                        <FcDepartment className="icon"/>
+                        {user.department.name}
+                    </div>
+                }
                 <Link className="list-item" to="/profile">
                     <FaUserCircle className="icon"/> {user.fullName}
                 </Link>
