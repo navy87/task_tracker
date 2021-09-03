@@ -1,22 +1,26 @@
 import React from "react";
 
 import Dashboard from "./Dashboard";
-import {Link, Route, Switch} from "react-router-dom";
+import { Route, Switch} from "react-router-dom";
 import CreateUser from "./createUser/CreateUser";
 import ResetPasswordAdmin from "./ResetPasswordAdmin";
 import ActivateDeactivateAccount from "./ActivateDeactivateAccount";
 import Department from "./department/Department";
 
+import ChangeRole from "./ChangeRole";
+import Header from "../userPage/header/Header";
+// This Import must be last for some reason
 import "../../styles/admin/admin.css";
-import ChangeRole from "./ChangeRole"; // This Import must be last for some reason
+
 const Admin = ({match}) => {
     return (
         <div id="adminPage">
-            <header>
-                <Link to={"/admin"}>
-                    <h1>Admin Panel</h1>
-                </Link>
-            </header>
+            {/*<header>*/}
+            {/*    <Link to={"/admin"}>*/}
+            {/*        <h1>Admin Panel</h1>*/}
+            {/*    </Link>*/}
+            {/*</header>*/}
+            <Header admin={true} />
             <main>
                 <Switch>
                     <Route
