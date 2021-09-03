@@ -344,8 +344,6 @@
 }
 .error-full-page .go-back-btn:active {
   transform: scale(0.98);
-<<<<<<< HEAD
-=======
 }
 
 #header {
@@ -405,7 +403,6 @@
 }
 #header .user-info-list > div.no-btn:hover, #header .user-info-list > div.no-btn:active, #header .user-info-list > div.no-btn:focus, #header .user-info-list > .list-item.no-btn:hover, #header .user-info-list > .list-item.no-btn:active, #header .user-info-list > .list-item.no-btn:focus {
   background-color: inherit;
->>>>>>> main
 }
 
 /*# sourceMappingURL=App.css.map */
