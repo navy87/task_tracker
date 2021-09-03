@@ -25,7 +25,6 @@ axios.interceptors.response.use(res => {
         localStorage.removeItem("token")
         localStorage.removeItem("user")
         toast.error("There is a problem with authentication. Please logout and login again.", {duration: 6000});
-        document.location = "/"
     } else if (error.response.status === 403) { // Forbidden
         return error.response
     }
@@ -37,7 +36,7 @@ const refreshUser = async () => {
         try {
             const response = await axios.get(getCurrentUserURL());
             const user = response.data;
-            localStorage.setItem("user", user)
+            localStorage.setItem("user", JSON.stringify(user))
         }catch (e) {
             console.error(e)
         }
