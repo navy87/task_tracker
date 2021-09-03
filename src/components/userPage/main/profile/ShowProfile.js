@@ -15,9 +15,6 @@ const ShowProfile = ({match}) => {
     }, [userRefreshed])
 
     return <div className="container">
-        <Link className="edit-link" to={`${match.url}/edit`}>
-            Edit
-        </Link>
         <div className="title_pic_container">
             <div className="pic-container">
                 <FaUserCircle className="profile_pic"/>
@@ -48,6 +45,9 @@ const ShowProfile = ({match}) => {
             {user.department.name}
         </div>
         <div style={{display: "block", borderTop: "1px solid #888", paddingBottom: ".5rem"}}/>
+        <Link className="edit-link" to={`${match.url}/edit`}>
+            Edit Profile
+        </Link>
         <Link className="edit-link" to={`${match.url}/passwordChange`}>
             Change Password
         </Link>

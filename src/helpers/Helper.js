@@ -111,6 +111,10 @@ export const getChangeRoleURL = (username) => {
     return `${getUserURL()}/${process.env.REACT_APP_USER_CHANGE_ROLE_URL}/${username}`
 }
 
+export const getChangePasswordURL = () => {
+    return `${getUserURL()}/${process.env.REACT_APP_CHANGE_PASSWORD_URL}`
+}
+
 export const getUserActivateURL = (username) => {
     return `${getUserURL()}/${process.env.REACT_APP_USER_ACTIVATE_URL}/${username}`
 }

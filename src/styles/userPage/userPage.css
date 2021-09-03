@@ -528,6 +528,10 @@
   display: flex;
   flex-direction: column;
 }
+#id_profile_page .container .title {
+  padding-bottom: 0.25rem;
+  margin-bottom: 0.5rem;
+}
 #id_profile_page .container .edit-link {
   align-self: center;
   color: navy;
@@ -610,12 +614,16 @@
 #id_profile_page .container .detail .changePhone:hover .text, #id_profile_page .container .detail .changePhone:focus .text, #id_profile_page .container .detail .changePhone:active .text {
   opacity: 1;
 }
-#id_profile_page .container .profile-form {
+#id_profile_page .container .profile-form,
+#id_profile_page .container .change-password-form {
   display: flex;
   flex-direction: column;
   gap: 0.5rem;
 }
-#id_profile_page .container .profile-form input, #id_profile_page .container .profile-form select, #id_profile_page .container .profile-form button {
+#id_profile_page .container .profile-form input, #id_profile_page .container .profile-form select, #id_profile_page .container .profile-form button,
+#id_profile_page .container .change-password-form input,
+#id_profile_page .container .change-password-form select,
+#id_profile_page .container .change-password-form button {
   min-width: 300px;
   padding: 0.5rem;
   outline: none;
@@ -623,16 +631,26 @@
   border: 2px solid transparent;
   border-radius: 0.5rem;
 }
-#id_profile_page .container .profile-form input:focus, #id_profile_page .container .profile-form select:focus, #id_profile_page .container .profile-form button:focus {
+#id_profile_page .container .profile-form input:focus, #id_profile_page .container .profile-form select:focus, #id_profile_page .container .profile-form button:focus,
+#id_profile_page .container .change-password-form input:focus,
+#id_profile_page .container .change-password-form select:focus,
+#id_profile_page .container .change-password-form button:focus {
   border-color: coral;
 }
-#id_profile_page .container .profile-form button, #id_profile_page .container .profile-form select {
+#id_profile_page .container .profile-form button, #id_profile_page .container .profile-form select,
+#id_profile_page .container .change-password-form button,
+#id_profile_page .container .change-password-form select {
   cursor: pointer;
 }
-#id_profile_page .container .profile-form button {
+#id_profile_page .container .profile-form button,
+#id_profile_page .container .change-password-form button {
   font-weight: 500;
   background-color: darkblue;
   color: white;
+}
+#id_profile_page .container .profile-form button:active,
+#id_profile_page .container .change-password-form button:active {
+  transform: scale(0.98);
 }
 
 /*# sourceMappingURL=userPage.css.map */

@@ -19,13 +19,15 @@ axios.interceptors.request.use(req => {
 axios.interceptors.response.use(res => {
     return res
 }, error => {
-    console.error(error)
+    if(process.env.NODE_ENV === "development") {
+        console.error(error)
+    }
     if (error.response.status === 401) { // UnauthorizedAccess
+        if (localStorage.getItem("token")) {
+            toast.error("There is a problem with authentication. Please logout and login again.", {duration: 6000});
+        }
         localStorage.removeItem("token")
         localStorage.removeItem("user")
-        toast.error("There is a problem with authentication. Please logout and login again.", {duration: 6000});
-    } else if (error.response.status === 403) { // Forbidden
-        return error.response
     }
     throw error;
 })

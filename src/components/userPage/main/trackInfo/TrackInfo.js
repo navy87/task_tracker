@@ -33,13 +33,15 @@ const TrackInfo = ({match}) => {
                 if (res.status === 200) {
                     setTracks(data)
                     setStatus(STATUSES.loaded)
-                } else if (res.status === 403) {
-                    setStatus(STATUSES.forbidden)
                 }
                 return data
             } catch (e) {
-                console.log(JSON.stringify(e))
-                fetchingErrorHandler(e)
+                if (e.response.status === 403) {
+                    setStatus(STATUSES.forbidden)
+                } else {
+                    console.log(JSON.stringify(e))
+                    fetchingErrorHandler(e)
+                }
             }
         };
         if (taskId.toLowerCase() === "new") {

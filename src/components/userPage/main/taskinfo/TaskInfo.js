@@ -37,13 +37,15 @@ const TaskInfo = ({match}) => {
                 if (res.status === 200) {
                     setSelectedTask(data);
                     setStatus(STATUSES.loaded)
-                } else if (res.status === 403) {
-                    setStatus(STATUSES.forbidden)
                 }
                 return data
             } catch (e) {
-                console.error(e)
-                return e
+                if (e.response.status === 403) {
+                    setStatus(STATUSES.forbidden)
+                } else {
+                    console.error(e)
+                    return e
+                }
             }
         };
         if (taskId.toLowerCase() === "new") {

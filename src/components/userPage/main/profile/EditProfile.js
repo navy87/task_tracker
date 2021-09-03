@@ -20,7 +20,6 @@ const EditProfile = ({match}) => {
     useEffect(() => {
         const user = JSON.parse(localStorage.getItem("user"))
         setUser(user)
-        console.log("Rendered")
     }, [userRefreshed])
 
     useEffect(() => {
@@ -45,9 +44,7 @@ const EditProfile = ({match}) => {
     }
 
     return <div className="container">
-        <Link className="edit-link" to={`/profile`}>
-            Back To Show Profile
-        </Link>
+        <h2 className={"title"}>Edit Profile</h2>
         <div className="title_pic_container">
             <div className="pic-container">
                 <FaUserCircle className="profile_pic"/>
@@ -116,6 +113,10 @@ const EditProfile = ({match}) => {
             />
             <button type={"submit"}>Save</button>
         </form>
+        <div style={{display: "block", borderTop: "1px solid #888", marginTop:"1rem", paddingBottom: ".5rem"}}/>
+        <Link className="edit-link" to={`/profile`}>
+            Back To Show Profile
+        </Link>
     </div>
 }
 
