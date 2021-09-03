@@ -15,49 +15,49 @@ const Dashboard = ({match}) => {
                 icon={<HiUserAdd className="icon"/>}
                 text="Create New User"
                 to={`${match.url}/createUser`}
-                type="create"
+                color="navy"
             />
             <DashboardButton
                 icon={<FcDepartment className="icon"/>}
                 text="Departments"
                 to={`${match.url}/department`}
-                type="create"
+                color="green"
             />
             <DashboardButton
                 icon={<Si1Password className="icon"/>}
                 text="Change Superadmin Password"
                 to={`${match.url}/changeSuperAdminPassword`}
-                type="create"
+                color="darkgray"
             />
             <DashboardButton
                 icon={<CgPassword className="icon"/>}
                 text="Reset Password"
                 to={`${match.url}/resetPassword`}
-                type="reset"
+                color={"darkred"}
             />
             <DashboardButton
                 icon={<CgPassword className="icon"/>}
                 text="Change Role"
                 to={`${match.url}/changeRole`}
-                type="deactivate"
+                color={"darkblue"}
             />
             <DashboardButton
                 icon={<GiShieldDisabled className="icon"/>}
                 text="Activate"
                 to={`${match.url}/activateAccount`}
-                type="deactivate"
+                color={"darkcyan"}
             />
             <DashboardButton
                 icon={<GiShieldDisabled className="icon"/>}
                 text="Deactivate"
                 to={`${match.url}/deactivateAccount`}
-                type="deactivate"
+                color={"brown"}
             />
             <DashboardButton
                 icon={<RiLogoutCircleFill className="icon"/>}
                 text="Logout"
                 to={`/logout`}
-                type="logout"
+                color={"#444"}
             />
         </div>
     );

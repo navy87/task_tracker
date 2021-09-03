@@ -58,7 +58,6 @@
 
         .dashboard-button {
           cursor: pointer;
-          background-color: navy;
           color: white;
           display: flex;
           align-items: center;
@@ -73,21 +72,6 @@
             transform: scale(0.99);
           }
 
-          &.create {
-            background-color: #23235c;
-          }
-
-          &.reset {
-            background-color: #b72929;
-          }
-
-          &.deactivate {
-            background-color: #336d36;
-          }
-
-          &.logout {
-            background-color: #262626;
-          }
 
           .icon {
             width: 5rem;

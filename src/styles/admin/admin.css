@@ -51,7 +51,6 @@
 }
 #adminPage main .buttons-container .button-link .dashboard-button {
   cursor: pointer;
-  background-color: navy;
   color: white;
   display: flex;
   align-items: center;
@@ -64,18 +63,6 @@
 }
 #adminPage main .buttons-container .button-link .dashboard-button:active {
   transform: scale(0.99);
-}
-#adminPage main .buttons-container .button-link .dashboard-button.create {
-  background-color: #23235c;
-}
-#adminPage main .buttons-container .button-link .dashboard-button.reset {
-  background-color: #b72929;
-}
-#adminPage main .buttons-container .button-link .dashboard-button.deactivate {
-  background-color: #336d36;
-}
-#adminPage main .buttons-container .button-link .dashboard-button.logout {
-  background-color: #262626;
 }
 #adminPage main .buttons-container .button-link .dashboard-button .icon {
   width: 5rem;
