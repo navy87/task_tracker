@@ -610,5 +610,29 @@
 #id_profile_page .container .detail .changePhone:hover .text, #id_profile_page .container .detail .changePhone:focus .text, #id_profile_page .container .detail .changePhone:active .text {
   opacity: 1;
 }
+#id_profile_page .container .profile-form {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+#id_profile_page .container .profile-form input, #id_profile_page .container .profile-form select, #id_profile_page .container .profile-form button {
+  min-width: 300px;
+  padding: 0.5rem;
+  outline: none;
+  box-shadow: 2px 2px 5px #aaa;
+  border: 2px solid transparent;
+  border-radius: 0.5rem;
+}
+#id_profile_page .container .profile-form input:focus, #id_profile_page .container .profile-form select:focus, #id_profile_page .container .profile-form button:focus {
+  border-color: coral;
+}
+#id_profile_page .container .profile-form button, #id_profile_page .container .profile-form select {
+  cursor: pointer;
+}
+#id_profile_page .container .profile-form button {
+  font-weight: 500;
+  background-color: darkblue;
+  color: white;
+}
 
 /*# sourceMappingURL=userPage.css.map */

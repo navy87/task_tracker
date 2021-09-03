@@ -1,23 +1,12 @@
 import React, {useEffect, useState} from "react"
-import {fetchingErrorHandler, getDepartmentURL} from "../../../helpers/Helper";
-import axios from "axios";
+import {fetchDepartments, fetchingErrorHandler, } from "../../../helpers/Helper";
 
 const DepartmentSelect = ({setUserMeta, userMeta}) => {
 
     const [departments, setDepartments] = useState([])
 
     useEffect(() => {
-        const fetchRoles = async () => {
-            try {
-                const url = getDepartmentURL();
-                const res = await axios.get(url);
-                return res.data;
-            } catch (e) {
-                throw e
-            }
-        }
-
-        fetchRoles()
+        fetchDepartments()
             .then(data => {
                 setDepartments(data);
             })

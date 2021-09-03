@@ -1,6 +1,5 @@
 import React, {useEffect, useState,} from "react"
-import {fetchingErrorHandler, getRoleURL} from "../../../helpers/Helper";
-import axios from "axios";
+import {fetchingErrorHandler, fetchRoles} from "../../../helpers/Helper";
 
 const RoleSelect = ({setUserMeta, userMeta}) => {
 
@@ -13,15 +12,6 @@ const RoleSelect = ({setUserMeta, userMeta}) => {
     }
 
     useEffect(() => {
-        const fetchRoles = async () => {
-            try {
-                const url = getRoleURL();
-                const res = await axios.get(url);
-                return res.data;
-            } catch (e) {
-                throw e
-            }
-        }
         fetchRoles()
             .then(setRoles)
             .catch(fetchingErrorHandler)

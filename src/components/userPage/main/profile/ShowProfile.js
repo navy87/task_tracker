@@ -1,4 +1,4 @@
-import React, {useState, useEffect} from "react";
+import React, {useEffect, useState} from "react";
 import {FaUserCircle} from "react-icons/fa";
 import {Link} from "react-router-dom";
 import {BsPerson} from "react-icons/bs";
@@ -11,7 +11,7 @@ const ShowProfile = ({match}) => {
         const user = JSON.parse(localStorage.getItem("user"))
         setUser(user)
     }, [])
-    console.log()
+
     return <div className="container">
         <Link className="edit-link" to={`${match.url}/edit`}>
             Edit
@@ -45,6 +45,10 @@ const ShowProfile = ({match}) => {
             <TiGroup className="icon"/>
             {user.department.name}
         </div>
+        <div style={{display: "block", borderTop: "1px solid #888", paddingBottom: ".5rem"}}/>
+        <Link className="edit-link" to={`${match.url}/passwordChange`}>
+            Change Password
+        </Link>
     </div>
 
 }

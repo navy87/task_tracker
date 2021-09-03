@@ -177,3 +177,37 @@ export const fetchingErrorHandler = (err) => {
         }
     );
 };
+
+export const getRole = (name, roles) => {
+    const filtered = roles.filter(role => role.name === name);
+    if (filtered.length === 0) return null
+    return filtered[0]
+}
+
+export const getDepartment = (name, departments) => {
+    const filtered = departments.filter(department => department.name === name)
+    if (filtered.length === 0) {
+        return null;
+    }
+    return filtered[0]
+}
+
+export const fetchRoles = async () => {
+    try {
+        const url = getRoleURL();
+        const res = await axios.get(url);
+        return res.data;
+    } catch (e) {
+        throw e
+    }
+}
+
+export const fetchDepartments = async () => {
+    try {
+        const url = getDepartmentURL();
+        const res = await axios.get(url);
+        return res.data;
+    } catch (e) {
+        throw e
+    }
+}

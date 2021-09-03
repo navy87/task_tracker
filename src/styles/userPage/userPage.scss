@@ -740,5 +740,34 @@
         }
       }
     }
+
+    .profile-form {
+      display: flex;
+      flex-direction: column;
+      gap: .5rem;
+      input, select, button {
+        min-width: 300px;
+        padding: .5rem;
+        outline: none;
+        box-shadow: 2px 2px 5px #aaa;
+        border: 2px solid transparent;
+        border-radius: .5rem;
+
+        &:focus {
+          border-color: coral;
+        }
+      }
+      
+      button, select {
+        cursor: pointer;
+      }
+
+      button {
+        font-weight: 500;
+        background-color: darkblue;
+        color: white;
+      }
+
+    }
   }
 }
