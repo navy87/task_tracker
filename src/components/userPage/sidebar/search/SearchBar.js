@@ -1,17 +1,17 @@
+import React, { useContext } from "react";
 import SearchBox from "./SearchBox";
 import SearchResult from "./SearchResult";
-import {useContext} from "react";
-import {FilterContext} from "../../../../contexts/SidebarContext";
-import {MdFilterList, MdSort} from "react-icons/md";
+import { FilterContext } from "../../../../contexts/SidebarContext";
+import { MdFilterList, MdSort } from "react-icons/md";
 
 const SearchBar = () => {
-    const {filterVisible, setFilterVisible, sorterVisible, setSorterVisible} =
+    const { filterVisible, setFilterVisible, sorterVisible, setSorterVisible } =
         useContext(FilterContext);
 
     return (
         <>
             <div id="searchbar">
-                <SearchBox/>
+                <SearchBox />
                 <label
                     htmlFor="filter_toggle"
                     className={`${filterVisible ? "selected" : ""}`}
@@ -32,14 +32,14 @@ const SearchBar = () => {
                                 return !currentVisibility;
                             })
                         }
-                        style={{display: "none"}}
+                        style={{ display: "none" }}
                     />
                 </label>
                 <label
                     htmlFor="sort_toggle"
                     className={`${sorterVisible ? "selected" : ""}`}
                 >
-                    <MdSort className="filter_btn" data-tip="Sort Tasks"/>
+                    <MdSort className="filter_btn" data-tip="Sort Tasks" />
                     <input
                         id="sort_toggle"
                         type="checkbox"
@@ -52,11 +52,11 @@ const SearchBar = () => {
                                 return !currentVisibility;
                             })
                         }
-                        style={{display: "none"}}
+                        style={{ display: "none" }}
                     />
                 </label>
             </div>
-            <SearchResult/>
+            <SearchResult />
         </>
     );
 };

@@ -1,6 +1,6 @@
 import React from "react";
 
-const FilterAssigneeButton = ({filteredPerson, setFilteredPersons}) => {
+const FilterAssigneeButton = ({ filteredPerson, setFilteredPersons }) => {
     const handleRemovePerson = (e) => {
         e.preventDefault();
         setFilteredPersons((currentPersons) => {
@@ -12,9 +12,10 @@ const FilterAssigneeButton = ({filteredPerson, setFilteredPersons}) => {
         });
     };
 
+    console.log(filteredPerson);
     return (
         <button className="btn btn-sm" onClick={handleRemovePerson}>
-            {filteredPerson.name}
+            {filteredPerson.fullName}
         </button>
     );
 };

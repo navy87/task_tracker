@@ -1,7 +1,8 @@
 import toast from "react-hot-toast";
 import axios from "axios";
 
-require("dotenv").config();
+// require("dotenv").config();
+import env from "../../.env.json";
 
 export const Capitalize = (word) => {
     word = word.toLowerCase();
@@ -33,7 +34,7 @@ export const compareTask = (task1, task2, taskSortOrder) => {
     let addedDateAscendingOrder =
         new Date(task1.addedDate) - new Date(task2.addedDate);
 
-    const priorityIndex = {high: 2, medium: 1, low: 0};
+    const priorityIndex = { high: 2, medium: 1, low: 0 };
     let priorityAscendingOrder =
         priorityIndex[task1.priority.toLowerCase()] -
         priorityIndex[task2.priority.toLowerCase()];
@@ -70,11 +71,11 @@ export const compareTask = (task1, task2, taskSortOrder) => {
 };
 
 export const getBaseURL = () => {
-    return `${process.env.REACT_APP_BACKEND_BASE_URL}:${process.env.REACT_APP_BACKEND_BASE_PORT}${process.env.REACT_APP_BACKEND_API_PREFIX}`;
+    return `${env.REACT_APP_BACKEND_BASE_URL}:${env.REACT_APP_BACKEND_BASE_PORT}${env.REACT_APP_BACKEND_API_PREFIX}`;
 };
 
 export const getTaskURL = (id = null) => {
-    return `${getBaseURL()}/${process.env.REACT_APP_TASK_URL}${
+    return `${getBaseURL()}/${env.REACT_APP_TASK_URL}${
         id !== null ? `/${id}` : ""
     }`;
 };
@@ -84,7 +85,7 @@ export const getTaskExistsURL = (id) => {
 };
 
 export const getProfileURL = (id = null) => {
-    return `${getBaseURL()}/${process.env.REACT_APP_PROFILE_URL}/${
+    return `${getBaseURL()}/${env.REACT_APP_PROFILE_URL}/${
         id !== null ? id : ""
     }`;
 };
@@ -94,82 +95,82 @@ export const getTaskTracksURL = (taskId) => {
 };
 
 export const getTracksURL = (id = null) => {
-    return `${getBaseURL()}/${process.env.REACT_APP_TRACK_URL}/${
+    return `${getBaseURL()}/${env.REACT_APP_TRACK_URL}/${
         id !== null ? id : ""
     }`;
 };
 
 export const getUserURL = () => {
-    return `${getBaseURL()}/${process.env.REACT_APP_USER_URL}`;
+    return `${getBaseURL()}/${env.REACT_APP_USER_URL}`;
 };
 
 export const getUserExistsURL = (username) => {
-    return `${getUserURL()}/exists/${username}`
-}
+    return `${getUserURL()}/exists/${username}`;
+};
 
 export const getChangeRoleURL = (username) => {
-    return `${getUserURL()}/${process.env.REACT_APP_USER_CHANGE_ROLE_URL}/${username}`
-}
+    return `${getUserURL()}/${env.REACT_APP_USER_CHANGE_ROLE_URL}/${username}`;
+};
 
 export const getChangePasswordURL = () => {
-    return `${getUserURL()}/${process.env.REACT_APP_CHANGE_PASSWORD_URL}`
-}
+    return `${getUserURL()}/${env.REACT_APP_CHANGE_PASSWORD_URL}`;
+};
 
 export const getUserActivateURL = (username) => {
-    return `${getUserURL()}/${process.env.REACT_APP_USER_ACTIVATE_URL}/${username}`
-}
+    return `${getUserURL()}/${env.REACT_APP_USER_ACTIVATE_URL}/${username}`;
+};
 
 export const getUserDeactivateURL = (username) => {
-    return `${getUserURL()}/${process.env.REACT_APP_USER_DEACTIVATE_URL}/${username}`
-}
+    return `${getUserURL()}/${env.REACT_APP_USER_DEACTIVATE_URL}/${username}`;
+};
 
 export const getUserResetPassword = (username) => {
-    return `${getUserURL()}/${process.env.REACT_APP_USER_RESET_PASSWORD_URL}`
-}
+    return `${getUserURL()}/${env.REACT_APP_USER_RESET_PASSWORD_URL}`;
+};
 
 export const getUserMetaURL = (username) => {
-    return `${getUserURL()}/${process.env.REACT_APP_USER_META_URL}/${username}`
-}
+    return `${getUserURL()}/${env.REACT_APP_USER_META_URL}/${username}`;
+};
 
 export const getLoginURL = () => {
-    return `${process.env.REACT_APP_LOGIN_URL}`;
+    return `${env.REACT_APP_LOGIN_URL}`;
 };
 
 export const getCurrentUserURL = () => {
-    return `${getUserURL()}/${process.env.REACT_APP_CURRENT_USER_URL}`
-}
+    return `${getUserURL()}/${env.REACT_APP_CURRENT_USER_URL}`;
+};
 
 export const getDepartmentURL = (id = null) => {
-    return `${getBaseURL()}/${process.env.REACT_APP_USER_DEPARTMENT_URL}/${id || ""}`
-}
+    return `${getBaseURL()}/${env.REACT_APP_USER_DEPARTMENT_URL}/${id || ""}`;
+};
 
 export const getRoleURL = (id = null) => {
-    return `${getBaseURL()}/${process.env.REACT_APP_USER_ROLE_URL}/${id || ""}`
-}
+    return `${getBaseURL()}/${env.REACT_APP_USER_ROLE_URL}/${id || ""}`;
+};
 
 export const checkUserExists = async (username) => {
     try {
-        const response = await axios.get(getUserExistsURL(username))
+        const response = await axios.get(getUserExistsURL(username));
         if (response.status === 200) {
-            return response.data
+            return response.data;
         }
     } catch (e) {
-        console.error(e)
+        console.error(e);
     }
     return false;
-}
+};
 
 export const getUserByUsername = async (username) => {
     try {
-        const response = await axios.get(getUserMetaURL(username))
+        const response = await axios.get(getUserMetaURL(username));
         if (response.status === 200) {
-            return response.data
+            return response.data;
         }
     } catch (e) {
-        console.error(e)
+        console.error(e);
     }
     return {};
-}
+};
 
 export const fetchingErrorHandler = (err) => {
     console.error(err);
@@ -183,18 +184,20 @@ export const fetchingErrorHandler = (err) => {
 };
 
 export const getRole = (name, roles) => {
-    const filtered = roles.filter(role => role.name === name);
-    if (filtered.length === 0) return null
-    return filtered[0]
-}
+    const filtered = roles.filter((role) => role.name === name);
+    if (filtered.length === 0) return null;
+    return filtered[0];
+};
 
 export const getDepartment = (name, departments) => {
-    const filtered = departments.filter(department => department.name === name)
+    const filtered = departments.filter(
+        (department) => department.name === name
+    );
     if (filtered.length === 0) {
         return null;
     }
-    return filtered[0]
-}
+    return filtered[0];
+};
 
 export const fetchRoles = async () => {
     try {
@@ -202,9 +205,9 @@ export const fetchRoles = async () => {
         const res = await axios.get(url);
         return res.data;
     } catch (e) {
-        throw e
+        throw e;
     }
-}
+};
 
 export const fetchDepartments = async () => {
     try {
@@ -212,6 +215,6 @@ export const fetchDepartments = async () => {
         const res = await axios.get(url);
         return res.data;
     } catch (e) {
-        throw e
+        throw e;
     }
-}
+};

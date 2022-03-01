@@ -1,4 +1,4 @@
-import React, {useContext, useState} from "react";
+import React, {useContext, useState, useEffect} from "react";
 import toast from "react-hot-toast";
 import {getUserURL} from "../../../helpers/Helper";
 import axios from "axios";
@@ -28,6 +28,12 @@ const CreateUser = ({match}) => {
     const {setDialog} = useContext(GlobalContext)
     const [userMeta, setUserMeta] = useState(emptyUserMeta);
     const [confirmPassword, setConfirmPassword] = useState("");
+
+    const {setDocumentSubtitle} = useContext(GlobalContext)
+
+    useEffect(() => {
+        setDocumentSubtitle("Create New User")
+    })
 
     const createUser = async () => {
         const url = getUserURL();

@@ -1,18 +1,18 @@
 import React from "react";
-import {MdNoteAdd} from "react-icons/md";
-import {useHistory} from "react-router-dom";
+import { MdNoteAdd } from "react-icons/md";
+import { useNavigate } from "react-router-dom";
 
 const Buttons = () => {
-    const history = useHistory();
+    const navigate = useNavigate();
     const handleAddTask = (e) => {
         e.preventDefault();
-        history.push("/task/new");
+        navigate("/task/new");
     };
 
     return (
         <div className="buttons">
             <button className="md_btn" onClick={handleAddTask}>
-                <MdNoteAdd className="icon"/> Add Task
+                <MdNoteAdd className="icon" /> Add Task
             </button>
         </div>
     );

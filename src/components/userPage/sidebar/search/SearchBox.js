@@ -1,9 +1,9 @@
-import {useContext} from "react";
-import {BsSearch} from "react-icons/bs";
-import {FilterContext} from "../../../../contexts/SidebarContext";
+import React, { useContext } from "react";
+import { BsSearch } from "react-icons/bs";
+import { FilterContext } from "../../../../contexts/SidebarContext";
 
 const SearchBox = () => {
-    const {filteredKeywords, setFilteredKeywords} = useContext(FilterContext);
+    const { filteredKeywords, setFilteredKeywords } = useContext(FilterContext);
 
     const handleChange = (e) => {
         const value = e.target.value;
@@ -18,7 +18,7 @@ const SearchBox = () => {
                 value={filteredKeywords}
                 onChange={handleChange}
             />
-            <BsSearch className="search_btn"/>
+            <BsSearch className="search_btn" />
         </div>
     );
 };

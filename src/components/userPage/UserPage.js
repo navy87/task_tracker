@@ -1,17 +1,21 @@
-import {useEffect, useState} from "react";
+import React, { useEffect, useState } from "react";
 import toast from "react-hot-toast";
-import {DataContext, FilterContext} from "../../contexts/SidebarContext";
+import { DataContext, FilterContext } from "../../contexts/SidebarContext";
 import Header from "./header/Header";
-import {getProfileURL, getTaskTracksURL, getTaskURL} from "../../helpers/Helper";
+import {
+    getProfileURL,
+    getTaskTracksURL,
+    getTaskURL,
+} from "../../helpers/Helper";
 import Main from "./main/Main";
 import SideBar from "./sidebar/SideBar";
-import {Route, Switch} from "react-router-dom";
+import { Outlet, Route, Routes } from "react-router-dom";
 
 import "../../styles/userPage/userPage.css";
 import axios from "axios";
 
-const UserPage = ({match}) => {
-    const [selectedTask, setSelectedTask] = useState({id: null});
+const UserPage = ({ match }) => {
+    const [selectedTask, setSelectedTask] = useState({ id: null });
     const [trackSortOrder, setTrackSortOrder] = useState("desc");
     const [taskSortOrder, setTaskSortOrder] = useState({
         by: "dueDate",
@@ -52,39 +56,39 @@ const UserPage = ({match}) => {
             try {
                 const res = await axios.get(getTaskURL());
                 const data = res.data;
-                setTasks(data)
-                return data
+                setTasks(data);
+                return data;
             } catch (e) {
-                fetchingErrorHandler(e)
+                fetchingErrorHandler(e);
             }
-        }
-        fetchTasks().then(data => data); // Just to remove the annoying warning on webstorm
+        };
+        fetchTasks().then((data) => data); // Just to remove the annoying warning on webstorm
     }, [refreshData, setTasks]);
 
     useEffect(() => {
         const fetchPeople = async () => {
             try {
-                const res = await axios.get(getProfileURL())
-                setPeople(res.data)
+                const res = await axios.get(getProfileURL());
+                setPeople(res.data);
             } catch (e) {
-                fetchingErrorHandler(e)
+                fetchingErrorHandler(e);
             }
-        }
-        fetchPeople().then(res => res)
+        };
+        fetchPeople().then((res) => res);
     }, [refreshData, setPeople]);
 
     useEffect(() => {
         const fetchTracks = async () => {
             try {
-                const res = await axios.get(getTaskTracksURL(selectedTask.id))
-                setTracks(res.data)
+                const res = await axios.get(getTaskTracksURL(selectedTask.id));
+                setTracks(res.data);
             } catch (e) {
-                fetchingErrorHandler(e)
+                fetchingErrorHandler(e);
             }
-        }
+        };
 
         if (selectedTask && selectedTask.id) {
-            fetchTracks().then(res => res)
+            fetchTracks().then((res) => res);
         } else {
             setTracks(null);
         }
@@ -124,13 +128,14 @@ const UserPage = ({match}) => {
     return (
         <FilterContext.Provider value={filterContextValues}>
             <DataContext.Provider value={dataContextValues}>
-                <Header/>
+                <Header />
                 <div id="page">
-                    <SideBar/>
+                    <SideBar />
                     <div className="content">
-                        <Switch>
-                            <Route path={match.url} component={Main}/>
-                        </Switch>
+                        {/* <Routes>
+                            <Route path={match.url} element={<Main />} />
+                        </Routes> */}
+                        <Outlet />
                     </div>
                 </div>
             </DataContext.Provider>

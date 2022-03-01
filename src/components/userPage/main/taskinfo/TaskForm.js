@@ -1,23 +1,23 @@
-import React, {useContext} from "react";
-import {GlobalContext} from "../../../../contexts/GlobalContext";
-import {QuestionDialog} from "../../../../helpers/Dialog";
-import {MdDeleteForever, MdSave} from "react-icons/md";
+import React, { useContext } from "react";
+import { GlobalContext } from "../../../../contexts/GlobalContext";
+import { QuestionDialog } from "../../../../helpers/Dialog";
+import { MdDeleteForever, MdSave } from "react-icons/md";
 import InfoContainer from "../InfoContainer";
 import PriorityInfo from "./PriorityInfo";
 import StatusInfo from "./StatusInfo";
 import toast from "react-hot-toast";
-import {getTaskURL} from "../../../../helpers/Helper";
-import {DataContext} from "../../../../contexts/SidebarContext";
-import {useHistory} from "react-router-dom";
+import { getTaskURL } from "../../../../helpers/Helper";
+import { DataContext } from "../../../../contexts/SidebarContext";
+import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import AssigneesRow from "./AssigneesRow";
 
-const TaskForm = ({selectedTask, setSelectedTask, isOwner}) => {
-    const {setDialog} = useContext(GlobalContext);
-    const {refresh, setSelectedTask: setSelectedTaskGlobal} =
+const TaskForm = ({ selectedTask, setSelectedTask, isOwner }) => {
+    const { setDialog } = useContext(GlobalContext);
+    const { refresh, setSelectedTask: setSelectedTaskGlobal } =
         useContext(DataContext);
 
-    const history = useHistory();
+    const navigate = useNavigate();
 
     const handleFormSubmit = async (e) => {
         e.preventDefault();
@@ -35,27 +35,26 @@ const TaskForm = ({selectedTask, setSelectedTask, isOwner}) => {
             : getTaskURL();
 
         try {
-
             const res = await axios(url, {
                 method: !selectedTask.id ? "POST" : "PUT",
-                data: JSON.stringify(selectedTask)
-            })
+                data: JSON.stringify(selectedTask),
+            });
             if (res.status !== 200) {
-                console.error(res)
+                console.error(res);
             } else {
-                refresh()
+                refresh();
                 toast.success("Task has been saved!", {
                     duration: 5000,
                 });
                 const data = res.data;
                 const id = data.id;
-                history.push(`/task/${id}`);
+                navigate(`/task/${id}`);
             }
         } catch (error) {
-            console.error(error)
+            console.error(error);
             toast.error("There was an error.", {
                 duration: 5000,
-            })
+            });
         }
     };
 
@@ -83,8 +82,8 @@ const TaskForm = ({selectedTask, setSelectedTask, isOwner}) => {
             }
         };
         fetchDelete().then(() => {
-            setSelectedTaskGlobal({id: null});
-            history.push("/");
+            setSelectedTaskGlobal({ id: null });
+            navigate("/");
             refresh();
         });
     };
@@ -122,9 +121,13 @@ const TaskForm = ({selectedTask, setSelectedTask, isOwner}) => {
                         label="Creation Date"
                         info_render={
                             <div className="info">
-                                {new Date(selectedTask.addedDate).toDateString()}
+                                {new Date(
+                                    selectedTask.addedDate
+                                ).toDateString()}
                                 {", "}
-                                {new Date(selectedTask.addedDate).toLocaleTimeString()}
+                                {new Date(
+                                    selectedTask.addedDate
+                                ).toLocaleTimeString()}
                             </div>
                         }
                     />
@@ -133,9 +136,9 @@ const TaskForm = ({selectedTask, setSelectedTask, isOwner}) => {
                     label={"Creator"}
                     info_render={
                         <div className={`info owner`}>
-                            {selectedTask.owner ?
-                                selectedTask.owner.fullName.toUpperCase() : "Self"
-                            }
+                            {selectedTask.owner
+                                ? selectedTask.owner.fullName.toUpperCase()
+                                : "Self"}
                         </div>
                     }
                 />
@@ -182,7 +185,11 @@ const TaskForm = ({selectedTask, setSelectedTask, isOwner}) => {
                 <InfoContainer
                     label="Assigned To"
                     info_render={
-                        <AssigneesRow isOwner={isOwner} selectedTask={selectedTask} setSelectedTask={setSelectedTask}/>
+                        <AssigneesRow
+                            isOwner={isOwner}
+                            selectedTask={selectedTask}
+                            setSelectedTask={setSelectedTask}
+                        />
                     }
                 />
                 <InfoContainer
@@ -223,8 +230,12 @@ const TaskForm = ({selectedTask, setSelectedTask, isOwner}) => {
                     }
                 />
                 <div className="button_group">
-                    <button type="submit" disabled={!isOwner} className="btn btn-submit">
-                        <MdSave className="btn_icon"/>
+                    <button
+                        type="submit"
+                        disabled={!isOwner}
+                        className="btn btn-submit"
+                    >
+                        <MdSave className="btn_icon" />
                         {(selectedTask.id && "Update") || "Add"}
                     </button>
                     {selectedTask.id === 0 || (
@@ -241,7 +252,7 @@ const TaskForm = ({selectedTask, setSelectedTask, isOwner}) => {
                                 className="btn btn-danger"
                                 disabled={!isOwner}
                             >
-                                <MdDeleteForever className="btn_icon"/>
+                                <MdDeleteForever className="btn_icon" />
                                 Delete Task
                             </button>
                         </>

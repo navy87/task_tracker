@@ -1,19 +1,20 @@
-import React, {useEffect, useState} from "react";
+import React, { useEffect, useState } from "react";
 
-import {getTaskURL, GetToday} from "../../../../helpers/Helper";
+import { getTaskURL, GetToday } from "../../../../helpers/Helper";
 
 import TaskForm from "./TaskForm";
 import ReactLoading from "react-loading";
 import axios from "axios";
+import { useParams } from "react-router-dom";
 
-const TaskInfo = ({match}) => {
+const TaskInfo = () => {
     const [selectedTask, setSelectedTask] = useState(undefined);
     const [isOwner, setIsOwner] = useState(true);
 
-    const STATUSES = {loading: 0, loaded: 1, forbidden: 2}
-    Object.freeze(STATUSES)
+    const STATUSES = { loading: 0, loaded: 1, forbidden: 2 };
+    Object.freeze(STATUSES);
 
-    const [status, setStatus] = useState(STATUSES.loading)
+    const [status, setStatus] = useState(STATUSES.loading);
 
     const [emptyTask] = useState({
         id: 0,
@@ -25,7 +26,9 @@ const TaskInfo = ({match}) => {
         priority: "HIGH",
         assignees: [],
     });
-    const taskId = match.params.id;
+
+    const params = useParams();
+    const taskId = params.id;
 
     useEffect(() => {
         setStatus(STATUSES.loading);
@@ -36,15 +39,15 @@ const TaskInfo = ({match}) => {
                 const data = res.data;
                 if (res.status === 200) {
                     setSelectedTask(data);
-                    setStatus(STATUSES.loaded)
+                    setStatus(STATUSES.loaded);
                 }
-                return data
+                return data;
             } catch (e) {
                 if (e.response.status === 403) {
-                    setStatus(STATUSES.forbidden)
+                    setStatus(STATUSES.forbidden);
                 } else {
-                    console.error(e)
-                    return e
+                    console.error(e);
+                    return e;
                 }
             }
         };
@@ -52,23 +55,35 @@ const TaskInfo = ({match}) => {
             setSelectedTask(emptyTask);
             setStatus(STATUSES.loaded);
         } else {
-            fetchData().then(null)
+            fetchData().then(null);
         }
-    }, [taskId, setSelectedTask, emptyTask, setStatus,
-        STATUSES.loading, STATUSES.loaded, STATUSES.forbidden]);
+    }, [
+        taskId,
+        setSelectedTask,
+        emptyTask,
+        setStatus,
+        STATUSES.loading,
+        STATUSES.loaded,
+        STATUSES.forbidden,
+    ]);
 
     useEffect(() => {
         if (!selectedTask || !selectedTask.id) {
             setIsOwner(true);
         } else {
-            const loggedInUsername = JSON.parse(localStorage.getItem("user")).username
-            setIsOwner(selectedTask.owner.username.toLowerCase() === loggedInUsername.toLowerCase())
+            const loggedInUsername = JSON.parse(
+                localStorage.getItem("user")
+            ).username;
+            setIsOwner(
+                selectedTask.owner.username.toLowerCase() ===
+                    loggedInUsername.toLowerCase()
+            );
         }
-    }, [selectedTask])
+    }, [selectedTask]);
     const notLoadedSelect = () => {
         return status === STATUSES.loading ? (
             <div className="loading-container">
-                <ReactLoading/>
+                <ReactLoading />
             </div>
         ) : (
             <div>Forbidden</div>

@@ -1,91 +1,138 @@
 #adminPage {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  flex-direction: column;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
   height: 100vh;
 }
+
 #adminPage #header {
   background-color: navy;
   color: white;
 }
+
 #adminPage main {
+  display: -ms-grid;
   display: grid;
-  grid-template-columns: auto auto;
+  -ms-grid-columns: auto auto;
+      grid-template-columns: auto auto;
   place-content: center;
-  flex-grow: 1;
+  -webkit-box-flex: 1;
+      -ms-flex-positive: 1;
+          flex-grow: 1;
   padding: 0 5rem;
 }
+
 #adminPage main form.inline {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  align-items: center;
-  gap: 0.25rem;
-  flex-grow: 1;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  gap: .25rem;
+  -webkit-box-flex: 1;
+      -ms-flex-positive: 1;
+          flex-grow: 1;
 }
+
 #adminPage main form.inline input {
-  padding: 0.25rem;
+  padding: .25rem;
   border: none;
   outline: none;
-  border-radius: 0.5rem;
-  flex-grow: 1;
+  border-radius: .5rem;
+  -webkit-box-flex: 1;
+      -ms-flex-positive: 1;
+          flex-grow: 1;
 }
-#adminPage main form.inline input[type=submit] {
+
+#adminPage main form.inline input[type="submit"] {
   cursor: pointer;
   border-radius: 0;
   background-color: transparent;
   color: blue;
   padding: 0;
-  flex-grow: 0;
+  -webkit-box-flex: 0;
+      -ms-flex-positive: 0;
+          flex-grow: 0;
 }
-#adminPage main form.inline input[type=submit].cancel {
+
+#adminPage main form.inline input[type="submit"].cancel {
   color: red;
 }
-#adminPage main form.inline input[type=submit]:active {
-  transform: scale(0.98);
+
+#adminPage main form.inline input[type="submit"]:active {
+  -webkit-transform: scale(0.98);
+          transform: scale(0.98);
 }
+
 #adminPage main .buttons-container {
+  display: -ms-grid;
   display: grid;
   gap: 5rem;
-  grid-template-columns: auto auto auto;
+  -ms-grid-columns: auto auto auto;
+      grid-template-columns: auto auto auto;
 }
+
 #adminPage main .buttons-container .button-link {
   text-decoration: none;
 }
+
 #adminPage main .buttons-container .button-link .dashboard-button {
   cursor: pointer;
   color: white;
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  align-items: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
   padding: 1rem 2rem;
   width: 15rem;
   font-size: 1.15rem;
   font-weight: 500;
   border-radius: 0.5rem;
-  box-shadow: 5px 5px 5px transparent;
+  -webkit-box-shadow: 5px 5px 5px transparent;
+          box-shadow: 5px 5px 5px transparent;
 }
+
 #adminPage main .buttons-container .button-link .dashboard-button:active {
-  transform: scale(0.99);
+  -webkit-transform: scale(0.99);
+          transform: scale(0.99);
 }
+
 #adminPage main .buttons-container .button-link .dashboard-button .icon {
   width: 5rem;
   height: 5rem;
   opacity: 0.5;
   margin-right: 1rem;
+  -webkit-transition: all 0.5s;
   transition: all 0.5s;
 }
+
 #adminPage main .buttons-container .button-link .dashboard-button:hover {
-  box-shadow: 10px 10px 10px #ddd;
+  -webkit-box-shadow: 10px 10px 10px #ddd;
+          box-shadow: 10px 10px 10px #ddd;
 }
+
 #adminPage main .buttons-container .button-link .dashboard-button:hover .icon {
   opacity: 1;
 }
+
 #adminPage main .reset_password_container,
 #adminPage main .deactivate_account_container,
 #adminPage main .create-user-container,
 #adminPage main .form-container {
   padding: 1rem;
   background-color: #cccccc;
-  box-shadow: 5px 5px 5px #888;
+  -webkit-box-shadow: 5px 5px 5px #888;
+          box-shadow: 5px 5px 5px #888;
   border-radius: 10px;
 }
+
 #adminPage main .reset_password_container h2,
 #adminPage main .deactivate_account_container h2,
 #adminPage main .create-user-container h2,
@@ -95,6 +142,7 @@
   font-size: 1.5rem;
   font-weight: 300;
 }
+
 #adminPage main .reset_password_container #id_reset_password_form,
 #adminPage main .reset_password_container #id_deactivate_account_form,
 #adminPage main .reset_password_container #create-user-form,
@@ -111,9 +159,15 @@
 #adminPage main .form-container #id_deactivate_account_form,
 #adminPage main .form-container #create-user-form,
 #adminPage main .form-container form {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  flex-direction: column;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
 }
+
 #adminPage main .reset_password_container #id_reset_password_form .form-subtitle,
 #adminPage main .reset_password_container #id_deactivate_account_form .form-subtitle,
 #adminPage main .reset_password_container #create-user-form .form-subtitle,
@@ -135,6 +189,7 @@
   font-weight: 300;
   border-bottom: 1px solid #bbb;
 }
+
 #adminPage main .reset_password_container #id_reset_password_form input, #adminPage main .reset_password_container #id_reset_password_form select, #adminPage main .reset_password_container #id_reset_password_form button,
 #adminPage main .reset_password_container #id_deactivate_account_form input,
 #adminPage main .reset_password_container #id_deactivate_account_form select,
@@ -184,11 +239,14 @@
   min-width: 300px;
   padding: 0.5rem;
   outline: none;
-  box-shadow: 5px 5px 5px transparent;
+  -webkit-box-shadow: 5px 5px 5px transparent;
+          box-shadow: 5px 5px 5px transparent;
   margin-bottom: 0.5rem;
   border-radius: 5px;
+  -webkit-transition: all 0.5s;
   transition: all 0.5s;
 }
+
 #adminPage main .reset_password_container #id_reset_password_form input:focus, #adminPage main .reset_password_container #id_reset_password_form select:focus, #adminPage main .reset_password_container #id_reset_password_form button:focus,
 #adminPage main .reset_password_container #id_deactivate_account_form input:focus,
 #adminPage main .reset_password_container #id_deactivate_account_form select:focus,
@@ -235,148 +293,190 @@
 #adminPage main .form-container form input:focus,
 #adminPage main .form-container form select:focus,
 #adminPage main .form-container form button:focus {
-  box-shadow: 5px 5px 5px #888;
-  transform: scale(1.015);
+  -webkit-box-shadow: 5px 5px 5px #888;
+          box-shadow: 5px 5px 5px #888;
+  -webkit-transform: scale(1.015);
+          transform: scale(1.015);
 }
-#adminPage main .reset_password_container #id_reset_password_form input[type=submit], #adminPage main .reset_password_container #id_reset_password_form button,
-#adminPage main .reset_password_container #id_deactivate_account_form input[type=submit],
+
+#adminPage main .reset_password_container #id_reset_password_form input[type="submit"], #adminPage main .reset_password_container #id_reset_password_form button,
+#adminPage main .reset_password_container #id_deactivate_account_form input[type="submit"],
 #adminPage main .reset_password_container #id_deactivate_account_form button,
-#adminPage main .reset_password_container #create-user-form input[type=submit],
+#adminPage main .reset_password_container #create-user-form input[type="submit"],
 #adminPage main .reset_password_container #create-user-form button,
-#adminPage main .reset_password_container form input[type=submit],
+#adminPage main .reset_password_container form input[type="submit"],
 #adminPage main .reset_password_container form button,
-#adminPage main .deactivate_account_container #id_reset_password_form input[type=submit],
+#adminPage main .deactivate_account_container #id_reset_password_form input[type="submit"],
 #adminPage main .deactivate_account_container #id_reset_password_form button,
-#adminPage main .deactivate_account_container #id_deactivate_account_form input[type=submit],
+#adminPage main .deactivate_account_container #id_deactivate_account_form input[type="submit"],
 #adminPage main .deactivate_account_container #id_deactivate_account_form button,
-#adminPage main .deactivate_account_container #create-user-form input[type=submit],
+#adminPage main .deactivate_account_container #create-user-form input[type="submit"],
 #adminPage main .deactivate_account_container #create-user-form button,
-#adminPage main .deactivate_account_container form input[type=submit],
+#adminPage main .deactivate_account_container form input[type="submit"],
 #adminPage main .deactivate_account_container form button,
-#adminPage main .create-user-container #id_reset_password_form input[type=submit],
+#adminPage main .create-user-container #id_reset_password_form input[type="submit"],
 #adminPage main .create-user-container #id_reset_password_form button,
-#adminPage main .create-user-container #id_deactivate_account_form input[type=submit],
+#adminPage main .create-user-container #id_deactivate_account_form input[type="submit"],
 #adminPage main .create-user-container #id_deactivate_account_form button,
-#adminPage main .create-user-container #create-user-form input[type=submit],
+#adminPage main .create-user-container #create-user-form input[type="submit"],
 #adminPage main .create-user-container #create-user-form button,
-#adminPage main .create-user-container form input[type=submit],
+#adminPage main .create-user-container form input[type="submit"],
 #adminPage main .create-user-container form button,
-#adminPage main .form-container #id_reset_password_form input[type=submit],
+#adminPage main .form-container #id_reset_password_form input[type="submit"],
 #adminPage main .form-container #id_reset_password_form button,
-#adminPage main .form-container #id_deactivate_account_form input[type=submit],
+#adminPage main .form-container #id_deactivate_account_form input[type="submit"],
 #adminPage main .form-container #id_deactivate_account_form button,
-#adminPage main .form-container #create-user-form input[type=submit],
+#adminPage main .form-container #create-user-form input[type="submit"],
 #adminPage main .form-container #create-user-form button,
-#adminPage main .form-container form input[type=submit],
+#adminPage main .form-container form input[type="submit"],
 #adminPage main .form-container form button {
   cursor: pointer;
   color: white;
   background-color: blue;
-  box-shadow: 5px 5px 5px #aaa;
+  -webkit-box-shadow: 5px 5px 5px #aaa;
+          box-shadow: 5px 5px 5px #aaa;
 }
-#adminPage main .reset_password_container #id_reset_password_form input[type=submit]:active, #adminPage main .reset_password_container #id_reset_password_form button:active,
-#adminPage main .reset_password_container #id_deactivate_account_form input[type=submit]:active,
+
+#adminPage main .reset_password_container #id_reset_password_form input[type="submit"]:active, #adminPage main .reset_password_container #id_reset_password_form button:active,
+#adminPage main .reset_password_container #id_deactivate_account_form input[type="submit"]:active,
 #adminPage main .reset_password_container #id_deactivate_account_form button:active,
-#adminPage main .reset_password_container #create-user-form input[type=submit]:active,
+#adminPage main .reset_password_container #create-user-form input[type="submit"]:active,
 #adminPage main .reset_password_container #create-user-form button:active,
-#adminPage main .reset_password_container form input[type=submit]:active,
+#adminPage main .reset_password_container form input[type="submit"]:active,
 #adminPage main .reset_password_container form button:active,
-#adminPage main .deactivate_account_container #id_reset_password_form input[type=submit]:active,
+#adminPage main .deactivate_account_container #id_reset_password_form input[type="submit"]:active,
 #adminPage main .deactivate_account_container #id_reset_password_form button:active,
-#adminPage main .deactivate_account_container #id_deactivate_account_form input[type=submit]:active,
+#adminPage main .deactivate_account_container #id_deactivate_account_form input[type="submit"]:active,
 #adminPage main .deactivate_account_container #id_deactivate_account_form button:active,
-#adminPage main .deactivate_account_container #create-user-form input[type=submit]:active,
+#adminPage main .deactivate_account_container #create-user-form input[type="submit"]:active,
 #adminPage main .deactivate_account_container #create-user-form button:active,
-#adminPage main .deactivate_account_container form input[type=submit]:active,
+#adminPage main .deactivate_account_container form input[type="submit"]:active,
 #adminPage main .deactivate_account_container form button:active,
-#adminPage main .create-user-container #id_reset_password_form input[type=submit]:active,
+#adminPage main .create-user-container #id_reset_password_form input[type="submit"]:active,
 #adminPage main .create-user-container #id_reset_password_form button:active,
-#adminPage main .create-user-container #id_deactivate_account_form input[type=submit]:active,
+#adminPage main .create-user-container #id_deactivate_account_form input[type="submit"]:active,
 #adminPage main .create-user-container #id_deactivate_account_form button:active,
-#adminPage main .create-user-container #create-user-form input[type=submit]:active,
+#adminPage main .create-user-container #create-user-form input[type="submit"]:active,
 #adminPage main .create-user-container #create-user-form button:active,
-#adminPage main .create-user-container form input[type=submit]:active,
+#adminPage main .create-user-container form input[type="submit"]:active,
 #adminPage main .create-user-container form button:active,
-#adminPage main .form-container #id_reset_password_form input[type=submit]:active,
+#adminPage main .form-container #id_reset_password_form input[type="submit"]:active,
 #adminPage main .form-container #id_reset_password_form button:active,
-#adminPage main .form-container #id_deactivate_account_form input[type=submit]:active,
+#adminPage main .form-container #id_deactivate_account_form input[type="submit"]:active,
 #adminPage main .form-container #id_deactivate_account_form button:active,
-#adminPage main .form-container #create-user-form input[type=submit]:active,
+#adminPage main .form-container #create-user-form input[type="submit"]:active,
 #adminPage main .form-container #create-user-form button:active,
-#adminPage main .form-container form input[type=submit]:active,
+#adminPage main .form-container form input[type="submit"]:active,
 #adminPage main .form-container form button:active {
-  transform: scale(0.99);
+  -webkit-transform: scale(0.99);
+          transform: scale(0.99);
   background-color: navy;
-  box-shadow: 2px 2px 2px #888;
+  -webkit-box-shadow: 2px 2px 2px #888;
+          box-shadow: 2px 2px 2px #888;
 }
+
 #adminPage main .department-container {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
   gap: 0.5rem;
-  align-items: flex-start;
+  -webkit-box-align: start;
+      -ms-flex-align: start;
+          align-items: flex-start;
 }
+
 #adminPage main .department-container .department-list-container {
   padding: 1rem;
   border-radius: 1rem;
   background-color: #ccc;
   min-width: 300px;
   min-height: 300px;
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  flex-direction: column;
-  gap: 0.5rem;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  gap: .5rem;
 }
+
 #adminPage main .department-container .department-list-container > h2 {
   text-align: center;
   margin: 10px auto;
   font-size: 1.5rem;
   font-weight: 300;
 }
+
 #adminPage main .department-container .department-list-container .new-department {
   cursor: pointer;
   margin: 0 auto;
-  padding: 0.5rem 1rem;
+  padding: .5rem 1rem;
   background-color: white;
   color: darkblue;
-  border-radius: 0.5rem;
-  box-shadow: 5px 5px 5px #aaa;
+  border-radius: .5rem;
+  -webkit-box-shadow: 5px 5px 5px #aaa;
+          box-shadow: 5px 5px 5px #aaa;
 }
+
 #adminPage main .department-container .department-list-container .new-department:active {
-  transform: scale(0.98);
-  box-shadow: 3px 3px 3px #666;
+  -webkit-transform: scale(0.98);
+          transform: scale(0.98);
+  -webkit-box-shadow: 3px 3px 3px #666;
+          box-shadow: 3px 3px 3px #666;
 }
+
 #adminPage main .department-container .department-list-container .department-item {
   background-color: #eee;
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  gap: 0.5rem;
-  border-radius: 0.5rem;
-  justify-content: space-between;
-  align-items: center;
-  padding: 0.5rem;
+  gap: .5rem;
+  border-radius: .5rem;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  padding: .5rem;
 }
+
 #adminPage main .department-container .department-list-container .department-item.new {
   background-color: lightseagreen !important;
 }
+
 #adminPage main .department-container .department-list-container .department-item .inline-input {
   min-width: 0;
-  padding: 0.25rem;
+  padding: .25rem;
   outline: none;
-  box-shadow: none;
+  -webkit-box-shadow: none;
+          box-shadow: none;
   margin-bottom: 0;
   border-radius: 5px;
+  -webkit-transition: all 0.5s;
   transition: all 0.5s;
 }
+
 #adminPage main .department-container .department-list-container .department-item .buttons {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  align-items: center;
-  gap: 0.5rem;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  gap: .5rem;
 }
+
 #adminPage main .department-container .department-list-container .department-item .buttons .link-btn {
   cursor: pointer;
 }
+
 #adminPage main .department-container .department-list-container .department-item .buttons .link-btn.edit {
   color: blue;
 }
+
 #adminPage main .department-container .department-list-container .department-item .buttons .link-btn.delete {
   color: red;
 }
-
 /*# sourceMappingURL=admin.css.map */

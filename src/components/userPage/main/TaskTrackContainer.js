@@ -5,12 +5,16 @@ import TaskInfo from "./taskinfo/TaskInfo";
 import TrackInfo from "./trackInfo/TrackInfo";
 import axios from "axios";
 import ReactLoading from "react-loading";
+import { useParams } from "react-router-dom";
 
 const TaskTrackContainer = (props) => {
     const {setSelectedTask} = useContext(DataContext);
     const [existsOrNew, setExistsOrNew] = useState(true);
     const [loading, setLoading] = useState(true);
-    const taskId = props.match.params.id;
+    
+    const params = useParams();
+    const taskId = params.id;
+
 
     useEffect(() => {
         setLoading(true)

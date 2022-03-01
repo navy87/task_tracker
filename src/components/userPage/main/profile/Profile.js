@@ -1,17 +1,20 @@
 import React from "react";
-import { Route, Switch} from "react-router-dom";
+import { Route, Routes } from "react-router-dom";
 import ShowProfile from "./ShowProfile";
 import EditProfile from "./EditProfile";
 import PasswordChange from "./PasswordChange";
 
-const Profile = ({match}) => {
+const Profile = ({ match }) => {
     return (
         <div id="id_profile_page">
-            <Switch>
-                <Route path={`${match.url}/passwordChange`} component={PasswordChange}/>
-                <Route path={`${match.url}/edit`} component={EditProfile}/>
-                <Route path={`${match.url}/`} component={ShowProfile}/>
-            </Switch>
+            <Routes>
+                <Route
+                    path={`${match.url}/passwordChange`}
+                    element={<PasswordChange />}
+                />
+                <Route path={`${match.url}/edit`} element={<EditProfile />} />
+                <Route path={`${match.url}/`} element={<ShowProfile />} />
+            </Routes>
         </div>
     );
 };

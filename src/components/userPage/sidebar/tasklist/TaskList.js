@@ -1,10 +1,13 @@
-import React, {useContext} from "react";
-import {DataContext, FilterContext,} from "../../../../contexts/SidebarContext";
+import React, { useContext } from "react";
+import {
+    DataContext,
+    FilterContext,
+} from "../../../../contexts/SidebarContext";
 import TaskItem from "./TaskItem";
-import {compareTask} from "../../../../helpers/Helper";
+import { compareTask } from "../../../../helpers/Helper";
 
 const TaskList = () => {
-    const {tasks} = useContext(DataContext);
+    const { tasks } = useContext(DataContext);
 
     const {
         filteredPriorities,
@@ -12,8 +15,7 @@ const TaskList = () => {
         filteredKeywords,
         filteredPersons,
     } = useContext(FilterContext);
-    const {taskSortOrder} = useContext(DataContext);
-
+    const { taskSortOrder } = useContext(DataContext);
 
     return (
         <div className="task_list">
@@ -35,11 +37,15 @@ const TaskList = () => {
                     if ([...filteredPersons].length === 0) {
                         return true;
                     }
+                    console.log("Filtered Ids:");
                     const filteredIds = [...filteredPersons].map(
                         (filteredPerson) => filteredPerson.id
                     );
+                    console.log(filteredIds);
+                    console.log("Assignee Ids: ");
+                    console.log([...task.assignees]);
                     const assigneeIds = [...task.assignees]
-                        .map((taskPerson) => taskPerson.person.id)
+                        .map((taskPerson) => taskPerson.profile.id)
                         .filter((id) => filteredIds.includes(id));
                     return assigneeIds.length > 0;
                 })
@@ -47,7 +53,7 @@ const TaskList = () => {
                     compareTask(task1, task2, taskSortOrder)
                 )
                 .map((task, index) => (
-                    <TaskItem key={index} task={task}/>
+                    <TaskItem key={index} task={task} />
                 ))}
         </div>
     );

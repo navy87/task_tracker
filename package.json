@@ -1,48 +1,41 @@
 {
-    "name": "task_tracker_react",
-    "version": "0.1.0",
-    "private": true,
+    "name": "task_tracker_app",
+    "version": "1.0.0",
+    "description": "",
+    "main": "index.js",
+    "scripts": {
+        "start": "webpack serve --mode=production  --hot --open",
+        "dev": "webpack serve --mode=development  --hot --open",
+        "build": "webpack --config webpack.config.js --mode production"
+    },
+    "keywords": [],
+    "author": "",
+    "license": "ISC",
     "dependencies": {
-        "@testing-library/jest-dom": "^5.11.4",
-        "@testing-library/react": "^11.1.0",
-        "@testing-library/user-event": "^12.1.10",
-        "axios": "^0.21.1",
-        "dotenv": "^10.0.0",
+        "@babel/runtime": "^7.17.2",
         "react": "^17.0.2",
         "react-dom": "^17.0.2",
-        "react-hot-toast": "^2.1.0",
-        "react-icons": "^4.2.0",
+        "react-router-dom": "^6.2.2"
+    },
+    "devDependencies": {
+        "@babel/core": "^7.17.5",
+        "@babel/plugin-transform-runtime": "^7.17.0",
+        "@babel/preset-env": "^7.16.11",
+        "@babel/preset-react": "^7.16.7",
+        "axios": "^0.26.0",
+        "babel-loader": "^8.2.3",
+        "css-loader": "^6.6.0",
+        "file-loader": "^6.2.0",
+        "html-webpack-plugin": "^5.5.0",
+        "react-hot-toast": "^2.2.0",
+        "react-icons": "^4.3.1",
         "react-loading": "^2.0.3",
-        "react-router-dom": "^5.2.0",
-        "react-scripts": "4.0.3",
         "react-tooltip": "^4.2.21",
-        "react-tsparticles": "^1.32.0",
+        "react-tsparticles": "^1.41.5",
+        "style-loader": "^3.3.1",
         "uuid": "^8.3.2",
-        "web-vitals": "^1.0.1"
-    },
-    "scripts": {
-        "start": "react-scripts start",
-        "build": "react-scripts build",
-        "test": "react-scripts test",
-        "eject": "react-scripts eject"
-    },
-    "proxy": "http://localhost:4200",
-    "eslintConfig": {
-        "extends": [
-            "react-app",
-            "react-app/jest"
-        ]
-    },
-    "browserslist": {
-        "production": [
-            ">0.2%",
-            "not dead",
-            "not op_mini all"
-        ],
-        "development": [
-            "last 1 chrome version",
-            "last 1 firefox version",
-            "last 1 safari version"
-        ]
+        "webpack": "^5.69.1",
+        "webpack-cli": "^4.9.2",
+        "webpack-dev-server": "^4.7.4"
     }
 }

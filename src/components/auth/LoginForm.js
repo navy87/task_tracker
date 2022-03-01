@@ -1,50 +1,53 @@
 import axios from "axios";
-import React, {useState} from "react";
+import React, { useState } from "react";
 import toast from "react-hot-toast";
-import {useHistory} from "react-router-dom";
-import {getLoginURL, getUserMetaURL} from "../../helpers/Helper";
+import { useLocation, useMatch, useNavigate } from "react-router-dom";
+import { getLoginURL, getUserMetaURL } from "../../helpers/Helper";
 
-const LoginForm = ({match, location}) => {
+const LoginForm = () => {
     const emptyForm = {
         username: "",
         password: "",
     };
+    console.log("Inside LoginForm");
     const [login, setLogin] = useState(emptyForm);
 
-    const history = useHistory();
+    const navigate = useNavigate();
+    const match = useMatch("/login");
+    const location = useLocation();
 
     const getUser = async (username) => {
         try {
-            const res = await axios.get(getUserMetaURL(username))
+            const res = await axios.get(getUserMetaURL(username));
             if (res.status === 200) {
                 return res.data;
             } else {
                 return null;
             }
         } catch (e) {
-            console.error(e)
+            console.error(e);
         }
         return null;
-    }
+    };
 
     const handleLogin = async (e) => {
         e.preventDefault();
 
         const url = getLoginURL();
         try {
-            const res = await axios.post(url, JSON.stringify(login))
+            const res = await axios.post(url, JSON.stringify(login));
             if (res.status === 200) {
-                localStorage.setItem("token", res.headers.authorization)
+                localStorage.setItem("token", res.headers.authorization);
                 const userMeta = await getUser(login.username);
-                localStorage.setItem("user", JSON.stringify(userMeta))
+                localStorage.setItem("user", JSON.stringify(userMeta));
                 if (location.state) {
-                    history.push(location.state.from);
+                    navigate(location.state.from);
                 } else {
-                    history.push("/");
+                    navigate("/");
                 }
             }
         } catch (e) {
-            console.error(e)
+            console.error(e);
             toast.error("Username and/or Password is wrong.", {
                 duration: 5000,
             });
@@ -94,8 +97,11 @@ const LoginForm = ({match, location}) => {
                 {/*        name="remember-me"*/}
                 {/*    />*/}
                 {/*</label>*/}
-                <input type="submit" value="Login"/>
-                <a href={`${match.url}/forgotPassword`} id="id-forgot-password">
+                <input type="submit" value="Login" />
+                <a
+                    href={`${match.pathname}/forgotPassword`}
+                    id="id-forgot-password"
+                >
                     Forgot Password
                 </a>
             </form>

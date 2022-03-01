@@ -1,18 +1,24 @@
-import React, {useContext, useEffect, useState} from "react";
+import React, { useContext, useEffect, useState } from "react";
 import TrackForm from "./TrackForm";
 import TrackList from "./TrackList";
 import SortOrder from "./SortOrder";
-import {DataContext} from "../../../../contexts/SidebarContext";
+import { DataContext } from "../../../../contexts/SidebarContext";
 import ReactLoading from "react-loading";
-import {fetchingErrorHandler, getTaskTracksURL,} from "../../../../helpers/Helper";
+import {
+    fetchingErrorHandler,
+    getTaskTracksURL,
+} from "../../../../helpers/Helper";
 import axios from "axios";
+import { useParams } from "react-router-dom";
 
-const TrackInfo = ({match}) => {
-    const {trackSortOrder, setTrackSortOrder} = useContext(DataContext);
-    const [taskId, setTaskId] = useState(match.params.id);
+const TrackInfo = () => {
+    const params = useParams();
+
+    const { trackSortOrder, setTrackSortOrder } = useContext(DataContext);
+    const [taskId, setTaskId] = useState(params.id);
     const [tracks, setTracks] = useState({});
 
-    const STATUSES = {loading: 0, loaded: 1, new: 2, forbidden: 3};
+    const STATUSES = { loading: 0, loaded: 1, new: 2, forbidden: 3 };
     Object.freeze(STATUSES);
     const [status, setStatus] = useState(STATUSES.loading);
     const [refresh, setRefresh] = useState(true);
@@ -21,26 +27,26 @@ const TrackInfo = ({match}) => {
         setRefresh((current) => !current);
     };
     useEffect(() => {
-        setTaskId(match.params.id);
-    }, [match]);
+        setTaskId(params.id);
+    }, [params]);
 
     useEffect(() => {
         const fetchTracks = async () => {
             try {
                 const url = getTaskTracksURL(taskId);
                 const res = await axios.get(url);
-                const data = res.data
+                const data = res.data;
                 if (res.status === 200) {
-                    setTracks(data)
-                    setStatus(STATUSES.loaded)
+                    setTracks(data);
+                    setStatus(STATUSES.loaded);
                 }
-                return data
+                return data;
             } catch (e) {
                 if (e.response.status === 403) {
-                    setStatus(STATUSES.forbidden)
+                    setStatus(STATUSES.forbidden);
                 } else {
-                    console.log(JSON.stringify(e))
-                    fetchingErrorHandler(e)
+                    console.log(JSON.stringify(e));
+                    fetchingErrorHandler(e);
                 }
             }
         };
@@ -63,15 +69,17 @@ const TrackInfo = ({match}) => {
     const notLoadedSelect = () => {
         switch (status) {
             case STATUSES.loading:
-                return <div className="loading-container">
-                    <ReactLoading/>
-                </div>
+                return (
+                    <div className="loading-container">
+                        <ReactLoading />
+                    </div>
+                );
             case STATUSES.new:
-                return <></>
+                return <></>;
             case STATUSES.forbidden:
-                return <div>Forbidden</div>
+                return <div>Forbidden</div>;
             default:
-                return <></>
+                return <></>;
         }
     };
 
@@ -79,7 +87,7 @@ const TrackInfo = ({match}) => {
         <div className="container">
             <h2 className="title">Tracks Info</h2>
             <div className="form_list_container">
-                <TrackForm refreshTracks={refreshTracks}/>
+                <TrackForm refreshTracks={refreshTracks} />
                 <div className="track_list_container">
                     <div className="head">
                         <h4>List of all Tracks</h4>
@@ -89,7 +97,7 @@ const TrackInfo = ({match}) => {
                             setTrackSortOrder={setTrackSortOrder}
                         />
                     </div>
-                    <TrackList tracks={tracks}/>
+                    <TrackList tracks={tracks} />
                 </div>
             </div>
         </div>

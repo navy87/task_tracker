@@ -3,7 +3,7 @@ import {fetchingErrorHandler, getChangePasswordURL} from "../../../../helpers/He
 import axios from "axios";
 import {GlobalContext} from "../../../../contexts/GlobalContext";
 import toast from "react-hot-toast";
-import {Link, useHistory} from "react-router-dom";
+import {Link, useNavigate} from "react-router-dom";
 
 const PasswordChange = () => {
     const [username, setUsername] = useState("")
@@ -13,7 +13,7 @@ const PasswordChange = () => {
 
     const [user, setUser] = useState(JSON.parse(localStorage.getItem("user")))
     const {userRefreshed} = useContext(GlobalContext);
-    const history = useHistory()
+    const navigate = useNavigate();
 
     useEffect(() => {
         const user = JSON.parse(localStorage.getItem("user"))
@@ -37,7 +37,7 @@ const PasswordChange = () => {
             })
             if (res.status === 200) {
                 toast.success("Your new password has been set.", {duration: 5000})
-                history.push("/profile")
+                navigate("/profile");
             }
         } catch (e) {
             if (e.response.status === 502) { // Bad Gateway

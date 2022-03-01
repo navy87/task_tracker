@@ -1,35 +1,43 @@
+import React, { useEffect, useState } from "react";
 import DepartmentsList from "./DepartmentsList";
-import {useEffect, useState} from "react";
-import {fetchingErrorHandler, getDepartmentURL} from "../../../helpers/Helper";
+import {
+    fetchingErrorHandler,
+    getDepartmentURL,
+} from "../../../helpers/Helper";
 import axios from "axios";
+import { useParams } from "react-router-dom";
 
-const Department = ({match}) => {
-    const [departmentList, setDepartmentList] = useState([])
-    const [selectedDepartment, setSelectedDepartment] = useState({id: null, name: ""})
-    const [refresh, setRefresh] = useState(true)
+const Department = () => {
+    const [departmentList, setDepartmentList] = useState([]);
+    const [selectedDepartment, setSelectedDepartment] = useState({
+        id: null,
+        name: "",
+    });
+    const [refresh, setRefresh] = useState(true);
 
-    const departmentId = match.params.id;
+    const params = useParams();
+    const departmentId = params.id;
     const refreshDepartments = () => {
-        setRefresh(current => !current)
-    }
+        setRefresh((current) => !current);
+    };
 
     useEffect(() => {
         const fetchDepartment = async () => {
             try {
                 const url = getDepartmentURL(departmentId);
                 const res = await axios.get(url);
-                return res.data
+                return res.data;
             } catch (e) {
-                console.error(e)
+                console.error(e);
             }
-        }
+        };
 
         if (departmentId) {
-            fetchDepartment().then(setSelectedDepartment)
+            fetchDepartment().then(setSelectedDepartment);
         } else {
-            setSelectedDepartment({id: null, name: ""})
+            setSelectedDepartment({ id: null, name: "" });
         }
-    }, [departmentId, setSelectedDepartment])
+    }, [departmentId, setSelectedDepartment]);
 
     useEffect(() => {
         const fetchDepartments = async () => {
@@ -37,14 +45,14 @@ const Department = ({match}) => {
                 const url = getDepartmentURL();
                 const res = await axios.get(url);
                 if (res.status === 200) {
-                    setDepartmentList(res.data)
+                    setDepartmentList(res.data);
                 }
             } catch (e) {
-                fetchingErrorHandler(e)
+                fetchingErrorHandler(e);
             }
-        }
-        fetchDepartments().then(null)
-    }, [refresh, setDepartmentList])
+        };
+        fetchDepartments().then(null);
+    }, [refresh, setDepartmentList]);
 
     return (
         <div className={"department-container"}>
@@ -60,7 +68,7 @@ const Department = ({match}) => {
                 refreshDepartments={refreshDepartments}
             />
         </div>
-    )
-}
+    );
+};
 
 export default Department;
